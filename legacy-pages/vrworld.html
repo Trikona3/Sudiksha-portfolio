@@ -1,0 +1,748 @@
+<!-- vrworld.html -->
+<!DOCTYPE html>
+<html lang="en">
+<html class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>vrworld</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style> body { font-family: 'Space Grotesk', sans-serif; } </style>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      /* add a theme and override its palette here: */
+      theme: 'base',
+      themeVariables: {
+        primaryColor:      '#B2DAFF',  // node fill
+        primaryBorderColor:'#3063fc',  // node stroke
+        primaryTextColor:  '#000000',  // node text
+        lineColor:         '#3063fc',  // edges
+        tertiaryColor:     '#ffffff',  // edge label bg
+        fontSize:          '28px'
+      }
+    });
+  </script>
+ <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+      }
+      .nav-link {
+        position: relative;
+        display: inline-block;
+        text-decoration: none;
+        color: #2d3748;
+        font-weight: 600;
+      font-size: clamp(1.1rem, 1.05vw, 1.45rem);
+      }
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: currentColor;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease;
+      }
+      .nav-link:hover::after {
+        transform: scaleX(1);
+      }
+      .nav-link:hover {
+        color: #ffffff;
+      }
+      .menu-transition {
+      transition: max-height 0.3s ease-out;
+      overflow: hidden;
+      }
+    </style>
+  </head>
+  <body class="bg-[#5A8EFF]/25">
+
+    <!-- NAV BAR -->
+    <header class="fixed inset-x-0 top-0 z-30">
+      <nav class="absolute inset-x-0 top-2 mx-auto max-w-[1100px] bg-[#5A8EFF]/70 backdrop-blur-sm border-[1.5px] border-black py-3 px-6 rounded-[12px] shadow-lg z-50">
+        <div class="flex items-center justify-between">
+          <a href="index.html#about" class="text-lg font-semibold text-black">SUDIKSHA RAJAVARAM</a>
+
+          <!-- Hamburger Button (Mobile Only) -->
+          <button id="menu-btn" class="sm:hidden focus:outline-none">
+            <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+
+          <!-- Desktop Nav -->
+          <div class="hidden sm:flex gap-6">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="resume.html" class="nav-link">Resume</a>
+            <a href="projects.html" class="nav-link">Projects</a>
+            <a href="contact.html" class="nav-link">Contact Me</a>
+          </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="sm:hidden menu-transition max-h-0">
+          <div class="flex flex-col gap-4 pt-4">
+            <a href="index.html" class="nav-link block">Home</a>
+            <a href="resume.html" class="nav-link block">Resume</a>
+            <a href="projects.html" class="nav-link block">Projects</a>
+            <a href="contact.html" class="nav-link block">Contact Me</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+   <section class="bg-white rounded-3xl mx-auto my-4 max-w-[95vw] px-4 shadow-lg mt-12 mb-12 pb-8">
+    <main id="vrworld" class="pt-[80px] px-6 max-w-5xl mx-auto">
+        <!-- back link + title -->
+        <a href="projects.html" class="text-[12px] text-gray-700 hover:underline">
+          ← Return to all Projects
+        </a>
+        <h1 class="text-4xl font-bold text-center mt-4 mb-8">ONE VR WORLD</h1>
+
+        <!-- Case Study -->
+        <section class="mb-16">
+          <h2 class="text-2xl font-semibold mb-6">Case Study</h2>
+
+          <div class="max-w-6xl mx-auto">
+
+            <!-- ================= SNAPSHOT ================= -->
+            <div class="mb-8">
+              <!-- label -->
+              <div class="flex items-center gap-3 text-[11px] font-semibold tracking-widest uppercase text-[#3063FC]">
+                <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#3063FC]">
+                  <span class="absolute inset-0 rounded-full bg-[#3063FC]/40 animate-ping"></span>
+                </span>
+                Project Snapshot
+              </div>
+
+              <!-- title -->
+              <h3 class="mt-3 text-3xl sm:text-4xl font-bold text-slate-900 text-justify">
+                Immersive VR environments for skill-building and experiential learning
+              </h3>
+
+              <!-- description -->
+              <p class="mt-4 text-base text-slate-600 max-w-4xl text-justify">
+                One VR World is a concept platform exploring how virtual reality can be used
+                for hands-on skill development, enabling users to learn, practice, and interact
+                inside immersive 3D environments rather than passive screens.
+              </p>
+
+              <!-- meta chips -->
+              <div class="mt-6 flex flex-wrap gap-3">
+                <span class="inline-flex items-center gap-2 rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+                  <span class="text-xs font-bold tracking-widest">IND</span>
+                  VR · Skill Building
+                </span>
+
+                <span class="inline-flex items-center gap-2 rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+                  <span class="text-xs font-bold tracking-widest">ROLE</span>
+                  Research · Wireframing · Interface Design
+                </span>
+
+                <span class="inline-flex items-center gap-2 rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+                  <span class="text-xs font-bold tracking-widest">TOOLS</span>
+                  Figma · Canva
+                </span>
+              </div>
+
+              <!-- divider -->
+              <div class="mt-7 h-px w-full bg-gradient-to-r
+                from-transparent via-[#3063FC]/40 to-transparent"></div>
+            </div>
+
+            <!-- ================= MAIN VIDEO ================= -->
+            <div class="relative rounded-[30px] overflow-hidden
+              bg-gradient-to-br from-[#6CA8FF] to-[#3B82F6]
+              border border-[#3063FC]/40
+              shadow-[0_30px_80px_rgba(48,99,252,0.35)]">
+
+              <div class="w-full h-[340px] sm:h-[460px] md:h-[560px] flex items-center justify-center">
+                <video
+                  id="onevr-video"
+                  class="w-full h-full object-contain"
+                  muted
+                  autoplay
+                  playsinline
+                  loop
+                  preload="auto"
+                  poster="/images/project3-thumb.png"
+                >
+                  <source src="/images/web-optimized/project3-thumb-web.mp4" type="video/mp4" />
+                </video>
+
+                <!-- fallback -->
+                <div
+                  id="onevr-fallback"
+                  class="absolute inset-0 hidden flex-col items-center justify-center p-6 text-center"
+                >
+                  <img
+                    src="/images/project3-thumb.png"
+                    alt="One VR World prototype preview"
+                    class="max-h-[85%] w-auto rounded-2xl shadow-xl border border-white/10"
+                  />
+                  <p class="mt-3 text-xs text-slate-300">
+                    Design prototype video couldn’t load in this browser.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <script>
+        (function () {
+          const video = document.getElementById("onevr-video");
+          const fallback = document.getElementById("onevr-fallback");
+          if (!video) return;
+
+          const forcePlay = async () => {
+            try {
+              video.muted = true;
+              await video.play();
+            } catch (e) {}
+          };
+
+          window.addEventListener("load", forcePlay);
+          video.addEventListener("canplay", forcePlay);
+
+          const retryOnce = () => {
+            forcePlay();
+            window.removeEventListener("pointerdown", retryOnce);
+            window.removeEventListener("keydown", retryOnce);
+          };
+          window.addEventListener("pointerdown", retryOnce);
+          window.addEventListener("keydown", retryOnce);
+
+          video.addEventListener("error", () => {
+            video.classList.add("hidden");
+            fallback.classList.remove("hidden");
+            fallback.classList.add("flex");
+          });
+        })();
+        </script>
+
+        <!-- Problem & Goal -->
+        <section class="max-w-6xl mx-auto py-8 reveal">
+          <h2 class="text-3xl font-bold mb-4">The Problem</h2>
+
+          <p class="text-gray-700 leading-relaxed">
+            Neurodivergent individuals—especially those on the autism spectrum—often lack
+            safe, structured environments to practice essential social and workplace skills.
+            Traditional training methods offer limited realism and make it difficult to
+            rehearse emotional regulation, conversational flow, and spatial awareness
+            in a controlled, repeatable way.
+          </p>
+
+          <div class="grid sm:grid-cols-2 gap-6 mt-6">
+            <!-- Impact -->
+            <div class="border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/25 rounded-xl p-5">
+              <h3 class="font-semibold mb-1">Impact</h3>
+              <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
+                <li>Learners struggle to generalize skills from theory to real-world situations.</li>
+                <li>Therapists and caregivers lack consistent, measurable feedback loops.</li>
+                <li>Progress tracking across sessions is fragmented or manual.</li>
+                <li>Engagement drops when training lacks immersion or personalization.</li>
+              </ul>
+            </div>
+
+            <!-- Goal -->
+            <div class="border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/25 rounded-xl p-5">
+              <h3 class="font-semibold mb-1">Goal</h3>
+              <p class="text-gray-700 text-sm">
+                Create an immersive VR-based learning environment where neurodivergent users
+                can safely practice social and workplace skills, while providing therapists
+                and caregivers with clear visibility into progress and outcomes.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Solution Overview -->
+        <section class="max-w-6xl mx-auto py-4 reveal">
+          <h2 class="text-3xl font-bold mb-6">Solution</h2>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <!-- Product overview -->
+            <div class="bg-white rounded-2xl border border-[#5A8EFF]/50 p-6 shadow-sm">
+              <h3 class="font-semibold mb-2">One VR World in a nutshell</h3>
+              <p class="text-gray-700 text-sm">
+                One VR World is a VR-based skill-building application that delivers immersive
+                training modules through a familiar, Netflix-style interface. Users select
+                guided scenarios focused on emotional regulation, conversational practice,
+                and proximity awareness.
+              </p>
+
+              <ul class="mt-4 list-disc list-inside text-gray-700 text-sm space-y-1">
+                <li>Immersive VR scenarios for social and workplace skill rehearsal.</li>
+                <li>Real-time feedback to support learning during practice.</li>
+                <li>Customizable avatars to increase comfort and personalization.</li>
+                <li>Progress dashboards to track learning over time.</li>
+              </ul>
+            </div>
+
+            <!-- Admin & support view -->
+            <div class="bg-white rounded-2xl border border-[#5A8EFF]/50 p-6 shadow-sm">
+              <h3 class="font-semibold mb-2">Support & oversight</h3>
+              <p class="text-gray-700 text-sm">
+                An administrator portal enables therapists, caregivers, and content managers
+                to monitor learner progress, review outcomes, and tailor training modules
+                based on individual needs.
+              </p>
+
+              <ul class="mt-4 list-disc list-inside text-gray-700 text-sm space-y-1">
+                <li>Session-level progress tracking and reporting.</li>
+                <li>Customizable training paths for different learners.</li>
+                <li>Visibility into engagement and performance trends.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Design Decisions -->
+        <section class="max-w-6xl mx-auto py-4 reveal">
+          <h2 class="text-3xl font-bold mb-6">Design Decisions</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/15 p-6 shadow-sm">
+              <h3 class="font-semibold mb-2">Scenario-first learning architecture</h3>
+              <p class="text-gray-700 text-sm">
+                Structured training as modular, guided scenarios so users can practice one skill context at a time.
+              </p>
+            </article>
+            <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/15 p-6 shadow-sm">
+              <h3 class="font-semibold mb-2">Immediate feedback loop design</h3>
+              <p class="text-gray-700 text-sm">
+                Prioritized real-time guidance and session feedback to build confidence during social and workplace practice tasks.
+              </p>
+            </article>
+            <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/15 p-6 shadow-sm">
+              <h3 class="font-semibold mb-2">Personalization to reduce overwhelm</h3>
+              <p class="text-gray-700 text-sm">
+                Included avatar and module-level customization so difficulty and pacing can be adjusted to user needs.
+              </p>
+            </article>
+            <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/15 p-6 shadow-sm">
+              <h3 class="font-semibold mb-2">Care-team visibility by design</h3>
+              <p class="text-gray-700 text-sm">
+                Added support/admin oversight patterns for monitoring engagement and tracking outcomes across sessions.
+              </p>
+            </article>
+          </div>
+        </section>
+    
+        <!-- Target Audience -->
+        <section id="target-audience" class="py-2">
+          <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-semibold mb-8 text-left">Target Audience</h2>
+
+            <div class="space-y-8">
+              <!-- Row 1: stack on mobile, inline on sm+ -->
+              <div class="flex flex-col sm:flex-row sm:justify-between sm:gap-8 gap-4">
+                <!-- Card 1 -->
+                <div class="bg-[#5A8EFF]/20 w-full sm:w-72 h-64 p-6 rounded-2xl shadow-md flex flex-col">
+                  <h3 class="font-semibold mb-4 border-b-2 border-gray-300 pb-1">Neurodivergent Learners</h3>
+                  <p class="text-gray-700 text-sm flex-1 text-justify">
+                    Individuals on the autism spectrum seeking safe, structured VR scenarios to practice social cues, emotional control, and workplace interactions.
+                  </p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-[#5A8EFF]/20 w-full sm:w-72 h-64 p-6 rounded-2xl shadow-md flex flex-col">
+                  <h3 class="font-semibold mb-4 border-b-2 border-gray-300 pb-1">Occupational Therapists</h3>
+                  <p class="text-gray-700 text-sm flex-1 text-justify">
+                    Clinicians who need data-driven tools to assign modules, monitor patient progress, and customize VR interventions.
+                  </p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-[#5A8EFF]/20 w-full sm:w-72 h-64 p-6 rounded-2xl shadow-md flex flex-col">
+                  <h3 class="font-semibold mb-4 border-b-2 border-gray-300 pb-1">Caregivers & Educators</h3>
+                  <p class="text-gray-700 text-sm flex-1 text-justify">
+                    Parents, teachers, and support staff looking for engaging training to reinforce social and safety skills outside traditional therapy settings.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Row 2: stack on mobile, inline on sm+ -->
+              <div class="flex flex-col sm:flex-row sm:justify-center sm:gap-8 gap-4">
+                <!-- Card 4 -->
+                <div class="bg-[#5A8EFF]/20 w-full sm:w-72 h-64 p-6 rounded-2xl shadow-md flex flex-col">
+                  <h3 class="font-semibold mb-4 border-b-2 border-gray-300 pb-1">Program Administrators</h3>
+                  <p class="text-gray-700 text-sm flex-1 text-justify">
+                    School or clinic administrators who oversee user cohorts, generate reports, and ensure curriculum alignment.
+                  </p>
+                </div>
+                <!-- Card 5 -->
+                <div class="bg-[#5A8EFF]/20 w-full sm:w-72 h-64 p-6 rounded-2xl shadow-md flex flex-col">
+                  <h3 class="font-semibold mb-4 border-b-2 border-gray-300 pb-1">VR Content Creators</h3>
+                  <p class="text-gray-700 text-sm flex-1 text-justify">
+                    Designers and instructors who author new VR modules, write debrief guides, and refine scenarios based on user feedback.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+    </section>
+
+    <section class="bg-white rounded-3xl mx-auto my-4 max-w-[95vw] px-4 shadow-lg mt-12 mb-12 pb-8">
+        <!-- User Research -->
+        <section id="user-research" class="max-w-6xl mx-auto py-2 pt-12 px-6 md:px-28" data-aos="fade-up" data-aos-offset="140">
+            <h2 class="text-3xl font-bold text-[#000000] mb-2">User Research</h2>
+    
+            <!-- Qualitative research -->
+            <div class="mb-12">
+            <h3 class="text-2xl font-semibold text-[#3063fc] mb-4">Qualitative research</h3>
+            <p class="text-gray-700 mb-4 text-justify">
+                We conducted semi-structured interviews with five stakeholders—neurodivergent individuals, occupational therapists, and healthcare providers—to understand their workflows, pain points, and desired features for VR-based social skills training.
+            </p>
+            <p class="font-medium text-gray-800 mb-2">Below are the core questions:</p>
+            <ul class="list-disc list-inside space-y-1 text-gray-700 text-justify">
+                <li>What challenges do you face in everyday social or workplace interactions?</li>
+                <li>How do you currently practice or support social skills and emotional regulation?</li>
+                <li>Which VR features (e.g., real-time feedback, avatar customization) would you find most helpful?</li>
+                <li>What concerns do you have about using VR for skills training?</li>
+                <li>How would you measure progress and success in this context?</li>
+            </ul>
+    
+            <h4 class="mt-6 text-xl font-semibold text-gray-800">Key insights</h4>
+            <ul class="list-disc list-inside space-y-1 text-gray-700 mt-2 text-justify">
+                <li>Users struggle with confidence and need immediate, context-aware feedback.</li>
+                <li>Providers value data dashboards to tailor modules and monitor outcomes.</li>
+                <li>Customization (pace, difficulty, environment) is essential to prevent overwhelm.</li>
+                <li>Gamification and rewards boost engagement, especially for younger learners.</li>
+                <li>Caregivers require simple reporting tools to track long-term progress.</li>
+            </ul>
+            </div>
+        </section>
+
+        <!-- User Personas -->
+        <section id="user-personas" class="w-full max-w-screen-xl mx-auto py-2" data-aos="fade-up" data-aos-offset="140" data-aos-delay="50">
+            <h2 class="text-3xl font-bold text-left mb-8 px-6 md:px-28">User Personas</h2>
+            <div class="flex flex-col items-center space-y-4">
+            <!-- Persona 1 -->
+            <div class="w-full sm:w-2/3 lg:w-1/2">
+                <img src="/images/vrworld-persona1.png" alt="Persona 1" class="w-full rounded-2xl shadow-md sm:mb-4">
+            </div>
+            <!-- Persona 2 -->
+            <div class="w-full sm:w-2/3 lg:w-1/2">
+                <img src="/images/vrworld-persona2.png" alt="Persona 2" class="w-full rounded-2xl shadow-md sm:mb-4">
+            </div>
+            <!-- Persona 3 -->
+            <div class="w-full sm:w-2/3 lg:w-1/2">
+                <img src="/images/vrworld-persona3.png" alt="Persona 3" class="w-full rounded-2xl shadow-md sm:mb-4">
+            </div>
+            </div>
+        </section> 
+        
+        <!-- User and Task Flow -->
+        <section id="user-personas" class="w-full max-w-screen-xl mx-auto py-2" data-aos="fade-up" data-aos-offset="140" data-aos-delay="90">
+            <h2 class="text-3xl font-bold text-left mb-8 px-6 md:px-28">User and Task Flows</h2>
+            <div class="flex flex-col items-center space-y-8">
+            <div class="w-full sm:w-2/3 lg:w-4/5">
+                <img src="/images/userflows vrworld.png" alt="user-flow1" class="w-full rounded-l shadow-md mb-4">
+            </div>
+            <div class="w-full sm:w-2/3 lg:w-4/5">
+                <img src="/images/userflow2 vrworld.png" alt="user-flow2" class="w-full rounded-l shadow-md mb-4">
+            </div>
+            <div class="w-full sm:w-2/3 lg:w-4/5">
+                <img src="/images/userflow3 vrworld.png" alt="user-flow3" class="w-full rounded-l shadow-md mb-4">
+            </div>
+            <div class="w-full sm:w-2/3 lg:w-4/5">
+                <img src="/images/userflow4 vrworld.png" alt="user-flow4" class="w-full rounded-l shadow-md mb-4">
+            </div>
+          </div>
+        </section>
+
+        <!-- User Journey Map -->
+        <section id="user-journey" class="max-w-6xl mx-auto py-4 px-6 md:px-28" data-aos="fade-up" data-aos-offset="140" data-aos-delay="120">
+            <h2 class="text-3xl font-bold mb-8">User Journey Map</h2>
+            <div class="overflow-x-auto rounded-xl">
+            <table class="min-w-full bg-white border border-gray-300 rounded-lg">
+                <thead class="bg-[#B2DAFF]/30">
+                <tr>
+                    <th class="p-4 text-left">Stage / Experience</th>
+                    <th class="p-4 text-left">
+                    Discovery<br>
+                    <span class="text-sm text-gray-500">Learning about VR training</span>
+                    </th>
+                    <th class="p-4 text-left">
+                    Setup<br>
+                    <span class="text-sm text-gray-500">Configuring headset & avatar</span>
+                    </th>
+                    <th class="p-4 text-left">
+                    Training<br>
+                    <span class="text-sm text-gray-500">Immersive scenario practice</span>
+                    </th>
+                    <th class="p-4 text-left">
+                    Feedback<br>
+                    <span class="text-sm text-gray-500">Reviewing performance</span>
+                    </th>
+                </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                <!-- Actions -->
+                <tr class="bg-[#F9FAFB]">
+                    <td class="p-4 font-medium">Actions</td>
+                    <td class="p-4">
+                    • Visit One VR World site<br>
+                    • Watch demo reel & read feature list
+                    </td>
+                    <td class="p-4">
+                    • Sign up & choose a plan<br>
+                    • Download VR app & pair headset<br>
+                    • Create/customize avatar
+                    </td>
+                    <td class="p-4">
+                    • Select training module<br>
+                    • Engage in guided VR scenario<br>
+                    • Pause, replay, or adjust difficulty
+                    </td>
+                    <td class="p-4">
+                    • View session summary dashboard<br>
+                    • Compare against past performance
+                    </td>
+                </tr>
+                <!-- Think & Feel -->
+                <tr>
+                    <td class="p-4 font-medium">Think &amp; Feel</td>
+                    <td class="p-4">
+                    Intrigued but unsure if VR suits me
+                    </td>
+                    <td class="p-4">
+                    Slightly anxious about tech setup<br>
+                    but excited to personalize experience
+                    </td>
+                    <td class="p-4">
+                    Immersed and motivated,<br>
+                    occasional overwhelm in intense scenarios
+                    </td>
+                    <td class="p-4">
+                    Proud of progress but curious<br>
+                    about next steps
+                    </td>
+                </tr>
+                <!-- Touchpoints -->
+                <tr class="bg-[#F9FAFB]">
+                    <td class="p-4 font-medium">Touchpoints</td>
+                    <td class="p-4">
+                    Website, email newsletter, social ads
+                    </td>
+                    <td class="p-4">
+                    Onboarding tutorial, calibration wizard,
+                    account settings
+                    </td>
+                    <td class="p-4">
+                    VR interface HUD, real-time prompts,
+                    pause menu
+                    </td>
+                    <td class="p-4">
+                    Performance dashboard, in-app notifications,
+                    email summary
+                    </td>
+                </tr>
+                <!-- Pain Points -->
+                <tr>
+                    <td class="p-4 font-medium">Pain Points</td>
+                    <td class="p-4">
+                    Unsure which modules fit my goals
+                    </td>
+                    <td class="p-4">
+                    Calibration can be confusing;<br>
+                    headset drift issues
+                    </td>
+                    <td class="p-4">
+                    Motion sickness risk;<br>
+                    overly complex scenarios
+                    </td>
+                    <td class="p-4">
+                    Data overload;<br>
+                    unclear guidance on improvement
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+        </section>
+  
+
+        <!-- Storyboard -->
+        <section id="user-personas" class="w-full max-w-screen-xl mx-auto py-2 px-6 md:px-28" data-aos="fade-up" data-aos-offset="140" data-aos-delay="60">
+            <h2 class="text-3xl font-bold text-left mb-8">Storyboards</h2>
+            <div class="flex flex-col items-center space-y-8">
+            <div class="w-full sm:w-2/3 lg:w-4/5">
+                <img src="/images/storyboard vr1.png" alt="Persona 1" class="w-full rounded-l shadow-md mb-4">
+            </div>
+            <div class="w-full sm:w-2/3 lg:w-4/5">
+                <img src="/images/storyboard vr2.png" alt="Persona 1" class="w-full rounded-l shadow-md mb-4">
+            </div>
+          </div>
+        </section>
+        
+        <!-- Affinity Diagram -->
+        <section id="user-personas" class="w-full max-w-screen-xl mx-auto py-2 px-6 md:px-28" data-aos="fade-up" data-aos-offset="140" data-aos-delay="90">
+            <h2 class="text-3xl font-bold text-left mb-8">Affinity Diagram</h2>
+            <div class="flex flex-col items-center space-y-8">
+            <div class="w-full sm:w-6/7 lg:w-6/7">
+                <img src="/images/ad-vrworld.png" alt="Persona 1" class="w-full rounded-l shadow-md mb-4">
+            </div>
+          </div>
+        </section>
+
+        <!-- User Testing -->
+        <section id="user-testing" class="max-w-6xl mx-auto py-8 px-6 md:px-28" data-aos="fade-up" data-aos-offset="140">
+          <h2 class="text-3xl font-bold mb-8">User Testing</h2>
+
+          <!-- Test Setup -->
+          <div class="mb-12">
+            <h3 class="text-2xl font-semibold mb-4">Test Setup</h3>
+            <p class="text-gray-700 mb-2 text-justify">
+              We ran moderated usability sessions with our persona <strong>Sam Thompson</strong> (23, non-binary), using a low-fidelity VR prototype that guides neurodivergent users through social-skills scenarios. Participants were encouraged to think aloud.
+            </p>
+            <p class="text-gray-700 text-justify">
+              Sam’s needs included clear guidance, emotional tracking, relatable scenarios, and visible progress markers.
+            </p>
+          </div>
+
+          <!-- Tasks & Feedback -->
+          <div class="mb-12">
+            <h3 class="text-2xl font-semibold mb-4">Tasks &amp; Feedback</h3>
+            <div class="space-y-8">
+              <div>
+                <h4 class="text-xl font-medium mb-2">Task 1: Log In</h4>
+                <ul class="list-disc list-inside space-y-1 text-gray-700 mb-2">
+                  <li>Login flow is intuitive, but needs a “Forgot password” link and clear error messages.</li>
+                  <li>Smooth transition to dashboard after successful login.</li>
+                </ul>
+                <p class="text-gray-800"><strong>Outcome:</strong> Users logged in without friction, pending error-handling improvements.</p>
+              </div>
+              <div>
+                <h4 class="text-xl font-medium mb-2">Task 2: Navigate Dashboard</h4>
+                <ul class="list-disc list-inside space-y-1 text-gray-700 mb-2">
+                  <li>Dashboard layout feels minimal and calming, but statistics were hard to locate.</li>
+                  <li>Some confusion between “Profile” and “Dashboard” sections.</li>
+                </ul>
+                <p class="text-gray-800"><strong>Outcome:</strong> Navigation is straightforward; progress section needs clearer visual hierarchy.</p>
+              </div>
+              <div>
+                <h4 class="text-xl font-medium mb-2">Task 3: Select a Module</h4>
+                <ul class="list-disc list-inside space-y-1 text-gray-700 mb-2">
+                  <li>Grid layout is familiar and easy to scan, though detailed thumbnails and descriptions are missing.</li>
+                  <li>Customizable backgrounds motivate some users but distract others.</li>
+                </ul>
+                <p class="text-gray-800"><strong>Outcome:</strong> Module selection feels smooth; add descriptions and consider background options.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Key Insights -->
+          <div class="mb-12">
+            <h3 class="text-2xl font-semibold mb-4">Key Insights</h3>
+            <ul class="list-disc list-inside space-y-1 text-gray-700 text-justify">
+              <li>Minor UI tweaks (font size, button placement) significantly affect usability.</li>
+              <li>Grid views outperformed carousels for module discovery.</li>
+              <li>Customizable text size, colors, and help prompts (tutorials) are essential for inclusivity.</li>
+              <li>Voice-command support emerged as a strong secondary interaction mode.</li>
+              <li>Consistent error messaging and clear patterns increase user confidence.</li>
+              <li>Emotional-tracking and gamification features were highly appreciated.</li>
+            </ul>
+          </div>
+
+          <!-- Participant Q&A -->
+          <div>
+            <h3 class="text-2xl font-semibold mb-4">Participant Q&amp;A Highlights</h3>
+            <ul class="list-disc list-inside space-y-1 text-gray-700 text-justify">
+              <li><strong>Preferred environments:</strong>  Realistic, calming VR scenes resembling everyday settings like quiet parks, offices, or cafés to support immersion and reduce anxiety.</li>
+              <li><strong>Interaction:</strong>  Simple point-and-click, gaze-based interactions, and optional voice commands to cater to diverse motor and cognitive needs.</li>
+              <li><strong>Menu design:</strong> Large, clearly labeled module cards inspired by Netflix UI for intuitive navigation; tab-based layout reduces cognitive load..</li>
+              <li><strong>Progress tracking:</strong> Real-time visual feedback (e.g., completion bars, performance badges) and weekly summaries to keep users motivated and track learning milestones.</li>
+              <li><strong>Customization:</strong> Options for avatar setup, UI personalization (e.g., themes, font sizes), and language preferences to accommodate neurodiverse users.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Wireframe -->
+        <section id="user-personas" class="w-full max-w-screen-xl mx-auto py-2 px-6 md:px-28" data-aos="fade-up" data-aos-offset="140" data-aos-delay="70">
+          <h2 class="text-3xl font-bold text-left mb-8">Wireframe</h2>
+          <div class="flex flex-col items-center space-y-8">
+          <div class="w-full sm:w-6/7 lg:w-6/7">
+              <img src="/images/wireframevr.png" alt="Persona 1" class="w-full rounded-l shadow-md mb-4">
+          </div>
+        </div>
+      </section>
+  </section>
+  
+  
+    <!-- FOOTER -->
+      <footer class="bg-[#5A8EFF]/60 text-black mt-8 border-t border-black relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 py-6 sm:py-4
+                    flex flex-col sm:flex-row sm:items-center sm:justify-between
+                    gap-4 sm:gap-6">
+
+          <!-- Back to top (first on mobile, right on desktop) -->
+          <a href="#vrworld"
+            class="order-1 sm:order-none w-full sm:w-auto
+                    inline-flex items-center justify-center gap-2
+                    rounded-full bg-white px-4 py-2 text-sm font-medium
+                    border border-black/20 hover:bg-white/90 transition"
+            aria-label="Back to top">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#3063FC" d="M12 5.5 3 14.5l1.5 1.5 7.5-7.5 7.5 7.5 1.5-1.5L12 5.5Z"/>
+            </svg>
+            Back to top
+          </a>
+
+          <!-- Socials (full-width stack on mobile, inline on desktop) -->
+          <div class="order-2 sm:order-none w-full sm:w-auto
+                      flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <!-- subtle divider only on mobile -->
+            <div class="h-px bg-black/20 sm:hidden"></div>
+
+            <a href="https://www.linkedin.com/in/sudiksha-rajavaram/" target="_blank"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2
+                      rounded-xl border border-black/20 bg-white/80 px-3 py-2 text-sm font-medium
+                      hover:bg-white transition">
+              <img src="https://cdn.iconscout.com/icon/free/png-512/free-linkedin-42-151143.png"
+                  alt="LinkedIn Logo" class="w-4 h-4"/>
+              LinkedIn
+            </a>
+
+            <a href="https://www.figma.com/@rajavaramsudiks" target="_blank"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2
+                      rounded-xl border border-black/20 bg-white/80 px-3 py-2 text-sm font-medium
+                      hover:bg-white transition">
+              <img src="https://cdn.iconscout.com/icon/free/png-512/free-figma-2296071-1912030.png"
+                  alt="Figma Logo" class="w-4 h-4"/>
+              Figma
+            </a>
+          </div>
+
+          <!-- Name (centered on mobile, left on desktop) -->
+          <p class="order-3 sm:order-none text-center sm:text-left text-sm font-medium">
+            &copy; 2025 Sudiksha Rajavaram
+          </p>
+
+        </div>
+      </footer>
+
+
+  <script>
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  let isOpen = false;
+
+  menuBtn.addEventListener('click', () => {
+    isOpen = !isOpen;
+    mobileMenu.style.maxHeight = isOpen ? mobileMenu.scrollHeight + 'px' : '0px';
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!-- untanglingchallenges.html -->
+<!DOCTYPE html>
+<html lang="en">
+<html class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>untanglingchallenges</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style> body { font-family: 'Space Grotesk', sans-serif; } </style>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      /* add a theme and override its palette here: */
+      theme: 'base',
+      themeVariables: {
+        primaryColor:      '#B2DAFF',  // node fill
+        primaryBorderColor:'#3063fc',  // node stroke
+        primaryTextColor:  '#000000',  // node text
+        lineColor:         '#3063fc',  // edges
+        tertiaryColor:     '#ffffff',  // edge label bg
+        fontSize:          '28px'
+      }
+    });
+  </script>
+   <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+      }
+      .nav-link {
+        position: relative;
+        display: inline-block;
+        text-decoration: none;
+        color: #2d3748;
+        font-weight: 600;
+      font-size: clamp(1.1rem, 1.05vw, 1.45rem);
+      }
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: currentColor;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease;
+      }
+      .nav-link:hover::after {
+        transform: scaleX(1);
+      }
+      .nav-link:hover {
+        color: #ffffff;
+      }
+      .menu-transition {
+      transition: max-height 0.3s ease-out;
+      overflow: hidden;
+      }
+    </style>
+  </head>
+  <body class="bg-[#5A8EFF]/25">
+
+    <!-- NAV BAR -->
+    <header class="fixed inset-x-0 top-0 z-30">
+      <nav class="absolute inset-x-0 top-2 mx-auto max-w-[1100px] bg-[#5A8EFF]/70 backdrop-blur-sm border-[1.5px] border-black py-3 px-6 rounded-[12px] shadow-lg z-50">
+        <div class="flex items-center justify-between">
+          <a href="index.html#about" class="text-lg font-semibold text-black">SUDIKSHA RAJAVARAM</a>
+
+          <!-- Hamburger Button (Mobile Only) -->
+          <button id="menu-btn" class="sm:hidden focus:outline-none">
+            <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+
+          <!-- Desktop Nav -->
+          <div class="hidden sm:flex gap-6">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="resume.html" class="nav-link">Resume</a>
+            <a href="projects.html" class="nav-link">Projects</a>
+            <a href="contact.html" class="nav-link">Contact Me</a>
+          </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="sm:hidden menu-transition max-h-0">
+          <div class="flex flex-col gap-4 pt-4">
+            <a href="index.html" class="nav-link block">Home</a>
+            <a href="resume.html" class="nav-link block">Resume</a>
+            <a href="projects.html" class="nav-link block">Projects</a>
+            <a href="contact.html" class="nav-link block">Contact Me</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+  <section class="bg-white rounded-3xl mx-auto my-4 max-w-[95vw] px-4 shadow-lg mt-12 mb-12 pb-8">
+  <main id="untanglingchallenges" class="sm:pt-20 pt-12 px-6 max-w-4xl mx-auto">
+    <a href="projects.html" class="text-sm text-gray-700 hover:underline">← Return to all Projects</a>
+    <h1 class="text-4xl font-bold text-center mt-4 mb-8">Untangling the Challenges of Novice Minecraft Players</h1>
+
+       <!-- Case Study image -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Case Study</h2>
+      </section>
+
+      <!-- 2-column grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start pb-12">
+      
+    <!-- Left: Image -->
+    <!-- Carousel -->
+      <div id="case-carousel" class="relative w-full h-80 overflow-hidden rounded-lg shadow-lg">
+        <img
+          src="/images/minecraft-1.png"
+          alt="Step 1"
+          class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000"
+        />
+        <img
+          src="/images/minecraft-2.png"
+          alt="Step 2"
+          class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000"
+        />
+        <!-- add more images as needed -->
+      </div>
+
+      <script>
+        // simple auto-playing carousel
+        const slides = document.querySelectorAll('#case-carousel img');
+        let current = 0;
+
+        function showSlide(idx) {
+          slides.forEach((slide, i) => {
+            slide.classList.toggle('opacity-100', i === idx);
+            slide.classList.toggle('opacity-0', i !== idx);
+          });
+        }
+
+        showSlide(current);
+        setInterval(() => {
+          current = (current + 1) % slides.length;
+          showSlide(current);
+        }, 3000); // change every 3s
+      </script>
+          
+          <!-- Right: Specs & Buttons -->
+          <div class="flex flex-col justify-center space-y-8">
+            
+            <!-- Specs -->
+            <dl class="space-y-6">
+              <div>
+                <dt class="font-medium text-gray-700">Industry</dt>
+                <dd class="border-b border-gray-300 pb-2">Gamimg/ Research</dd>
+              </div>
+              <div>
+                <dt class="font-medium text-gray-700">Role</dt>
+                <dd class="border-b border-gray-300 pb-2">Experiential Interviewing, Behavioral observation, Participant screening, Thematic Coding </dd>
+              </div>
+              <div>
+                <dt class="font-medium text-gray-700">Tools</dt>
+                <dd class="border-b border-gray-300 pb-2">Zoom, Minecraft, Voice Recorder, Grounded Theory Toolkit</dd>
+              </div>
+            </dl>
+            
+        <!-- Action Buttons -->
+        <div class="flex flex-wrap gap-4">
+          <a
+            href="https://github.com/Sudiksha-R/Untangling-the-Challenges-of-Novice-Minecraft-Players-Navigating-the-Early-Game-without-Tutorials"
+            target="_blank"
+            class="inline-block bg-[#5A8EFF]/20 text-[#3063fc] px-6 py-2 rounded-full font-medium shadow hover:bg-[#5A8EFF]/60 transition"
+          >
+            Read whole case study
+          </a>
+      </div>
+    </div>
+    </div>
+
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4 mt-4">Case Study Summary</h2>
+      <p class="text-gray-800 mb-4 text-justify">
+        This qualitative user research study explored how novice players experience Minecraft without any onboarding or tutorials. Five participants, who had never played Minecraft or open-world sandbox games before, were selected through purposive sampling. Each participant engaged in a 35-minute desktop gameplay session while using the think-aloud protocol to verbalize their experiences. Following each session, we conducted semi-structured interviews to reflect on observed behaviors and capture frustrations, moments of joy, and barriers to progression.
+      </p>
+      <p class="text-gray-800 mb-4 text-justify">
+        We transcribed all sessions and interviews, then used grounded theory to identify recurring patterns and challenges. Key focus areas included crafting confusion, inventory overload, and poor navigational understanding. Our study's emphasis was to understand player cognition, map friction points, and translate these into actionable design insights for improving early-game onboarding in sandbox games.
+      </p>  
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4">Challenges Uncovered</h2>
+      <ul class="list-disc list-inside text-gray-800 space-y-2 text-justify">
+        <li>Unfamiliarity with controls and no onboarding led to wasted time.</li>
+        <li>Crafting progression was unclear; most didn’t know how to make a crafting table.</li>
+        <li>Water navigation was universally confusing, leading to multiple deaths.</li>
+        <li>Inventory management was overwhelming for new players.</li>
+        <li>Players consistently required external help to progress.</li>
+      </ul>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4">User Quotes</h2>
+      <blockquote class="border-l-4 border-[#3063fc] pl-4 italic text-gray-700 mb-4">
+        “I wouldn’t have known how to use the crafting table without your help.” — P2
+      </blockquote>
+      <blockquote class="border-l-4 border-[#3063fc] pl-4 italic text-gray-700 mb-4">
+        “I just wanted to build my house, man.” — P4
+      </blockquote>
+    </section>
+
+    <!-- Takeaways -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4">Research Insights</h2>
+      <ul class="list-disc list-inside text-gray-800 space-y-2 text-justify">
+        <li>Novices showed resilience and adaptation when given minimal guidance, but clearer cues accelerated learning curves.</li>
+        <li>Players benefit from micro-tutorials embedded in real gameplay, rather than static instructions or menus.</li>
+        <li>Observational and verbal data together revealed where UI affordances failed or succeeded in guiding behavior.</li>
+      </ul>
+    </section>
+
+    <!-- Outcome -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4">Outcome & Design Recommendations</h2>
+      <p class="text-gray-800 text-justify">
+        Based on qualitative coding, we mapped behavioral breakdowns into five categories and developed UX design interventions such as onboarding scaffolds, tooltip-based progressive tutorials, and real-time feedback loops. This research offers a grounded framework for evaluating early-game UX in sandbox or open-world games, and highlights the value of in-context, player-led learning.
+      </p>
+    </section>
+  </main>
+  </section>
+
+  <!-- FOOTER -->
+      <footer class="bg-[#5A8EFF]/60 text-black mt-8 border-t border-black relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 py-6 sm:py-4
+                    flex flex-col sm:flex-row sm:items-center sm:justify-between
+                    gap-4 sm:gap-6">
+
+          <!-- Back to top (first on mobile, right on desktop) -->
+          <a href="#untanglingchallenges"
+            class="order-1 sm:order-none w-full sm:w-auto
+                    inline-flex items-center justify-center gap-2
+                    rounded-full bg-white px-4 py-2 text-sm font-medium
+                    border border-black/20 hover:bg-white/90 transition"
+            aria-label="Back to top">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#3063FC" d="M12 5.5 3 14.5l1.5 1.5 7.5-7.5 7.5 7.5 1.5-1.5L12 5.5Z"/>
+            </svg>
+            Back to top
+          </a>
+
+          <!-- Socials (full-width stack on mobile, inline on desktop) -->
+          <div class="order-2 sm:order-none w-full sm:w-auto
+                      flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <!-- subtle divider only on mobile -->
+            <div class="h-px bg-black/20 sm:hidden"></div>
+
+            <a href="https://www.linkedin.com/in/sudiksha-rajavaram/" target="_blank"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2
+                      rounded-xl border border-black/20 bg-white/80 px-3 py-2 text-sm font-medium
+                      hover:bg-white transition">
+              <img src="https://cdn.iconscout.com/icon/free/png-512/free-linkedin-42-151143.png"
+                  alt="LinkedIn Logo" class="w-4 h-4"/>
+              LinkedIn
+            </a>
+
+            <a href="https://www.figma.com/@rajavaramsudiks" target="_blank"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2
+                      rounded-xl border border-black/20 bg-white/80 px-3 py-2 text-sm font-medium
+                      hover:bg-white transition">
+              <img src="https://cdn.iconscout.com/icon/free/png-512/free-figma-2296071-1912030.png"
+                  alt="Figma Logo" class="w-4 h-4"/>
+              Figma
+            </a>
+          </div>
+
+          <!-- Name (centered on mobile, left on desktop) -->
+          <p class="order-3 sm:order-none text-center sm:text-left text-sm font-medium">
+            &copy; 2025 Sudiksha Rajavaram
+          </p>
+
+        </div>
+      </footer>
+
+
+ <script>
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  let isOpen = false;
+
+  menuBtn.addEventListener('click', () => {
+    isOpen = !isOpen;
+    mobileMenu.style.maxHeight = isOpen ? mobileMenu.scrollHeight + 'px' : '0px';
+  });
+</script>
+
+</body>
+</html>

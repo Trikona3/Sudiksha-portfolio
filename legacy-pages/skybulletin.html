@@ -1,0 +1,695 @@
+<!-- skybulletin.html -->
+<!DOCTYPE html>
+<html lang="en">
+<html class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>skybulletin</title>
+      <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style> body { font-family: 'Space Grotesk', sans-serif; } </style>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      /* add a theme and override its palette here: */
+      theme: 'base',
+      themeVariables: {
+        primaryColor:      '#B2DAFF',  // node fill
+        primaryBorderColor:'#3063fc',  // node stroke
+        primaryTextColor:  '#000000',  // node text
+        lineColor:         '#3063fc',  // edges
+        tertiaryColor:     '#ffffff',  // edge label bg
+        fontSize:          '28px'
+      }
+    });
+  </script>
+  <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+      }
+      .nav-link {
+        position: relative;
+        display: inline-block;
+        text-decoration: none;
+        color: #2d3748;
+        font-weight: 600;
+      font-size: clamp(1.1rem, 1.05vw, 1.45rem);
+      }
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: currentColor;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease;
+      }
+      .nav-link:hover::after {
+        transform: scaleX(1);
+      }
+      .nav-link:hover {
+        color: #ffffff;
+      }
+      .menu-transition {
+      transition: max-height 0.3s ease-out;
+      overflow: hidden;
+      }
+    </style>
+  </head>
+  <body class="bg-[#5A8EFF]/25">
+
+    <!-- NAV BAR -->
+    <header class="fixed inset-x-0 top-0 z-30">
+      <nav class="absolute inset-x-0 top-2 mx-auto max-w-[1100px] bg-[#5A8EFF]/70 backdrop-blur-sm border-[1.5px] border-black py-3 px-6 rounded-[12px] shadow-lg z-50">
+        <div class="flex items-center justify-between">
+          <a href="index.html#about" class="text-lg font-semibold text-black">SUDIKSHA RAJAVARAM</a>
+
+          <!-- Hamburger Button (Mobile Only) -->
+          <button id="menu-btn" class="sm:hidden focus:outline-none">
+            <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+
+          <!-- Desktop Nav -->
+          <div class="hidden sm:flex gap-6">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="resume.html" class="nav-link">Resume</a>
+            <a href="projects.html" class="nav-link">Projects</a>
+            <a href="contact.html" class="nav-link">Contact Me</a>
+          </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="sm:hidden menu-transition max-h-0">
+          <div class="flex flex-col gap-4 pt-4">
+            <a href="index.html" class="nav-link block">Home</a>
+            <a href="resume.html" class="nav-link block">Resume</a>
+            <a href="projects.html" class="nav-link block">Projects</a>
+            <a href="contact.html" class="nav-link block">Contact Me</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+
+  <section class="bg-white rounded-3xl mx-auto my-4 max-w-[95vw] px-4 shadow-lg mt-12 mb-12 pb-8">
+    <main id="skybulletin" class="pt-[80px] px-6 max-w-5xl mx-auto">
+        <!-- back link + title -->
+        <a href="projects.html" class="text-[12px] text-gray-700 hover:underline">← Return to all Projects</a>
+        <h1 class="text-4xl font-bold text-center mt-4 mb-8">SKY BULLETIN</h1>
+
+        <!-- MOBILE + WEB TABS -->
+        <section class="mt-10 mb-16">
+          <div class="max-w-6xl mx-auto">
+            <div class="rounded-[28px] overflow-hidden border border-[#3063FC]/30
+              bg-gradient-to-br from-[#3063FC]/10 via-white/40 to-white
+              shadow-[0_20px_60px_rgba(48,99,252,0.18)]">
+
+              <!-- Tabs header -->
+              <div class="px-6 sm:px-10 pt-8 pb-4">
+                <div class="flex items-center gap-3 text-[11px] font-semibold tracking-widest uppercase text-[#3063FC]">
+                  <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#3063FC]">
+                    <span class="absolute inset-0 rounded-full bg-[#3063FC]/40 animate-ping"></span>
+                  </span>
+                  Prototype Views
+                </div>
+
+                <h3 class="mt-3 text-2xl sm:text-3xl font-bold text-slate-900">
+                  Mobile-first weather UI, then scaled to responsive web
+                </h3>
+
+                <p class="mt-3 text-base text-slate-600 max-w-3xl">
+                  A weather dashboard concept focused on clarity, visual hierarchy, and fast scanning.
+                </p>
+
+                <!-- Meta chips (same style) -->
+                <div class="mt-6 flex flex-wrap gap-3">
+                  <span class="inline-flex items-center gap-2 rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+                    <span class="text-xs font-bold tracking-widest">IND</span>
+                    Weather
+                  </span>
+                  <span class="inline-flex items-center gap-2 rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+                    <span class="text-xs font-bold tracking-widest">ROLE</span>
+                    Wireframing · Interface Design
+                  </span>
+                  <span class="inline-flex items-center gap-2 rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+                    <span class="text-xs font-bold tracking-widest">TOOLS</span>
+                    Figma
+                  </span>
+                </div>
+
+
+                <!-- Tabs -->
+                <div class="mt-6 inline-flex rounded-full border border-[#3063FC]/25 bg-white/60 p-1">
+                  <button
+                    type="button"
+                    id="sky-tab-mobile"
+                    class="sky-tab-btn rounded-full px-5 py-2 text-sm font-semibold transition"
+                    data-tab="mobile"
+                    aria-selected="true"
+                  >
+                    Mobile
+                  </button>
+                  <button
+                    type="button"
+                    id="sky-tab-web"
+                    class="sky-tab-btn rounded-full px-5 py-2 text-sm font-semibold transition"
+                    data-tab="web"
+                    aria-selected="false"
+                  >
+                    Web
+                  </button>
+                </div>
+              </div>
+
+              <!-- TAB PANELS -->
+              <div class="px-6 sm:px-10 pb-10">
+
+                <!-- MOBILE PANEL -->
+                <div id="sky-panel-mobile" class="sky-tab-panel">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-8 items-stretch">
+
+                    <!-- LEFT: phone video -->
+                    <div class="relative flex items-center justify-center">
+                      <div class="relative w-full max-w-[360px]">
+                        <div class="rounded-[34px] p-[10px] bg-black/90 border border-white/10
+                          shadow-[0_25px_70px_rgba(0,0,0,0.35)]">
+                          <div class="rounded-[26px] overflow-hidden bg-black">
+                            <video
+                              id="sky-mobile-video"
+                              class="w-full h-[560px] sm:h-[620px] object-cover"
+                              muted autoplay playsinline loop preload="auto"
+                              poster="/images/project7-thumb.png"
+                            >
+                              <source src="/images/web-optimized/project7-thumb-web.mp4" type="video/mp4" />
+                            </video>
+                          </div>
+                        </div>
+
+                        <div class="pointer-events-none absolute -inset-6 rounded-[46px]
+                          bg-[#3063FC]/20 blur-2xl opacity-60"></div>
+                      </div>
+                    </div>
+
+                    <!-- RIGHT: narrative + cards -->
+                    <div class="flex flex-col justify-center">
+                      <div class="space-y-5">
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          <div class="rounded-2xl border border-[#3063FC]/20 bg-white/60 p-4">
+                            <div class="text-[11px] font-semibold tracking-widest uppercase text-[#3063FC]">Scan-first layout</div>
+                            <p class="mt-2 text-sm text-slate-700">
+                              Prioritized key weather signals (temp, condition, alerts) for quick comprehension on mobile.
+                            </p>
+                          </div>
+
+                          <div class="rounded-2xl border border-[#3063FC]/20 bg-white/60 p-4">
+                            <div class="text-[11px] font-semibold tracking-widest uppercase text-[#3063FC]">Forecast hierarchy</div>
+                            <p class="mt-2 text-sm text-slate-700">
+                              Structured sections so the user can jump from “now” to hourly/daily without cognitive load.
+                            </p>
+                          </div>
+
+                          <div class="rounded-2xl border border-[#3063FC]/20 bg-white/60 p-4">
+                            <div class="text-[11px] font-semibold tracking-widest uppercase text-[#3063FC]">Touch-friendly</div>
+                            <p class="mt-2 text-sm text-slate-700">
+                              Larger tap targets and spacing for one-hand use and fast interactions.
+                            </p>
+                          </div>
+
+                          <div class="rounded-2xl border border-[#3063FC]/20 bg-white/60 p-4">
+                            <div class="text-[11px] font-semibold tracking-widest uppercase text-[#3063FC]">Responsive scaling</div>
+                            <p class="mt-2 text-sm text-slate-700">
+                              Mobile components were adapted into a web grid system while preserving visual rhythm.
+                            </p>
+                          </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-3 pt-2">
+                          <span class="inline-flex items-center gap-2 rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+                            <span class="text-xs font-bold tracking-widest">MOBILE</span> 360–430px
+                          </span>
+                          <span class="inline-flex items-center gap-2 rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+                            <span class="text-xs font-bold tracking-widest">RESP</span> Grid + Type scale
+                          </span>
+                          <span class="inline-flex items-center gap-2 rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+                            <span class="text-xs font-bold tracking-widest">A11Y</span> Contrast + spacing
+                          </span>
+                        </div>
+
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+                <!-- WEB PANEL -->
+                <div id="sky-panel-web" class="sky-tab-panel hidden">
+                  <div
+                    class="relative rounded-[30px] overflow-hidden
+                    bg-gradient-to-br from-[#6CA8FF] to-[#3B82F6]
+                    border border-[#3063FC]/40
+                    shadow-[0_30px_80px_rgba(48,99,252,0.35)]"
+                  >
+                    <div class="w-full h-[340px] sm:h-[460px] md:h-[560px] flex items-center justify-center">
+                      <video
+                        id="sky-web-video"
+                        class="w-full h-full object-contain"
+                        muted autoplay playsinline loop preload="auto"
+                        poster="/images/project7.web-thumb.png"
+                      >
+                        <source src="/images/web-optimized/project7.web-thumb-web.mp4" type="video/mp4" />
+                      </video>
+
+                      <!-- fallback -->
+                      <div
+                        id="sky-web-fallback"
+                        class="absolute inset-0 hidden flex-col items-center justify-center p-6 text-center"
+                      >
+                        <img
+                          src="/images/project7.web-thumb.png"
+                          alt="Web prototype preview"
+                          class="max-h-[85%] w-auto rounded-2xl shadow-xl border border-white/10"
+                        />
+                        <p class="mt-3 text-xs text-slate-300">
+                          Design prototype video couldn’t load in this browser.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- divider glow -->
+              <div class="h-px w-full bg-gradient-to-r from-transparent via-[#3063FC]/40 to-transparent"></div>
+            </div>
+          </div>
+        </section>
+
+        <script>
+        (function () {
+          const tabMobile = document.getElementById('sky-tab-mobile');
+          const tabWeb = document.getElementById('sky-tab-web');
+          const panelMobile = document.getElementById('sky-panel-mobile');
+          const panelWeb = document.getElementById('sky-panel-web');
+
+          const mobileVideo = document.getElementById('sky-mobile-video');
+          const webVideo = document.getElementById('sky-web-video');
+          const webFallback = document.getElementById('sky-web-fallback');
+
+          const setActive = (which) => {
+            const isMobile = which === 'mobile';
+
+            panelMobile.classList.toggle('hidden', !isMobile);
+            panelWeb.classList.toggle('hidden', isMobile);
+
+            [tabMobile, tabWeb].forEach(btn => {
+              const active = btn.dataset.tab === which;
+              btn.classList.toggle('bg-[#3063FC]', active);
+              btn.classList.toggle('text-white', active);
+              btn.classList.toggle('shadow', active);
+
+              btn.classList.toggle('text-[#3063FC]', !active);
+              btn.setAttribute('aria-selected', active ? 'true' : 'false');
+            });
+
+            const tryPlay = async (v) => {
+              if (!v) return;
+              try { v.muted = true; await v.play(); } catch(e) {}
+            };
+
+            if (isMobile) {
+              tryPlay(mobileVideo);
+              if (webVideo) webVideo.pause();
+            } else {
+              tryPlay(webVideo);
+              if (mobileVideo) mobileVideo.pause();
+            }
+          };
+
+          setActive('mobile');
+
+          tabMobile?.addEventListener('click', () => setActive('mobile'));
+          tabWeb?.addEventListener('click', () => setActive('web'));
+
+          [tabMobile, tabWeb].forEach(btn => {
+            btn?.addEventListener('keydown', (e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                btn.click();
+              }
+            });
+          });
+
+          if (webVideo) {
+            webVideo.addEventListener('error', () => {
+              webVideo.classList.add('hidden');
+              if (webFallback) {
+                webFallback.classList.remove('hidden');
+                webFallback.classList.add('flex');
+              }
+            });
+          }
+
+          const forcePlayOnLoad = async () => {
+            try { if (mobileVideo) { mobileVideo.muted = true; await mobileVideo.play(); } } catch(e) {}
+          };
+          window.addEventListener('load', forcePlayOnLoad);
+        })();
+        </script>
+
+        <!-- ================= SKY BULLETIN — CORE CASE STUDY SECTIONS ================= -->
+        <!-- 1) What is Sky Bulletin -->
+        <section id="overview" class="max-w-6xl mx-auto py-8 reveal">
+          <p class="text-gray-700 leading-relaxed max-w-5xl">
+            <strong>Sky Bulletin</strong> is a sleek, user-centered weather dashboard designed to simplify
+            forecast access for both frequent travelers and long-range planners. It supports rapid
+            comparisons across cities and calendar-based browsing for planning ahead.
+          </p>
+        </section>
+
+        <!-- 2) The Problem + Impact + Goal -->
+        <section id="problem" class="max-w-6xl mx-auto py-6 reveal">
+          <h2 class="text-3xl font-bold mb-4">The Problem</h2>
+          <p class="text-gray-700 leading-relaxed max-w-4xl">
+            Weather tools often present dense data without enough structure for fast decisions.
+            Travelers need quick comparisons across locations, while planners need clear long-range
+            views—yet many interfaces make users manually switch contexts, scan cluttered screens,
+            and work harder than necessary to interpret forecasts.
+          </p>
+
+          <div class="grid sm:grid-cols-2 gap-6 mt-6">
+            <!-- Impact -->
+            <div class="border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/25 rounded-xl p-5">
+              <h3 class="font-semibold mb-1">Impact</h3>
+              <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
+                <li>Frequent travelers lose time switching between cities and comparing conditions.</li>
+                <li>Long-range planners struggle to spot trends in a calendar-friendly way.</li>
+                <li>Cluttered layouts reduce clarity when decisions must be made quickly.</li>
+                <li>Interfaces don’t always prioritize legibility and accessibility under changing conditions.</li>
+              </ul>
+            </div>
+
+            <!-- Goal -->
+            <div class="border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/25 rounded-xl p-5">
+              <h3 class="font-semibold mb-1">Goal</h3>
+              <p class="text-gray-700 text-sm">
+                Design a clear, accessible weather experience that supports both rapid multi-city checks
+                and long-range planning—while keeping information easy to scan and interpret.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3) The Solution -->
+        <section id="solution" class="max-w-6xl mx-auto py-4 reveal">
+          <h2 class="text-3xl font-bold mb-6">The Solution</h2>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <!-- Core experience -->
+            <div class="bg-white rounded-2xl border border-[#5A8EFF]/50 p-6 shadow-sm">
+              <h3 class="font-semibold mb-2">A clear dashboard built for fast scanning</h3>
+              <p class="text-gray-700 text-sm">
+                Sky Bulletin prioritizes real-time conditions, clean calendar-based browsing, and seamless
+                unit conversions so users can move between “now” and “later” without losing context.
+              </p>
+              <ul class="mt-4 list-disc list-inside text-gray-700 text-sm space-y-1">
+                <li>Intuitive layout that keeps the most important information front and center.</li>
+                <li>Calendar navigation designed for long-range planning.</li>
+                <li>Unit conversions that support quick travel decisions.</li>
+              </ul>
+            </div>
+
+            <!-- Context-aware layer (only what you said you added) -->
+            <div class="bg-white rounded-2xl border border-[#5A8EFF]/50 p-6 shadow-sm">
+              <h3 class="font-semibold mb-2">A context-aware interface that reflects conditions</h3>
+              <p class="text-gray-700 text-sm">
+                Beyond color, the UI adapts to current weather through dynamic themes and subtle motion
+                so the experience stays legible and visually consistent across conditions.
+              </p>
+              <ul class="mt-4 list-disc list-inside text-gray-700 text-sm space-y-1">
+                <li>Weather-based themes (sunny: vibrant yellow + sky-blue; rainy: deep gray + navy).</li>
+                <li>Animated background gradients (sunbeams, drifting clouds, rainfall).</li>
+                <li>Context-aware typography that increases weight in storms for legibility.</li>
+                <li>“Mood” presets that adjust sounds and micro-animations to match the forecast.</li>
+                <li>Smart location suggestions that recommend new cities when travelling frequently.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Design Decisions -->
+        <section class="max-w-6xl mx-auto py-4 reveal">
+          <h2 class="text-3xl font-bold mb-6">Design Decisions</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/15 p-6 shadow-sm">
+              <h3 class="font-semibold mb-2">Dual-horizon information structure</h3>
+              <p class="text-gray-700 text-sm">
+                Balanced quick “now” checks with calendar-based long-range planning so travelers and planners can use the same product efficiently.
+              </p>
+            </article>
+            <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/15 p-6 shadow-sm">
+              <h3 class="font-semibold mb-2">Rapid multi-city comparison</h3>
+              <p class="text-gray-700 text-sm">
+                Prioritized location switching and unit conversion to remove friction from frequent cross-city decision-making.
+              </p>
+            </article>
+            <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/15 p-6 shadow-sm">
+              <h3 class="font-semibold mb-2">Condition-aware visual context</h3>
+              <p class="text-gray-700 text-sm">
+                Added weather-reactive themes and subtle motion to communicate context without sacrificing readability.
+              </p>
+            </article>
+            <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/15 p-6 shadow-sm">
+              <h3 class="font-semibold mb-2">Decluttered scan-first layout</h3>
+              <p class="text-gray-700 text-sm">
+                Reduced visual noise and emphasized hierarchy so users can interpret forecast data quickly under time pressure.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <!-- Optional divider to match your other blocks -->
+        <div class="max-w-6xl mx-auto">
+          <div class="mt-10 h-px w-full bg-gradient-to-r from-transparent via-[#3063FC]/40 to-transparent"></div>
+        </div>
+
+
+        <!-- Target Audience -->
+        <section id="target-audience" class="py-2">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-semibold mb-8 text-left">Target Audience</h2>
+
+            <div class="space-y-8">
+            <!-- Row: two cards spaced evenly -->
+            <div class="flex flex-col sm:flex-row justify-center gap-8">
+                <!-- Card 1 -->
+                <div class="bg-[#5A8EFF]/20 w-72 h-64 p-6 rounded-2xl shadow-md flex flex-col">
+                <h3 class="font-semibold mb-4 border-b-2 border-gray-300 pb-1">Frequent Travelers</h3>
+                <p class="text-gray-700 text-sm flex-1">
+                    Business and leisure travelers who switch between multiple time zones and locations each week; they need lightning-fast access to accurate, local forecasts and seamless unit conversions to pack and plan on the go.
+                </p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-[#5A8EFF]/20 w-72 h-64 p-6 rounded-2xl shadow-md flex flex-col">
+                <h3 class="font-semibold mb-4 border-b-2 border-gray-300 pb-1">Long-Range Planners</h3>
+                <p class="text-gray-700 text-sm flex-1">
+                    Outdoor enthusiasts, farmers, and event organizers who schedule activities weeks or months in advance; they rely on clear, at-a-glance monthly trends and easy calendar navigation to make informed decisions.
+                </p>
+                </div>
+            </div>
+            </div>
+        </div>
+        </section>
+
+
+        <!-- User Personas (Sky Bulletin) -->
+        <section id="personas" class="max-w-6xl mx-auto pb-12 pt-12 sm:px-6 sm:px-28">
+        <h2 class="text-3xl font-bold mb-6 text-left">User Personas</h2>
+        <div class="overflow-x-auto rounded-[10px]">
+            <table class="min-w-full bg-white border border-gray-300 rounded-[10px]">
+            <thead>
+                <tr class="bg-[#5A8EFF]/30">
+                <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Persona</th>
+                <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Bio &amp; Goals</th>
+                <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Pain Points</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+                <!-- Alex Kim -->
+                <tr>
+                <td class="px-6 py-4 align-top text-sm text-gray-900">
+                    Alex Kim<br><span class="text-xs text-gray-500">Frequent Traveler, 28</span>
+                </td>
+                <td class="px-6 py-4 align-top text-sm text-gray-600">
+                    International sales executive who hops between three offices each month; needs to quickly compare local forecasts and time zones to plan meetings and pack appropriately.
+                </td>
+                <td class="px-6 py-4 align-top text-sm text-gray-600">
+                    Frustrated by switching between multiple weather apps and manual unit conversions; often caught off-guard by unexpected weather changes in different cities.
+                </td>
+                </tr>
+                <!-- Maria Lopez -->
+                <tr class="bg-[#F9FAFB]">
+                <td class="px-6 py-4 align-top text-sm text-gray-900">
+                    Maria Lopez<br><span class="text-xs text-gray-500">Outdoor Enthusiast, 42</span>
+                </td>
+                <td class="px-6 py-4 align-top text-sm text-gray-600">
+                    Amateur farmer and weekend hiker who plans activities weeks in advance; relies on long-range trends to schedule planting, harvesting, and multi-day treks.
+                </td>
+                <td class="px-6 py-4 align-top text-sm text-gray-600">
+                    Struggles to find reliable monthly outlooks in a single view; overwhelmed by cluttered interfaces that mix short-term details with long-term data.
+                </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        </section>
+
+        <!-- Wireframes -->
+        <section id="wireframes" class="max-w-6xl mx-auto py-4 pb-12">
+            <h2 class="text-3xl font-bold text-black sm:mb-16">Low-fidelity Prototype</h2>
+            <div class="relative w-full max-w-md mx-auto scale-[1] sm:scale-125">
+                <!-- Left Arrow (outside) -->
+                <button
+                id="prev-wireframe"
+                class="absolute left-[-1.5rem] top-1/2 transform -translate-y-1/2 bg-blue-300 bg-opacity-75 hover:bg-opacity-100 p-2 rounded-full shadow"
+                >
+                ‹
+                </button>
+
+                <!-- Slides Container -->
+                <div id="wireframe-carousel" class="overflow-hidden rounded-lg shadow-lg">
+                <img
+                    src="/images/skylf-1.png"
+                    alt="Wireframe 1"
+                    class="slide w-full block"
+                />
+                <img
+                    src="/images/skylf-2.png"
+                    alt="Wireframe 2"
+                    class="slide w-full hidden"
+                />
+                <img
+                    src="/images/skylf-3.png"
+                    alt="Wireframe 3"
+                    class="slide w-full hidden"
+                />
+                <img
+                    src="/images/skylf-4.png"
+                    alt="Wireframe 4"
+                    class="slide w-full hidden"
+                />
+                </div>
+
+                <!-- Right Arrow (outside) -->
+                <button
+                id="next-wireframe"
+                class="absolute right-[-1.5rem] top-1/2 transform -translate-y-1/2 bg-blue-300 bg-opacity-75 hover:bg-opacity-100 p-2 rounded-full shadow"
+                >
+                ›
+                </button>
+            </div>
+
+            <script>
+                (function() {
+                const slides = document.querySelectorAll('#wireframe-carousel .slide');
+                let current = 0;
+
+                function showSlide(idx) {
+                    slides.forEach((slide, i) => {
+                    slide.classList.toggle('hidden', i !== idx);
+                    });
+                }
+
+                document.getElementById('prev-wireframe').addEventListener('click', () => {
+                    current = (current - 1 + slides.length) % slides.length;
+                    showSlide(current);
+                });
+
+                document.getElementById('next-wireframe').addEventListener('click', () => {
+                    current = (current + 1) % slides.length;
+                    showSlide(current);
+                });
+                // initialize
+                showSlide(current);
+                })();
+            </script>
+            </section>
+
+    </main>
+    </section>
+
+    <!-- FOOTER -->
+      <footer class="bg-[#5A8EFF]/60 text-black mt-8 border-t border-black relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 py-6 sm:py-4
+                    flex flex-col sm:flex-row sm:items-center sm:justify-between
+                    gap-4 sm:gap-6">
+
+          <!-- Back to top (first on mobile, right on desktop) -->
+          <a href="#skybulletin"
+            class="order-1 sm:order-none w-full sm:w-auto
+                    inline-flex items-center justify-center gap-2
+                    rounded-full bg-white px-4 py-2 text-sm font-medium
+                    border border-black/20 hover:bg-white/90 transition"
+            aria-label="Back to top">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#3063FC" d="M12 5.5 3 14.5l1.5 1.5 7.5-7.5 7.5 7.5 1.5-1.5L12 5.5Z"/>
+            </svg>
+            Back to top
+          </a>
+
+          <!-- Socials (full-width stack on mobile, inline on desktop) -->
+          <div class="order-2 sm:order-none w-full sm:w-auto
+                      flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <!-- subtle divider only on mobile -->
+            <div class="h-px bg-black/20 sm:hidden"></div>
+
+            <a href="https://www.linkedin.com/in/sudiksha-rajavaram/" target="_blank"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2
+                      rounded-xl border border-black/20 bg-white/80 px-3 py-2 text-sm font-medium
+                      hover:bg-white transition">
+              <img src="https://cdn.iconscout.com/icon/free/png-512/free-linkedin-42-151143.png"
+                  alt="LinkedIn Logo" class="w-4 h-4"/>
+              LinkedIn
+            </a>
+
+            <a href="https://www.figma.com/@rajavaramsudiks" target="_blank"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2
+                      rounded-xl border border-black/20 bg-white/80 px-3 py-2 text-sm font-medium
+                      hover:bg-white transition">
+              <img src="https://cdn.iconscout.com/icon/free/png-512/free-figma-2296071-1912030.png"
+                  alt="Figma Logo" class="w-4 h-4"/>
+              Figma
+            </a>
+          </div>
+
+          <!-- Name (centered on mobile, left on desktop) -->
+          <p class="order-3 sm:order-none text-center sm:text-left text-sm font-medium">
+            &copy; 2025 Sudiksha Rajavaram
+          </p>
+
+        </div>
+      </footer>
+
+    
+  <script>
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  let isOpen = false;
+
+  menuBtn.addEventListener('click', () => {
+    isOpen = !isOpen;
+    mobileMenu.style.maxHeight = isOpen ? mobileMenu.scrollHeight + 'px' : '0px';
+  });
+</script>
+
+</body>
+</html>

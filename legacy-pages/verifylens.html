@@ -1,0 +1,886 @@
+<!-- VerifyLens.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VerifyLens</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style> body { font-family: 'Space Grotesk', sans-serif; } 
+    .vt-flow-card { 
+    background: #fff; 
+    border: 1.5px solid rgba(48,99,252,.25); /* #3063fc */
+    box-shadow: 0 12px 30px rgba(0,0,0,.08);
+    }
+    .vt-flow-card .mermaid { 
+    min-height: 320px; 
+    padding: 16px; 
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      /* add a theme and override its palette here: */
+      theme: 'base',
+      themeVariables: {
+        primaryColor:      '#B2DAFF',  // node fill
+        primaryBorderColor:'#3063fc',  // node stroke
+        primaryTextColor:  '#000000',  // node text
+        lineColor:         '#3063fc',  // edges
+        tertiaryColor:     '#ffffff',  // edge label bg
+        fontSize:          '28px'
+      }
+    });
+  </script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .nav-link {
+      position: relative;
+      display: inline-block;
+      text-decoration: none;
+      color: #2d3748;
+      font-weight: 600;
+      font-size: clamp(1.1rem, 1.05vw, 1.45rem);
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .nav-link:hover::after {
+      transform: scaleX(1);
+    }
+    .nav-link:hover {
+      color: #3063fc;
+    }
+    .menu-transition {
+    transition: max-height 0.3s ease-out;
+    overflow: hidden;
+    }
+  </style>
+  <style>
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .55s ease, transform .55s ease}
+  .reveal.is-visible{opacity:1; transform:none}
+</style>
+</head>
+</head>
+<body class="bg-[#5A8EFF]/25">
+
+  <!-- NAV BAR -->
+  <header class="fixed inset-x-0 top-0 z-30">
+    <nav class="absolute inset-x-0 top-2 mx-auto max-w-[1100px] bg-[#5A8EFF]/70 backdrop-blur-sm border-[1.5px] border-black py-3 px-6 rounded-[12px] shadow-lg z-50">
+      <div class="flex items-center justify-between">
+        <a href="index.html#about" class="text-lg font-semibold text-black">SUDIKSHA RAJAVARAM</a>
+
+        <!-- Hamburger Button (Mobile Only) -->
+        <button id="menu-btn" class="sm:hidden focus:outline-none">
+          <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+
+        <!-- Desktop Nav -->
+        <div class="hidden sm:flex gap-6">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="resume.html" class="nav-link">Resume</a>
+          <a href="projects.html" class="nav-link">Projects</a>
+          <a href="contact.html" class="nav-link">Contact Me</a>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="sm:hidden menu-transition max-h-0">
+        <div class="flex flex-col gap-4 pt-4">
+          <a href="index.html" class="nav-link block">Home</a>
+          <a href="resume.html" class="nav-link block">Resume</a>
+          <a href="projects.html" class="nav-link block">Projects</a>
+          <a href="contact.html" class="nav-link block">Contact Me</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+<section class="bg-white rounded-3xl mx-auto my-4 max-w-[95vw] px-4 shadow-lg mt-12 mb-12 pb-8">
+<main id="Syncoa" class="pt-[80px] px-6 max-w-4xl mx-auto">
+    <!-- back link + title -->
+    <a href="projects.html" class="text-[12px] text-gray-700 hover:underline">← Return to all Projects</a>
+    <h1 class="text-4xl font-bold text-center mt-4 mb-8">VerifyLens.ai</h1>
+
+    <!-- MOBILE + WEB TABS -->
+    <section class="mt-10">
+      <div class="max-w-6xl mx-auto">
+        <div class="rounded-[28px] overflow-hidden border border-[#3063FC]/30
+          bg-gradient-to-br from-[#3063FC]/10 via-white/40 to-white
+          shadow-[0_20px_60px_rgba(48,99,252,0.18)]">
+
+          <!-- Tabs header -->
+          <div class="px-6 sm:px-10 pt-8 pb-4">
+            <div class="flex items-center gap-3 text-[11px] font-semibold tracking-widest uppercase text-[#3063FC]">
+              <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#3063FC]">
+                <span class="absolute inset-0 rounded-full bg-[#3063FC]/40 animate-ping"></span>
+              </span>
+              Prototype Views
+            </div>
+
+            <h3 class="mt-3 text-2xl sm:text-3xl font-bold text-slate-900">
+              Mobile-first, then scaled to responsive web
+            </h3>
+
+            <!-- Tabs -->
+            <div class="mt-6 inline-flex rounded-full border border-[#3063FC]/25 bg-white/60 p-1">
+              <button
+                type="button"
+                id="tab-mobile"
+                class="tab-btn rounded-full px-5 py-2 text-sm font-semibold transition"
+                data-tab="mobile"
+                aria-selected="true"
+              >
+                Mobile
+              </button>
+              <button
+                type="button"
+                id="tab-web"
+                class="tab-btn rounded-full px-5 py-2 text-sm font-semibold transition"
+                data-tab="web"
+                aria-selected="false"
+              >
+                Web
+              </button>
+            </div>
+          </div>
+
+          <!-- TAB PANELS -->
+          <div class="px-6 sm:px-10 pb-10">
+
+            <!-- MOBILE PANEL -->
+            <div id="panel-mobile" class="tab-panel">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-8 items-stretch">
+                <!-- LEFT: phone video -->
+                <div class="relative flex items-center justify-center">
+                  <div class="relative w-full max-w-[360px]">
+                    <div class="rounded-[34px] p-[10px] bg-black/90 border border-white/10
+                      shadow-[0_25px_70px_rgba(0,0,0,0.35)]">
+                      <div class="rounded-[26px] overflow-hidden bg-black">
+                        <video
+                          id="mobile-video"
+                          class="block w-full h-auto object-contain"
+                          muted autoplay playsinline loop preload="auto"
+                          poster="/images/project12-thumb.png"
+                        >
+                          <source src="/images/project12-thumb.mp4" type="video/mp4" />
+                        </video>
+                      </div>
+                    </div>
+
+                    <div class="pointer-events-none absolute -inset-6 rounded-[46px]
+                      bg-[#3063FC]/20 blur-2xl opacity-60"></div>
+                  </div>
+                </div>
+
+                <!-- RIGHT: narrative + cards -->
+                <div class="flex flex-col justify-center">
+                  <div class="space-y-5">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div class="rounded-2xl border border-[#3063FC]/20 bg-white/60 p-4">
+                        <div class="text-[11px] font-semibold tracking-widest uppercase text-[#3063FC]">Mobile-first UX</div>
+                        <p class="mt-2 text-sm text-slate-700">
+                          Prioritized the primary action, reduced clutter, and kept key context “one thumb away”.
+                        </p>
+                      </div>
+
+                      <div class="rounded-2xl border border-[#3063FC]/20 bg-white/60 p-4">
+                        <div class="text-[11px] font-semibold tracking-widest uppercase text-[#3063FC]">Responsive system</div>
+                        <p class="mt-2 text-sm text-slate-700">
+                          Converted screens into reusable components + breakpoints (grid, spacing, typography).
+                        </p>
+                      </div>
+
+                      <div class="rounded-2xl border border-[#3063FC]/20 bg-white/60 p-4">
+                        <div class="text-[11px] font-semibold tracking-widest uppercase text-[#3063FC]">Touch targets</div>
+                        <p class="mt-2 text-sm text-slate-700">
+                          Increased tap area, improved hierarchy, and reduced accidental actions.
+                        </p>
+                      </div>
+
+                      <div class="rounded-2xl border border-[#3063FC]/20 bg-white/60 p-4">
+                        <div class="text-[11px] font-semibold tracking-widest uppercase text-[#3063FC]">Performance</div>
+                        <p class="mt-2 text-sm text-slate-700">
+                          Lightweight layouts and predictable interaction patterns for faster scanning.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-3 pt-2">
+                      <span class="inline-flex items-center gap-2 rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+                        <span class="text-xs font-bold tracking-widest">MOBILE</span> 360–430px
+                      </span>
+                      <span class="inline-flex items-center gap-2 rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+                        <span class="text-xs font-bold tracking-widest">RESP</span> Grid + Type scale
+                      </span>
+                      <span class="inline-flex items-center gap-2 rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+                        <span class="text-xs font-bold tracking-widest">A11Y</span> Tap targets + contrast
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- WEB PANEL -->
+            <div id="panel-web" class="tab-panel hidden">
+              <div
+                class="relative rounded-[30px] overflow-hidden
+                bg-gradient-to-br from-[#6CA8FF] to-[#3B82F6]
+                border border-[#3063FC]/40
+                shadow-[0_30px_80px_rgba(48,99,252,0.35)]"
+              >
+                <div class="w-full h-[340px] sm:h-[460px] md:h-[560px] flex items-center justify-center">
+                  <video
+                    id="verifylens-video"
+                    class="w-full h-full object-contain"
+                    muted autoplay playsinline loop preload="auto"
+                    poster="/images/project12-thumb.png"
+                  >
+                    <source src="/images/project12.web-thumb.mp4" type="video/mp4" />
+                  </video>
+
+                  <!-- fallback -->
+                  <div
+                    id="verifylens-fallback"
+                    class="absolute inset-0 hidden flex-col items-center justify-center p-6 text-center"
+                  >
+                    <img
+                      src="/images/project12-thumb.png"
+                      alt="Web prototype preview"
+                      class="max-h-[85%] w-auto rounded-2xl shadow-xl border border-white/10"
+                    />
+                    <p class="mt-3 text-xs text-slate-300">
+                      Design prototype video couldn’t load in this browser.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- divider glow -->
+          <div class="h-px w-full bg-gradient-to-r from-transparent via-[#3063FC]/40 to-transparent"></div>
+        </div>
+      </div>
+    </section>
+    <script>
+    (function () {
+      const tabMobile = document.getElementById('tab-mobile');
+      const tabWeb = document.getElementById('tab-web');
+      const panelMobile = document.getElementById('panel-mobile');
+      const panelWeb = document.getElementById('panel-web');
+
+      const mobileVideo = document.getElementById('mobile-video');
+      const webVideo = document.getElementById('verifylens-video');
+      const webFallback = document.getElementById('verifylens-fallback');
+
+      const setActive = (which) => {
+        const isMobile = which === 'mobile';
+
+        // panels
+        panelMobile.classList.toggle('hidden', !isMobile);
+        panelWeb.classList.toggle('hidden', isMobile);
+
+        // button styles
+        [tabMobile, tabWeb].forEach(btn => {
+          const active = btn.dataset.tab === which;
+          btn.classList.toggle('bg-[#3063FC]', active);
+          btn.classList.toggle('text-white', active);
+          btn.classList.toggle('shadow', active);
+
+          btn.classList.toggle('text-[#3063FC]', !active);
+          btn.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+
+        // try to play the visible video (helps when switching tabs)
+        const tryPlay = async (v) => {
+          if (!v) return;
+          try { v.muted = true; await v.play(); } catch(e) {}
+        };
+
+        if (isMobile) {
+          tryPlay(mobileVideo);
+          if (webVideo) webVideo.pause();
+        } else {
+          tryPlay(webVideo);
+          if (mobileVideo) mobileVideo.pause();
+        }
+      };
+
+      // default active tab
+      setActive('mobile');
+
+      // click handlers
+      tabMobile?.addEventListener('click', () => setActive('mobile'));
+      tabWeb?.addEventListener('click', () => setActive('web'));
+
+      // keyboard support (Enter/Space)
+      [tabMobile, tabWeb].forEach(btn => {
+        btn?.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            btn.click();
+          }
+        });
+      });
+
+      // web fallback (keep your existing behavior)
+      if (webVideo) {
+        webVideo.addEventListener('error', () => {
+          webVideo.classList.add('hidden');
+          if (webFallback) {
+            webFallback.classList.remove('hidden');
+            webFallback.classList.add('flex');
+          }
+        });
+      }
+
+      // keep your autoplay reliability on first load
+      const forcePlayOnLoad = async () => {
+        try { if (mobileVideo) { mobileVideo.muted = true; await mobileVideo.play(); } } catch(e) {}
+      };
+      window.addEventListener('load', forcePlayOnLoad);
+    })();
+    </script>
+
+
+
+        <!-- Problem & Goal -->
+        <section class="max-w-6xl mx-auto py-8 reveal">
+          <h2 class="text-3xl font-bold mb-4">The Problem</h2>
+          <p class="text-gray-700 leading-relaxed">
+            Live debates, lectures, and news events move too fast for traditional fact-checking.
+            Journalists and students are expected to catch every claim, look up numbers in real time,
+            and still listen to what’s being said. Most “fact-checks” arrive hours or days later,
+            after misinformation has already been shared.
+          </p>
+
+          <div class="grid sm:grid-cols-2 gap-6 mt-6">
+            <!-- Impact card -->
+            <div class="border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/25 rounded-xl p-5">
+              <h3 class="font-semibold mb-1">Impact</h3>
+              <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
+                <li>Reporters juggle multiple tabs and notes while trying not to miss live quotes.</li>
+                <li>Students struggle to know which statistics or charts are still accurate.</li>
+                <li>False or outdated claims can spread long before corrections are published.</li>
+                <li>Trust in institutions erodes when errors slip through under time pressure.</li>
+              </ul>
+            </div>
+
+            <!-- Goal card -->
+            <div class="border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/25 rounded-xl p-5">
+              <h3 class="font-semibold mb-1">Goal</h3>
+              <p class="text-gray-700 text-sm">
+                Reduce the verification burden by giving people a <strong>real-time fact-checking layer</strong>
+                while they listen. VerifyLens listens to live speech, highlights factual claims, and surfaces
+                clear verdict cards with sources, so journalists and students can stay focused on the story
+                while still publishing confidently.
+              </p>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- Solution Overview -->
+        <section class="max-w-6xl mx-auto py-4 reveal">
+          <h2 class="text-3xl font-bold mb-6">Solution</h2>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white rounded-2xl border border-[#5A8EFF]/50 p-6 shadow-sm">
+              <h3 class="font-semibold mb-2">VerifyLens in a nutshell</h3>
+              <p class="text-gray-700 text-sm">
+                VerifyLens listens to live speech, pulls out factual claims, checks them against trusted data
+                sources and surfaces simple verdict cards – True, False or Misleading – with citations.
+              </p>
+              <ul class="mt-4 list-disc list-inside text-gray-700 text-sm space-y-1">
+                <li><strong>&lt;3s checks:</strong> near real-time verification while the speaker is still talking.</li>
+                <li><strong>Fact cards:</strong> clear claim, verdict, confidence score and sources.</li>
+                <li><strong>History:</strong> sessions and claims saved for later reporting or study.</li>
+                <li><strong>Chrome-first:</strong> designed to sit beside news streams, videos and lectures.</li>
+              </ul>
+            </div>
+
+            <div class="bg-white rounded-2xl border border-[#5A8EFF]/50 p-6 shadow-sm">
+              <h3 class="font-semibold mb-2">My role &amp; collaboration</h3>
+              <p class="text-gray-700 text-sm">
+                I led the end-to-end product UX: research, information architecture, user flows and the initial
+                Chrome/web app concept, working with AI engineers on a five-week MVP scope.
+              </p>
+              <ul class="mt-4 list-disc list-inside text-gray-700 text-sm space-y-1">
+                <li>Defined user journeys for journalists and students.</li>
+                <li>Created flows for live sessions, quick checks, history and claim detail.</li>
+                <li>Produced personas, UI explorations and developer-ready IA diagrams.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Design Decisions -->
+        <section class="max-w-6xl mx-auto py-4 reveal">
+          <h2 class="text-3xl font-bold mb-6">Design Decisions</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/15 p-6 shadow-sm">
+              <h3 class="font-semibold mb-2">Companion model over full dashboard</h3>
+              <p class="text-gray-700 text-sm">
+                Positioned VerifyLens as a second screen beside live streams so users can keep listening while checking claims.
+              </p>
+            </article>
+            <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/15 p-6 shadow-sm">
+              <h3 class="font-semibold mb-2">Verdict-card first information hierarchy</h3>
+              <p class="text-gray-700 text-sm">
+                Prioritized concise True/False/Misleading cards with visible source citations and confidence at a glance.
+              </p>
+            </article>
+            <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/15 p-6 shadow-sm">
+              <h3 class="font-semibold mb-2">Workflow aligned to real behavior</h3>
+              <p class="text-gray-700 text-sm">
+                Designed around listening → checking → saving flows and included history/export pathways for reporting and study use cases.
+              </p>
+            </article>
+            <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/15 p-6 shadow-sm">
+              <h3 class="font-semibold mb-2">Trust-forward visual language</h3>
+              <p class="text-gray-700 text-sm">
+                Used restrained color, high legibility, and consistent component states to keep high-pressure verification sessions calm and readable.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <!-- Research & Key Insights -->
+        <section class="max-w-5xl mx-auto pt-12 pb-16">
+
+        <h2 class="text-4xl font-bold mb-4">Research & Key Insights</h2>
+        <p class="text-gray-700 text-lg mb-8 leading-relaxed">
+            For VerifyLens, I explored how <strong>political journalists</strong> and 
+            <strong>students</strong> verify information during live events, and how tools like Verifi 
+            do—or don’t—fit into their workflows.
+        </p>
+
+        <!-- Top Pills -->
+        <div class="flex flex-wrap gap-3 mb-8">
+            <span class="px-4 py-1.5 rounded-full bg-[#5A8EFF]/10 text-[#3063fc] text-sm font-medium">
+            ✓ Interviews
+            </span>
+            <span class="px-4 py-1.5 rounded-full bg-[#3063fc]/10 text-[#3063fc] text-sm font-medium">
+            Fact-checking workflow mapping
+            </span>
+            <span class="px-4 py-1.5 rounded-full bg-[#5A8EFF]/10 text-[#3063fc] text-sm font-medium">
+            Competitive scan (Verifi app)
+            </span>
+        </div>
+
+        <!-- Two-card layout -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            <!-- LEFT / Research Highlights -->
+            <div class="rounded-2xl p-8 shadow-xl"
+            style="background: linear-gradient(180deg, #E8E9FF 0%, #DDE4FF 100%);">
+            
+            <h3 class="text-xl font-semibold flex items-center gap-2 mb-6">
+                Research Highlights
+                <span class="text-gray-500 text-sm">📝 1:1 interviews & workflow audit</span>
+            </h3>
+
+            <ul class="space-y-4 text-[16px] leading-relaxed text-gray-800">
+                <li>✓ Interviewed <strong>journalists</strong> and <strong>students</strong> who frequently verify claims in real time.</li>
+                <li>✓ Mapped current flows for <em>listening → checking → saving</em> across notes apps, browser tabs, and fact-check sites.</li>
+                <li>✓ Reviewed tools like <strong>Verifi</strong> and traditional fact-check websites to understand gaps in <em>real-time usability</em>.</li>
+            </ul>
+            </div>
+
+            <!-- RIGHT / Key Insights -->
+            <div class="rounded-2xl p-8 shadow-xl"
+            style="background: linear-gradient(180deg, #E6EDFF 0%, #D6E4FF 100%);">
+
+            <h3 class="text-xl font-semibold flex items-center justify-between mb-6">
+                Key Insights
+                <span class="text-sm text-gray-500 flex items-center gap-1">
+                ✓ validated needs
+                </span>
+            </h3>
+
+            <ul class="space-y-4 text-[16px] leading-relaxed text-gray-800">
+                <li>✓ Users don’t want long articles mid-event—they want <strong>simple True / False / Misleading verdict cards</strong>.</li>
+                <li>✓ Source citations and confidence must be <strong>visible at a glance</strong> to reduce cognitive load.</li>
+                <li>✓ People want VerifyLens to act like a <strong>second pair of ears</strong>, not another dashboard they have to watch.</li>
+                <li>✓ Users want to <strong>save and export verified claims</strong> for reports, essays, and articles.</li>
+            </ul>
+            </div>
+
+        </div>
+        </section>
+
+        <!-- Branding & Visual System -->
+        <section class="max-w-6xl mx-auto py-12 reveal">
+        <h2 class="text-3xl font-bold mb-4">Branding &amp; Visual System</h2>
+        <p class="text-gray-700 mb-8 max-w-3xl">
+            VerifyLens is designed to feel precise and trustworthy without being heavy.
+            The brand system uses clean sans-serif type, calm blues, and simple iconography
+            so fact-checking feels approachable during high-pressure moments like live events.
+        </p>
+
+        <!-- Typography Block -->
+        <div class="border border-[#5A8EFF]/30 bg-gradient-to-br from-white to-[#5A8EFF]/20 rounded-2xl p-6 shadow-sm mb-10 reveal">
+            <h3 class="text-xl font-semibold mb-3">Typography</h3>
+            <p class="text-gray-700 mb-4 text-sm md:text-base">
+            I paired <span class="font-semibold">Inter</span> for web and 
+            <span class="font-semibold">SF Pro</span> for iOS to keep the product aligned
+            with native platform expectations. Both families are highly legible at small sizes,
+            which supports dense fact cards and live transcription without visual fatigue.
+            </p>
+            <div class="grid md:grid-cols-2 gap-6">
+            <img src="/images/vla1.png" class="rounded-xl shadow" alt="VerifyLens web typography system" />
+            <img src="/images/vla2.png" class="rounded-xl shadow" alt="VerifyLens mobile typography system" />
+            </div>
+        </div>
+
+        <!-- Logo Block -->
+        <div class="border border-[#5A8EFF]/30 bg-gradient-to-br from-white to-[#5A8EFF]/20 rounded-2xl p-6 shadow-sm mb-10 reveal">
+            <h3 class="text-xl font-semibold mb-3">Logo System</h3>
+            <p class="text-gray-700 mb-4 text-sm md:text-base">
+            The logo combines a <span class="font-semibold">shield + checkmark</span> to
+            communicate protection and verified truth. I built a scalable wordmark and icon set
+            that works from tiny status chips to splash screens, while staying consistent in
+            color, grid, and spacing.
+            </p>
+            <div class="grid md:grid-cols-2 gap-6">
+            <img src="/images/vla3.png" class="rounded-xl shadow" alt="VerifyLens logo size variations" />
+            <img src="/images/vla4.png" class="rounded-xl shadow" alt="VerifyLens logo usage and meaning" />
+            </div>
+        </div>
+
+        <!-- Iconography & Buttons -->
+        <div class="border border-[#5A8EFF]/30 bg-gradient-to-br from-white to-[#5A8EFF]/20 rounded-2xl p-6 shadow-sm mb-4 reveal">
+            <h3 class="text-xl font-semibold mb-3">Iconography &amp; UI Components</h3>
+            <p class="text-gray-700 mb-4 text-sm md:text-base">
+            Icons follow a 24px grid with rounded corners so they feel soft but precise.
+            Button styles use a <span class="font-semibold">single deep navy primary</span>
+            and a warm accent for secondary actions, making destructive or low-confidence
+            states visually distinct while keeping the core flow calm and focused.
+            </p>
+            <div class="grid md:grid-cols-2 gap-6">
+            <img src="/images/vla5.png" class="rounded-xl shadow" alt="VerifyLens iconography rules and sets" />
+            <img src="/images/vla6.png" class="rounded-xl shadow" alt="VerifyLens button system and states" />
+            </div>
+        </div>
+        </section>
+
+
+
+        <!-- Personas (3 vertical images) -->
+        <section class="max-w-6xl mx-auto py-12">
+        <h2 class="text-3xl font-bold mb-6">User Personas</h2>
+        <div class="space-y-6">
+            <img src="/images/vlup-1.png" alt="Persona 1" class="w-full rounded-xl shadow" />
+            <img src="/images/vlup-2.png" alt="Persona 2" class="w-full rounded-xl shadow" />
+        </div>
+        </section>
+
+
+
+
+        <!-- User Journey -->
+        <section id="user-journey" class="max-w-6xl mx-auto py-4 reveal">
+          <h2 class="text-2xl font-bold mb-4">User journey</h2>
+          <div class="overflow-x-auto rounded-2xl border border-gray-200 bg-white">
+            <table class="min-w-full text-sm">
+              <thead class="bg-[#5A8EFF]/20 text-gray-900">
+                <tr>
+                  <th class="p-3 text-left">Stage / Experience</th>
+                  <th class="p-3 text-left">Discover<br><span class="text-gray-500 text-xs">Find VerifyLens</span></th>
+                  <th class="p-3 text-left">Onboard<br><span class="text-gray-500 text-xs">Setup &amp; permissions</span></th>
+                  <th class="p-3 text-left">Live Session<br><span class="text-gray-500 text-xs">Listen &amp; detect claims</span></th>
+                  <th class="p-3 text-left">Verdicts<br><span class="text-gray-500 text-xs">Fact cards</span></th>
+                  <th class="p-3 text-left">Save &amp; Export<br><span class="text-gray-500 text-xs">History &amp; reports</span></th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100">
+                <tr class="bg-gray-50">
+                  <td class="p-3 font-medium">Actions</td>
+                  <td class="p-3">Sees landing page, installs Chrome extension or opens web app.</td>
+                  <td class="p-3">Signs in, grants mic access, sets preferred sources.</td>
+                  <td class="p-3">Clicks “Start listening” while a debate, lecture or video plays.</td>
+                  <td class="p-3">Claim cards appear with verdicts and confidence scores.</td>
+                  <td class="p-3">Saves sessions, exports PDF/CSV, shares fact cards.</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-medium">Thoughts</td>
+                  <td class="p-3">“Can this actually keep up with live speech?”</td>
+                  <td class="p-3">“Is this safe to use in the newsroom / classroom?”</td>
+                  <td class="p-3">“I don’t want to miss anything while checking facts.”</td>
+                  <td class="p-3">“Can I trust these numbers and sources?”</td>
+                  <td class="p-3">“How do I bring this into my article, slides or paper?”</td>
+                </tr>
+                <tr class="bg-gray-50">
+                  <td class="p-3 font-medium">Emotions</td>
+                  <td class="p-3">Curious but skeptical.</td>
+                  <td class="p-3">Cautiously optimistic.</td>
+                  <td class="p-3">Focused, slightly anxious.</td>
+                  <td class="p-3">Relieved when verdicts match intuition.</td>
+                  <td class="p-3">Confident sharing verified information.</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-medium">Pain points</td>
+                  <td class="p-3">Hard to tell VerifyLens from generic AI tools.</td>
+                  <td class="p-3">Permission prompts feel scary if not explained.</td>
+                  <td class="p-3">Too many notifications can distract from listening.</td>
+                  <td class="p-3">Black-box verdicts are not acceptable for journalism.</td>
+                  <td class="p-3">Export formats must fit newsroom and academic workflows.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- User Flow -->
+        <section class="max-w-6xl mx-auto py-12">
+        <h2 class="text-3xl font-bold mb-6">User Flow</h2>
+        <div class="space-y-6">
+            <img src="/images/vluf.png" alt="Persona 1" class="w-full rounded-xl shadow" />
+            <img src="/images/vluf2.png" alt="Persona 2" class="w-full rounded-xl shadow" />
+        </div>
+        </section>
+
+        <!-- Competitor Analysis -->
+        <section id="competitor-analysis" class="max-w-7xl mx-auto py-8 reveal">
+          <h2 class="text-3xl font-bold mb-6">Competitor Analysis</h2>
+
+          <div class="overflow-x-auto rounded-2xl shadow-lg">
+            <table class="min-w-full bg-white border border-gray-200 rounded-2xl">
+              <thead class="bg-[#5A8EFF]/40">
+                <tr>
+                  <th class="px-6 py-4 text-left text-sm font-semibold text-gray-800">Competitor / Approach</th>
+                  <th class="px-6 py-4 text-left text-sm font-semibold text-gray-800">Strengths</th>
+                  <th class="px-6 py-4 text-left text-sm font-semibold text-gray-800">Weaknesses</th>
+                  <th class="px-6 py-4 text-left text-sm font-semibold text-gray-800">Opportunity for VerifyLens</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200">
+                <!-- Row: Traditional fact-check sites -->
+                <tr>
+                  <td class="align-top px-6 py-5 text-gray-900 font-medium">
+                    Traditional fact-check sites<br><span class="text-xs text-gray-500">(PolitiFact, Snopes, etc.)</span>
+                  </td>
+                  <td class="align-top px-6 py-5">
+                    <ul class="list-disc list-inside space-y-1 text-gray-700 text-sm">
+                      <li>High editorial standards and strong brand trust.</li>
+                      <li>Deep dives and context for complex claims.</li>
+                    </ul>
+                  </td>
+                  <td class="align-top px-6 py-5">
+                    <ul class="list-disc list-inside space-y-1 text-gray-700 text-sm">
+                      <li>Not built for live events or lectures.</li>
+                      <li>Coverage limited to a small subset of claims.</li>
+                    </ul>
+                  </td>
+                  <td class="align-top px-6 py-5">
+                    <ul class="list-disc list-inside space-y-1 text-gray-700 text-sm">
+                      <li>Surface quick verdicts during events, then link out to long-form articles.</li>
+                      <li>Position as a complement, not a replacement.</li>
+                    </ul>
+                  </td>
+                </tr>
+
+                <!-- Row: Manual DIY workflows -->
+                <tr>
+                  <td class="align-top px-6 py-5 text-gray-900 font-medium">
+                    Manual research workflows
+                  </td>
+                  <td class="align-top px-6 py-5">
+                    <ul class="list-disc list-inside space-y-1 text-gray-700 text-sm">
+                      <li>Flexible – users can search any site or database.</li>
+                      <li>No new tools to learn.</li>
+                    </ul>
+                  </td>
+                  <td class="align-top px-6 py-5">
+                    <ul class="list-disc list-inside space-y-1 text-gray-700 text-sm">
+                      <li>Slow and error-prone during live speech.</li>
+                      <li>Hard to track which claim came from which source.</li>
+                    </ul>
+                  </td>
+                  <td class="align-top px-6 py-5">
+                    <ul class="list-disc list-inside space-y-1 text-gray-700 text-sm">
+                      <li>Automate the repetitive parts: transcription, claim extraction and first-pass checks.</li>
+                      <li>Generate structured fact cards that can be audited later.</li>
+                    </ul>
+                  </td>
+                </tr>
+
+                <!-- Row: Mobile AI fact-check apps -->
+                <tr>
+                  <td class="align-top px-6 py-5 text-gray-900 font-medium">
+                    Mobile AI fact-checking apps<br><span class="text-xs text-gray-500">(e.g., Verifi – Fact Checker)</span>
+                  </td>
+                  <td class="align-top px-6 py-5">
+                    <ul class="list-disc list-inside space-y-1 text-gray-700 text-sm">
+                      <li>Simple mobile UI for consumers.</li>
+                      <li>Often include basic verdict labels.</li>
+                    </ul>
+                  </td>
+                  <td class="align-top px-6 py-5">
+                    <ul class="list-disc list-inside space-y-1 text-gray-700 text-sm">
+                      <li>Phone-only flows don’t fit newsroom or classroom setups.</li>
+                      <li>Limited transparency into sources and confidence.</li>
+                    </ul>
+                  </td>
+                  <td class="align-top px-6 py-5">
+                    <ul class="list-disc list-inside space-y-1 text-gray-700 text-sm">
+                      <li>Chrome-first experience designed for laptops and external monitors.</li>
+                      <li>Deeper source citations and export tools for professional use.</li>
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Technology -->
+        <section class="max-w-6xl mx-auto py-4 reveal">
+          <h2 class="text-3xl font-bold mb-6">Technology</h2>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-[#5A8EFF]/10 border border-[#5A8EFF]/40 rounded-xl p-5">
+              <h3 class="font-semibold">Client</h3>
+              <p class="text-gray-700 text-sm">React web app + Chrome extension with WebSocket-based live updates.</p>
+            </div>
+            <div class="bg-[#5A8EFF]/10 border border-[#5A8EFF]/40 rounded-xl p-5">
+              <h3 class="font-semibold">AI Engine</h3>
+              <p class="text-gray-700 text-sm">Whisper for transcription, LLMs for claim extraction and verification orchestration.</p>
+            </div>
+            <div class="bg-[#5A8EFF]/10 border border-[#5A8EFF]/40 rounded-xl p-5">
+              <h3 class="font-semibold">Data Sources</h3>
+              <p class="text-gray-700 text-sm">Government and academic APIs (e.g., labor, crime, health statistics) plus curated reference datasets.</p>
+            </div>
+            <div class="bg-[#5A8EFF]/10 border border-[#5A8EFF]/40 rounded-xl p-5">
+              <h3 class="font-semibold">Backend</h3>
+              <p class="text-gray-700 text-sm">Node.js services, caching with Redis, and a pipeline tuned for &lt;3s end-to-end latency.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Challenges & Learnings -->
+        <section class="max-w-6xl mx-auto py-8 reveal">
+          <h2 class="text-3xl font-bold mb-6">Challenges &amp; Learnings</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white rounded-xl border border-[#5A8EFF] p-6">
+              <h3 class="font-semibold mb-2">Trust beats novelty</h3>
+              <p class="text-gray-700 text-sm">
+                Early interviews showed that journalists are wary of AI that “makes things up”. Clear citations,
+                conservative wording and visible confidence scores are non-negotiable.
+              </p>
+            </div>
+            <div class="bg-white rounded-xl border border-[#5A8EFF] p-6">
+              <h3 class="font-semibold mb-2">Designing for side-by-side use</h3>
+              <p class="text-gray-700 text-sm">
+                The layout had to work alongside streaming video, slides or Zoom – which drove choices like a narrow
+                panel, collapsible history and non-blocking alerts.
+              </p>
+            </div>
+            <div class="bg-white rounded-xl border border-[#5A8EFF] p-6">
+              <h3 class="font-semibold mb-2">Latency as a UX constraint</h3>
+              <p class="text-gray-700 text-sm">
+                The interaction model assumes sub-3 second responses. Anything slower feels like a post-event tool,
+                so the technical architecture and copy both set expectations carefully.
+              </p>
+            </div>
+            <div class="bg-white rounded-xl border border-[#5A8EFF] p-6">
+              <h3 class="font-semibold mb-2">Positioned as a companion</h3>
+              <p class="text-gray-700 text-sm">
+                Messaging and UI are framed around “assist” and “support” rather than “replace fact-checkers”, which
+                resonated better with professionals and educators.
+              </p>
+            </div>
+          </div>
+        </section>
+
+
+
+
+
+
+
+
+        <script>
+        (function(){
+            const els=[...document.querySelectorAll('.reveal')];
+            const io=new IntersectionObserver((entries)=>{
+            entries.forEach(e=>{
+                if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); }
+            })
+            },{threshold:.12});
+            els.forEach(el=>io.observe(el));
+        })();
+        </script>
+
+    </section>
+
+    <!-- FOOTER -->
+      <footer class="bg-[#5A8EFF]/60 text-black mt-8 border-t border-black relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 py-6 sm:py-4
+                    flex flex-col sm:flex-row sm:items-center sm:justify-between
+                    gap-4 sm:gap-6">
+
+          <!-- Back to top (first on mobile, right on desktop) -->
+          <a href="#untanglingchallenges"
+            class="order-1 sm:order-none w-full sm:w-auto
+                    inline-flex items-center justify-center gap-2
+                    rounded-full bg-white px-4 py-2 text-sm font-medium
+                    border border-black/20 hover:bg-white/90 transition"
+            aria-label="Back to top">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#3063FC" d="M12 5.5 3 14.5l1.5 1.5 7.5-7.5 7.5 7.5 1.5-1.5L12 5.5Z"/>
+            </svg>
+            Back to top
+          </a>
+
+          <!-- Socials (full-width stack on mobile, inline on desktop) -->
+          <div class="order-2 sm:order-none w-full sm:w-auto
+                      flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <!-- subtle divider only on mobile -->
+            <div class="h-px bg-black/20 sm:hidden"></div>
+
+            <a href="https://www.linkedin.com/in/sudiksha-rajavaram/" target="_blank"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2
+                      rounded-xl border border-black/20 bg-white/80 px-3 py-2 text-sm font-medium
+                      hover:bg-white transition">
+              <img src="https://cdn.iconscout.com/icon/free/png-512/free-linkedin-42-151143.png"
+                  alt="LinkedIn Logo" class="w-4 h-4"/>
+              LinkedIn
+            </a>
+
+            <a href="https://www.figma.com/@rajavaramsudiks" target="_blank"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2
+                      rounded-xl border border-black/20 bg-white/80 px-3 py-2 text-sm font-medium
+                      hover:bg-white transition">
+              <img src="https://cdn.iconscout.com/icon/free/png-512/free-figma-2296071-1912030.png"
+                  alt="Figma Logo" class="w-4 h-4"/>
+              Figma
+            </a>
+          </div>
+
+          <!-- Name (centered on mobile, left on desktop) -->
+          <p class="order-3 sm:order-none text-center sm:text-left text-sm font-medium">
+            &copy; 2025 Sudiksha Rajavaram
+          </p>
+
+        </div>
+      </footer>
+
+</body>
+</html>

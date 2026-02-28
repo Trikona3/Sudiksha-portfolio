@@ -1,0 +1,24 @@
+node_modules/
+dist/
+.vite/
+.next/
+out/
+.DS_Store
+.env
+
+# OpenNext
+.open-next
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
+
+# local video backups (do not deploy/push)
+archived-large-media/
+
+# local heavy media / installers (keep local, do not track)
+images/
+Construction-learning.mp4
+WindowsMigrationAssistantSetup.exe

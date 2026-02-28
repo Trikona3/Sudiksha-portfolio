@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<html class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sudiksha Rajavaram — Projects</title>
+  <!-- Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 600,
+      once: true
+    });
+  </script>
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Custom Styling -->
+  <style>
+  /* Base */
+  body { font-family: 'Space Grotesk', sans-serif; }
+  .menu-transition { transition: max-height 0.3s ease-out; overflow: hidden; }
+
+  /* Header nav links */
+  .nav-link {
+    position: relative; display: inline-block; text-decoration: none;
+    color: #2d3748; font-weight: 600;
+      font-size: clamp(1.1rem, 1.05vw, 1.45rem);
+  }
+  .nav-link::after {
+    content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px;
+    background-color: currentColor; transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .nav-link:hover::after { transform: scaleX(1); }
+  .nav-link:hover { color: #ffffff; }
+
+  /* 3D tilt system */
+  .tilt-scene { perspective: 1000px; }
+  .tilt-scene > div {
+    transform-style: preserve-3d;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    will-change: transform;
+  }
+  /* 1 column (mobile): subtle backward tilt */
+  @media (max-width: 639.98px) {
+    .tilt-scene > div:hover {
+      transform: rotateX(3deg) scale(1.02);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.14);
+    }
+  }
+  /* 2 columns (sm to <lg): left tilts right, right tilts left — hero excluded */
+  @media (min-width: 640px) and (max-width: 1023.98px) {
+    .tilt-scene > :nth-child(2n+1 of .card-wrap:not(.no-tilt)):hover {
+      transform: rotateY(6deg) scale(1.02);
+      box-shadow: 8px 12px 24px rgba(0,0,0,0.14);
+    }
+    .tilt-scene > :nth-child(2n of .card-wrap:not(.no-tilt)):hover {
+      transform: rotateY(-6deg) scale(1.02);
+      box-shadow: -8px 12px 24px rgba(0,0,0,0.14);
+    }
+  }
+
+  /* 3 columns (lg+): left/right tilt horizontally, middle tilts back — hero excluded */
+  @media (min-width: 1024px) {
+    .tilt-scene > :nth-child(3n+1 of .card-wrap:not(.no-tilt)):hover {
+      transform: rotateY(4deg) scale(1.02);
+      box-shadow: 8px 12px 24px rgba(0,0,0,0.14);
+    }
+    .tilt-scene > :nth-child(3n+2 of .card-wrap:not(.no-tilt)):hover {
+      transform: rotateX(4deg) scale(1.02);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.14);
+    }
+    .tilt-scene > :nth-child(3n of .card-wrap:not(.no-tilt)):hover {
+      transform: rotateY(-4deg) scale(1.02);
+      box-shadow: -8px 12px 24px rgba(0,0,0,0.14);
+    }
+  }
+
+
+  /* Designer-card effects */
+  .card-wrap {
+    border-radius: 16px;
+    padding: 1.2px;
+    background: linear-gradient(135deg,#3063fc 0%,#5A8EFF 100%);
+  }
+  .card {
+    border-radius: 14px; background: #fff; overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,.06);
+    transition: transform .35s ease, box-shadow .35s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .card:hover { box-shadow: 0 16px 40px rgba(0,0,0,.14); }
+  .card-img {
+    height: 100%; object-fit: cover;
+    object-position: center center;
+    transition: transform .6s ease; will-change: transform;
+    display: block; width: 100%;
+    background: #0f172a;
+  }
+  .card:hover .card-img { transform: scale(1.06); }
+  /* keep text content above any overlays/3D layers */
+  .card .p-5 { position: relative; z-index: 2; isolation: isolate; }
+  .card-wrap .card > .p-5 {
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .card-wrap .image-wrap {
+    position: relative;
+    margin-top: 0;
+    height: 18rem;
+    min-height: 18rem;
+  }
+  .card-wrap .image-wrap .card-img {
+    height: 100% !important;
+  }
+  .card-wrap .image-wrap.onevr-gap {
+    margin-top: 1.25rem;
+  }
+  .card-wrap .image-wrap.minecraft-short {
+    height: 16.5rem;
+    min-height: 16.5rem;
+  }
+  .card-wrap .image-wrap.sky-wide {
+    height: 17rem;
+    min-height: 17rem;
+  }
+  @media (max-width: 768px) {
+    .card-wrap .card > .p-5 {
+      min-height: 0;
+    }
+    .card-wrap .image-wrap {
+      height: 14.5rem;
+      min-height: 14.5rem;
+    }
+    .card-wrap .image-wrap.onevr-gap {
+      margin-top: 1rem;
+    }
+    .card-wrap .image-wrap.minecraft-short {
+      height: 13.5rem;
+      min-height: 13.5rem;
+    }
+    .card-wrap .image-wrap.sky-wide {
+      height: 12.75rem;
+      min-height: 12.75rem;
+    }
+  }
+
+  /* CTA link — underline only when the link itself is hovered/focused */
+  .cta{
+    position: relative; display: inline-block; font-weight: 600; color: #3063fc;
+    pointer-events: auto; z-index: 1;
+    background: linear-gradient(currentColor, currentColor) 0 100% / 0 2px no-repeat;
+    transition: background-size .3s ease;
+  }
+  .cta:hover, .cta:focus-visible { background-size: 100% 2px; }
+
+  /* Image overlay + tags (bottom-left) */
+  .image-wrap { position: relative; }
+  .img-fade{
+    position: absolute; left: 0; right: 0; bottom: 0; height: 42%;
+    background: linear-gradient(to top, rgba(0,0,0,.35), rgba(0,0,0,0));
+    pointer-events: none; opacity: .95; transition: opacity .35s ease;
+  }
+  .card:hover .img-fade { opacity: 1; }
+
+  .tag-row{
+    position: absolute; left: .75rem; bottom: .75rem;
+    display: flex; flex-wrap: wrap; gap: .4rem; z-index: 2;
+    transform: translateY(4px); opacity: .96; transition: transform .35s ease, opacity .35s ease;
+  }
+  .card:hover .tag-row{ transform: translateY(0); opacity: 1; }
+
+  .tag{
+    display: inline-flex; align-items: center; gap: .4rem;
+    padding: .28rem .6rem; border-radius: 999px;
+    border: 1px solid #5A8EFF; background: #5A8EFF; color: #ffffff;
+    font-size: .72rem; font-weight: 600; line-height: 1;
+    transform: translateY(2px); opacity: .98; transition: transform .35s ease, opacity .35s ease;
+    backdrop-filter: blur(6px);
+  }
+  /* subtle stagger so multiple tags feel lively */
+  .tag-row .tag:nth-child(1){ transition-delay: 0ms; }
+  .tag-row .tag:nth-child(2){ transition-delay: 40ms; }
+  .tag-row .tag:nth-child(3){ transition-delay: 80ms; }
+  .tag-row .tag:nth-child(4){ transition-delay: 120ms; }
+  .card:hover .tag{ transform: translateY(0); opacity: 1; }
+
+  /* Keep direction-aware tilt working on the outer wrappers */
+  .tilt-scene > .card-wrap:hover { transform-style: preserve-3d; }
+  /* AOS override (if you keep AOS initialized) */
+  /* Keep your neutralizer, but exclude the hero if you want it animated */
+  [data-aos]:not(.hero-fade){ opacity:1 !important; transform:none !important; }
+  /* --- Fix hover lost on tilted (left) cards --- */
+    .tilt-scene > div { transform-style: preserve-3d; }     /* keep 3D context */
+    .card { position: relative; transform-style: preserve-3d; }
+    .card * { backface-visibility: hidden; }
+
+    /* lift text block above the 3D plane & any overlays */
+    .card .p-5{
+      position: relative;
+      z-index: 3;
+      transform: translateZ(3px);   /* <— key line */
+    }
+
+    /* keep image/overlays slightly behind text */
+    .image-wrap { position: relative; transform: translateZ(1px); z-index: 1; }
+    .img-fade, .tag-row { transform: translateZ(1px); }
+
+    /* make sure the link itself is interactable and above all */
+    .cta{
+      position: relative;
+      z-index: 4;                   /* above everything else in the card */
+      pointer-events: auto;
+      background: linear-gradient(currentColor, currentColor) 0 100% / 0 2px no-repeat;
+      transition: background-size .3s ease;
+    }
+    .cta:hover, .cta:focus-visible { background-size: 100% 2px; }
+
+    /* Hero spans grid, no tilt, fade-up works */
+  .hero-card{ 
+    background:#fff !important;     /* <-- force white so the blue wrap isn't visible */
+    min-height:22rem;
+  }
+  @media (min-width:1024px){ .hero-card{ min-height:24rem; } }
+  .hero-image{ min-height:14rem; }
+  .hero-img{ width:100%; height:100%; object-fit:cover; }
+  .hero-card .card-img {
+    object-fit: cover;
+    background: transparent;
+  }
+  .tilt-scene > .no-tilt,
+  .tilt-scene > .no-tilt:hover{ transform:none !important; box-shadow:none !important; }
+
+  /* If you previously disabled AOS globally, re-enable just for hero */
+  .hero-card[data-aos]{ 
+    opacity:0 !important; 
+    transform:translate3d(0,24px,0) !important; 
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .hero-card.aos-animate[data-aos]{ 
+    opacity:1 !important; 
+    transform:none !important; 
+  }
+
+  /* Tag + image overlay reuse your palette */
+  .tag{ 
+    display:inline-flex; align-items:center; gap:.4rem;
+    padding:.28rem .6rem; border-radius:999px;
+    border:1px solid #5A8EFF; background:#5A8EFF; color:#fff;
+    font-size:.72rem; font-weight:600; line-height:1; backdrop-filter:blur(6px);
+  }
+  .image-wrap{ position:relative; }
+  .img-fade{
+    position:absolute; left:0; right:0; bottom:0; height:42%;
+    background:linear-gradient(to top, rgba(0,0,0,.35), rgba(0,0,0,0)); pointer-events:none;
+  }
+  .tag-row{ position:absolute; left:.75rem; bottom:.75rem; display:flex; gap:.4rem; z-index:2; }
+
+  /* CTA underline only when the link itself is hovered */
+  /* compact underline that doesn’t span the whole column */
+.cta{
+  position: relative;
+  display: inline-flex;         /* shrink to text */
+  width: max-content;           /* guard against flex stretching */
+  font-weight: 600;
+  color: #3063fc;
+  text-decoration: none;
+}
+
+.cta::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;                 /* spacing under text */
+  height: 2px;
+  width: 0;                     /* start hidden */
+  background: currentColor;
+  transition: width .25s ease;
+}
+
+/* how long you want the line on hover (tweak 55–70% to taste) */
+.cta:hover::after,
+.cta:focus-visible::after{
+  width: 0%;
+}
+
+  /* Make the full-width hero ignore the tilt hover rules */
+.tilt-scene > .no-tilt,
+.tilt-scene > .no-tilt:hover{
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* ===== Clean card hover system (override old tilt) ===== */
+.tilt-scene > .card-wrap{
+  transition: transform .46s cubic-bezier(.22,.61,.36,1), filter .38s ease !important;
+  will-change: transform;
+}
+
+/* disable rotational tilt and use a smooth vertical lift */
+.tilt-scene > .card-wrap:hover{
+  transform: translateY(-10px) scale(1.008) !important;
+}
+
+.card{
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(90, 142, 255, 0.18);
+  transition: box-shadow .46s cubic-bezier(.22,.61,.36,1), border-color .38s ease;
+}
+
+/* subtle animated sheen on hover */
+.card::before{
+  content: "";
+  position: absolute;
+  inset: -120% auto auto -35%;
+  width: 52%;
+  height: 280%;
+  background: linear-gradient(
+    115deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,.2) 48%,
+    rgba(255,255,255,0) 100%
+  );
+  transform: translateX(-140%) rotate(8deg);
+  transition: transform .7s cubic-bezier(.2,.8,.2,1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.card::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 18% 12%, rgba(90, 142, 255, 0.14), transparent 44%);
+  opacity: 0;
+  transition: opacity .45s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.card:hover::before{
+  transform: translateX(360%) rotate(8deg);
+}
+
+.card:hover,
+.card:focus-within{
+  border-color: rgba(48, 99, 252, 0.38);
+  box-shadow: 0 20px 42px rgba(17, 24, 39, 0.16);
+}
+
+.card:hover::after,
+.card:focus-within::after{
+  opacity: 1;
+}
+
+.card .card-img{
+  transition: transform .55s cubic-bezier(.22,.61,.36,1), filter .45s ease;
+}
+
+.card:hover .card-img{
+  transform: scale(1.035);
+  filter: saturate(1.05);
+}
+
+.card .p-5 h2,
+.card .p-5 .cta{
+  transition: transform .3s ease, color .3s ease;
+}
+
+.card:hover .p-5 h2{
+  transform: translateY(-1px);
+}
+
+.card:hover .p-5 .cta{
+  transform: translateX(2px);
+}
+
+/* featured cards (top 2) use .no-tilt > article, so mirror hover behavior */
+.tilt-scene > .no-tilt > article{
+  transition: transform .46s cubic-bezier(.22,.61,.36,1),
+              box-shadow .46s cubic-bezier(.22,.61,.36,1),
+              border-color .38s ease;
+  will-change: transform;
+}
+
+.tilt-scene > .no-tilt > article:hover{
+  transform: translateY(-8px);
+  border-color: rgba(48, 99, 252, 0.38);
+  box-shadow: 0 20px 42px rgba(17, 24, 39, 0.16);
+}
+
+.tilt-scene > .no-tilt > article .card-img{
+  transition: transform .55s cubic-bezier(.22,.61,.36,1), filter .45s ease;
+}
+
+.tilt-scene > .no-tilt > article:hover .card-img{
+  transform: scale(1.03);
+  filter: saturate(1.05);
+}
+
+.tilt-scene > .no-tilt > article .img-fade{
+  transition: opacity .35s ease;
+}
+
+.tilt-scene > .no-tilt > article:hover .img-fade{
+  opacity: 1;
+}
+</style>
+
+  
+
+</head>
+<body class="bg-[#5A8EFF]/25">
+
+  <!-- NAV BAR -->
+  <header class="fixed inset-x-0 top-0 z-30">
+    <nav class="absolute inset-x-0 top-2 mx-auto max-w-[1100px] bg-[#5A8EFF]/70 backdrop-blur-sm border-[1.5px] border-black py-3 px-6 rounded-[12px] shadow-lg z-50">
+      <div class="flex items-center justify-between">
+        <a href="index.html#about" class="text-lg font-semibold text-black">SUDIKSHA RAJAVARAM</a>
+
+        <!-- Hamburger Button (Mobile Only) -->
+        <button id="menu-btn" class="sm:hidden focus:outline-none">
+          <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+
+        <!-- Desktop Nav -->
+        <div class="hidden sm:flex gap-6">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="resume.html" class="nav-link">Resume</a>
+          <a href="projects.html" class="nav-link">Projects</a>
+          <a href="contact.html" class="nav-link">Contact Me</a>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="sm:hidden menu-transition max-h-0">
+        <div class="flex flex-col gap-4 pt-4">
+          <a href="index.html" class="nav-link block">Home</a>
+          <a href="resume.html" class="nav-link block">Resume</a>
+          <a href="projects.html" class="nav-link block">Projects</a>
+          <a href="contact.html" class="nav-link block">Contact Me</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+   <!-- Projects -->
+    <section class="bg-white rounded-3xl mx-auto my-4 max-w-[95vw] px-4 shadow-lg mt-12 mb-12 pb-8">
+
+      <main id="projects" class="pt-[30px] px-4 sm:px-6">
+        <div class="pl-10 items-center">
+
+
+          <h1 class="mt-3 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 text-center">
+            Projects
+          </h1>
+
+          <p class="mt-3 text-center text-slate-600 text-sm sm:text-base mb-4">
+            A selection of product, UX, and visual work.
+          </p>
+
+
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 px-2 sm:px-4 md:px-10 pb-12 tilt-scene">
+
+           <!-- FEATURED / HERO CARD (spans all 3 columns) -->
+          <div class="col-span-full no-tilt">
+            <article
+              class="bg-white rounded-2xl border-[1.5px] border-[#5A8EFF] shadow-lg overflow-hidden
+                    grid lg:grid-cols-12" data-aos="fade-up">
+
+              <!-- Left: text (5/12 on lg) -->
+              <div class="p-6 sm:p-8 lg:col-span-5 flex flex-col justify-center gap-4">
+                <span
+                  class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold
+                        bg-[#5A8EFF]/10 text-[#3063fc] border border-[#5A8EFF]/80 w-fit">
+                  Featured Case Study
+                </span>
+
+                <h2 class="font-semibold text-2xl sm:text-3xl tracking-tight">VibeTrail.ai</h2>
+                <p class="text-gray-600 text-sm sm:text-base leading-relaxed max-w-prose">
+                  AI-powered event planning platform that transforms scattered client inspirations
+                  into immersive storyboards and cinematic previews—designed for speed, clarity,
+                  and delight across the planning journey.
+                </p>
+
+                <div class="flex flex-wrap gap-2">
+                  <span class="tag">Event Planning</span>
+                  <span class="tag">AI</span>
+                  <span class="tag">Responsive</span>
+                </div>
+
+                <a href="Vibetrail.html" class="cta">View Case Study →</a>
+              </div>
+
+              <!-- Right: media (7/12 on lg), forced to fill card height -->
+              <figure class="relative lg:col-span-7 min-h-[260px] sm:min-h-[320px] lg:min-h-[420px]">
+              <!-- Video thumbnail (autoplay) + fallback image -->
+              <video
+                class="card-img w-full h-full object-cover"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                poster="/images/project9-thumb.png"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+              >
+                <source src="/images/web-optimized/project9-thumb-web.mp4" type="video/mp4"/>
+              </video>
+
+              <img
+                src="/images/project9-thumb.png"
+                alt="VibeTrail storyboard and cinematic preview interface"
+                class="card-img w-full h-full object-cover"
+                style="display:none;"
+              />
+                <div class="img-fade"></div>
+              </figure>
+            </article>
+          </div>
+
+          <!-- FEATURED CARD 2 (media left, text right) -->
+          <div class="col-span-full no-tilt">
+            <article
+              class="bg-white rounded-2xl border-[1.5px] border-[#5A8EFF] shadow-lg overflow-hidden
+                    grid lg:grid-cols-12"
+              data-aos="fade-up"
+              data-aos-delay="80"
+            >
+              <!-- Left: media (7/12 on lg) -->
+              <figure class="relative lg:col-span-7 min-h-[260px] sm:min-h-[320px] lg:min-h-[420px]">
+                <video
+                  class="card-img w-full h-full object-cover"
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  poster="/images/project11-thumb.png"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                >
+                  <source src="/images/project13-thumb.mp4" type="video/mp4"/>
+                </video>
+
+                <img
+                  src="/images/construction-world-1.png"
+                  alt="Trikona construction game preview"
+                  class="card-img w-full h-full object-cover"
+                  style="display:none;"
+                />
+                <div class="img-fade"></div>
+              </figure>
+
+              <!-- Right: text (5/12 on lg) -->
+              <div class="p-6 sm:p-8 lg:col-span-5 flex flex-col justify-center gap-4">
+                <span
+                  class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold
+                        bg-[#5A8EFF]/10 text-[#3063fc] border border-[#5A8EFF]/80 w-fit"
+                >
+                  Featured Project
+                </span>
+
+                <h2 class="font-semibold text-2xl sm:text-3xl tracking-tight">Trikona - Construction Game</h2>
+                <p class="text-gray-600 text-sm sm:text-base leading-relaxed max-w-prose">
+                  mission-based construction simulation where teams plan bids with realistic cost logic and users can also learn optimal building decisions through interactive gameplay.
+                </p>
+
+                <div class="flex flex-wrap gap-2">
+                  <span class="tag">Game UX</span>
+                  <span class="tag">Experiential Learning</span>
+                  <span class="tag">Construction</span>
+                </div>
+
+                <a href="trikona.html" class="cta">View Project →</a>
+              </div>
+            </article>
+          </div>
+
+
+      <!-- Clyra -->
+      <div class="card-wrap">
+        <article class="card group relative">
+          <div class="p-5">
+            <h2 class="font-semibold text-xl tracking-tight">Clyra.ai</h2>
+            <p class="text-gray-600 text-sm leading-relaxed mt-2">
+              AI-powered task scheduling and email categorization tool that helps users manage their time, health and communications more effectively.
+            </p>
+            <a href="Clyra.html" class="cta mt-3">View Case Study →</a>
+          </div>
+          <div class="image-wrap">
+            <!-- Video thumbnail (autoplay) + fallback image -->
+            <video
+              class="card-img w-full h-[250px] object-cover"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              poster="/images/project10-thumb.png"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+            >
+              <source src="/images/web-optimized/project10-thumb-web.mp4" type="video/mp4"/>
+            </video>
+
+            <img
+              src="/images/project10-thumb.png"
+              alt="Clyra task scheduling and email categorization interface"
+              class="card-img w-full h-full object-cover"
+              style="display:none;"
+            />
+            <div class="img-fade"></div>
+            <div class="tag-row">
+              <span class="tag">Task Scheduling</span>
+              <span class="tag">Email Categorization</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- VerifyLens.ai -->
+      <div class="card-wrap">
+        <article class="card group relative">
+          <div class="p-5">
+            <h2 class="font-semibold text-xl tracking-tight">VerifyLens.ai</h2>
+            <p class="text-gray-600 text-sm leading-relaxed mt-2">
+             AI-powered real-time fact-checking tool that listens to live speech or video and surfaces verified stats and sources in seconds.
+            </p>
+            <a href="verifylens.html" class="cta mt-2">View Case Study →</a>
+          </div>
+          <div class="image-wrap">
+            <!-- Video thumbnail (autoplay) + fallback image -->
+            <video
+              class="card-img w-full h-[255px] object-cover"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              poster="/images/project12-thumb.png"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+            >
+              <source src="/images/project12.web-thumb.mp4" type="video/mp4"/>
+            </video>
+
+            <img
+              src="/images/project12-thumb.png"
+              alt="VerifyLens fact-checking interface"
+              class="card-img w-full h-full object-cover"
+              style="display:none;"
+            />
+            <div class="img-fade"></div>
+            <div class="tag-row">
+              <span class="tag">AI</span>
+              <span class="tag">Fact-Checking</span>
+              <span class="tag">Branding and Style Guide</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+
+      <!-- TrustLens.ai -->
+      <div class="card-wrap">
+        <article class="card group relative">
+          <div class="p-5">
+            <h2 class="font-semibold text-xl tracking-tight">TrustLens.ai</h2>
+            <p class="text-gray-600 text-sm leading-relaxed mt-2">
+              Browser extension that surfaces tone and trust signals on Reddit comments to help readers quickly judge a thread’s mood and credibility.
+            </p>
+            <a href="trustlens.html" class="cta mt-3">View Case Study →</a>
+          </div>
+          <div class="image-wrap">
+            <!-- Video thumbnail (autoplay) + fallback image -->
+            <video
+              class="card-img w-full h-[250px] object-cover"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              poster="/images/project11-thumb.png"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+            >
+              <source src="/images/web-optimized/project11-thumb-web.mp4" type="video/mp4" />
+            </video>
+
+            <img
+              src="/images/project11-thumb.png"
+              alt="TrustLens tone and evidence badges on Reddit"
+              class="card-img w-full h-full object-cover"
+              style="display:none;"
+            />
+
+            <div class="img-fade"></div>
+            <div class="tag-row">
+              <span class="tag">AI</span>
+              <span class="tag">Browser Extension</span>
+              <span class="tag">Content Moderation</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+
+      <!-- Fit Flow -->
+      <div class="card-wrap">
+        <article class="card group relative">
+          <div class="p-5">
+            <h2 class="font-semibold text-xl tracking-tight">Fit Flow</h2>
+            <p class="text-gray-600 text-sm leading-relaxed mt-2">
+              AI-powered women’s fitness app offering personalized workouts, self-defense training, and women’s health–focused routines.
+            </p>
+            <a href="fitflow.html" class="cta mt-3">View Case Study →</a>
+          </div>
+          <div class="image-wrap">
+            <!-- Video thumbnail (autoplay) + fallback image -->
+                <video
+                  class="card-img h-[230px] object-cover rounded-2xl"
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  poster="/images/project1-thumb.png"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                >
+                  <source src="/images/project1.web-thumb.mp4" type="video/mp4"/>
+                </video>
+
+                <img
+                  src="/images/project1-thumb.png"
+                  alt="Fit Flow mobile app interface"
+                  class="card-img w-full h-full object-cover"
+                  style="display:none;"
+                />
+            <div class="img-fade"></div>
+            <div class="tag-row">
+              <span class="tag">UX</span>
+              <span class="tag">Health &amp; Fitness</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- One VR World -->
+      <div class="card-wrap">
+        <article class="card group relative">
+          <div class="p-5">
+            <h2 class="font-semibold text-xl tracking-tight">One VR World</h2>
+            <p class="text-gray-600 text-sm leading-relaxed mt-2">
+              Immersive Virtual Reality environment for neurodivergent individuals to build workplace skills.
+            </p>
+            <a href="vrworld.html" class="cta mt-3">View Case Study →</a>
+          </div>
+          <div class="image-wrap onevr-gap">
+            <!-- Video thumbnail (autoplay) + fallback image -->
+            <video
+              class="card-img w-full h-[250px] object-cover"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              poster="/images/project3-thumb.png"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+            >
+              <source src="/images/web-optimized/project3-thumb-web.mp4" type="video/mp4"/>
+            </video>
+
+            <img
+              src="/images/project3-thumb.png"
+              alt="One VR World interface"
+              class="card-img w-full h-full object-cover"
+              style="display:none;"
+            />
+            <div class="img-fade"></div>
+            <div class="tag-row">
+              <span class="tag">VR</span>
+              <span class="tag">Neurodivergent users</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Construction Learning -->
+      <div class="card-wrap">
+        <article class="card group relative">
+          <div class="p-5">
+            <h2 class="font-semibold text-xl tracking-tight">Construction Learning</h2>
+            <p class="text-gray-600 text-sm leading-relaxed mt-2">
+              One-stop platform offering e-learning courses, career tools, and industry networking for different construction stakeholders.
+            </p>
+            <a href="construction_world.html" class="cta mt-3">View Case Study →</a>
+          </div>
+          <div class="image-wrap">
+            <!-- Video thumbnail (autoplay) + fallback image -->
+            <video
+              class="card-img w-full h-[230px] object-cover"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              poster="/images/project2-thumb.png"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+            >
+              <source src="/images/construction-learning.mp4" type="video/mp4"/>
+            </video>
+
+            <img
+              src="/images/project2-thumb.png"
+              alt="Construction Learning e-learning interface"
+              class="card-img w-full h-full object-cover"
+              style="display:none;"
+            />
+            <div class="img-fade"></div>
+            <div class="tag-row">
+              <span class="tag">Construction</span>
+              <span class="tag">Responsive</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </main>
+</section>
+
+
+
+   <!-- FOOTER -->
+      <footer class="bg-[#5A8EFF]/60 text-black mt-8 border-t border-black relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 py-6 sm:py-4
+                    flex flex-col sm:flex-row sm:items-center sm:justify-between
+                    gap-4 sm:gap-6">
+
+          <!-- Back to top (first on mobile, right on desktop) -->
+          <a href="#projects"
+            class="order-1 sm:order-none w-full sm:w-auto
+                    inline-flex items-center justify-center gap-2
+                    rounded-full bg-white px-4 py-2 text-sm font-medium
+                    border border-black/20 hover:bg-white/90 transition"
+            aria-label="Back to top">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#3063FC" d="M12 5.5 3 14.5l1.5 1.5 7.5-7.5 7.5 7.5 1.5-1.5L12 5.5Z"/>
+            </svg>
+            Back to top
+          </a>
+
+          <!-- Socials (full-width stack on mobile, inline on desktop) -->
+          <div class="order-2 sm:order-none w-full sm:w-auto
+                      flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <!-- subtle divider only on mobile -->
+            <div class="h-px bg-black/20 sm:hidden"></div>
+
+            <a href="https://www.linkedin.com/in/sudiksha-rajavaram/" target="_blank"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2
+                      rounded-xl border border-black/20 bg-white/80 px-3 py-2 text-sm font-medium
+                      hover:bg-white transition">
+              <img src="https://cdn.iconscout.com/icon/free/png-512/free-linkedin-42-151143.png"
+                  alt="LinkedIn Logo" class="w-4 h-4"/>
+              LinkedIn
+            </a>
+
+            <a href="https://www.figma.com/@rajavaramsudiks" target="_blank"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2
+                      rounded-xl border border-black/20 bg-white/80 px-3 py-2 text-sm font-medium
+                      hover:bg-white transition">
+              <img src="https://cdn.iconscout.com/icon/free/png-512/free-figma-2296071-1912030.png"
+                  alt="Figma Logo" class="w-4 h-4"/>
+              Figma
+            </a>
+          </div>
+
+          <!-- Name (centered on mobile, left on desktop) -->
+          <p class="order-3 sm:order-none text-center sm:text-left text-sm font-medium">
+            &copy; 2025 Sudiksha Rajavaram
+          </p>
+
+        </div>
+      </footer>
+
+
+  <script>
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  let isOpen = false;
+
+  menuBtn.addEventListener('click', () => {
+    isOpen = !isOpen;
+    mobileMenu.style.maxHeight = isOpen ? mobileMenu.scrollHeight + 'px' : '0px';
+  });
+</script>
+
+<script>
+  // tiny filter
+  (function(){
+    const buttons = document.querySelectorAll('.lab-filter');
+    const items   = document.querySelectorAll('.lab-item');
+    buttons.forEach(btn => btn.addEventListener('click', () => {
+      const f = btn.dataset.filter;
+      buttons.forEach(b => b.classList.remove('bg-[#5A8EFF]/20'));
+      btn.classList.add('bg-[#5A8EFF]/20');
+      items.forEach(it => {
+        it.classList.toggle('hidden', f !== 'all' && it.dataset.cat !== f);
+      });
+    }));
+  })();
+</script>
+<script>
+  window.addEventListener('load', () => {
+    AOS.refresh(); // ensure positions are correct after images load
+  });
+</script>
+
+
+
+</body>
+</html>

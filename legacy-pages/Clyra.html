@@ -1,0 +1,664 @@
+<!-- Clyra.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clyra</title>
+      <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style> body { font-family: 'Space Grotesk', sans-serif; } </style>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      /* add a theme and override its palette here: */
+      theme: 'base',
+      themeVariables: {
+        primaryColor:      '#B2DAFF',  // node fill
+        primaryBorderColor:'#3063fc',  // node stroke
+        primaryTextColor:  '#000000',  // node text
+        lineColor:         '#3063fc',  // edges
+        tertiaryColor:     '#ffffff',  // edge label bg
+        fontSize:          '28px'
+      }
+    });
+  </script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .nav-link {
+      position: relative;
+      display: inline-block;
+      text-decoration: none;
+      color: #2d3748;
+      font-weight: 600;
+      font-size: clamp(1.1rem, 1.05vw, 1.45rem);
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .nav-link:hover::after {
+      transform: scaleX(1);
+    }
+    .nav-link:hover {
+      color: #3063fc;
+    }
+    .menu-transition {
+    transition: max-height 0.3s ease-out;
+    overflow: hidden;
+    }
+  </style>
+</head>
+</head>
+<body class="bg-[#5A8EFF]/25">
+
+  <!-- NAV BAR -->
+  <header class="fixed inset-x-0 top-0 z-30">
+    <nav class="absolute inset-x-0 top-2 mx-auto max-w-[1100px] bg-[#5A8EFF]/70 backdrop-blur-sm border-[1.5px] border-black py-3 px-6 rounded-[12px] shadow-lg z-50">
+      <div class="flex items-center justify-between">
+        <a href="index.html#about" class="text-lg font-semibold text-black">SUDIKSHA RAJAVARAM</a>
+
+        <!-- Hamburger Button (Mobile Only) -->
+        <button id="menu-btn" class="sm:hidden focus:outline-none">
+          <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+
+        <!-- Desktop Nav -->
+        <div class="hidden sm:flex gap-6">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="resume.html" class="nav-link">Resume</a>
+          <a href="projects.html" class="nav-link">Projects</a>
+          <a href="contact.html" class="nav-link">Contact Me</a>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="sm:hidden menu-transition max-h-0">
+        <div class="flex flex-col gap-4 pt-4">
+          <a href="index.html" class="nav-link block">Home</a>
+          <a href="resume.html" class="nav-link block">Resume</a>
+          <a href="projects.html" class="nav-link block">Projects</a>
+          <a href="contact.html" class="nav-link block">Contact Me</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+<section class="bg-white rounded-3xl mx-auto my-4 max-w-[95vw] px-4 shadow-lg mt-12 mb-12 pb-8">
+<main id="Syncoa" class="pt-[60px] px-6 max-w-4xl mx-auto">
+    <!-- back link + title -->
+    <a href="projects.html" class="text-[12px] text-gray-700 hover:underline">← Return to all Projects</a>
+    <h1 class="text-4xl font-bold text-center mt-4 mb-8">Clyra.ai</h1>
+
+    <!-- Case Study -->
+    <section class="mb-14">
+      <h2 class="text-2xl font-semibold mb-6">Case Study</h2>
+
+      <div class="max-w-6xl mx-auto">
+        <!-- SNAPSHOT -->
+        <div class="mb-8">
+          <!-- label -->
+          <div class="flex items-center gap-3 text-[11px] font-semibold tracking-widest uppercase text-[#3063FC]">
+            <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#3063FC]">
+              <span class="absolute inset-0 rounded-full bg-[#3063FC]/40 animate-ping"></span>
+            </span>
+            Project Snapshot
+          </div>
+
+          <!-- title -->
+          <h3 class="mt-3 text-3xl sm:text-4xl font-bold text-slate-900">
+            Turning emails into structured, actionable plans
+          </h3>
+
+          <!-- description -->
+          <p class="mt-4 text-base text-slate-600 max-w-3xl">
+            An AI-powered scheduling assistant that converts unstructured email conversations
+            into clear tasks, timelines, and priorities — reducing back-and-forth and cognitive load.
+          </p>
+
+          <!-- meta chips -->
+          <div class="mt-6 flex flex-wrap gap-3">
+            <span class="inline-flex items-center gap-2 rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+              <span class="text-xs font-bold tracking-widest">IND</span>
+              Scheduling · Productivity
+            </span>
+
+            <span class="inline-flex items-center gap-2 rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+              <span class="text-xs font-bold tracking-widest">ROLE</span>
+              Research · Wireframing · Design Lead
+            </span>
+
+            <span class="inline-flex items-center gap-2 rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+              <span class="text-xs font-bold tracking-widest">TOOLS</span>
+              Figma · Notion
+            </span>
+          </div>
+
+
+          <!-- divider -->
+          <div class="mt-7 h-px w-full bg-gradient-to-r from-transparent via-[#3063FC]/40 to-transparent"></div>
+        </div>
+
+        <!-- VIDEO -->
+        <div
+          class="relative rounded-[30px] overflow-hidden
+          bg-gradient-to-br from-[#6CA8FF] to-[#3B82F6]
+          border border-[#3063FC]/40
+          shadow-[0_30px_80px_rgba(48,99,252,0.35)]"
+        >
+          <div class="w-full h-[340px] sm:h-[460px] md:h-[560px] flex items-center justify-center">
+            <video
+              id="clyra-video"
+              class="w-full h-full object-contain"
+              muted
+              autoplay
+              playsinline
+              loop
+              preload="auto"
+              poster="/images/project10-thumb.png"
+            >
+              <source src="/images/web-optimized/project10-thumb-web.mp4" type="video/mp4" />
+            </video>
+
+            <!-- fallback -->
+            <div
+              id="clyra-fallback"
+              class="absolute inset-0 hidden flex-col items-center justify-center p-6 text-center"
+            >
+              <img
+                src="/images/project10-thumb.png"
+                alt="Clyra prototype preview"
+                class="max-h-[85%] w-auto rounded-2xl shadow-xl border border-white/10"
+              />
+              <p class="mt-3 text-xs text-slate-300">
+                Design prototype video couldn’t load in this browser.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+    (function () {
+      const video = document.getElementById("clyra-video");
+      const fallback = document.getElementById("clyra-fallback");
+      if (!video) return;
+
+      const forcePlay = async () => {
+        try {
+          video.muted = true;
+          await video.play();
+        } catch (e) {}
+      };
+
+      window.addEventListener("load", forcePlay);
+      video.addEventListener("canplay", forcePlay);
+
+      const retryOnce = () => {
+        forcePlay();
+        window.removeEventListener("pointerdown", retryOnce);
+        window.removeEventListener("keydown", retryOnce);
+      };
+
+      window.addEventListener("pointerdown", retryOnce);
+      window.addEventListener("keydown", retryOnce);
+
+      video.addEventListener("error", () => {
+        video.classList.add("hidden");
+        fallback.classList.remove("hidden");
+        fallback.classList.add("flex");
+      });
+    })();
+    </script>
+
+
+    <!-- ===================== Product overview (revamped) ===================== -->
+    <section id="overview" class="max-w-6xl mx-auto py-8">
+      <h2 class="text-3xl font-bold text-slate-900 mb-6">Product overview</h2>
+
+      <!-- What is Clyra? — single, full-width intro block -->
+      <article class="rounded-3xl bg-gradient-to-r from-[#5A8EFF]/10 to-white border border-[#5A8EFF]/30 p-6 sm:p-8 shadow-sm mb-8">
+        <span class="inline-flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-[#3063fc]">
+          <span class="h-1.5 w-1.5 rounded-full bg-[#3063fc]"></span> What is Clyra?
+        </span>
+        <p class="mt-3 text-lg sm:text-xl leading-relaxed text-slate-700">
+          <span class="font-semibold">Clyra</span> is an AI productivity assistant that
+          <span class="font-medium">turns incoming emails into structured, prioritized tasks</span> and automatically
+          <span class="font-medium">slots them into your available calendar time</span>. It blends email understanding with
+          <span class="font-medium">health and weather signals</span> to build plans that are realistic and balanced, while an
+          agentic UI proposes actions for you to approve—so you spend less time triaging and more time doing.
+        </p>
+        <ul class="mt-4 grid sm:grid-cols-2 gap-2 text-slate-700">
+          <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-[#3063fc]"></span> Email → task conversion with detailed labels</li>
+          <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-[#3063fc]"></span> Health &amp; weather–aware scheduling</li>
+          <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-[#3063fc]"></span> Conflict-free placement across Google/Apple/Outlook calendars</li>
+          <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-[#3063fc]"></span> Agent proposes &amp; executes; you approve</li>
+        </ul>
+      </article>
+
+      <!-- Secondary cards below -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Why it matters -->
+        <article class="rounded-2xl border border-[#5A8EFF]/70 bg-white p-6 shadow-sm">
+          <h3 class="text-xl font-semibold mb-2">Why it matters</h3>
+          <p class="text-slate-600">
+            Knowledge workers spend too much time translating emails into action. Clyra
+            <span class="font-medium">reduces cognitive load</span>, <span class="font-medium">automates prioritization</span>,
+            and keeps plans aligned with real-world context—resulting in
+            <span class="font-medium">fewer dropped balls, calmer days</span>, and smoother handoffs.
+          </p>
+        </article>
+
+        <!-- My role & timeline -->
+        <article class="rounded-2xl border border-[#5A8EFF]/70 bg-white p-6 shadow-sm">
+          <h3 class="text-xl font-semibold mb-2">My role &amp; timeline</h3>
+          <ul class="text-slate-700 space-y-2">
+            <li>• <span class="font-medium">UX Design Lead</span> for a 4-designer pod</li>
+            <li>• End-to-end in ~4 weeks: research → flows → wireframes → hi-fi prototype</li>
+            <li>• <span class="font-medium">Smooth handoff</span> with PMs &amp; devs via Notion (specs, redlines, tokens, QA walkthroughs)</li>
+            <li>• Product renamed from <em>Syncora</em> to <span class="font-medium">Clyra</span> before development</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Design Decisions -->
+    <section id="design-decisions" class="max-w-6xl mx-auto py-4">
+      <h2 class="text-3xl font-bold mb-6">Design Decisions</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/15 p-6 shadow-sm">
+          <h3 class="font-semibold mb-2">Email-to-action clarity first</h3>
+          <p class="text-slate-700 text-sm">
+            Structured the core flow to convert unstructured email threads into clear tasks, labels, priorities, and timelines to reduce triage effort.
+          </p>
+        </article>
+        <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/15 p-6 shadow-sm">
+          <h3 class="font-semibold mb-2">Human-in-control agent behavior</h3>
+          <p class="text-slate-700 text-sm">
+            Designed agentic interactions around proposal + approval, so automation helps users move faster without removing user control.
+          </p>
+        </article>
+        <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/15 p-6 shadow-sm">
+          <h3 class="font-semibold mb-2">Context-aware scheduling</h3>
+          <p class="text-slate-700 text-sm">
+            Used health and weather context as inputs in planning so schedules feel realistic and sustainable, not just technically optimized.
+          </p>
+        </article>
+        <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/15 p-6 shadow-sm">
+          <h3 class="font-semibold mb-2">Cross-calendar reliability</h3>
+          <p class="text-slate-700 text-sm">
+            Prioritized conflict-free placement across Google, Apple, and Outlook calendars to support real-world adoption and reduce missed work.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- TARGET USERS -->
+    <section id="target-users" class="max-w-6xl mx-auto py-8">
+      <h2 class="text-3xl font-bold mb-6">Target users</h2>
+      <p class="text-slate-600 mb-8 max-w-3xl">
+        Clyra helps busy people turn messages and meetings into a balanced, realistic day plan.
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <article class="rounded-2xl border border-[#5A8EFF]/30 bg-[#5A8EFF]/10 p-5 shadow-sm">
+          <h3 class="font-semibold">ICs & team leads</h3>
+          <p class="text-sm text-slate-600 mt-2">
+            Juggling tasks, stand-ups, and DMs. Need a single plan that stays current.
+          </p>
+        </article>
+
+        <article class="rounded-2xl border border-[#5A8EFF]/30 bg-[#5A8EFF]/10 p-5 shadow-sm">
+          <h3 class="font-semibold">Founders</h3>
+          <p class="text-sm text-slate-600 mt-2">
+            Constant context-switching; want fast triage from emails to calendar.
+          </p>
+        </article>
+
+        <article class="rounded-2xl border border-[#5A8EFF]/30 bg-[#5A8EFF]/10 p-5 shadow-sm">
+          <h3 class="font-semibold">Ops / PMs</h3>
+          <p class="text-sm text-slate-600 mt-2">
+            Coordinate people + timelines; need conflict-free, auto-rescheduled plans.
+          </p>
+        </article>
+
+        <article class="rounded-2xl border border-[#5A8EFF]/30 bg-[#5A8EFF]/10 p-5 shadow-sm">
+          <h3 class="font-semibold">Remote workers</h3>
+          <p class="text-sm text-slate-600 mt-2">
+            Distributed hours & meetings; want wellness-aware breaks and focus blocks.
+          </p>
+        </article>
+      </div>
+    </section>
+
+
+    <!-- ===================== User research ===================== -->
+    <section id="research" class="max-w-6xl py-8">
+      <h2 class="text-3xl font-bold text-slate-900 mb-6">User research</h2>
+
+      <!-- Summary cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+        <div class="rounded-2xl border border-[#5A8EFF]/30 bg-gradient-to-l from-[#5A8EFF]/5 to-white p-6 shadow-sm">
+          <p class="text-sm text-slate-500">Study</p>
+          <p class="text-lg font-semibold">AI Daily Assistant — User Needs (Maze)</p>
+          <p class="text-slate-700 text-sm mt-2">n ≈ 14 respondents (per screenshot), 36 blocks.</p>
+        </div>
+        <div class="rounded-2xl border border-[#5A8EFF]/30 bg-gradient-to-t from-[#5A8EFF]/10 to-white p-6 shadow-sm">
+          <p class="text-sm text-slate-500">Method</p>
+          <p class="text-lg font-semibold">Quant + qual survey</p>
+          <p class="text-slate-700 text-sm mt-2">Daily planning habits, email dependency, work–life balance, weather/health usage, pricing.</p>
+        </div>
+        <div class="rounded-2xl border border-[#5A8EFF]/30 bg-gradient-to-r from-[#5A8EFF]/5 to-white p-6 shadow-sm">
+          <p class="text-sm text-slate-500">Key outcome</p>
+          <p class="text-lg font-semibold">Strong intent to adopt</p>
+          <p class="text-slate-700 text-sm mt-2">Email-driven tasks + calendar auto-scheduling rose to the top as must-haves.</p>
+        </div>
+      </div>
+
+      <!-- Insights list -->
+      <div class="rounded-2xl border border-[#5A8EFF]/30 bg-gradient-to-t from-[#5A8EFF]/10 to-white p-6 shadow-sm space-y-4">
+        <h3 class="text-xl font-semibold">Top insights</h3>
+        <ul class="list-disc list-inside text-slate-700 space-y-2">
+          <li><span class="font-medium">Email is a primary driver of work.</span> Many respondents rely on email to know “what to do today,” yet feel their UI slows them down.</li>
+          <li><span class="font-medium">Manual triage is the biggest friction.</span> People want long emails turned into tasks with due dates—without copy-pasting.</li>
+          <li><span class="font-medium">Scheduling support is valued.</span> Interest in a tool that <em>places</em> tasks into available times automatically, with conflict resolution.</li>
+          <li><span class="font-medium">Well-being matters.</span> Participants check weather frequently; a meaningful subset track health and believe it affects productivity.</li>
+          <li><span class="font-medium">Adoption &amp; pricing.</span> A freemium + premium model tested well; $10–$15/mo was commonly acceptable for automation + smart reminders.</li>
+        </ul>
+
+        <h4 class="font-semibold mt-6">Design implications</h4>
+        <ul class="list-disc list-inside text-slate-700 space-y-2">
+          <li>Prioritize <span class="font-medium">email → task extraction</span> accuracy and traceability.</li>
+          <li>Make <span class="font-medium">auto-scheduling</span> the default; keep a 1-tap manual override.</li>
+          <li>Surface <span class="font-medium">energy/weather guardrails</span> as gentle nudges, not blockers.</li>
+          <li>Offer a clear <span class="font-medium">free tier</span> with premium automation bundles.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- WHAT CLYRA OFFERS -->
+    <section id="what-clyra-offers" class="max-w-6xl mx-auto py-8">
+      <h2 class="text-3xl font-bold mb-6">What Clyra offers</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article class="rounded-2xl bg-gradient-to-br from-white to-[#5A8EFF]/15 border border-[#5A8EFF]/30 p-6 shadow-sm">
+          <h3 class="font-semibold">Email to Action</h3>
+          <p class="text-sm text-slate-700 mt-2">Summaries, action items, and due dates pulled straight into your plan.</p>
+        </article>
+
+        <article class="rounded-2xl bg-gradient-to-br from-white to-[#5A8EFF]/15 border border-[#5A8EFF]/30 p-6 shadow-sm">
+          <h3 class="font-semibold">Smart scheduling</h3>
+          <p class="text-sm text-slate-700 mt-2">Auto-slot tasks; resolve conflicts; respect focus and no-meeting hours.</p>
+        </article>
+
+        <article class="rounded-2xl bg-gradient-to-br from-white to-[#5A8EFF]/15 border border-[#5A8EFF]/30 p-6 shadow-sm">
+          <h3 class="font-semibold">Adaptive rescheduling</h3>
+          <p class="text-sm text-slate-700 mt-2">Reacts to changes, wellness signals, and weather to keep plans realistic.</p>
+        </article>
+
+        <article class="rounded-2xl bg-gradient-to-br from-white to-[#5A8EFF]/15 border border-[#5A8EFF]/30 p-6 shadow-sm">
+          <h3 class="font-semibold">Voice + chat</h3>
+          <p class="text-sm text-slate-700 mt-2">“What’s my day?” Get a spoken plan or nudge tasks hands-free.</p>
+        </article>
+
+        <article class="rounded-2xl bg-gradient-to-br from-white to-[#5A8EFF]/15 border border-[#5A8EFF]/30 p-6 shadow-sm">
+          <h3 class="font-semibold">Integrations</h3>
+          <p class="text-sm text-slate-700 mt-2">Gmail, Google Calendar, and health/weather data to personalize plans.</p>
+        </article>
+
+        <article class="rounded-2xl bg-gradient-to-br from-white to-[#5A8EFF]/25 border border-[#5A8EFF]/30 p-6 shadow-sm">
+          <h3 class="font-semibold">Privacy & control</h3>
+          <p class="text-sm text-slate-700 mt-2">Local preferences, clear permissions, and easy pause for sensitive hours.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- USER PERSONAS (table with Needs column) -->
+    <section id="personas" class="max-w-6xl mx-auto py-8">
+      <h2 class="text-3xl font-bold mb-6">User Personas</h2>
+
+      <div class="overflow-x-auto rounded-2xl border border-[#5A8EFF]/30 shadow-sm">
+        <table class="min-w-full text-left">
+          <thead class="bg-[#5A8EFF]/20">
+            <tr class="text-slate-800">
+              <th class="px-6 py-4 font-semibold w-[22%]">Persona</th>
+              <th class="px-6 py-4 font-semibold w-[28%]">Bio &amp; Goals</th>
+              <th class="px-6 py-4 font-semibold w-[25%]">Pain Points</th>
+              <th class="px-6 py-4 font-semibold w-[25%]">Needs</th>
+            </tr>
+          </thead>
+          <tbody class="text-slate-700">
+            <!-- Row 1 -->
+            <tr class="bg-white">
+              <td class="align-top px-6 py-5">
+                <div class="font-semibold">Anita Mehra, 28</div>
+                <div class="text-slate-500 text-sm">Product Designer • Hybrid (NYC)</div>
+              </td>
+              <td class="align-top px-6 py-5">
+                Wants a clear, realistic day plan and fewer ad-hoc “quick sync?” pings so she can finish design work.
+              </td>
+              <td class="align-top px-6 py-5">
+                Inbox turns into tasks manually; meetings collide with deep-work windows.
+              </td>
+              <td class="align-top px-6 py-5">
+                Email → task extraction, protected focus blocks, and gentle reminders to stay on plan.
+              </td>
+            </tr>
+
+            <!-- Row 2 -->
+            <tr class="bg-[#F9FAFB]">
+              <td class="align-top px-6 py-5">
+                <div class="font-semibold">Rohan Desai, 34</div>
+                <div class="text-slate-500 text-sm">Engineering Lead • Remote (PST)</div>
+              </td>
+              <td class="align-top px-6 py-5">
+                Aims to keep 1:1s and stand-ups aligned while preserving uninterrupted coding time.
+              </td>
+              <td class="align-top px-6 py-5">
+                Priorities shift hourly; constant re-planning and cross-timezone conflicts.
+              </td>
+              <td class="align-top px-6 py-5">
+                Smart auto-reschedule with constraints, timezone awareness, and quick accept/tweak controls.
+              </td>
+            </tr>
+
+            <!-- Row 3 -->
+            <tr class="bg-white">
+              <td class="align-top px-6 py-5">
+                <div class="font-semibold">Leah Santos, 41</div>
+                <div class="text-slate-500 text-sm">Operations Manager • On-site (EU)</div>
+              </td>
+              <td class="align-top px-6 py-5">
+                Needs reliable schedules across teams &amp; vendors with minimal back-and-forth.
+              </td>
+              <td class="align-top px-6 py-5">
+                Info scattered across email, chat, and spreadsheets; double-bookings happen.
+              </td>
+              <td class="align-top px-6 py-5">
+                Unified “email → action → calendar” pipeline, cross-calendar conflict detection, and shareable plans.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+
+    <!-- USER JOURNEY -->
+    <section id="user-journey" class="max-w-6xl mx-auto py-8">
+      <h2 class="text-3xl font-bold mb-6">User journey</h2>
+
+      <div class="rounded-2xl border border-[#5A8EFF]/30 overflow-hidden shadow-sm">
+        <div class="grid grid-cols-6 bg-[#5A8EFF]/15 text-sm font-semibold">
+          <div class="p-3">Stage / Experience</div>
+          <div class="p-3">Discover<br><span class="font-normal text-slate-500">Learn Clyra</span></div>
+          <div class="p-3">Connect<br><span class="font-normal text-slate-500">Link email & cal</span></div>
+          <div class="p-3">Plan<br><span class="font-normal text-slate-500">Generate day</span></div>
+          <div class="p-3">Execute<br><span class="font-normal text-slate-500">Focus & adapt</span></div>
+          <div class="p-3">Reflect<br><span class="font-normal text-slate-500">Review</span></div>
+        </div>
+
+        <div class="grid grid-cols-6 divide-x divide-y divide-gray-200 text-sm">
+          <div class="p-3 font-medium bg-white">Actions</div>
+          <div class="p-3 bg-white">See value props; try demo</div>
+          <div class="p-3 bg-white">OAuth connect; preferences</div>
+          <div class="p-3 bg-white">Email→tasks; auto-slot in calendar</div>
+          <div class="p-3 bg-white">Run focus blocks; smart nudges</div>
+          <div class="p-3 bg-white">Digest of wins, slips, carry-overs</div>
+
+          <div class="p-3 font-medium bg-[#F9FAFB]">Think & Feel</div>
+          <div class="p-3 bg-[#F9FAFB]">Curious, hopeful</div>
+          <div class="p-3 bg-[#F9FAFB]">Safe, in control</div>
+          <div class="p-3 bg-[#F9FAFB]">Relief: plan appears</div>
+          <div class="p-3 bg-[#F9FAFB]">Supported, less stress</div>
+          <div class="p-3 bg-[#F9FAFB]">Clarity; improvement</div>
+
+          <div class="p-3 font-medium bg-white">Touchpoints</div>
+          <div class="p-3 bg-white">Landing, video</div>
+          <div class="p-3 bg-white">Connectors, setup</div>
+          <div class="p-3 bg-white">Task board & calendar</div>
+          <div class="p-3 bg-white">Desktop / mobile app</div>
+          <div class="p-3 bg-white">Email recap; dashboard</div>
+
+          <div class="p-3 font-medium bg-[#F9FAFB]">Pain points</div>
+          <div class="p-3 bg-[#F9FAFB]">“Another tool?” skepticism</div>
+          <div class="p-3 bg-[#F9FAFB]">Privacy concerns</div>
+          <div class="p-3 bg-[#F9FAFB]">Over-packed plan</div>
+          <div class="p-3 bg-[#F9FAFB]">Unplanned interrupts</div>
+          <div class="p-3 bg-[#F9FAFB]">No learning loop</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESIGN DECISIONS -->
+    <section id="design-decisions" class="max-w-6xl mx-auto py-8">
+      <h2 class="text-3xl font-bold mb-6">Design decisions</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <article class="rounded-2xl border border-[#5A8EFF]/30 bg-gradient-to-br from-white to-[#5A8EFF]/25 p-6 shadow-sm">
+          <h3 class="font-semibold">Inbox triage first</h3>
+          <p class="text-sm text-slate-700 mt-2">
+            Most days start in email. The primary action surfaces “Convert to tasks” with labels (owner, due, effort).
+          </p>
+        </article>
+
+        <article class="rounded-2xl border border-[#5A8EFF]/30 bg-gradient-to-br from-white to-[#5A8EFF]/25 p-6 shadow-sm">
+          <h3 class="font-semibold">Calendar as source of truth</h3>
+          <p class="text-sm text-slate-700 mt-2">
+            A single, editable plan. Reschedules preserve constraints (timezones, no-meeting windows, travel buffers).
+          </p>
+        </article>
+
+        <article class="rounded-2xl border border-[#5A8EFF]/30 bg-gradient-to-br from-white to-[#5A8EFF]/25 p-6 shadow-sm">
+          <h3 class="font-semibold">Focus-forward UX</h3>
+          <p class="text-sm text-slate-700 mt-2">
+            Big primary CTA per step, compact chip filters, and ambient progress to lower cognitive load.
+          </p>
+        </article>
+
+        <article class="rounded-2xl border border-[#5A8EFF]/30 bg-gradient-to-br from-white to-[#5A8EFF]/25 p-6 shadow-sm">
+          <h3 class="font-semibold">Clear handoff</h3>
+          <p class="text-sm text-slate-700 mt-2">
+            Redlines, component specs, and tokens exported with an interaction walkthrough to devs for smooth delivery.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- USP -->
+    <section id="usp" class="max-w-6xl mx-auto py-8">
+      <h2 class="text-3xl font-bold mb-6">Unique selling propositions</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <article class="rounded-2xl bg-white border border-[#5A8EFF]/70 p-6 shadow-sm">
+          <h3 class="font-semibold">Email → Action → Calendar</h3>
+          <p class="text-slate-700 text-sm mt-2">
+            Auto-summarizes mail, extracts tasks, and places them into calendar slots.
+          </p>
+        </article>
+        <article class="rounded-2xl bg-white border border-[#5A8EFF]/70 p-6 shadow-sm">
+          <h3 class="font-semibold">Adaptive day plan</h3>
+          <p class="text-slate-700 text-sm mt-2">
+            Re-orders priorities in real-time with wellness & weather signals; preserves focus time.
+          </p>
+        </article>
+        <article class="rounded-2xl bg-white border border-[#5A8EFF]/70 p-6 shadow-sm">
+          <h3 class="font-semibold">Human-in-the-loop</h3>
+          <p class="text-slate-700 text-sm mt-2">
+            One-tap accept, tweak, or defer. Clyra learns personal preferences over time.
+          </p>
+        </article>
+      </div>
+    </section>
+
+
+  </section>
+  </main>
+
+    <!-- FOOTER -->
+      <footer class="bg-[#5A8EFF]/60 text-black mt-8 border-t border-black relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 py-6 sm:py-4
+                    flex flex-col sm:flex-row sm:items-center sm:justify-between
+                    gap-4 sm:gap-6">
+
+          <!-- Back to top (first on mobile, right on desktop) -->
+          <a href="#untanglingchallenges"
+            class="order-1 sm:order-none w-full sm:w-auto
+                    inline-flex items-center justify-center gap-2
+                    rounded-full bg-white px-4 py-2 text-sm font-medium
+                    border border-black/20 hover:bg-white/90 transition"
+            aria-label="Back to top">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#3063FC" d="M12 5.5 3 14.5l1.5 1.5 7.5-7.5 7.5 7.5 1.5-1.5L12 5.5Z"/>
+            </svg>
+            Back to top
+          </a>
+
+          <!-- Socials (full-width stack on mobile, inline on desktop) -->
+          <div class="order-2 sm:order-none w-full sm:w-auto
+                      flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <!-- subtle divider only on mobile -->
+            <div class="h-px bg-black/20 sm:hidden"></div>
+
+            <a href="https://www.linkedin.com/in/sudiksha-rajavaram/" target="_blank"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2
+                      rounded-xl border border-black/20 bg-white/80 px-3 py-2 text-sm font-medium
+                      hover:bg-white transition">
+              <img src="https://cdn.iconscout.com/icon/free/png-512/free-linkedin-42-151143.png"
+                  alt="LinkedIn Logo" class="w-4 h-4"/>
+              LinkedIn
+            </a>
+
+            <a href="https://www.figma.com/@rajavaramsudiks" target="_blank"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2
+                      rounded-xl border border-black/20 bg-white/80 px-3 py-2 text-sm font-medium
+                      hover:bg-white transition">
+              <img src="https://cdn.iconscout.com/icon/free/png-512/free-figma-2296071-1912030.png"
+                  alt="Figma Logo" class="w-4 h-4"/>
+              Figma
+            </a>
+          </div>
+
+          <!-- Name (centered on mobile, left on desktop) -->
+          <p class="order-3 sm:order-none text-center sm:text-left text-sm font-medium">
+            &copy; 2025 Sudiksha Rajavaram
+          </p>
+
+        </div>
+      </footer>
+
+</body>
+</html>

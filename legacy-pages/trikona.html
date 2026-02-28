@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trikona - Construction Game</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Space Grotesk', sans-serif; }
+    .nav-link {
+      position: relative;
+      display: inline-block;
+      text-decoration: none;
+      color: #2d3748;
+      font-weight: 600;
+      font-size: clamp(1.1rem, 1.05vw, 1.45rem);
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .nav-link:hover::after { transform: scaleX(1); }
+    .nav-link:hover { color: #3063fc; }
+    .menu-transition { transition: max-height 0.3s ease-out; overflow: hidden; }
+  </style>
+</head>
+<body class="bg-[#5A8EFF]/25">
+  <header class="fixed inset-x-0 top-0 z-30">
+    <nav class="absolute inset-x-0 top-2 mx-auto max-w-[1100px] bg-[#5A8EFF]/70 backdrop-blur-sm border-[1.5px] border-black py-3 px-6 rounded-[12px] shadow-lg z-50">
+      <div class="flex items-center justify-between">
+        <a href="index.html#about" class="text-lg font-semibold text-black">SUDIKSHA RAJAVARAM</a>
+        <button id="menu-btn" class="sm:hidden focus:outline-none" aria-label="Open navigation">
+          <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+        <div class="hidden sm:flex gap-6">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="resume.html" class="nav-link">Resume</a>
+          <a href="projects.html" class="nav-link">Projects</a>
+          <a href="contact.html" class="nav-link">Contact Me</a>
+        </div>
+      </div>
+      <div id="mobile-menu" class="sm:hidden menu-transition max-h-0">
+        <div class="flex flex-col gap-4 pt-4">
+          <a href="index.html" class="nav-link block">Home</a>
+          <a href="resume.html" class="nav-link block">Resume</a>
+          <a href="projects.html" class="nav-link block">Projects</a>
+          <a href="contact.html" class="nav-link block">Contact Me</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="bg-white rounded-3xl mx-auto my-4 max-w-[95vw] px-4 shadow-lg mt-12 mb-12 pb-8">
+    <main id="trikona" class="pt-[80px] max-w-4xl mx-auto">
+      <a href="projects.html" class="text-[12px] text-gray-700 hover:underline">← Return to all Projects</a>
+      <h1 class="text-4xl font-bold text-center mt-4 mb-8">Trikona - Construction Game</h1>
+
+      <section class="mb-14">
+        <h2 class="text-2xl font-semibold mb-6">Case Study</h2>
+        <div class="max-w-6xl mx-auto">
+          <div class="mb-8">
+            <div class="flex items-center gap-3 text-[11px] font-semibold tracking-widest uppercase text-[#3063FC]">
+              <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#3063FC]">
+                <span class="absolute inset-0 rounded-full bg-[#3063FC]/40 animate-ping"></span>
+              </span>
+              Project Snapshot
+            </div>
+            <h3 class="mt-3 text-3xl sm:text-4xl font-bold text-slate-900">
+              Mission-driven construction bidding and learning simulation
+            </h3>
+            <p class="mt-4 text-base text-slate-600 max-w-3xl">
+              Trikona is a construction game platform with two modes: a bid simulation mode for large
+              real-world-style projects and a learning mode where users practice optimal building decisions.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <span class="inline-flex items-center gap-2 rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+                <span class="text-xs font-bold tracking-widest">IND</span>
+                Construction Tech
+              </span>
+              <span class="inline-flex items-center gap-2 rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+                <span class="text-xs font-bold tracking-widest">ROLE</span>
+                UX Design · Research · Prototype
+              </span>
+              <span class="inline-flex items-center gap-2 rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+                <span class="text-xs font-bold tracking-widest">TOOLS</span>
+                Figma · HTML/CSS · React
+              </span>
+            </div>
+            <div class="mt-7 h-px w-full bg-gradient-to-r from-transparent via-[#3063FC]/40 to-transparent"></div>
+          </div>
+
+          <div class="mb-4 inline-flex rounded-full border border-[#3063FC]/25 bg-white/60 p-1">
+            <button
+              type="button"
+              id="tab-trikona-game"
+              class="trikona-tab-btn rounded-full px-5 py-2 text-sm font-semibold transition bg-[#3063FC] text-white"
+              data-tab="game"
+              aria-selected="true"
+            >
+              Game
+            </button>
+            <button
+              type="button"
+              id="tab-trikona-website"
+              class="trikona-tab-btn rounded-full px-5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-[#3063FC]/10"
+              data-tab="website"
+              aria-selected="false"
+            >
+              Website
+            </button>
+          </div>
+
+          <div
+            id="trikona-game-panel"
+            class="trikona-video-panel relative rounded-[30px] overflow-hidden bg-gradient-to-br from-[#6CA8FF] to-[#3B82F6] border border-[#3063FC]/40 shadow-[0_30px_80px_rgba(48,99,252,0.35)]"
+          >
+            <div class="w-full aspect-video md:aspect-[16/9] bg-black flex items-center justify-center">
+              <video id="trikona-game-video" class="w-full h-full object-contain" muted autoplay playsinline loop preload="auto" poster="/images/construction-world-1.png">
+                <source src="/images/project13-thumb.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </div>
+
+          <div
+            id="trikona-website-panel"
+            class="trikona-video-panel hidden relative rounded-[30px] overflow-hidden bg-gradient-to-br from-[#6CA8FF] to-[#3B82F6] border border-[#3063FC]/40 shadow-[0_30px_80px_rgba(48,99,252,0.35)]"
+          >
+            <div class="w-full aspect-video md:aspect-[16/9] bg-black flex items-center justify-center">
+              <video id="trikona-website-video" class="w-full h-full object-contain" muted autoplay playsinline loop preload="auto" poster="/images/construction-world-1.png">
+                <source src="/images/web-optimized/project14-thumb-web.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="max-w-6xl mx-auto py-8">
+        <h2 class="text-3xl font-bold mb-4">Project Description</h2>
+        <p class="text-gray-700 leading-relaxed">
+          In bid mode, an admin creates a mission for a large project like a bridge,
+          including location, specs, materials, constraints, and deadline. Bidders then build execution plans
+          and submit budgets based on what they already own vs. what they must source. In learning mode, users
+          practice construction decisions and receive guidance on material choice, structural logic, and build quality.
+        </p>
+      </section>
+
+      <section class="max-w-6xl mx-auto py-8">
+        <h2 class="text-3xl font-bold mb-6">Design Decisions</h2>
+        <div class="grid gap-6 md:grid-cols-2">
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-[#5A8EFF]/10 p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Role-based information architecture</h3>
+            <p class="text-gray-700">
+              Separated admin, bidder, and learner journeys to reduce cognitive load and keep each dashboard action-focused.
+            </p>
+          </article>
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-[#5A8EFF]/10 p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Budget realism via resource-aware inputs</h3>
+            <p class="text-gray-700">
+              Added owned-assets logic (equipment, transport proximity, material inventory) so bids reflect real operational cost.
+            </p>
+          </article>
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-[#5A8EFF]/10 p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Mission-first UX for comparability</h3>
+            <p class="text-gray-700">
+              Structured mission briefs with consistent fields so multiple bidder submissions are easier to compare plan-vs-cost.
+            </p>
+          </article>
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-[#5A8EFF]/10 p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Learning feedback built into play loop</h3>
+            <p class="text-gray-700">
+              Designed instant guidance moments during build tasks, helping users improve decisions while staying in flow.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="max-w-6xl mx-auto py-8">
+        <h2 class="text-3xl font-bold mb-4">Outcome</h2>
+        <p class="text-gray-700 leading-relaxed">
+          Trikona supports both procurement-style decision making and skills development: admins can evaluate bids on strategy and
+          cost quality, while learners build construction judgment through interactive, high-fidelity scenarios.
+        </p>
+      </section>
+    </main>
+  </section>
+
+  <footer class="bg-[#5A8EFF]/60 text-black mt-8 border-t border-black relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 py-6 sm:py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6">
+      <a href="#trikona" class="order-1 sm:order-none w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium border border-black/20 hover:bg-white/90 transition" aria-label="Back to top">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="#3063FC" d="M12 5.5 3 14.5l1.5 1.5 7.5-7.5 7.5 7.5 1.5-1.5L12 5.5Z"/>
+        </svg>
+        Back to top
+      </a>
+      <div class="order-2 sm:order-none w-full sm:w-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+        <a href="https://www.linkedin.com/in/sudiksha-rajavaram/" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl border border-black/20 bg-white/80 px-3 py-2 text-sm font-medium hover:bg-white transition">
+          <img src="https://cdn.iconscout.com/icon/free/png-512/free-linkedin-42-151143.png" alt="LinkedIn Logo" class="w-4 h-4"/>
+          LinkedIn
+        </a>
+        <a href="https://www.figma.com/@rajavaramsudiks" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl border border-black/20 bg-white/80 px-3 py-2 text-sm font-medium hover:bg-white transition">
+          <img src="https://cdn.iconscout.com/icon/free/png-512/free-figma-2296071-1912030.png" alt="Figma Logo" class="w-4 h-4"/>
+          Figma
+        </a>
+      </div>
+      <p class="order-3 sm:order-none text-center sm:text-left text-sm font-medium">
+        &copy; 2025 Sudiksha Rajavaram
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuBtn && mobileMenu) {
+      let isOpen = false;
+      menuBtn.addEventListener('click', () => {
+        isOpen = !isOpen;
+        mobileMenu.style.maxHeight = isOpen ? mobileMenu.scrollHeight + 'px' : '0px';
+      });
+    }
+
+    (function () {
+      const tabGame = document.getElementById('tab-trikona-game');
+      const tabWebsite = document.getElementById('tab-trikona-website');
+      const gamePanel = document.getElementById('trikona-game-panel');
+      const websitePanel = document.getElementById('trikona-website-panel');
+      const gameVideo = document.getElementById('trikona-game-video');
+      const websiteVideo = document.getElementById('trikona-website-video');
+
+      if (!tabGame || !tabWebsite || !gamePanel || !websitePanel) return;
+
+      const tryPlay = async (video) => {
+        if (!video) return;
+        try {
+          video.muted = true;
+          await video.play();
+        } catch (e) {
+          // Autoplay may be blocked by browser until interaction.
+        }
+      };
+
+      const setActive = (which) => {
+        const isGame = which === 'game';
+
+        gamePanel.classList.toggle('hidden', !isGame);
+        websitePanel.classList.toggle('hidden', isGame);
+
+        tabGame.setAttribute('aria-selected', isGame ? 'true' : 'false');
+        tabWebsite.setAttribute('aria-selected', isGame ? 'false' : 'true');
+
+        tabGame.classList.toggle('bg-[#3063FC]', isGame);
+        tabGame.classList.toggle('text-white', isGame);
+        tabGame.classList.toggle('text-slate-700', !isGame);
+        tabGame.classList.toggle('hover:bg-[#3063FC]/10', !isGame);
+
+        tabWebsite.classList.toggle('bg-[#3063FC]', !isGame);
+        tabWebsite.classList.toggle('text-white', !isGame);
+        tabWebsite.classList.toggle('text-slate-700', isGame);
+        tabWebsite.classList.toggle('hover:bg-[#3063FC]/10', isGame);
+
+        if (isGame) {
+          if (websiteVideo) websiteVideo.pause();
+          tryPlay(gameVideo);
+        } else {
+          if (gameVideo) gameVideo.pause();
+          tryPlay(websiteVideo);
+        }
+      };
+
+      tabGame.addEventListener('click', () => setActive('game'));
+      tabWebsite.addEventListener('click', () => setActive('website'));
+
+      window.addEventListener('load', () => tryPlay(gameVideo));
+      setActive('game');
+    })();
+  </script>
+</body>
+</html>
