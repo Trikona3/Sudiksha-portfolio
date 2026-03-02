@@ -37,7 +37,8 @@ export function generateStaticParams() {
 }
 
 export default async function CatchAllPage({ params }) {
-  const routePath = resolveRouteFromSlug(params.slug);
+  const { slug } = await params;
+  const routePath = resolveRouteFromSlug(slug);
   if (!routePath) {
     notFound();
   }
