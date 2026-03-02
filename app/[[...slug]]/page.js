@@ -1,8 +1,10 @@
-import fs from 'node:fs';
-import path from 'node:path';
 import { notFound } from 'next/navigation';
 import LegacyPageRenderer from '../../components/LegacyPageRenderer';
 import { htmlToRoute, knownRoutes, routeTitles, routeToFile } from '../../lib/legacyRoutes';
+
+export const dynamic = 'force-static';
+export const dynamicParams = false;
+export const revalidate = false;
 
 function resolveRouteFromSlug(slugParts) {
   const routePath = `/${(slugParts || []).join('/')}`.replace(/\/$/, '') || '/';
@@ -19,9 +21,13 @@ function resolveRouteFromSlug(slugParts) {
   return null;
 }
 
-function readLegacyHtml(fileName) {
-  const filePath = path.join(process.cwd(), 'legacy-pages', fileName);
-  return fs.readFileSync(filePath, 'utf8');
+async function readLegacyHtml(fileName) {
+  const [{ readFile }, { join }] = await Promise.all([
+    import('node:fs/promises'),
+    import('node:path')
+  ]);
+  const filePath = join(process.cwd(), 'legacy-pages', fileName);
+  return readFile(filePath, 'utf8');
 }
 
 export function generateStaticParams() {
@@ -30,7 +36,7 @@ export function generateStaticParams() {
   );
 }
 
-export default function CatchAllPage({ params }) {
+export default async function CatchAllPage({ params }) {
   const routePath = resolveRouteFromSlug(params.slug);
   if (!routePath) {
     notFound();
@@ -41,6 +47,6 @@ export default function CatchAllPage({ params }) {
     notFound();
   }
 
-  const html = readLegacyHtml(fileName);
+  const html = await readLegacyHtml(fileName);
   return <LegacyPageRenderer html={html} title={routeTitles[routePath]} />;
 }
