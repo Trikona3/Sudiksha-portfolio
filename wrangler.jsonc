@@ -1,7 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "sudiksha-portfolio",
-  "main": ".open-next/worker.js", // Pointing back here since you confirmed it exists
+  "main": ".open-next/worker.js",
   "compatibility_date": "2024-09-27",
   "compatibility_flags": ["nodejs_compat"],
   "assets": {
@@ -13,5 +13,8 @@
   },
   "observability": {
     "enabled": true
+  },
+  "build": {
+    "command": "npx opennextjs-cloudflare build && npx opennextjs-cloudflare populateCache local"
   }
 }
