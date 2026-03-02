@@ -1,14 +1,20 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "main": ".open-next/worker.js",
+  // OpenNext outputs the worker entry point here by default
+  "main": ".open-next/cloudflare-templates/worker.js", 
   "name": "sudiksha-portfolio",
-  "compatibility_date": "2025-09-27",
+  "compatibility_date": "2024-09-27", 
   "compatibility_flags": [
     "nodejs_compat"
   ],
   "assets": {
+    // Ensure this directory exists in your local .open-next folder after building
     "directory": ".open-next/assets",
     "binding": "ASSETS"
+  },
+  "vars": {
+    // Force Cloudflare to use a modern Node version
+    "NODE_VERSION": "20"
   },
   "services": [
     {
