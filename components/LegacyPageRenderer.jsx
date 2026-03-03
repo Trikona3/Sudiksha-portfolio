@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { transformLegacyHtml } from '../lib/transformLegacyHtml';
 
@@ -86,11 +86,43 @@ function ensureGlobalAosLoaded() {
   return window.__legacyAosLoadingPromise;
 }
 
-export default function LegacyPageRenderer({ html, title }) {
+export default function LegacyPageRenderer({ html, title, sourcePath }) {
   const rootRef = useRef(null);
   const router = useRouter();
   const pathname = usePathname();
-  const transformedHtml = useMemo(() => transformLegacyHtml(html), [html]);
+  const [resolvedHtml, setResolvedHtml] = useState(html || '');
+
+  useEffect(() => {
+    let isActive = true;
+    if (html) {
+      setResolvedHtml(html);
+      return () => {
+        isActive = false;
+      };
+    }
+    if (!sourcePath) {
+      return () => {
+        isActive = false;
+      };
+    }
+    fetch(sourcePath, { cache: 'no-store' })
+      .then((res) => (res.ok ? res.text() : Promise.reject(new Error('Failed to load legacy page'))))
+      .then((text) => {
+        if (isActive) {
+          setResolvedHtml(text);
+        }
+      })
+      .catch(() => {
+        if (isActive) {
+          setResolvedHtml('<html><body><main style="padding:2rem;font-family:sans-serif">Failed to load page content.</main></body></html>');
+        }
+      });
+    return () => {
+      isActive = false;
+    };
+  }, [html, sourcePath]);
+
+  const transformedHtml = useMemo(() => transformLegacyHtml(resolvedHtml || ''), [resolvedHtml]);
 
   useEffect(() => {
     if ('scrollRestoration' in window.history) {
@@ -99,6 +131,9 @@ export default function LegacyPageRenderer({ html, title }) {
   }, []);
 
   useEffect(() => {
+    if (!resolvedHtml) {
+      return undefined;
+    }
     const mountEl = rootRef.current;
     if (!mountEl) {
       return undefined;
@@ -381,7 +416,10 @@ export default function LegacyPageRenderer({ html, title }) {
         document.body.setAttribute('style', previousBodyStyle);
       }
     };
-  }, [pathname, router, title, transformedHtml]);
+  }, [pathname, router, title, transformedHtml, resolvedHtml]);
 
+  if (!resolvedHtml) {
+    return <div className="legacy-page-root" />;
+  }
   return <div ref={rootRef} className="legacy-page-root" />;
 }

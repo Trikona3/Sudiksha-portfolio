@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+  <html class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sudiksha Rajavaram — Contact</title>
+
+  <!-- Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body { font-family: 'Space Grotesk', sans-serif; }
+    .nav-link{position:relative;display:inline-block;text-decoration:none;color:#2d3748;font-weight:600;font-size:clamp(1.1rem,1.05vw,1.45rem)}
+    .nav-link::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:2px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+    .nav-link:hover::after{transform:scaleX(1)}
+    .nav-link:hover{color:#ffffff}
+    .menu-transition{transition:max-height .3s ease-out;overflow:hidden}
+
+    /* link underline slide utility */
+    .link-slide{position:relative;text-decoration:none}
+    .link-slide::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+    .link-slide:hover::after{transform:scaleX(1)}
+
+    /* floating labels */
+    .float-input:focus + label,
+    .float-input:not(:placeholder-shown) + label{
+      transform:translateY(-1.15rem) scale(.9);
+      opacity:.85;
+    }
+
+    /* underline only under the text */
+    .link-slide-text{
+      position: relative;
+      display: inline-block;
+    }
+    .link-slide-text::after{
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -2px;
+      height: 2px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .3s ease;
+    }
+    /* when the parent <a> is hovered */
+    a.group:hover .link-slide-text::after{
+      transform: scaleX(1);
+    }
+
+
+  </style>
+</head>
+<body class="bg-[#5A8EFF]/25">
+
+  <!-- NAV BAR -->
+  <header class="fixed inset-x-0 top-0 z-30">
+    <nav class="absolute inset-x-0 top-2 mx-auto max-w-[1100px] bg-[#5A8EFF]/70 backdrop-blur-sm border-[1.5px] border-black py-3 px-6 rounded-[12px] shadow-lg z-50">
+      <div class="flex items-center justify-between">
+        <a href="index.html#about" class="text-lg font-semibold text-black">SUDIKSHA RAJAVARAM</a>
+        <button id="menu-btn" class="sm:hidden focus:outline-none">
+          <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+        <div class="hidden sm:flex gap-6">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="resume.html" class="nav-link">Resume</a>
+          <a href="projects.html" class="nav-link">Projects</a>
+          <a href="contact.html" class="nav-link">Contact Me</a>
+        </div>
+      </div>
+      <div id="mobile-menu" class="sm:hidden menu-transition max-h-0">
+        <div class="flex flex-col gap-4 pt-4">
+          <a href="index.html" class="nav-link block">Home</a>
+          <a href="resume.html" class="nav-link block">Resume</a>
+          <a href="projects.html" class="nav-link block">Projects</a>
+          <a href="contact.html" class="nav-link block">Contact Me</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  
+  <main id="contact">
+  <section class="relative mx-auto mt-20 max-w-[1140px] px-6">
+    <!-- soft blobs -->
+    <div class="pointer-events-none absolute -top-20 -left-10 h-64 w-64 rounded-full bg-[#5A8EFF]/50 blur-3xl"></div>
+    <div class="pointer-events-none absolute -right-10 -top-10 h-64 w-64 rounded-full bg-[#3063fc]/30 blur-3xl"></div>
+
+    <div class="rounded-3xl border border-[#3063fc]/20 bg-white/70 backdrop-blur p-8 sm:p-10 shadow-lg">
+      <h1 class="text-3xl sm:text-4xl font-bold text-black">Let’s build something delightful.</h1>
+      <p class="mt-2 text-slate-700">
+        I read every message. The fastest way to reach me is email—typically within 24 hours.
+      </p>
+
+      <!-- quick actions -->
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="mailto:sudiksha0302@gmail.com"
+          class="inline-flex items-center gap-2 rounded-xl bg-[#3063fc] px-4 py-2 font-medium text-white hover:brightness-110 transition">
+          Email Sudiksha →
+        </a>
+
+        <a href="https://www.linkedin.com/in/sudiksha-rajavaram/" target="_blank"
+          class="group inline-flex items-center gap-2 rounded-xl border border-[#3063fc]/30 bg-white px-4 py-2 text-[#3063fc]">
+          <span class="link-slide-text">Connect on LinkedIn</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT GRID -->
+  <section class="mx-auto mt-8 max-w-[1140px] px-6">
+  
+  <!-- items-stretch makes both columns the same height -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-stretch">
+
+    <!-- LEFT COLUMN: single tall card with sections inside -->
+    <aside class="h-full">
+      <div class="h-full min-h-[560px] rounded-2xl border border-[#3063fc]/30 bg-white p-6 sm:p-8 shadow-lg flex flex-col">
+        <h2 class="text-xl font-semibold">Contact</h2>
+
+        <div class="mt-4 space-y-6 overflow-auto">
+          <!-- Primary Email -->
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <h3 class="text-lg font-semibold">Primary Email</h3>
+              <p class="text-slate-600 mt-1">For opportunities, collaborations, and questions.</p>
+              <a href="mailto:sudiksha0302@gmail.com"
+                 class="mt-2 inline-block text-[#3063fc] font-medium link-slide">sudiksha0302@gmail.com</a>
+            </div>
+            <button data-copy="sudiksha0302@gmail.com"
+                    class="mt-1 rounded-lg border border-blue-100 px-3 py-1.5 text-sm text-slate-700 hover:border-blue-200 hover:shadow-sm transition">
+              Copy
+            </button>
+          </div>
+
+          <hr class="border-blue-100">
+
+          <!-- University Email -->
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <h3 class="text-lg font-semibold">University Email</h3>
+              <a href="mailto:rajavaram.s@ufl.edu"
+                 class="mt-2 inline-block text-[#3063fc] font-medium link-slide">rajavaram.s@ufl.edu</a>
+            </div>
+            <button data-copy="rajavaram.s@ufl.edu"
+                    class="mt-1 rounded-lg border border-blue-100 px-3 py-1.5 text-sm text-slate-700 hover:border-blue-200 hover:shadow-sm transition">
+              Copy
+            </button>
+          </div>
+
+          <hr class="border-blue-100">
+
+          <!-- Elsewhere -->
+          <div>
+            <h3 class="text-lg font-semibold">Elsewhere</h3>
+            <div class="mt-2 flex flex-wrap gap-3">
+              <a href="https://www.linkedin.com/in/sudiksha-rajavaram/" target="_blank" class="link-slide text-[#3063fc]">LinkedIn →</a>
+              <a href="https://www.figma.com/@rajavaramsudiks" target="_blank" class="link-slide text-[#3063fc]">Figma →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- RIGHT COLUMN: form inside a matching tall card -->
+    <section class="h-full">
+      <div class="h-full min-h-[560px] rounded-2xl border border-[#3063fc]/30 bg-white/70 backdrop-blur p-6 sm:p-8 shadow-lg flex flex-col">
+        <h2 class="text-xl font-semibold">Send a message</h2>
+
+        <!-- make the form fill the card and keep the button pinned at bottom -->
+        <form id="contact-form" class="mt-2 flex-1 flex flex-col space-y-4">
+          <div class="relative">
+            <input class="float-input w-full rounded-lg border border-blue-100 bg-white px-2 py-3 outline-none focus:border-blue-300 focus:ring-2 focus:ring-[#3063fc]/20"
+                   id="name" name="name" placeholder=" " required />
+            <label for="name" class="pointer-events-none absolute left-3 top-3.5 text-slate-500 transition origin-left">Your name *</label>
+          </div>
+
+          <div class="relative">
+            <input class="float-input w-full rounded-lg border border-blue-100 bg-white px-2 py-3 outline-none focus:border-blue-300 focus:ring-2 focus:ring-[#3063fc]/20"
+                   id="email" name="email" type="email" placeholder=" " required />
+            <label for="email" class="pointer-events-none absolute left-3 top-3.5 text-slate-500 transition origin-left">Email *</label>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <select id="topic" name="topic"
+                    class="w-full rounded-lg border border-blue-100 bg-white px-3 py-3 text-slate-700 outline-none focus:border-blue-300 focus:ring-2 focus:ring-[#3063fc]/20">
+              <option>General</option>
+              <option>Collaboration</option>
+              <option>Freelance</option>
+              <option>Research</option>
+            </select>
+            <div class="relative">
+              <input class="float-input w-full rounded-lg border border-blue-100 bg-white px-3 py-3 outline-none focus:border-blue-300 focus:ring-2 focus:ring-[#3063fc]/20"
+                     id="subject" name="subject" placeholder=" " />
+              <label for="subject" class="pointer-events-none absolute left-3 top-3.5 text-slate-500 transition origin-left">Subject</label>
+            </div>
+          </div>
+
+          <div class="relative">
+            <textarea class="float-input w-full rounded-lg border border-blue-100 bg-white px-1 py-3 outline-none focus:border-blue-300 focus:ring-2 focus:ring-[#3063fc]/20"
+                      id="message" name="message" rows="6" maxlength="1200" placeholder=" " required></textarea>
+            <label for="message" class="pointer-events-none absolute left-3 top-3.5 text-slate-500 transition origin-left">Message *</label>
+            <div class="mt-1 text-right text-xs text-slate-500"><span id="count">0</span>/1200</div>
+          </div>
+
+          <!-- pushes button to bottom -->
+          <div class="mt-auto">
+            <button type="submit"
+                    class="w-full rounded-xl bg-black py-1 font-semibold text-white hover:bg-gray-900 transition">
+              Send via Email
+            </button>
+            <p id="form-message" class="hidden mt-3 text-center text-green-600 font-semibold">Thanks! Your email is opening…</p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </div>
+  </section>
+</main>
+
+
+  <!-- TOAST -->
+  <div id="toast" class="fixed bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-black text-white px-4 py-2 text-sm opacity-0 pointer-events-none transition">Copied!</div>
+
+     <!-- FOOTER -->
+      <footer class="bg-[#5A8EFF]/60 text-black mt-8 border-t border-black relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 py-6 sm:py-4
+                    flex flex-col sm:flex-row sm:items-center sm:justify-between
+                    gap-4 sm:gap-6">
+
+          <!-- Back to top (first on mobile, right on desktop) -->
+          <a href="#contact"
+            class="order-1 sm:order-none w-full sm:w-auto
+                    inline-flex items-center justify-center gap-2
+                    rounded-full bg-white px-4 py-2 text-sm font-medium
+                    border border-black/20 hover:bg-white/90 transition"
+            aria-label="Back to top">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#3063FC" d="M12 5.5 3 14.5l1.5 1.5 7.5-7.5 7.5 7.5 1.5-1.5L12 5.5Z"/>
+            </svg>
+            Back to top
+          </a>
+
+          <!-- Socials (full-width stack on mobile, inline on desktop) -->
+          <div class="order-2 sm:order-none w-full sm:w-auto
+                      flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <!-- subtle divider only on mobile -->
+            <div class="h-px bg-black/20 sm:hidden"></div>
+
+            <a href="https://www.linkedin.com/in/sudiksha-rajavaram/" target="_blank"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2
+                      rounded-xl border border-black/20 bg-white/80 px-3 py-2 text-sm font-medium
+                      hover:bg-white transition">
+              <img src="https://cdn.iconscout.com/icon/free/png-512/free-linkedin-42-151143.png"
+                  alt="LinkedIn Logo" class="w-4 h-4"/>
+              LinkedIn
+            </a>
+
+            <a href="https://www.figma.com/@rajavaramsudiks" target="_blank"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2
+                      rounded-xl border border-black/20 bg-white/80 px-3 py-2 text-sm font-medium
+                      hover:bg-white transition">
+              <img src="https://cdn.iconscout.com/icon/free/png-512/free-figma-2296071-1912030.png"
+                  alt="Figma Logo" class="w-4 h-4"/>
+              Figma
+            </a>
+          </div>
+
+          <!-- Name (centered on mobile, left on desktop) -->
+          <p class="order-3 sm:order-none text-center sm:text-left text-sm font-medium">
+            &copy; 2025 Sudiksha Rajavaram
+          </p>
+
+        </div>
+      </footer>
+
+  <script>
+    // mobile nav
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    let isOpen = false;
+    menuBtn?.addEventListener('click', () => {
+      isOpen = !isOpen;
+      mobileMenu.style.maxHeight = isOpen ? mobileMenu.scrollHeight + 'px' : '0px';
+    });
+
+    // copy buttons
+    const toast = document.getElementById('toast');
+    document.querySelectorAll('[data-copy]').forEach(btn=>{
+      btn.addEventListener('click', async ()=>{
+        try{
+          await navigator.clipboard.writeText(btn.dataset.copy);
+          toast.textContent = 'Copied!';
+          toast.style.opacity = 1;
+          setTimeout(()=>toast.style.opacity=0, 1200);
+        }catch(e){
+          toast.textContent = 'Copy failed';
+          toast.style.opacity = 1;
+          setTimeout(()=>toast.style.opacity=0, 1200);
+        }
+      });
+    });
+
+    // character count
+    const messageEl = document.getElementById('message');
+    const countEl = document.getElementById('count');
+    messageEl?.addEventListener('input', ()=>{ countEl.textContent = messageEl.value.length; });
+
+    // Static hosting submit (FormSubmit)
+    const form = document.getElementById('contact-form');
+    const msg = document.getElementById('form-message');
+    form?.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const submitButton = form.querySelector('button[type="submit"]');
+      const payload = {
+        name: document.getElementById('name').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        subject: (document.getElementById('subject').value || 'Message from portfolio').trim(),
+        topic: document.getElementById('topic').value,
+        message: document.getElementById('message').value.trim()
+      };
+
+      msg.classList.remove('hidden');
+      msg.classList.remove('text-green-600', 'text-red-600');
+      msg.classList.add('text-slate-600');
+      msg.textContent = 'Sending...';
+      if (submitButton) submitButton.disabled = true;
+
+      try {
+        const response = await fetch('https://formsubmit.co/ajax/sudiksha0302@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+          },
+          body: JSON.stringify({
+            name: payload.name,
+            email: payload.email,
+            _subject: `[${payload.topic}] ${payload.subject}`,
+            message: payload.message,
+            topic: payload.topic,
+            _template: 'table',
+            _captcha: 'false'
+          })
+        });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok || result.success !== 'true') {
+          throw new Error(result.message || 'Failed to send message.');
+        }
+
+        msg.classList.remove('text-slate-600', 'text-red-600');
+        msg.classList.add('text-green-600');
+        msg.textContent = 'Thanks! Your message has been sent.';
+        form.reset();
+        if (countEl) countEl.textContent = '0';
+      } catch (error) {
+        msg.classList.remove('text-slate-600', 'text-green-600');
+        msg.classList.add('text-red-600');
+        msg.textContent = error.message || 'Unable to send right now. Please try again.';
+      } finally {
+        if (submitButton) submitButton.disabled = false;
+      }
+    });
+
+    // reduce motion: strip transitions if user prefers
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.transition, .transform').forEach(el => {
+        el.classList.remove('transition','transform');
+      });
+    }
+
+  </script>
+</body>
+</html>
+

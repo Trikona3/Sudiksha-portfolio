@@ -1,0 +1,867 @@
+<!-- Trustlens.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TrustLens</title>
+      <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style> body { font-family: 'Space Grotesk', sans-serif; }
+    .vt-flow-card { 
+    background: #fff; 
+    border: 1.5px solid rgba(48,99,252,.25); /* #3063fc */
+    box-shadow: 0 12px 30px rgba(0,0,0,.08);
+    }
+    .vt-flow-card .mermaid { 
+    min-height: 320px; 
+    padding: 16px; 
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      /* add a theme and override its palette here: */
+      theme: 'base',
+      themeVariables: {
+        primaryColor:      '#B2DAFF',  // node fill
+        primaryBorderColor:'#3063fc',  // node stroke
+        primaryTextColor:  '#000000',  // node text
+        lineColor:         '#3063fc',  // edges
+        tertiaryColor:     '#ffffff',  // edge label bg
+        fontSize:          '28px'
+      }
+    });
+  </script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .nav-link {
+      position: relative;
+      display: inline-block;
+      text-decoration: none;
+      color: #2d3748;
+      font-weight: 600;
+      font-size: clamp(1.1rem, 1.05vw, 1.45rem);
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .nav-link:hover::after {
+      transform: scaleX(1);
+    }
+    .nav-link:hover {
+      color: #3063fc;
+    }
+    .menu-transition {
+    transition: max-height 0.3s ease-out;
+    overflow: hidden;
+    }
+  </style>
+  <style>
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .55s ease, transform .55s ease}
+  .reveal.is-visible{opacity:1; transform:none}
+</style>
+</head>
+</head>
+<body class="bg-[#5A8EFF]/25">
+
+  <!-- NAV BAR -->
+  <header class="fixed inset-x-0 top-0 z-30">
+    <nav class="absolute inset-x-0 top-2 mx-auto max-w-[1100px] bg-[#5A8EFF]/70 backdrop-blur-sm border-[1.5px] border-black py-3 px-6 rounded-[12px] shadow-lg z-50">
+      <div class="flex items-center justify-between">
+        <a href="index.html#about" class="text-lg font-semibold text-black">SUDIKSHA RAJAVARAM</a>
+
+        <!-- Hamburger Button (Mobile Only) -->
+        <button id="menu-btn" class="sm:hidden focus:outline-none">
+          <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+
+        <!-- Desktop Nav -->
+        <div class="hidden sm:flex gap-6">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="resume.html" class="nav-link">Resume</a>
+          <a href="projects.html" class="nav-link">Projects</a>
+          <a href="contact.html" class="nav-link">Contact Me</a>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="sm:hidden menu-transition max-h-0">
+        <div class="flex flex-col gap-4 pt-4">
+          <a href="index.html" class="nav-link block">Home</a>
+          <a href="resume.html" class="nav-link block">Resume</a>
+          <a href="projects.html" class="nav-link block">Projects</a>
+          <a href="contact.html" class="nav-link block">Contact Me</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+<section class="bg-white rounded-3xl mx-auto my-4 max-w-[95vw] px-4 shadow-lg mt-12 mb-12 pb-8">
+<main id="Syncoa" class="pt-[80px] max-w-4xl mx-auto">
+    <!-- back link + title -->
+    <a href="projects.html" class="text-[12px] text-gray-700 hover:underline">← Return to all Projects</a>
+    <h1 class="text-4xl font-bold text-center mt-4 mb-8">TrustLens.ai</h1>
+  
+      <!-- Case Study -->
+      <section class="mb-14">
+        <h2 class="text-2xl font-semibold mb-6">Case Study</h2>
+
+        <div class="max-w-6xl mx-auto">
+          <!-- SNAPSHOT (blue, no card, above video) -->
+          <div class="mb-8">
+            <!-- top label -->
+            <div class="flex items-center gap-3 text-[11px] font-semibold tracking-widest uppercase text-[#3063FC]">
+              <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#3063FC]">
+                <span class="absolute inset-0 rounded-full bg-[#3063FC]/40 animate-ping"></span>
+              </span>
+              Project Snapshot
+            </div>
+
+            <!-- title -->
+            <h3 class="mt-3 text-3xl sm:text-4xl font-bold text-slate-900">
+              Reading clarity for toxic comment sections
+            </h3>
+
+            <!-- description -->
+            <p class="mt-4 text-base text-slate-600 max-w-3xl">
+              A browser extension that adds an interpretive “trust layer” over Reddit comments —
+              surfacing tone and evidence cues without censoring content.
+            </p>
+
+            <!-- blue meta row -->
+            <div class="mt-6 flex flex-wrap gap-3">
+              <span class="inline-flex items-center gap-2 rounded-full
+                bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+                <span class="text-xs font-bold tracking-widest">IND</span>
+                Automated Content Moderation
+              </span>
+
+              <span class="inline-flex items-center gap-2 rounded-full
+                bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+                <span class="text-xs font-bold tracking-widest">ROLE</span>
+                UX Lead · Research · Branding
+              </span>
+
+              <span class="inline-flex items-center gap-2 rounded-full
+                bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+                <span class="text-xs font-bold tracking-widest">TOOLS</span>
+                Figma · Canva
+              </span>
+            </div>
+
+            <!-- blue glow divider -->
+            <div class="mt-7 h-px w-full bg-gradient-to-r
+              from-transparent via-[#3063FC]/40 to-transparent"></div>
+          </div>
+
+          <!-- VIDEO -->
+          <div class="relative rounded-[30px] overflow-hidden
+            bg-gradient-to-br from-[#6CA8FF] to-[#3B82F6]
+            border border-[#3063FC]/40
+            shadow-[0_30px_80px_rgba(48,99,252,0.35)]">
+
+            <div class="w-full h-[340px] sm:h-[460px] md:h-[560px] flex items-center justify-center">
+              <video
+                id="case-video"
+                class="w-full h-full object-contain"
+                muted
+                autoplay
+                playsinline
+                loop
+                preload="auto"
+                poster="/images/project11-thumb.png"
+              >
+                <source src="/images/web-optimized/project11-thumb-web.mp4" type="video/mp4" />
+              </video>
+
+              <!-- fallback -->
+              <div id="case-fallback"
+                class="absolute inset-0 hidden flex-col items-center justify-center p-6 text-center">
+                <img
+                  src="/images/project11-thumb.png"
+                  alt="TrustLens prototype preview"
+                  class="max-h-[85%] w-auto rounded-2xl shadow-xl border border-white/10"
+                />
+                <p class="mt-3 text-xs text-slate-300">
+                  Design prototype video couldn’t load in this browser.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <script>
+      (function () {
+        const video = document.getElementById("case-video");
+        const fallback = document.getElementById("case-fallback");
+        if (!video) return;
+
+        // force muted + play (most reliable method)
+        const forcePlay = async () => {
+          try {
+            video.muted = true;
+            await video.play();
+          } catch (e) {
+            // Autoplay blocked — retry on interaction
+          }
+        };
+
+        // try on load + when ready
+        window.addEventListener("load", forcePlay);
+        video.addEventListener("canplay", forcePlay);
+
+        // retry once on user interaction
+        const retryOnce = () => {
+          forcePlay();
+          window.removeEventListener("pointerdown", retryOnce);
+          window.removeEventListener("keydown", retryOnce);
+        };
+        window.addEventListener("pointerdown", retryOnce);
+        window.addEventListener("keydown", retryOnce);
+
+        // fallback if video fails
+        video.addEventListener("error", () => {
+          video.classList.add("hidden");
+          fallback.classList.remove("hidden");
+          fallback.classList.add("flex");
+        });
+      })();
+      </script>
+
+
+
+  
+
+      <!-- Problem & Goal -->
+      <section class="max-w-6xl mx-auto py-8">
+        <h2 class="text-3xl font-bold mb-4">The Problem</h2>
+        <p class="text-gray-700 leading-relaxed text-justify">
+          Reading online isn’t just reading anymore, it’s decoding. High-frequency readers on
+          Reddit and other forums constantly ask: “Is this thoughtful or angry? Calm or
+          escalating? Even worth my time?” This invisible effort creates a <strong>clarity
+          tax</strong>, cognitive fatigue from emotional threads, unclear tone, and comments
+          with no visible evidence behind them.
+        </p>
+
+        <div class="grid sm:grid-cols-2 gap-6 mt-6">
+          <div class="border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/25 rounded-xl p-5">
+            <h3 class="font-semibold mb-1">Impact</h3>
+            <ul class="list-disc list-inside text-gray-700 text-sm">
+              <li>Readers waste time on emotional rants and low-signal threads.</li>
+              <li>Legitimate insights get buried under noise and hostility.</li>
+              <li>Comment tone is easy to misread, especially when skimming.</li>
+              <li>No quick way to see if a comment is backed by sources.</li>
+            </ul>
+          </div>
+          <div class="border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/25 rounded-xl p-5">
+            <h3 class="font-semibold mb-1">Goal</h3>
+            <p class="text-gray-700 text-sm">
+              Reduce the clarity tax by surfacing tone and evidence cues <em>at the moment of
+              reading</em>, without censoring content, so readers can instantly judge which
+              discussions deserve their attention.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Solution Overview -->
+      <section class="max-w-6xl mx-auto py-4">
+        <h2 class="text-3xl font-bold mb-6">Solution</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-white rounded-2xl border border-[#5A8EFF]/50 p-6 shadow-sm">
+            <h3 class="font-semibold mb-2">TrustLens in a Nutshell</h3>
+            <p class="text-gray-700">
+              TrustLens.ai is a browser extension that adds a <strong>reading intelligence
+              layer</strong> over Reddit comments. It runs locally on the user’s device and
+              reveals tone and evidence badges so readers can instantly see whether a thread
+              is calm, hostile, or backed by sources—without changing or hiding content.
+            </p>
+            <ul class="mt-4 list-disc list-inside text-gray-700">
+              <li><strong>Real-time tone signals:</strong> green, yellow, and red badges for civility and toxicity.</li>
+              <li><strong>Evidence awareness:</strong> quick cues for presence of links and supporting context.</li>
+              <li><strong>Non-intrusive overlay:</strong> badges sit beside comments, not on top of them.</li>
+              <li><strong>Interpretive, not moderating:</strong> TrustLens never deletes or downranks content.</li>
+            </ul>
+          </div>
+          <div class="bg-white rounded-2xl border border-[#5A8EFF]/50 p-6 shadow-sm">
+            <h3 class="font-semibold mb-2">My Role &amp; Team</h3>
+            <p class="text-gray-700">
+              I worked as the <strong>UX Design Lead</strong> on a cross-functional PM +
+              AI engineering team. I shaped the trust-signal model into an experience readers
+              could understand in one glance, while keeping the system private and
+              explainable.
+            </p>
+            <ul class="mt-4 list-disc list-inside text-gray-700">
+              <li>Framed the “clarity tax” problem and user narrative.</li>
+              <li>Designed TL1 (glance), TL2 (hover) trust layers.</li>
+              <li>Partnered with engineers on verifying and cross-checking model outputs.</li>
+              <li>Created decks, flows, and visual language used in program demos.</li>
+              <li>Created Logo and branding assets.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Target Users -->
+      <section class="max-w-6xl mx-auto py-8">
+        <h2 class="text-3xl font-bold mb-6">Target Users</h2>
+        <div class="grid sm:grid-cols-3 gap-6">
+          <div class="bg-[#5A8EFF]/10 border border-[#5A8EFF]/40 rounded-xl p-5">
+            <h3 class="font-semibold">High-Frequency Readers</h3>
+            <p class="text-gray-700 text-sm mt-2">
+              Reddit and forum power users who read far more than they post and feel drained
+              by emotional comment sections.
+            </p>
+          </div>
+          <div class="bg-[#5A8EFF]/10 border border-[#5A8EFF]/40 rounded-xl p-5">
+            <h3 class="font-semibold">Signal-Seeking Professionals</h3>
+            <p class="text-gray-700 text-sm mt-2">
+              People who skim technical, news, and policy threads but need quick clarity on
+              tone and credibility before engaging.
+            </p>
+          </div>
+          <div class="bg-[#5A8EFF]/10 border border-[#5A8EFF]/40 rounded-xl p-5">
+            <h3 class="font-semibold">Future: Creators &amp; Platforms</h3>
+            <p class="text-gray-700 text-sm mt-2">
+              Writers who want pre-post tone checks and platforms that need clarity signals
+              without heavy moderation workflows.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Research Highlights -->
+      <section class="relative overflow-hidden py-8">
+        <!-- soft ambient gradients -->
+        <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
+          <div class="absolute -top-24 -right-16 h-72 w-72 rounded-full bg-gradient-to-br from-fuchsia-400/20 via-sky-400/20 to-amber-400/20 blur-3xl"></div>
+          <div class="absolute -bottom-24 -left-10 h-80 w-80 rounded-full bg-gradient-to-tr from-violet-400/15 via-emerald-400/15 to-cyan-400/15 blur-3xl"></div>
+        </div>
+
+        <div class="mx-auto max-w-screen-xl">
+          <!-- header -->
+          <header class="mb-8">
+            <h2 class="text-3xl md:text-3xl font-bold tracking-tight">
+              <span class="bg-black bg-clip-text text-transparent">
+                Research Highlights
+              </span>
+            </h2>
+            <p class="mt-3 text-slate-600 max-w-3xl leading-relaxed">
+              We framed TrustLens around the “online clarity crisis”—the mental effort
+              required to decode tone and trust in everyday comment sections—and mapped how
+              readers move from curiosity to exhaustion as threads escalate.
+            </p>
+
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="inline-flex items-center gap-2 rounded-full border border-blue-500 bg-white/70 px-3 py-1 text-xs text-blue-700 backdrop-blur-sm">
+                <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m20 6-11 11-5-5"/></svg>
+                Problem interviews
+              </span>
+              <span class="inline-flex items-center gap-2 rounded-full border border-blue-500 bg-white/70 px-3 py-1 text-xs text-blue-700 backdrop-blur-sm">
+                <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v4H3zM3 10h18v11H3z"/></svg>
+                Decks &amp; live demo feedback
+              </span>
+              <span class="inline-flex items-center gap-2 rounded-full border border-blue-500 bg-white/70 px-3 py-1 text-xs text-blue-700 backdrop-blur-sm">
+                <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18"/></svg>
+                Trust-signal exploration
+              </span>
+            </div>
+          </header>
+
+          <div class="grid gap-6 md:grid-cols-2">
+            <!-- Key Insights -->
+            <article class="group rounded-2xl p-[1px] bg-gradient-to-br from-slate-200/60 via-slate-100/40 to-white/30 shadow-[0_1px_0_0_rgba(20,20,20,0.06),0_10px_30px_-12px_rgba(0,0,0,0.25)]">
+              <div class="rounded-2xl bg-white/80 backdrop-blur-xl p-6 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-xl">
+                <div class="flex items-start justify-between">
+                  <h3 class="font-semibold text-slate">Key Insights</h3>
+                  <span class="inline-flex items-center gap-1.5 text-xs text-slate">
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m20 6-11 11-5-5"/></svg>
+                    clarity tax
+                  </span>
+                </div>
+
+                <ul class="mt-4 space-y-3 text-slate-700">
+                  <li class="flex gap-3">
+                    <svg class="mt-1 h-5 w-5 flex-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m20 6-11 11-5-5"/></svg>
+                    <span>Readers want to <em class="font-semibold not-italic">keep content</em> but gain awareness of tone and trust signals.</span>
+                  </li>
+                  <li class="flex gap-3">
+                    <svg class="mt-1 h-5 w-5 flex-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m20 6-11 11-5-5"/></svg>
+                    <span>Interpretive cues (tone, evidence) feel safer and more empowering than hard moderation or fact-checking labels.</span>
+                  </li>
+                  <li class="flex gap-3">
+                    <svg class="mt-1 h-5 w-5 flex-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m20 6-11 11-5-5"/></svg>
+                    <span>Trust increases when the system is <em class="font-semibold not-italic">local, private, and explainable</em>.</span>
+                  </li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- Design Principles -->
+            <article class="group rounded-2xl p-[1px] bg-gradient-to-br from-slate-200/60 via-slate-100/40 to-white/30 shadow-[0_1px_0_0_rgba(20,20,20,0.06),0_10px_30px_-12px_rgba(0,0,0,0.25)]">
+              <div class="rounded-2xl bg-white/80 backdrop-blur-xl p-6 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-xl">
+                <h3 class="font-semibold text-slate">Design Principles</h3>
+
+                <ul class="mt-4 space-y-3 text-slate-700">
+                  <li class="flex items-start gap-3">
+                    <span class="mt-1 inline-block h-2.5 w-2.5 rounded-full bg-sky-400"></span>
+                    <p><strong>Glanceable first:</strong> TL1 color badges must be readable in peripheral vision while scrolling.</p>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="mt-1 inline-block h-2.5 w-2.5 rounded-full bg-fuchsia-400"></span>
+                    <p><strong>Progressive disclosure:</strong> TL2 tooltips explain the “why” only when the reader hovers.</p>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="mt-1 inline-block h-2.5 w-2.5 rounded-full bg-amber-400"></span>
+                    <p><strong>Respectful overlays:</strong> badges never cover avatars or voting controls, preserving core Reddit affordances.</p>
+                  </li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Personas -->
+      <section class="max-w-6xl mx-auto py-12">
+        <h2 class="text-3xl font-bold mb-6">User Personas</h2>
+        <div class="space-y-6">
+          <!-- update image paths to your TrustLens persona exports -->
+          <img src="/images/TLup-1.png" alt="Persona 1 – Alex, high-frequency reader" class="w-full rounded-xl shadow" />
+          <img src="/images/TLup-2.png" alt="Persona 2 – Creator / writer" class="w-full rounded-xl shadow" />
+        </div>
+      </section>
+
+      <!-- User Journey -->
+      <section id="user-journey" class="max-w-6xl mx-auto py-4 reveal">
+        <h2 class="text-2xl font-bold mb-4">User journey</h2>
+        <div class="overflow-x-auto rounded-2xl border border-gray-200 bg-white">
+          <table class="min-w-full text-sm">
+            <thead class="bg-[#5A8EFF]/20 text-gray-900">
+              <tr>
+                <th class="p-3 text-left">Stage / Experience</th>
+                <th class="p-3 text-left">Discover &amp; Install<br><span class="text-gray-500 text-xs">Find TrustLens</span></th>
+                <th class="p-3 text-left">Read Threads<br><span class="text-gray-500 text-xs">Reddit comments</span></th>
+                <th class="p-3 text-left">Scan Signals<br><span class="text-gray-500 text-xs">Tone &amp; evidence</span></th>
+                <th class="p-3 text-left">Hover for Context<br><span class="text-gray-500 text-xs">Tooltip rationale</span></th>
+                <th class="p-3 text-left">Reflect &amp; Decide<br><span class="text-gray-500 text-xs">How to engage</span></th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              <tr class="bg-gray-50">
+                <td class="p-3 font-medium">Actions</td>
+                <td class="p-3">Chrome Web Store → install extension &amp; local binary</td>
+                <td class="p-3">Open Reddit, scroll through a discussion</td>
+                <td class="p-3">See color badges appear automatically beside comments</td>
+                <td class="p-3">Hover on a badge to read “why” (tone + evidence explanation)</td>
+                <td class="p-3">Skip hostile threads, engage where tone and evidence feel solid</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-medium">Think &amp; Feel</td>
+                <td class="p-3">Curious about whether this can actually make reading calmer</td>
+                <td class="p-3">Relieved that nothing on Reddit itself is changed or censored</td>
+                <td class="p-3">Starts trusting the color language as a quick “read on / move on” signal</td>
+                <td class="p-3">Feels informed rather than manipulated; understands the system</td>
+                <td class="p-3">More intentional about where to spend attention and emotional energy</td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="p-3 font-medium">Touchpoints</td>
+                <td class="p-3">Landing page, Chrome store listing, onboarding</td>
+                <td class="p-3">Reddit UI + TrustLens overlay layer</td>
+                <td class="p-3">TL1 badges, legend, settings panel</td>
+                <td class="p-3">TL2 tooltip with short rationale + evidence cues</td>
+                <td class="p-3">Reading patterns, future creator insights, analytics (roadmap)</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-medium">Pain points</td>
+                <td class="p-3">Skepticism about another browser extension</td>
+                <td class="p-3">Overwhelmed by long, heated threads</td>
+                <td class="p-3">Need to trust that models aren’t over-flagging nuance</td>
+                <td class="p-3">Too much technical detail would feel heavy</td>
+                <td class="p-3">Wants consistent badges across platforms in the future</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Design Decisions -->
+      <section id="design-decisions" class="max-w-6xl mx-auto py-8 reveal">
+        <h2 class="text-2xl font-bold mb-6">Design decisions</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/25 p-6">
+            <h3 class="font-semibold mb-1">Three-layer trust experience</h3>
+            <p class="text-sm text-gray-700">
+              Structured the UX into TL1 (color badges), TL2 (hover tooltips), and future TL3
+              (detailed breakdown) so readers get fast clarity first, and depth only when
+              they ask for it.
+            </p>
+          </article>
+
+          <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/25 p-6">
+            <h3 class="font-semibold mb-1">On-device, privacy-first signals</h3>
+            <p class="text-sm text-gray-700">
+              Collaborated with engineers to keep inference local via a lightweight FastAPI +
+              ONNX runtime stack, so tone and evidence analysis never leaves the user’s
+              machine.
+            </p>
+          </article>
+
+          <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/25 p-6">
+            <h3 class="font-semibold mb-1">Explainable badges</h3>
+            <p class="text-sm text-gray-700">
+              Badge colors are tied to explicit toxicity thresholds and evidence heuristics;
+              tooltips translate model scores into plain-language reasons like “calm tone,
+              no insults” or “hostile tone, no sources.”
+            </p>
+          </article>
+
+          <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/25 p-6">
+            <h3 class="font-semibold mb-1">Respect Reddit’s visual language</h3>
+            <p class="text-sm text-gray-700">
+              UI is intentionally lightweight and nested near usernames and timestamps so
+              TrustLens feels like part of the conversation, not a separate layer fighting
+              for attention.
+            </p>
+          </article>
+
+          <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/25 p-6">
+            <h3 class="font-semibold mb-1">Defaults that don’t over-police</h3>
+            <p class="text-sm text-gray-700">
+              Chose conservative toxicity thresholds and neutral copy to avoid labeling
+              nuanced critique as “toxic,” focusing instead on clearly hostile patterns.
+            </p>
+          </article>
+
+          <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/25 p-6">
+            <h3 class="font-semibold mb-1">Future-ready architecture</h3>
+            <p class="text-sm text-gray-700">
+              L0–L4 architecture separates presentation, transport, inference, and rules so
+              we can evolve models or add new trust signals without rewriting the UX.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Competitor analysis -->
+      <section id="competitor-analysis" class="max-w-7xl mx-auto py-8">
+        <h2 class="text-3xl font-bold mb-6">Competitor Analysis</h2>
+
+        <div class="overflow-x-auto rounded-2xl shadow-lg">
+            <table class="min-w-full bg-white border border-gray-200 rounded-2xl">
+            <thead class="bg-[#5A8EFF]/40">
+                <tr>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-800">Category</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-800">Examples</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-800">Strengths</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-800">Gaps / Weaknesses</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-800">TrustLens Opportunity</th>
+                </tr>
+            </thead>
+
+            <tbody class="divide-y divide-gray-200">
+                <!-- 1. Enterprise Governance Platforms -->
+                <tr>
+                <td class="align-top px-6 py-5 text-gray-900 font-medium">
+                    Enterprise Governance Platforms
+                </td>
+                <td class="align-top px-6 py-5 text-gray-700">
+                    Credo AI, Holistic AI
+                </td>
+                <td class="align-top px-6 py-5 text-gray-700 text-sm">
+                    <ul class="list-disc list-inside space-y-1">
+                    <li>Broad AI governance coverage.</li>
+                    <li>Trusted by large, regulated enterprises.</li>
+                    </ul>
+                </td>
+                <td class="align-top px-6 py-5 text-gray-700 text-sm">
+                    <ul class="list-disc list-inside space-y-1">
+                    <li>Consulting-heavy and expensive.</li>
+                    <li>Slow adoption, overkill for mid-market or consumer use.</li>
+                    </ul>
+                </td>
+                <td class="align-top px-6 py-5 text-gray-700 text-sm">
+                    <ul class="list-disc list-inside space-y-1">
+                    <li>Offer a lightweight, self-serve way to see trust signals while reading—no long rollout.</li>
+                    </ul>
+                </td>
+                </tr>
+
+                <!-- 2. SaaS Governance Vendors / Point Tools -->
+                <tr>
+                <td class="align-top px-6 py-5 text-gray-900 font-medium">
+                    SaaS Governance Vendors (Point Tools)
+                </td>
+                <td class="align-top px-6 py-5 text-gray-700">
+                    Clarifai-style tools, bias / drift / explainability add-ons
+                </td>
+                <td class="align-top px-6 py-5 text-gray-700 text-sm">
+                    <ul class="list-disc list-inside space-y-1">
+                    <li>Quick to deploy for specific risks.</li>
+                    <li>Useful for internal ML / risk teams.</li>
+                    </ul>
+                </td>
+                <td class="align-top px-6 py-5 text-gray-700 text-sm">
+                    <ul class="list-disc list-inside space-y-1">
+                    <li>Fragmented; each tool handles one slice (bias, drift, etc.).</li>
+                    <li>Signals stay internal—readers never see them.</li>
+                    </ul>
+                </td>
+                <td class="align-top px-6 py-5 text-gray-700 text-sm">
+                    <ul class="list-disc list-inside space-y-1">
+                    <li>Turn model-level signals into simple, unified badges directly on top of Reddit comments.</li>
+                    </ul>
+                </td>
+                </tr>
+
+                <!-- 3. DIY / Internal Builds -->
+                <tr>
+                <td class="align-top px-6 py-5 text-gray-900 font-medium">
+                    DIY / Internal Builds
+                </td>
+                <td class="align-top px-6 py-5 text-gray-700">
+                    In-house stacks in banks, hospitals, SaaS firms
+                </td>
+                <td class="align-top px-6 py-5 text-gray-700 text-sm">
+                    <ul class="list-disc list-inside space-y-1">
+                    <li>Highly tailored to org-specific risks.</li>
+                    <li>Full control over data and models.</li>
+                    </ul>
+                </td>
+                <td class="align-top px-6 py-5 text-gray-700 text-sm">
+                    <ul class="list-disc list-inside space-y-1">
+                    <li>Costly to build and maintain.</li>
+                    <li>Inconsistent UX; no portable “trust language” for readers.</li>
+                    </ul>
+                </td>
+                <td class="align-top px-6 py-5 text-gray-700 text-sm">
+                    <ul class="list-disc list-inside space-y-1">
+                    <li>Provide an opinionated, reusable trust UX that can sit on top of many experiences, starting with Reddit.</li>
+                    </ul>
+                </td>
+                </tr>
+
+                <!-- 4. TrustLens.ai -->
+                <tr>
+                <td class="align-top px-6 py-5 text-gray-900 font-medium">
+                    TrustLens.ai
+                </td>
+                <td class="align-top px-6 py-5 text-gray-700">
+                    Browser extension + local inference server
+                </td>
+                <td class="align-top px-6 py-5 text-gray-700 text-sm">
+                    <ul class="list-disc list-inside space-y-1">
+                    <li>Glanceable tone &amp; evidence badges for readers.</li>
+                    <li>Local, privacy-preserving analysis (on-device).</li>
+                    <li>Designed for everyday consumer reading, not just compliance teams.</li>
+                    </ul>
+                </td>
+                <td class="align-top px-6 py-5 text-gray-700 text-sm">
+                    <ul class="list-disc list-inside space-y-1">
+                    <li>Early-stage roadmap; currently focused on Reddit.</li>
+                    </ul>
+                </td>
+                <td class="align-top px-6 py-5 text-gray-700 text-sm">
+                    <ul class="list-disc list-inside space-y-1">
+                    <li>Position as the “reader-first” clarity layer that can later plug into platforms and governance stacks.</li>
+                    </ul>
+                </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        </section>
+
+
+      <!-- Tech Stack -->
+      <section class="max-w-6xl mx-auto py-4">
+        <h2 class="text-3xl font-bold mb-6">Technology</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-[#5A8EFF]/10 border border-[#5A8EFF]/40 rounded-xl p-5">
+            <h3 class="font-semibold">Client</h3>
+            <p class="text-gray-700 text-sm">
+              Chrome MV3 extension · JavaScript, HTML
+            </p>
+          </div>
+          <div class="bg-[#5A8EFF]/10 border border-[#5A8EFF]/40 rounded-xl p-5">
+            <h3 class="font-semibold">Transport</h3>
+            <p class="text-gray-700 text-sm">
+              Local API calls to a FastAPI inference server, with batched requests for performance.
+            </p>
+          </div>
+          <div class="bg-[#5A8EFF]/10 border border-[#5A8EFF]/40 rounded-xl p-5">
+            <h3 class="font-semibold">AI Models</h3>
+            <p class="text-gray-700 text-sm">
+              Lightweight toxicity model (e.g., unitary/toxic-bert), evidence heuristics, and composite rules engine.
+            </p>
+          </div>
+          <div class="bg-[#5A8EFF]/10 border border-[#5A8EFF]/40 rounded-xl p-5">
+            <h3 class="font-semibold">Infra</h3>
+            <p class="text-gray-700 text-sm">
+              ONNX Runtime for fast local inference; architecture designed for future multi-modal signals.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Challenges & Learnings -->
+      <section class="max-w-6xl mx-auto py-8">
+        <h2 class="text-3xl font-bold mb-6">Challenges &amp; Learnings</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-white rounded-xl border border-[#5A8EFF] p-6">
+            <h3 class="font-semibold mb-2">Product direction &amp; pivots</h3>
+            <p class="text-gray-700 text-sm">
+              Early ideas shifted from generic AI governance to a focused reader experience.
+              We learned that stabilizing the MVP scope earlier would have unlocked more time
+              for validation with real readers.
+            </p>
+          </div>
+          <div class="bg-white rounded-xl border border-[#5A8EFF] p-6">
+            <h3 class="font-semibold mb-2">AI scope vs. build time</h3>
+            <p class="text-gray-700 text-sm">
+              Full multi-model trust scoring was ambitious; narrowing to toxicity +
+              evidence presence helped us ship a coherent experience instead of an
+              unfinished platform.
+            </p>
+          </div>
+          <div class="bg-white rounded-xl border border-[#5A8EFF] p-6">
+            <h3 class="font-semibold mb-2">Missing early-adopter testing</h3>
+            <p class="text-gray-700 text-sm">
+              We couldn’t run a proper reader beta before demo day, which meant trust
+              thresholds and copy were assumption-driven. Next iteration will recruit
+              high-frequency readers by week 6 for signal tuning.
+            </p>
+          </div>
+          <div class="bg-white rounded-xl border border-[#5A8EFF] p-6">
+            <h3 class="font-semibold mb-2">Distributed team reality</h3>
+            <p class="text-gray-700 text-sm">
+              Part-time contributors across time zones made coordination hard. Over-communication
+              and clearer dependencies became essential to stop rework and keep the build moving.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Unique Selling Propositions -->
+      <section id="usps" class="max-w-6xl mx-auto py-8">
+        <h2 class="text-3xl font-bold mb-6">Unique Selling Propositions</h2>
+
+        <div class="grid gap-6 md:grid-cols-3">
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-[#5A8EFF]/15 p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Interpretive, not censoring</h3>
+            <p class="text-gray-700">
+              TrustLens doesn’t decide what’s true, it helps readers understand tone and
+              supporting context so they can decide what’s worth their attention.
+            </p>
+          </article>
+
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-[#5A8EFF]/15 p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Local &amp; privacy-first</h3>
+            <p class="text-gray-700">
+              All analysis runs on-device via a local inference server, keeping reading
+              history private while still providing powerful trust signals.
+            </p>
+          </article>
+
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-[#5A8EFF]/15 p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Multi-layer trust UX</h3>
+            <p class="text-gray-700">
+              TL1 badges, TL2 tooltips, and future TL3 breakdowns create a coherent,
+              explainable system that scales from quick scanning to deep understanding.
+            </p>
+          </article>
+        </div>
+      </section>
+
+
+
+
+        </section>
+
+
+        <script>
+        (function(){
+            const els=[...document.querySelectorAll('.reveal')];
+            const io=new IntersectionObserver((entries)=>{
+            entries.forEach(e=>{
+                if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); }
+            })
+            },{threshold:.12});
+            els.forEach(el=>io.observe(el));
+        })();
+        </script>
+
+
+    </section>
+
+    <!-- FOOTER -->
+      <footer class="bg-[#5A8EFF]/60 text-black mt-8 border-t border-black relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 py-6 sm:py-4
+                    flex flex-col sm:flex-row sm:items-center sm:justify-between
+                    gap-4 sm:gap-6">
+
+          <!-- Back to top (first on mobile, right on desktop) -->
+          <a href="#untanglingchallenges"
+            class="order-1 sm:order-none w-full sm:w-auto
+                    inline-flex items-center justify-center gap-2
+                    rounded-full bg-white px-4 py-2 text-sm font-medium
+                    border border-black/20 hover:bg-white/90 transition"
+            aria-label="Back to top">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#3063FC" d="M12 5.5 3 14.5l1.5 1.5 7.5-7.5 7.5 7.5 1.5-1.5L12 5.5Z"/>
+            </svg>
+            Back to top
+          </a>
+
+          <!-- Socials (full-width stack on mobile, inline on desktop) -->
+          <div class="order-2 sm:order-none w-full sm:w-auto
+                      flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <!-- subtle divider only on mobile -->
+            <div class="h-px bg-black/20 sm:hidden"></div>
+
+            <a href="https://www.linkedin.com/in/sudiksha-rajavaram/" target="_blank"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2
+                      rounded-xl border border-black/20 bg-white/80 px-3 py-2 text-sm font-medium
+                      hover:bg-white transition">
+              <img src="https://cdn.iconscout.com/icon/free/png-512/free-linkedin-42-151143.png"
+                  alt="LinkedIn Logo" class="w-4 h-4"/>
+              LinkedIn
+            </a>
+
+            <a href="https://www.figma.com/@rajavaramsudiks" target="_blank"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2
+                      rounded-xl border border-black/20 bg-white/80 px-3 py-2 text-sm font-medium
+                      hover:bg-white transition">
+              <img src="https://cdn.iconscout.com/icon/free/png-512/free-figma-2296071-1912030.png"
+                  alt="Figma Logo" class="w-4 h-4"/>
+              Figma
+            </a>
+          </div>
+
+          <!-- Name (centered on mobile, left on desktop) -->
+          <p class="order-3 sm:order-none text-center sm:text-left text-sm font-medium">
+            &copy; 2025 Sudiksha Rajavaram
+          </p>
+
+        </div>
+      </footer>
+
+</body>
+</html>

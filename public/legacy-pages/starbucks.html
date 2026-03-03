@@ -1,0 +1,571 @@
+<!-- starbucks.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>starbucks</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Tailwind (or your own CSS) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+ <style>
+      body {
+        font-family: 'Space Grotesk', sans-serif;
+      }
+      .nav-link {
+        position: relative;
+        display: inline-block;
+        text-decoration: none;
+        color: #2d3748;
+        font-weight: 600;
+      font-size: clamp(1.1rem, 1.05vw, 1.45rem);
+      }
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: currentColor;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease;
+      }
+      .nav-link:hover::after {
+        transform: scaleX(1);
+      }
+      .nav-link:hover {
+        color: #ffffff;
+      }
+      .menu-transition {
+      transition: max-height 0.3s ease-out;
+      overflow: hidden;
+      }
+     .page.blank { background-color: #3063fc; }
+     .page.blank .page-content { opacity: 0; }
+    </style>
+  </head>
+  <body class="bg-[#5A8EFF]/25">
+
+    <!-- NAV BAR -->
+    <header class="fixed inset-x-0 top-0 z-30">
+      <nav class="absolute inset-x-0 top-2 mx-auto max-w-[1100px] bg-[#5A8EFF]/70 backdrop-blur-sm border-[1.5px] border-black py-3 px-6 rounded-[12px] shadow-lg z-50">
+        <div class="flex items-center justify-between">
+          <a href="index.html#about" class="text-lg font-semibold text-black">SUDIKSHA RAJAVARAM</a>
+
+          <!-- Hamburger Button (Mobile Only) -->
+          <button id="menu-btn" class="sm:hidden focus:outline-none">
+            <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+
+          <!-- Desktop Nav -->
+          <div class="hidden sm:flex gap-6">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="resume.html" class="nav-link">Resume</a>
+            <a href="projects.html" class="nav-link">Projects</a>
+            <a href="contact.html" class="nav-link">Contact Me</a>
+          </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="sm:hidden menu-transition max-h-0">
+          <div class="flex flex-col gap-4 pt-4">
+            <a href="index.html" class="nav-link block">Home</a>
+            <a href="resume.html" class="nav-link block">Resume</a>
+            <a href="projects.html" class="nav-link block">Projects</a>
+            <a href="contact.html" class="nav-link block">Contact Me</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+  <section class="bg-white rounded-3xl mx-auto my-4 max-w-[95vw] px-4 shadow-lg mt-12 mb-12 pb-8">
+  <main id="starbucks" class="pt-[80px] px-6 max-w-4xl mx-auto">
+    <!-- back link + title -->
+    <a href="projects.html" class="text-[12px] text-gray-700 hover:underline">← Return to all Projects</a>
+    <h1 class="text-4xl font-bold text-center mt-4 mb-8">Starbucks Mobile App Redesign</h1>
+
+        <!-- Case Study image -->
+        <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-4">Case Study</h2>
+        </section>
+
+        <!-- 2-column grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start pb-12">
+        
+    <!-- Left: Image -->
+    <!-- Carousel -->
+        <div id="case-carousel" class="relative w-full h-80 overflow-hidden rounded-lg shadow-lg">
+        <img
+            src="/images/starbucks1.png"
+            alt="Step 1"
+            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000"
+        />
+        <img
+            src="/images/starbucks2.png"
+            alt="Step 2"
+            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000"
+        />
+        <img
+            src="/images/starbucks3.png"
+            alt="Step 3"
+            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000"
+        />
+        <img
+            src="/images/starbucks4.png"
+            alt="Step 4"
+            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000"
+        />
+        <!-- add more images as needed -->
+        </div>
+
+        <script>
+        // simple auto-playing carousel
+        const slides = document.querySelectorAll('#case-carousel img');
+        let current = 0;
+
+        function showSlide(idx) {
+            slides.forEach((slide, i) => {
+            slide.classList.toggle('opacity-100', i === idx);
+            slide.classList.toggle('opacity-0', i !== idx);
+            });
+        }
+
+        showSlide(current);
+        setInterval(() => {
+            current = (current + 1) % slides.length;
+            showSlide(current);
+        }, 3000); // change every 3s
+        </script>
+            
+            <!-- Right: Specs & Buttons -->
+            <div class="flex flex-col justify-center space-y-8 pt-4">
+            
+            <!-- Specs -->
+            <dl class="space-y-6">
+                <div>
+                <dt class="font-medium text-gray-700">Industry</dt>
+                <dd class="border-b border-gray-300 pb-2">Food Service</dd>
+                </div>
+                <div>
+                <dt class="font-medium text-gray-700">Role</dt>
+                <dd class="border-b border-gray-300 pb-2">Research, Redesign</dd>
+                </div>
+                <div>
+                <dt class="font-medium text-gray-700">Tools</dt>
+                <dd class="border-b border-gray-300 pb-2">Figma, ChatGPT</dd>
+                </div>
+            </dl>
+            
+        <!-- Action Buttons -->
+        <div class="flex flex-wrap gap-8">
+            <a
+            href="https://github.com/Sudiksha-R/Starbucks_CaseStudy"
+            target="_blank"
+            class="inline-block bg-[#5A8EFF]/20 text-[#3063fc] px-6 py-2 rounded-full font-medium shadow hover:bg-[#5A8EFF]/60 transition"
+            >
+            See Full Case Study
+            </a>
+        </div>
+        
+        </div>
+    </div>
+    <!-- Project Description -->
+    <section id="project-description" class="max-w-4xl mx-auto pt-4 py-4">
+        <p class="text-gray-700 leading-relaxed mb-4">
+        This case study focuses on redesigning the Starbucks mobile app’s core ordering and rewards experiences. The goal was to streamline the order‐ahead flow, surface loyalty benefits more prominently, and create a cohesive, user-friendly interface for both new and returning customers.
+        </p>
+        <p class="text-gray-700 leading-relaxed">
+        Through user research, competitive analysis, wireframing, and high-fidelity prototyping, I identified key friction points—like complex customization and buried rewards details—and iterated until the app delivered a faster, more engaging journey.
+        </p>
+    </section> 
+    <!-- Challenges -->
+    <section id="challenges" class="max-w-4xl mx-auto pt-4 mb-4">
+        <h2 class="text-2xl font-semibold mb-4">Challenges</h2>
+        <ul class="list-disc list-inside space-y-2 text-gray-700">
+          <li>Complex order customization flow leading to high drop-off rates.</li>
+          <li>Confusing rewards redemption process, lowering member engagement.</li>
+          <li>Lack of intuitive store locator and pickup scheduling.</li>
+          <li>Poor accessibility for users with visual impairments.</li>
+        </ul>
+      </section> 
+
+    <section id="design-decisions" class="max-w-4xl mx-auto pt-2 pb-4">
+      <h2 class="text-2xl font-semibold mb-4">Design Decisions</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <article class="rounded-xl border border-[#5A8EFF]/40 bg-[#5A8EFF]/10 p-4">
+          <h3 class="font-semibold mb-1">Simplified customization flow</h3>
+          <p class="text-gray-700 text-sm">
+            Reduced friction in drink customization by emphasizing clear, step-by-step option hierarchy.
+          </p>
+        </article>
+        <article class="rounded-xl border border-[#5A8EFF]/40 bg-[#5A8EFF]/10 p-4">
+          <h3 class="font-semibold mb-1">Rewards visibility in primary flow</h3>
+          <p class="text-gray-700 text-sm">
+            Surfaced loyalty and redemption context earlier so users can understand benefits while ordering.
+          </p>
+        </article>
+        <article class="rounded-xl border border-[#5A8EFF]/40 bg-[#5A8EFF]/10 p-4">
+          <h3 class="font-semibold mb-1">Pickup and location clarity</h3>
+          <p class="text-gray-700 text-sm">
+            Made store selection and pickup decisions easier to scan for time-sensitive ordering behavior.
+          </p>
+        </article>
+        <article class="rounded-xl border border-[#5A8EFF]/40 bg-[#5A8EFF]/10 p-4">
+          <h3 class="font-semibold mb-1">Accessibility-forward UI refinement</h3>
+          <p class="text-gray-700 text-sm">
+            Improved readability and interaction clarity for users with visual accessibility needs.
+          </p>
+        </article>
+      </div>
+    </section>
+  </section>
+    
+  <section class="bg-white rounded-3xl mx-auto my-4 max-w-[95vw] px-4 shadow-lg mb-12">
+    <!-- User Personas (Starbucks Project) -->
+    <section id="personas" class="max-w-6xl mx-auto pb-12 pt-12 px-0 md:px-28" data-aos="fade-up" data-aos-offset="140">
+        <h2 class="text-3xl font-bold mb-6">User Personas</h2>
+        <div class="overflow-x-auto rounded-[10px]">
+        <table class="min-w-full bg-white border border-gray-300 rounded-[10px]">
+            <thead>
+            <tr class="bg-[#5A8EFF]/30">
+                <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Persona</th>
+                <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Bio &amp; Goals</th>
+                <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Pain Points</th>
+            </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+            <!-- Sarah Mitchell -->
+            <tr>
+                <td class="px-6 py-4 align-top text-sm text-gray-900">
+                Sarah Mitchell<br><span class="text-xs text-gray-500">Office Woman, 32</span>
+                </td>
+                <td class="px-6 py-4 align-top text-sm text-gray-600">
+                Marketing manager who values time efficiency; uses the app to place &amp; pick up her coffee orders quickly without waiting in line.
+                </td>
+                <td class="px-6 py-4 align-top text-sm text-gray-600">
+                Dislikes waiting or delays; gets frustrated if the app is slow or her routine is disrupted.
+                </td>
+            </tr>
+            <!-- Emily Thompson -->
+            <tr class="bg-[#F9FAFB]">
+                <td class="px-6 py-4 align-top text-sm text-gray-900">
+                Emily Thompson<br><span class="text-xs text-gray-500">PhD Student, 23</span>
+                </td>
+                <td class="px-6 py-4 align-top text-sm text-gray-600">
+                Literature PhD student who enjoys the café atmosphere; places orders to earn rewards but loves the in-store interaction and seasonal drinks.
+                </td>
+                <td class="px-6 py-4 align-top text-sm text-gray-600">
+                Feels ordering via app detracts from her in-store experience; sometimes frustrated by finding good seating during peak hours.
+                </td>
+            </tr>
+            <!-- Lisa Carter -->
+            <tr>
+                <td class="px-6 py-4 align-top text-sm text-gray-900">
+                Lisa Carter<br><span class="text-xs text-gray-505">Busy Mom on the Go, 35</span>
+                </td>
+                <td class="px-6 py-4 align-top text-sm text-gray-600">
+                Stay-at-home mom who uses drive-through ordering to balance her kids’ needs; values quick, convenient app orders on her way to school drop-offs.
+                </td>
+                <td class="px-6 py-4 align-top text-sm text-gray-600">
+                Finds it hard to manage orders with restless children; hates long drive-through lines and app errors.
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+    </section>
+  
+
+    <!-- User Journeys Map -->
+    <section id="user-journeys-map" class="max-w-6xl mx-auto py-4 pb-16 px-0 md:px-28" data-aos="fade-up" data-aos-offset="140" data-aos-delay="60">
+        <h2 class="text-3xl font-bold mb-8">User Journeys</h2>
+        <div class="overflow-x-auto rounded-[10px]">
+        <table class="min-w-full bg-white border border-gray-300">
+            <thead class="bg-[#5A8EFF]/30">
+            <tr>
+                <th class="p-4 text-left">Step</th>
+                <th class="p-4 text-left">First-Time Order<br><span class="text-sm text-gray-500">New customer flow</span></th>
+                <th class="p-4 text-left">Rewards Redemption<br><span class="text-sm text-gray-500">Loyalty flow</span></th>
+            </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+            <!-- Step 1 -->
+            <tr class="bg-[#F9FAFB]">
+                <td class="p-4 font-medium">1</td>
+                <td class="p-4">Open app and browse menu</td>
+                <td class="p-4">Navigate to Rewards tab</td>
+            </tr>
+            <!-- Step 2 -->
+            <tr>
+                <td class="p-4 font-medium">2</td>
+                <td class="p-4">Select drink customization options</td>
+                <td class="p-4">View available stars and tiers</td>
+            </tr>
+            <!-- Step 3 -->
+            <tr class="bg-[#F9FAFB]">
+                <td class="p-4 font-medium">3</td>
+                <td class="p-4">Choose pickup location and time</td>
+                <td class="p-4">Select desired reward item</td>
+            </tr>
+            <!-- Step 4 -->
+            <tr>
+                <td class="p-4 font-medium">4</td>
+                <td class="p-4">Review order & proceed to payment</td>
+                <td class="p-4">Redeem stars and confirm pickup</td>
+            </tr>
+            <!-- Step 5 -->
+            <tr class="bg-[#F9FAFB]">
+                <td class="p-4 font-medium">5</td>
+                <td class="p-4">Receive order confirmation & pickup instructions</td>
+                <td class="p-4">Receive digital voucher for in-store use</td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+    </section>
+
+    <!-- Affinity Diagram -->
+    <section id="user-personas" class="w-full max-w-screen-xl mx-auto py-2" data-aos="fade-up" data-aos-offset="140" data-aos-delay="90">
+        <h2 class="text-3xl font-bold text-left mb-8 px-28">Affinity Diagram</h2>
+        <div class="flex flex-col items-center space-y-8">
+        <div class="w-full sm:w-2/3 lg:w-4/5">
+            <img src="/images/ad-starbucks.png" alt="Persona 1" class="w-full rounded-l shadow-md mb-4">
+        </div>
+      </div>
+    </section>
+
+</section>
+
+<section class="bg-white rounded-3xl mx-auto my-4 max-w-[95vw] px-4 shadow-lg mb-12">
+    <!-- Design Opportunities -->
+    <section id="design-opportunities" class="py-12 bg-white px-0 md:px-28" data-aos="fade-up" data-aos-offset="140">
+        <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold mb-8 text-center">Design Opportunities</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <!-- Card 1 -->
+            <div class="bg-[#5A8EFF]/20 p-6 rounded-2xl shadow-md">
+            <h3 class="text-xl font-semibold mb-2 inline-block border-b-2 border-gray-300 pb-1">
+                Opportunities based on Sarah's journey
+            </h3>
+            <ul class="list-disc list-inside mt-4 space-y-2 text-gray-700 text-justify">
+                <li>Improve the notification system for mobile orders to reduce user anxiety.</li>
+                <li>Offer more detailed order tracking, so users know exactly when their drink will be ready.</li>
+            </ul>
+            </div>
+            <!-- Card 2 -->
+            <div class="bg-[#5A8EFF]/20 p-6 rounded-2xl shadow-md">
+            <h3 class="text-xl font-semibold mb-2 inline-block border-b-2 border-gray-300 pb-1">
+                Opportunities based on Emily's journey
+            </h3>
+            <ul class="list-disc list-inside mt-4 space-y-2 text-gray-700 text-justify">
+                <li>Create more seating options or a seating reservation feature within the app to help users secure a spot during busy hours.</li>
+                <li>Provide more personalized recommendations for seasonal items when scanning the app at the counter.</li>
+            </ul>
+            </div>
+            <!-- Card 3 -->
+            <div class="bg-[#5A8EFF]/20 p-6 rounded-2xl shadow-md">
+            <h3 class="text-xl font-semibold mb-2 inline-block border-b-2 border-gray-300 pb-1">
+                Opportunities based on Lisa's journey
+            </h3>
+            <ul class="list-disc list-inside mt-4 space-y-2 text-gray-700 text-justify">
+                <li>Optimize the app's drive-through feature, including estimated wait times for pickup and clearer instructions for using rewards in the drive-through line.</li>
+            </ul>
+            </div>
+        </div>
+        </div>
+    </section>
+</section>
+    
+    <!-- Flip-Book Section -->
+    <section id="flipbook" class="py-2 pb-8 flex flex-col items-center" data-aos="fade-up" data-aos-offset="140" data-aos-delay="70">
+        <h2 class="text-3xl font-bold text-center mb-8">Redesigned Features</h2>
+    
+        <!-- book container with perspective, now centered via the parent flex -->
+        <div class="mx-auto" style="width: 320px; height: 420px; perspective: 2000px;">
+            <div id="book" class="relative w-full h-full" style="transform-style: preserve-3d;">
+    
+            <!-- Page 1 -->
+            <div
+            class="page absolute inset-0 bg-white rounded-2xl shadow-lg overflow-hidden transition-transform duration-700 origin-left"
+            data-idx="1"
+            >
+            <div class="page-content p-6 transition-opacity duration-300">
+                <img src="/images/starbucks1.png" class="w-full h-64 object-contain mb-4" />
+                <h3 class="text-xl font-semibold mb-2">Enhanced Order Tracking</h3>
+                <p class="text-gray-600 text-sm">
+                A live, step-by-step progress bar shows every order state.
+                </p>
+            </div>
+            </div>
+    
+            <!-- Page 2 -->
+            <div
+            class="page absolute inset-0 bg-white rounded-2xl shadow-lg overflow-hidden transition-transform duration-700 origin-left"
+            data-idx="2"
+            >
+            <div class="page-content p-6 transition-opacity duration-300">
+                <img src="/images/starbucks2.png" class="w-full h-64 object-contain mb-4" />
+                <h3 class="text-xl font-semibold mb-2">Seasonal Content Hub</h3>
+                <p class="text-gray-600 text-sm">
+                A dedicated hub for seasonal drinks & offers.
+                </p>
+            </div>
+            </div>
+    
+            <!-- Page 3 -->
+            <div
+            class="page absolute inset-0 bg-white rounded-2xl shadow-lg overflow-hidden transition-transform duration-700 origin-left"
+            data-idx="3"
+            >
+            <div class="page-content p-6 transition-opacity duration-300">
+                <img src="/images/starbucks3.png" class="w-full h-64 object-contain mb-4" />
+                <h3 class="text-xl font-semibold mb-2">Interactive Sliders</h3>
+                <p class="text-gray-600 text-sm">
+                Tactile sliders for syrup, foam, and toppings.
+                </p>
+            </div>
+            </div>
+    
+            <!-- Page 4 -->
+            <div
+            class="page absolute inset-0 bg-white rounded-2xl shadow-lg overflow-hidden transition-transform duration-700 origin-left"
+            data-idx="4"
+            >
+            <div class="page-content p-6 transition-opacity duration-300">
+                <img src="/images/starbucks4.png" class="w-full h-64 object-contain mb-4" />
+                <h3 class="text-xl font-semibold mb-2">Dark Mode & Quick Order</h3>
+                <p class="text-gray-600 text-sm">
+                One-tap reorder + low-light theme.
+                </p>
+            </div>
+            </div>
+    
+        </div>
+        </div>
+    
+        <!-- navigation -->
+        <div class="flex justify-center mt-6 space-x-4">
+        <button id="prev" class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">← Prev</button>
+        <button id="next" class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">Next →</button>
+        </div>
+    </section>
+    
+    <style>
+        /* after flipped, page-content hides */
+        .page.blank .page-content {
+        opacity: 0;
+        }
+    </style>
+    
+    <script>
+        (function(){
+        const pages = Array.from(document.querySelectorAll('.page'))
+            .sort((a,b)=> +a.dataset.idx - +b.dataset.idx);
+        const total = pages.length;
+        let current = 0;
+    
+        function updateBook() {
+            pages.forEach(page => {
+            const idx = +page.dataset.idx;
+    
+            if (idx <= current) {
+                // flip to left & blank
+                page.style.transform = 'rotateY(-180deg)';
+                page.classList.add('blank');
+                page.style.zIndex = idx;             // lower z‐index
+            } else {
+                // on right & visible
+                page.style.transform = 'rotateY(0deg)';
+                page.classList.remove('blank');
+                page.style.zIndex = (total + 1) - idx; // next to flip on top
+            }
+            });
+        }
+    
+        document.getElementById('next').onclick = () => {
+            if (current < total) current++;
+            updateBook();
+        };
+        document.getElementById('prev').onclick = () => {
+            if (current > 0) current--;
+            updateBook();
+        };
+    
+        // initial render
+        updateBook();
+        })();
+    </script>
+
+    <!-- FOOTER -->
+      <footer class="bg-[#5A8EFF]/60 text-black mt-8 border-t border-black relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 py-6 sm:py-4
+                    flex flex-col sm:flex-row sm:items-center sm:justify-between
+                    gap-4 sm:gap-6">
+
+          <!-- Back to top (first on mobile, right on desktop) -->
+          <a href="#starbucks"
+            class="order-1 sm:order-none w-full sm:w-auto
+                    inline-flex items-center justify-center gap-2
+                    rounded-full bg-white px-4 py-2 text-sm font-medium
+                    border border-black/20 hover:bg-white/90 transition"
+            aria-label="Back to top">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#3063FC" d="M12 5.5 3 14.5l1.5 1.5 7.5-7.5 7.5 7.5 1.5-1.5L12 5.5Z"/>
+            </svg>
+            Back to top
+          </a>
+
+          <!-- Socials (full-width stack on mobile, inline on desktop) -->
+          <div class="order-2 sm:order-none w-full sm:w-auto
+                      flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <!-- subtle divider only on mobile -->
+            <div class="h-px bg-black/20 sm:hidden"></div>
+
+            <a href="https://www.linkedin.com/in/sudiksha-rajavaram/" target="_blank"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2
+                      rounded-xl border border-black/20 bg-white/80 px-3 py-2 text-sm font-medium
+                      hover:bg-white transition">
+              <img src="https://cdn.iconscout.com/icon/free/png-512/free-linkedin-42-151143.png"
+                  alt="LinkedIn Logo" class="w-4 h-4"/>
+              LinkedIn
+            </a>
+
+            <a href="https://www.figma.com/@rajavaramsudiks" target="_blank"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2
+                      rounded-xl border border-black/20 bg-white/80 px-3 py-2 text-sm font-medium
+                      hover:bg-white transition">
+              <img src="https://cdn.iconscout.com/icon/free/png-512/free-figma-2296071-1912030.png"
+                  alt="Figma Logo" class="w-4 h-4"/>
+              Figma
+            </a>
+          </div>
+
+          <!-- Name (centered on mobile, left on desktop) -->
+          <p class="order-3 sm:order-none text-center sm:text-left text-sm font-medium">
+            &copy; 2025 Sudiksha Rajavaram
+          </p>
+
+        </div>
+      </footer>
+
+      
+  </main>
+</section>
+    
+  <script>
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  let isOpen = false;
+
+  menuBtn.addEventListener('click', () => {
+    isOpen = !isOpen;
+    mobileMenu.style.maxHeight = isOpen ? mobileMenu.scrollHeight + 'px' : '0px';
+  });
+</script>
+</body>
+</html>

@@ -21,22 +21,13 @@ function resolveRouteFromSlug(slugParts) {
   return null;
 }
 
-async function readLegacyHtml(fileName) {
-  const [{ readFile }, { join }] = await Promise.all([
-    import('node:fs/promises'),
-    import('node:path')
-  ]);
-  const filePath = join(process.cwd(), 'legacy-pages', fileName);
-  return readFile(filePath, 'utf8');
-}
-
 export function generateStaticParams() {
   return knownRoutes.map((route) =>
     route === '/' ? { slug: [] } : { slug: route.replace(/^\//, '').split('/') }
   );
 }
 
-export default async function CatchAllPage({ params }) {
+export default function CatchAllPage({ params }) {
   const routePath = resolveRouteFromSlug(params.slug);
   if (!routePath) {
     notFound();
@@ -47,6 +38,6 @@ export default async function CatchAllPage({ params }) {
     notFound();
   }
 
-  const html = await readLegacyHtml(fileName);
-  return <LegacyPageRenderer html={html} title={routeTitles[routePath]} />;
+  const sourcePath = `/legacy-pages/${fileName}`;
+  return <LegacyPageRenderer sourcePath={sourcePath} title={routeTitles[routePath]} />;
 }

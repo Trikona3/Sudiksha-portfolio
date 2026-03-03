@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sudiksha Rajavaram — AI/ML UX Designer & Front-End Prototyper</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    AOS.init({
+      duration: 760,
+      easing: 'ease-out-cubic',
+      offset: 95,
+      once: false,
+      mirror: true,
+      anchorPlacement: 'top-bottom',
+      disable: () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    });
+  </script>
+  <script>
+  window.addEventListener('load', () => {
+    document.querySelectorAll('#proj-rail video[autoplay]').forEach(v => {
+      v.muted = true;
+      v.playsInline = true;
+      const p = v.play();
+      if (p && typeof p.catch === "function") p.catch(() => {});
+    });
+  });
+</script>
+
+  <!-- stroke animation for process diagram -->
+  <style>
+    .stroke-anim {
+      transition: stroke-dashoffset 2800ms cubic-bezier(.2,.8,.2,1);
+    }
+    .stroke-anim--glow {
+      transition-duration: 4800ms;
+    }
+  </style>
+
+  <!-- horizontal scroll marquee -->
+  <style>
+    @keyframes scroll-left {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-scroll {
+      animation: scroll-left 20s linear infinite;
+    }
+    @keyframes soft-bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-6px);
+      }
+    }
+    .bounce-btn {
+      animation: soft-bounce 1.8s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%   { transform: translateY(0); }
+      50%  { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+    .float {
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes glow-pulse {
+      0% { box-shadow: 0 0 0 rgba(48,99,252,0.0); }
+      50% { box-shadow: 0 0 24px rgba(48,99,252,0.55); }
+      100% { box-shadow: 0 0 0 rgba(48,99,252,0.0); }
+    }
+    .glow {
+      animation: glow-pulse 3.5s ease-in-out infinite;
+    }
+    .magnetic:hover {
+  transform: scale(1.04);
+}
+</style>
+  <style> 
+    :root {
+      --section-py: clamp(3.5rem, 7vw, 6rem);
+      --section-py-tight: clamp(2.25rem, 4.5vw, 3.5rem);
+      --eyebrow-size: clamp(0.85rem, 1vw, 1rem);
+      --title-size: clamp(2rem, 4vw, 3.25rem);
+      --body-size: clamp(1rem, 1.15vw, 1.18rem);
+      --body-line: 1.62;
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background-color: rgba(90, 142, 255, 0.25);
+      background-image: radial-gradient(circle, rgba(48,99,252,0.18) 1.1px, transparent 1.1px);
+      background-size: 28px 28px;
+    }
+    #home {
+      position: relative;
+      z-index: 1;
+    }
+    .hero-overlap-start {
+      position: relative;
+      z-index: 10;
+      margin-top: clamp(14px, 2.2vh, 26px);
+      box-shadow: none;
+    }
+    .nav-link {
+      position: relative;
+      display: inline-block;
+      text-decoration: none;
+      color: #2d3748;
+      font-weight: 600;
+      font-size: clamp(1.25rem, 1.2vw, 1.65rem);
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .nav-link:hover::after {
+      transform: scaleX(1);
+    }
+    .nav-link:hover {
+      color: #ffffff;
+    }
+    .menu-transition {
+      transition: max-height 0.3s ease-out;
+      overflow: hidden;
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .site-nav {
+      background-color: transparent;
+      border-color: transparent;
+      box-shadow: none;
+      backdrop-filter: none;
+      transition: background-color 260ms ease, border-color 260ms ease, box-shadow 260ms ease, color 260ms ease, backdrop-filter 260ms ease;
+    }
+    .site-nav .nav-logo,
+    .site-nav .nav-link,
+    .site-nav #menu-btn {
+      color: #ffffff;
+    }
+    .site-nav #menu-btn svg {
+      color: inherit !important;
+    }
+    .site-nav.is-scrolled {
+      background-color: rgba(90,142,255,0.7);
+      border-color: #000000;
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12);
+      backdrop-filter: blur(4px);
+    }
+    .site-nav.is-scrolled .nav-logo,
+    .site-nav.is-scrolled .nav-link,
+    .site-nav.is-scrolled #menu-btn {
+      color: #000000;
+    }
+    .site-nav.is-scrolled .nav-link:hover {
+      color: #000000;
+    }
+    .section-heading {
+      position: relative;
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+    .section-heading::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 5px;
+      background: #3063FC;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 700ms cubic-bezier(.2,.8,.2,1);
+    }
+    .section-heading.in-view::after {
+      transform: scaleX(1);
+    }
+    .site-section-inner {
+      width: 100%;
+      max-width: 80rem;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+    .section-shell {
+      padding-top: var(--section-py);
+      padding-bottom: var(--section-py);
+    }
+    .section-shell--tight {
+      padding-top: var(--section-py-tight);
+      padding-bottom: var(--section-py-tight);
+    }
+    .section-eyebrow {
+      color: #3063fc;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: var(--eyebrow-size);
+      font-weight: 700;
+      line-height: 1.25;
+    }
+    .section-title {
+      color: #0f172a;
+      font-weight: 800;
+      line-height: 1.12;
+      font-size: var(--title-size);
+      letter-spacing: -0.02em;
+      text-wrap: balance;
+    }
+    .section-body {
+      color: #475569;
+      font-size: var(--body-size);
+      line-height: var(--body-line);
+    }
+    #projects {
+      scroll-margin-top: 120px;
+    }
+    @media (max-width: 640px) {
+      .site-section-inner {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      .nav-link {
+        font-size: 1rem;
+      }
+    }
+    .projects-masonry {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+    .project-tile {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      min-height: 260px;
+      border: 1px solid rgba(48, 99, 252, 0.2);
+      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.12);
+      isolation: isolate;
+    }
+    .project-media {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -3;
+    }
+    .project-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.33) 8%, rgba(15, 23, 42, 0.12) 44%, rgba(15, 23, 42, 0.01) 100%);
+      z-index: -2;
+      transition: background 260ms ease;
+    }
+    .project-tile:hover .project-overlay {
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.45) 14%, rgba(15, 23, 42, 0.18) 52%, rgba(15, 23, 42, 0.04) 100%);
+    }
+    .project-content {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px;
+      color: #ffffff;
+    }
+    .project-kicker {
+      color: #88b2ff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      text-shadow: 0 1px 8px rgba(15, 23, 42, 0.45);
+      display: none;
+    }
+    .project-title {
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1.12;
+      text-wrap: balance;
+      text-shadow: 0 2px 14px rgba(15, 23, 42, 0.45);
+    }
+    .project-desc {
+      margin-top: 6px;
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.9);
+      opacity: 0;
+      transform: translateY(10px);
+      max-height: 0;
+      overflow: hidden;
+      transition: opacity 240ms ease, transform 240ms ease, max-height 280ms ease;
+      text-shadow: 0 1px 10px rgba(15, 23, 42, 0.45);
+    }
+    .project-tile:hover .project-desc {
+      opacity: 1;
+      transform: translateY(0);
+      max-height: 120px;
+    }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .project-tag {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #ffffff;
+      background: rgba(48, 99, 252, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 999px;
+      padding: 5px 10px;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .project-hit {
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+    }
+    @media (min-width: 1024px) {
+      .projects-masonry {
+        grid-template-columns: 1.15fr 1.15fr 0.9fr;
+        grid-auto-rows: 224px;
+        gap: 20px;
+      }
+      .project-tile--wide {
+        grid-column: 1 / span 2;
+        grid-row: span 2;
+      }
+      .project-tile--vertical {
+        grid-column: 3;
+        grid-row: 2 / span 2;
+      }
+      .project-tile--compact {
+        min-height: 224px;
+      }
+      .project-tile--wide .project-title {
+        font-size: 2.15rem;
+      }
+    }
+    .figjam-board {
+      background-color: inherit;
+      background-image: none;
+      animation: none;
+    }
+    @keyframes board-drift {
+      0% { background-position: 0 0; }
+      100% { background-position: 28px 28px; }
+    }
+    .figjam-frame {
+      position: relative;
+      border: 1px solid rgba(48,99,252,0.22);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.95);
+      box-shadow: 0 10px 28px rgba(48,99,252,0.08);
+      transition: transform 240ms ease, box-shadow 240ms ease;
+    }
+    .figjam-frame:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 30px rgba(48,99,252,0.16);
+    }
+    .figjam-frame::before {
+      content: '';
+      position: absolute;
+      inset: -5px;
+      pointer-events: none;
+      background:
+        linear-gradient(#3063FC, #3063FC) left top / 10px 10px no-repeat,
+        linear-gradient(#3063FC, #3063FC) right top / 10px 10px no-repeat,
+        linear-gradient(#3063FC, #3063FC) left bottom / 10px 10px no-repeat,
+        linear-gradient(#3063FC, #3063FC) right bottom / 10px 10px no-repeat;
+      opacity: 0.95;
+    }
+    .career-board {
+      background: transparent;
+    }
+    .career-switch {
+      display: inline-flex;
+      gap: 6px;
+      padding: 6px;
+      border-radius: 9999px;
+      background: #e9edf3;
+      box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.04);
+    }
+    .career-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 9999px;
+      padding: 10px 28px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: #4b5563;
+      transition: all 220ms ease;
+    }
+    .career-tab svg {
+      width: 22px;
+      height: 22px;
+    }
+    .career-tab.is-active,
+    .career-tab[aria-selected="true"] {
+      background: #3f66f2;
+      color: #ffffff;
+      box-shadow: 0 8px 16px rgba(48, 99, 252, 0.28);
+      animation: tab-glow 3.2s ease-in-out infinite;
+    }
+    @keyframes tab-glow {
+      0%, 100% { box-shadow: 0 8px 16px rgba(48,99,252,0.28); }
+      50% { box-shadow: 0 10px 20px rgba(48,99,252,0.42); }
+    }
+    .tab-pop {
+      animation: tab-pop 260ms cubic-bezier(.2,.8,.2,1);
+    }
+    @keyframes tab-pop {
+      0% { transform: scale(0.97); }
+      55% { transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
+    .project-tag {
+      animation: tag-ambient 4.5s ease-in-out infinite;
+    }
+    .project-tag:nth-child(2) { animation-delay: 140ms; }
+    .project-tag:nth-child(3) { animation-delay: 280ms; }
+    @keyframes tag-ambient {
+      0%, 100% { box-shadow: 0 0 0 rgba(48,99,252,0.0); }
+      50% { box-shadow: 0 0 10px rgba(48,99,252,0.26); }
+    }
+    .career-card {
+      position: relative;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+      overflow: hidden;
+    }
+    .career-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 8px;
+      background: #4f73f6;
+    }
+    .career-ribbon {
+      position: absolute;
+      right: -46px;
+      top: 14px;
+      background: #3f66f2;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.84rem;
+      line-height: 1.1;
+      text-align: center;
+      width: 190px;
+      padding: 9px 0;
+      transform: rotate(45deg);
+      transform-origin: center;
+      border-radius: 6px;
+      box-shadow: 0 6px 14px rgba(31, 64, 255, 0.2);
+      z-index: 2;
+    }
+    .career-card-inner {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      padding: 28px 24px 24px 28px;
+      padding-right: 188px;
+    }
+    .career-logo-box {
+      width: 78px;
+      height: 78px;
+      border-radius: 14px;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      background: #ffffff;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      box-shadow: 0 8px 14px rgba(15, 23, 42, 0.08);
+      flex: 0 0 auto;
+    }
+    .career-logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .career-icon-box {
+      background: #4f73f6;
+      color: #ffffff;
+    }
+    .career-icon-box svg {
+      width: 42px;
+      height: 42px;
+    }
+    @media (max-width: 768px) {
+      .career-tab {
+        padding: 9px 18px;
+        font-size: 0.95rem;
+      }
+      .career-card-inner {
+        padding: 26px 18px 22px 24px;
+        padding-right: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .career-ribbon {
+        position: static;
+        border-radius: 10px;
+        margin: 12px 12px 0 auto;
+        width: auto;
+        transform: none;
+        text-align: center;
+        padding: 8px 12px;
+        height: auto;
+        clip-path: none;
+      }
+    }
+  </style>
+</head>
+
+  <body class="bg-[#5A8EFF]/25">
+  <!-- NAV BAR -->
+  <header class="fixed inset-x-0 top-0 z-30">
+    <nav id="site-nav" class="site-nav absolute inset-x-0 top-2 mx-auto max-w-[1100px] border-[1.5px] py-3 px-6 rounded-[12px] z-50">
+      <div class="flex items-center justify-between">
+        <a href="index.html#about" class="nav-logo text-lg font-semibold">SUDIKSHA RAJAVARAM</a>
+
+        <!-- Hamburger Button (Mobile Only) -->
+        <button id="menu-btn" class="sm:hidden focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+
+        <!-- Desktop Nav -->
+        <div class="hidden sm:flex gap-6">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="resume.html" class="nav-link">Resume</a>
+          <a href="projects.html" class="nav-link">Projects</a>
+          <a href="contact.html" class="nav-link">Contact Me</a>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="sm:hidden menu-transition max-h-0">
+        <div class="flex flex-col gap-4 pt-4">
+          <a href="index.html" class="nav-link block">Home</a>
+          <a href="resume.html" class="nav-link block">Resume</a>
+          <a href="projects.html" class="nav-link block">Projects</a>
+          <a href="contact.html" class="nav-link block">Contact Me</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="pt-0">
+    <!-- HERO -->
+    <section
+      id="home"
+      class="relative h-screen bg-cover bg-center flex items-end justify-center pb-8"
+    >
+      <!-- Background video -->6
+      <video
+        class="absolute inset-0 w-full h-full object-cover"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        poster="/images/your-hero-image.jpg"
+        aria-hidden="true"
+      >
+        <source src="/images/my-hero-image.mp4" type="video/mp4" />
+      </video>
+
+      <!-- Dark overlay -->
+      <div class="absolute inset-0 bg-black/45"></div>
+
+      <!-- Foreground content -->
+      <div class="relative text-center px-4">
+
+        <h1 class="float text-4xl sm:text-5xl md:text-[4.125rem] font-bold text-white">
+          Crafting Experiences
+        </h1>
+
+        <p class="mt-1 text-base sm:text-lg md:text-2xl text-white/90 max-w-2xl mx-auto">
+         I design AI-assisted workflows and LLM interactions through research and rapid prototyping
+        </p>
+
+        <!-- typing line -->
+        <p class="no-auto-reveal mt-3 text-sm sm:text-base text-white/80">
+          Focused on
+          <span id="hero-typing" class="font-semibold text-white"></span>
+        </p>
+
+        <!-- CTAs -->
+        <div class="mt-3 flex flex-wrap items-center justify-center gap-3">
+          <a
+            href="projects.html"
+            class="magnetic no-auto-reveal inline-flex gap-2 rounded-xl bg-[#3063FC]/75 px-5 py-3 text-sm sm:text-base font-semibold text-white shadow hover:bg-[#5A8EFF] transition"
+          >
+            View AI Case Studies →
+          </a>
+          <a
+            href="/Sudiksha_Rajavaram_Resume.pdf"
+            download
+            aria-label="Download Sudiksha Rajavaram resume (PDF)"
+            class="magnetic no-auto-reveal inline-flex items-center gap-2 rounded-xl border border-white/70 bg-white/10 px-5 py-3 text-sm sm:text-base font-semibold text-white hover:bg-white/15 transition"
+          >
+            Download Resume
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE WRAPPER -->
+    <section class="hero-overlap-start bg-white rounded-3xl mx-auto my-4 max-w-[95vw] relative z-10">
+      <!-- ===== ABOUT (split layout) ===== -->
+      <section id="about" class="bg-white rounded-3xl mx-auto shadow-none">
+        <div class="site-section-inner grid md:grid-cols-2 gap-10 items-center rounded-3xl section-shell md:min-h-[42rem]">
+          <!-- Left: copy -->
+          <div data-aos="fade-right" class="h-full flex flex-col justify-center">
+            <p class="section-eyebrow bounce-btn">AI/ML UX Designer & Researcher</p>
+            <h2 class="section-title mt-2">
+              Hi, I’m Sudiksha — I design AI intuitive and trustworthy experiences.
+            </h2>
+            <p class="section-body mt-4 max-w-xl">
+              I’m a UX designer specializing in AI-assisted products, turning complex model behavior into
+              calm, intuitive interfaces. I work end-to-end from research and flows to Figma prototypes
+              and usability tests.
+            </p>
+            <p class="section-body mt-3 max-w-xl">
+              Front-end prototyping in HTML/CSS and React ensures that design decisions translate smoothly
+  into production.
+            </p>
+          </div>
+
+          <!-- Right: image + floating card -->
+          <div class="relative" data-aos="zoom-in" data-aos-delay="100">
+            <img
+              src="/images/your-about-imagee.png"
+              alt="Sudiksha presenting AI UX work"
+              class="w-full h-[360px] md:h-[460px] object-cover object-[20%_36%] rounded-2xl border-2 border-[#3063fc]/60 glow"
+            />
+            <div data-aos="fade-left" data-aos-offset="180" data-aos-duration="1700" data-aos-delay="90" data-aos-anchor-placement="top-bottom" class="absolute -bottom-6 -right-6 bg-white rounded-xl shadow-md p-3 border border-[#3063fc]/40 
+                        sm:rounded-2xl sm:shadow-lg sm:p-5 sm:border-[1.5px]">
+              <p class="text-slate-600 text-sm sm:text-base font-medium">Currently</p>
+              <p class="mt-1 text-lg sm:text-xl font-semibold tracking-tight">
+                AI/ML UX Design Intern (Design Lead)
+              </p>
+              <p class="mt-1 text-slate-500 text-xs sm:text-sm">@ PM Accelerator</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==== PROJECTS (Selected Works Grid) ==== -->
+      <section id="projects" class="section-shell--tight bg-white rounded-3xl mx-auto" data-aos="fade-up">
+        <div class="site-section-inner">
+          <!-- Heading -->
+          <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-6">
+            <div data-aos="fade-right" data-aos-delay="40">
+              <p class="section-eyebrow">
+                AI/ML &amp; Product UX
+              </p>
+              <h2 class="section-heading section-title">Selected Case Studies</h2>
+            </div>
+            <div class="bounce-btn sm:pb-1" data-aos="fade-left" data-aos-delay="120">
+              <a
+                href="projects.html"
+                class="inline-flex px-6 py-3 rounded-xl bg-[#3063FC] text-white font-semibold shadow hover:bg-[#5A8EFF] transition"
+              >
+                See All Projects →
+              </a>
+            </div>
+          </div>
+
+          <div class="projects-masonry" role="region" aria-label="Selected projects grid">
+            <!-- Trikona - Construction Game (horizontally longest) -->
+            <article class="project-tile project-tile--wide" data-aos="fade-up" data-aos-delay="80">
+              <video class="project-media" autoplay muted loop playsinline preload="metadata" poster="/images/construction-world-1.png">
+                <source src="/images/project13-thumb.mp4" type="video/mp4"/>
+              </video>
+              <div class="project-overlay"></div>
+              <div class="project-content">
+                <p class="project-kicker">Game UX</p>
+                <h3 class="project-title">Trikona - Construction Game</h3>
+                <p class="project-desc">mission-based construction simulation where teams plan bids with realistic cost logic and users can also learn optimal building decisions through interactive gameplay.</p>
+                <div class="project-tags">
+                  <span class="project-tag">Game UX</span>
+                  <span class="project-tag">Experiential Learning</span>
+                  <span class="project-tag">Construction</span>
+                </div>
+              </div>
+              <a href="trikona.html" class="project-hit" aria-label="Open Trikona project"></a>
+            </article>
+
+            <!-- VibeTrail.ai -->
+            <article class="project-tile project-tile--compact" data-aos="fade-left" data-aos-duration="1600" data-aos-delay="120">
+              <video class="project-media" autoplay muted loop playsinline preload="metadata" poster="/images/project9-thumb.png">
+                <source src="/images/web-optimized/project9-thumb-web.mp4" type="video/mp4"/>
+              </video>
+              <div class="project-overlay"></div>
+              <div class="project-content">
+                <p class="project-kicker">AI</p>
+                <h3 class="project-title">VibeTrail.ai</h3>
+                <p class="project-desc">AI event planning: inspirations → structured storyboards & cinematic previews.</p>
+                <div class="project-tags">
+                  <span class="project-tag">AI</span>
+                  <span class="project-tag">Featured</span>
+                </div>
+              </div>
+              <a href="Vibetrail.html" class="project-hit" aria-label="Open VibeTrail.ai case study"></a>
+            </article>
+
+            <!-- Clyra.ai -->
+            <article class="project-tile project-tile--compact" data-aos="fade-right" data-aos-delay="160">
+              <video class="project-media" autoplay muted loop playsinline preload="metadata" poster="/images/project10-thumb.png">
+                <source src="/images/web-optimized/project10-thumb-web.mp4" type="video/mp4"/>
+              </video>
+              <div class="project-overlay"></div>
+              <div class="project-content">
+                <p class="project-kicker">LLM UX</p>
+                <h3 class="project-title">Clyra.ai</h3>
+                <p class="project-desc">Intelligent task scheduling & email categorization using AI workflows, with flows designed to keep users in control.</p>
+                <div class="project-tags">
+                  <span class="project-tag">LLM UX</span>
+                  <span class="project-tag">AI</span>
+                </div>
+              </div>
+              <a href="Clyra.html" class="project-hit" aria-label="Open Clyra.ai case study"></a>
+            </article>
+
+            <!-- One VR World -->
+            <article class="project-tile project-tile--compact" data-aos="fade-up" data-aos-delay="200">
+              <video class="project-media" autoplay muted loop playsinline preload="metadata" poster="/images/project3-thumb.png">
+                <source src="/images/web-optimized/project3-thumb-web.mp4" type="video/mp4"/>
+              </video>
+              <div class="project-overlay"></div>
+              <div class="project-content">
+                <p class="project-kicker">VR</p>
+                <h3 class="project-title">One VR World</h3>
+                <p class="project-desc">An immersive VR environment with task-first interaction patterns and motion-aware UX for comfort.</p>
+                <div class="project-tags">
+                  <span class="project-tag">VR</span>
+                </div>
+              </div>
+              <a href="vrworld.html" class="project-hit" aria-label="Open One VR World case study"></a>
+            </article>
+
+            <!-- VerifyLens.ai (vertically longest) -->
+            <article class="project-tile project-tile--vertical" data-aos="fade-up" data-aos-delay="240">
+              <video class="project-media" autoplay muted loop playsinline preload="metadata" poster="/images/project12-thumb.png">
+                <source src="/images/project12-thumb.mp4" type="video/mp4"/>
+              </video>
+              <div class="project-overlay"></div>
+              <div class="project-content">
+                <p class="project-kicker">AI</p>
+                <h3 class="project-title">VerifyLens.ai</h3>
+                <p class="project-desc">Real-time fact-checking for live speech/video — surfaces verified stats and sources in seconds.</p>
+                <div class="project-tags">
+                  <span class="project-tag">AI</span>
+                  <span class="project-tag">Fact-Checking</span>
+                  <span class="project-tag">Mobile-first</span>
+                </div>
+              </div>
+              <a href="verifylens.html" class="project-hit" aria-label="Open VerifyLens.ai case study"></a>
+            </article>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Spacer -->
+      <section>
+        <div class="h-12 md:h-28"></div>
+      </section>
+    </section>
+
+    <!-- ==== DESIGN PROCESS (compact staircase) ==== -->
+    <section id="process" class="relative md:py-12 md:-mt-8">
+      <!-- Title -->
+      <div class="site-section-inner mb-8" data-aos="fade-up">
+        <p class="section-eyebrow pt-10 pl-5 sm:pl-0">How I work</p>
+        <h2 class="section-heading section-title pl-5 sm:pl-0">My Design Process</h2>
+      </div>
+
+      <div class="relative max-w-6xl mx-auto">
+        <!-- diagonal connector -->
+        <svg id="process-svg"
+            class="pointer-events-none absolute inset-0 w-full h-[28rem] sm:h-[12rem] md:h-[28rem] z-0"
+            fill="none" aria-hidden="true">
+          <path id="process-path"
+                stroke="#3B82F6" stroke-width="7"
+                stroke-linecap="round" stroke-linejoin="round"
+                opacity=".95"/>
+          <!-- soft glow under the line for depth (optional) -->
+          <path id="process-path-shadow"
+                stroke="#1E40FF" stroke-width="12"
+                stroke-linecap="round" stroke-linejoin="round"
+                opacity=".65" style="filter: blur(5px);"/>
+        </svg>
+
+
+        <!-- GRID smaller -->
+        <ol
+          class="relative z-10 h-[18rem] md:h-[27rem]
+                grid grid-cols-1 md:grid-cols-5 grid-rows-[repeat(5,1fr)] md:-mt-48 ml-8 gap-8" >
+
+          <!-- Shared card size (smaller now: 220x120) -->
+
+          <li class="md:col-start-1 md:row-start-5 place-self-center" data-aos="fade-up" data-aos-delay="0">
+            <div data-step="1"  class="bounce-btn w-[220px] h-[75px] bg-white border border-[#3063fc]/75 shadow-sm rounded-xl p-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#5A8EFF] text-white text-xs font-bold">1</span>
+                <h3 class="font-semibold text-base">Discover</h3>
+              </div>
+              <p class="text-xs text-slate-600">Interviews, context, goals.</p>
+            </div>
+          </li>
+
+          <li class="md:col-start-2 md:row-start-4 place-self-center" data-aos="fade-up" data-aos-delay="80">
+            <div data-step="2"  class="bounce-btn w-[220px] h-[80px] bg-white border border-[#3063fc]/95 shadow-sm rounded-xl p-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#5A8EFF] text-white text-xs font-bold">2</span>
+                <h3 class="font-semibold text-base">Define</h3>
+              </div>
+              <p class="text-xs text-slate-600">Personas, problem statement.</p>
+            </div>
+          </li>
+
+          <li class="md:col-start-3 md:row-start-3 place-self-center" data-aos="fade-up" data-aos-delay="160">
+            <div data-step="3"  class="bounce-btn w-[220px] h-[80px] bg-white border border-[#3063fc]/95 shadow-sm rounded-xl p-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#5A8EFF] text-white text-xs font-bold">3</span>
+                <h3 class="font-semibold text-base">Ideate</h3>
+              </div>
+              <p class="text-xs text-slate-600">Sketches, flows, trade-offs.</p>
+            </div>
+          </li>
+
+          <li class="md:col-start-4 md:row-start-2 place-self-center" data-aos="fade-up" data-aos-delay="240">
+            <div data-step="4"  class="bounce-btn w-[220px] h-[80px] bg-white border border-[#3063fc]/95 shadow-sm rounded-xl p-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#5A8EFF] text-white text-xs font-bold">4</span>
+                <h3 class="font-semibold text-base">Prototype</h3>
+              </div>
+              <p class="text-xs text-slate-600">Lo/Hi-fi in Figma, tokens.</p>
+            </div>
+          </li>
+
+          <li class="md:col-start-5 md:row-start-1 place-self-center" data-aos="fade-up" data-aos-delay="320">
+            <div data-step="5"  class="bounce-btn w-[220px] h-[80px] bg-white border border-[#3063fc]/75 shadow-sm rounded-xl p-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#5A8EFF] text-white text-xs font-bold">5</span>
+                <h3 class="font-semibold text-base">Test & Iterate</h3>
+              </div>
+              <p class="text-xs text-slate-600">Usability tests, analytics.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <div class="h-60 sm:hidden"></div>
+
+    <!-- Timeline + Skills block wrapper -->
+    <section class="bg-white rounded-3xl mx-auto my-4 max-w-[95vw]">
+      <section>
+        <div class="h-20 md:h-24"></div>
+      </section>
+
+      <!-- MILESTONES / TABS -->
+      <section aria-labelledby="milestones" class="px-4 md:px-6 pb-10">
+        <div class="career-board rounded-3xl px-4 md:px-8 py-10 md:py-14">
+          <div class="text-center">
+            <p class="section-eyebrow tracking-[0.15em]">Career &amp; Learning</p>
+            <h2 id="milestones" class="section-heading section-title mt-2">
+              Experience &amp; Education
+            </h2>
+          </div>
+
+          <div class="mt-10 flex justify-center" data-aos="zoom-in">
+            <div class="career-switch" role="tablist" aria-label="Experience and education tabs">
+              <button
+                class="career-tab tab-btn is-active"
+                data-tab="exp"
+                aria-selected="true"
+                role="tab"
+                aria-controls="panel-exp"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 7h18v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/>
+                  <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                </svg>
+                Experience
+              </button>
+              <button
+                class="career-tab tab-btn"
+                data-tab="edu"
+                aria-selected="false"
+                role="tab"
+                aria-controls="panel-edu"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 10 12 5l9 5-9 5-9-5Z"/>
+                  <path d="M7 13v4c0 1.2 2.2 2.5 5 2.5s5-1.3 5-2.5v-4"/>
+                </svg>
+                Education
+              </button>
+            </div>
+          </div>
+
+          <div class="site-section-inner mt-10 md:mt-14">
+            <!-- Experience -->
+            <div class="tab-panel" id="panel-exp">
+              <div class="space-y-6">
+                <article class="career-card" data-aos="fade-right" data-aos-delay="80">
+                  <div class="career-ribbon">Jul 2025<br/>— Present</div>
+                  <div class="career-card-inner">
+                    <div class="career-logo-box">
+                      <img src="/images/pmlogo.png" alt="PM Accelerator" class="career-logo-img" loading="lazy" />
+                    </div>
+                    <div class="min-w-0">
+                      <h3 class="text-xl md:text-2xl font-extrabold text-slate-900 leading-tight">AI/ML UX Design Intern — Design Lead</h3>
+                      <p class="mt-2 text-lg font-bold text-[#3063FC] flex items-center gap-2">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M4 21h16"/><path d="M6 21V7h12v14"/><path d="M9 21v-4h6v4"/><path d="M9 11h1"/><path d="M14 11h1"/>
+                        </svg>
+                        PM Accelerator
+                      </p>
+                      <p class="mt-2 text-base md:text-lg text-slate-600 leading-snug">UX design and research for AI and LLM products; completed 4 products to MVP, including 2 as Design Lead at PM Accelerator.</p>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="career-card" data-aos="fade-left" data-aos-delay="140">
+                  <div class="career-ribbon">Apr 2022<br/>— Present</div>
+                  <div class="career-card-inner">
+                    <div class="career-logo-box">
+                      <img src="/images/cl.png" alt="Construction Learning" class="career-logo-img" loading="lazy" />
+                    </div>
+                    <div class="min-w-0">
+                      <h3 class="text-xl md:text-2xl font-extrabold text-slate-900 leading-tight">User Experience — Researcher and Designer</h3>
+                      <p class="mt-2 text-lg font-bold text-[#3063FC] flex items-center gap-2">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M4 21h16"/><path d="M6 21V7h12v14"/><path d="M9 21v-4h6v4"/><path d="M9 11h1"/><path d="M14 11h1"/>
+                        </svg>
+                        Construction Learning
+                      </p>
+                      <p class="mt-2 text-base md:text-lg text-slate-600 leading-snug">UX design and research across multiple websites (user-facing and admin backend), plus construction-game UX translated into code with vibe coding.</p>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <!-- Education -->
+            <div class="tab-panel hidden" id="panel-edu">
+              <div class="space-y-6">
+                <article class="career-card" data-aos="fade-right" data-aos-delay="80">
+                  <div class="career-ribbon">2024 —<br/>2025</div>
+                  <div class="career-card-inner">
+                    <div class="career-logo-box career-icon-box">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M3 10 12 5l9 5-9 5-9-5Z"/><path d="M7 13v4c0 1.2 2.2 2.5 5 2.5s5-1.3 5-2.5v-4"/>
+                      </svg>
+                    </div>
+                    <div class="min-w-0">
+                      <h3 class="text-xl md:text-2xl font-extrabold text-slate-900 leading-tight">M.S., Computer &amp; Information Science</h3>
+                      <p class="mt-2 text-lg font-bold text-[#3063FC] flex items-center gap-2">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M4 21h16"/><path d="M6 21V7h12v14"/><path d="M9 21v-4h6v4"/><path d="M9 11h1"/><path d="M14 11h1"/>
+                        </svg>
+                        University of Florida
+                      </p>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="career-card" data-aos="fade-left" data-aos-delay="140">
+                  <div class="career-ribbon">2020 —<br/>2024</div>
+                  <div class="career-card-inner">
+                    <div class="career-logo-box career-icon-box">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M3 10 12 5l9 5-9 5-9-5Z"/><path d="M7 13v4c0 1.2 2.2 2.5 5 2.5s5-1.3 5-2.5v-4"/>
+                      </svg>
+                    </div>
+                    <div class="min-w-0">
+                      <h3 class="text-xl md:text-2xl font-extrabold text-slate-900 leading-tight">B.Tech., Computer Science</h3>
+                      <p class="mt-2 text-lg font-bold text-[#3063FC] flex items-center gap-2">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M4 21h16"/><path d="M6 21V7h12v14"/><path d="M9 21v-4h6v4"/><path d="M9 11h1"/><path d="M14 11h1"/>
+                        </svg>
+                        Mahindra University • India
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </section>
+
+      <!-- ===== SKILLS (FIGJAM BOARD) ===== -->
+      <section id="skills" class="figjam-board relative section-shell mt-3 mb-14">
+        <div class="site-section-inner">
+          <h2 class="section-heading section-title text-center mb-16">Skills</h2>
+
+          <!-- Top 3 cards -->
+          <div class="grid md:grid-cols-3 gap-10 items-stretch">
+            <!-- UX Research -->
+            <article
+              class="group figjam-frame p-1"
+              data-aos="fade-down"
+              data-aos-offset="180"
+              data-aos-delay="0"
+            >
+              <header class="flex items-start justify-between p-5">
+                <div>
+                  <h3 class="text-lg font-semibold mt-1 text-center">UX Research</h3>
+                </div>
+                <div class="inline-flex gap-1 mt-3 float" aria-label="Level: Expert"></div>
+              </header>
+              <div class="px-5 pb-5">
+                <p class="text-sm text-gray-600 mb-3">
+                  Interviews, task-based tests, and information architecture to de-risk decisions
+                  before we ship.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-3 py-1 rounded-full border text-sm bg-[#5A8EFF]/15">Interviews</span>
+                  <span class="px-3 py-1 rounded-full border text-sm bg-[#5A8EFF]/15">Usability Testing</span>
+                  <span class="px-3 py-1 rounded-full border text-sm bg-[#5A8EFF]/15">Personas</span>
+                  <span class="px-3 py-1 rounded-full border text-sm bg-[#5A8EFF]/15">User Journeys</span>
+                  <span class="px-3 py-1 rounded-full border text-sm bg-[#5A8EFF]/15">Wireflows</span>
+                  <span class="px-3 py-1 rounded-full border text-sm bg-[#5A8EFF]/15">IA</span>
+                  <span class="px-3 py-1 rounded-full border text-sm bg-[#5A8EFF]/15">Storyboards</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- AI / Product UX Design -->
+            <article
+              class="group figjam-frame p-1 float"
+              data-aos="fade-left"
+              data-aos-offset="180"
+              data-aos-delay="100"
+            >
+              <header class="flex items-start justify-between p-5">
+                <div>
+                  <h3 class="text-lg font-semibold mt-1">AI / Product UX Design</h3>
+                </div>
+                <div class="inline-flex gap-1 mt-3 float" aria-label="Level: Expert"></div>
+              </header>
+              <div class="px-5 pb-5">
+                <p class="text-sm text-gray-600 mb-3">
+                  Translate AI capabilities into flows, guardrails, and interfaces users can trust.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-3 py-1 rounded-full border text-sm bg-[#5A8EFF]/15">LLM UX</span>
+                  <span class="px-3 py-1 rounded-full border text-sm bg-[#5A8EFF]/15">Design Systems</span>
+                  <span class="px-3 py-1 rounded-full border text-sm bg-[#5A8EFF]/15">Micro-interactions</span>
+                  <span class="px-3 py-1 rounded-full border text-sm bg-[#5A8EFF]/15">Accessibility (WCAG)</span>
+                  <span class="px-3 py-1 rounded-full border text-sm bg-[#5A8EFF]/15">Game UX Prototyping</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Front-End -->
+            <article
+              class="group figjam-frame p-1"
+              data-aos="fade-right"
+              data-aos-offset="180"
+              data-aos-delay="200"
+            >
+              <header class="flex items-start justify-between p-5">
+                <div>
+                  <h3 class="text-lg font-semibold mt-1">Front-End (UX support)</h3>
+                </div>
+                <div class="inline-flex gap-1 mt-3" aria-label="Level: Advanced"></div>
+              </header>
+              <div class="px-5 pb-5">
+                <p class="text-sm text-gray-600 mb-3">
+                  Craft responsive UIs and interactive prototypes that make handoff to engineering fast and clear.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-3 py-1 rounded-full border text-sm bg-[#5A8EFF]/15">HTML</span>
+                  <span class="px-3 py-1 rounded-full border text-sm bg-[#5A8EFF]/15">CSS / Tailwind</span>
+                  <span class="px-3 py-1 rounded-full border text-sm bg-[#5A8EFF]/15">React Prototyping</span>
+                  <span class="px-3 py-1 rounded-full border text-sm bg-[#5A8EFF]/15">GitHub</span>
+                  <span class="px-3 py-1 rounded-full border text-sm bg-[#5A8EFF]/15">Handoff Specs</span>
+                  <span class="px-3 py-1 rounded-full border text-sm bg-[#5A8EFF]/15">Responsive UI</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Bottom 2 cards -->
+          <div class="mt-12 grid md:grid-cols-2 gap-10">
+            <div
+              class="figjam-frame p-6"
+              data-aos="fade-up-right"
+              data-aos-offset="160"
+              data-aos-delay="80"
+            >
+              <h4 class="font-semibold mb-2">Tools I Use Weekly</h4>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 rounded-full border text-sm bg-[#5A8EFF]/15">Figma</span>
+                <span class="px-3 py-1 rounded-full border text-sm bg-[#5A8EFF]/15">HTML</span>
+                <span class="px-3 py-1 rounded-full border text-sm bg-[#5A8EFF]/15">CSS / Tailwind</span>
+                <span class="px-3 py-1 rounded-full border text-sm bg-[#5A8EFF]/15">GitHub</span>
+                <span class="px-3 py-1 rounded-full border text-sm bg-[#5A8EFF]/15">Notion</span>
+              </div>
+            </div>
+
+            <div
+              class="figjam-frame p-6 float"
+              data-aos="fade-up-left"
+              data-aos-offset="160"
+              data-aos-delay="150"
+            >
+              <h4 class="font-semibold mb-2">Where I have used these skills</h4>
+              <ul class="list-disc list-inside text-sm text-black space-y-1">
+                <li><a href="Vibetrail.html" class="underline-offset-2 hover:underline">VibeTrail.ai — AI storyboard &amp; cinematic previews</a></li>
+                <li><a href="Clyra.html" class="underline-offset-2 hover:underline">Clyra.ai — AI-assisted task &amp; email workflows</a></li>
+                <li><a href="construction_world.html" class="underline-offset-2 hover:underline">Construction Learning — user research, UX/UI for user + admin websites, and hi-fi clickable game UX prototypes</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- SR/ATS backup -->
+          <ul class="sr-only">
+            <li>User Interviews, Usability Testing, Personas & Journeys, Heuristic Evaluation, IA</li>
+            <li>LLM UX, Prompt Patterns, AI Copilots, Design Systems, Micro-interactions, Accessibility</li>
+            <li>Design Tokens, Component Specs, Agile Collaboration, Analytics-informed iteration</li>
+            <li>Figma, HTML, CSS/Tailwind, JavaScript, React, GitHub</li>
+          </ul>
+        </div>
+      </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#5A8EFF]/60 text-black mt-8 border-t border-black relative overflow-hidden">
+      <div
+        class="max-w-6xl mx-auto px-4 py-6 sm:py-4
+               flex flex-col sm:flex-row sm:items-center sm:justify-between
+               gap-4 sm:gap-6"
+      >
+        <!-- Back to top -->
+        <a
+          href="#home"
+          class="order-1 sm:order-none w-full sm:w-auto
+                 inline-flex items-center justify-center gap-2
+                 rounded-full bg-white px-4 py-2 text-sm font-medium
+                 border border-black/20 hover:bg-white/90 transition"
+          aria-label="Back to top"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              fill="#3063FC"
+              d="M12 5.5 3 14.5l1.5 1.5 7.5-7.5 7.5 7.5 1.5-1.5L12 5.5Z"
+            />
+          </svg>
+          Back to top
+        </a>
+
+        <!-- Socials -->
+        <div
+          class="order-2 sm:order-none w-full sm:w-auto
+                 flex flex-col sm:flex-row items-stretch sm:items-center gap-3"
+        >
+          <div class="h-px bg-black/20 sm:hidden"></div>
+
+          <a
+            href="https://www.linkedin.com/in/sudiksha-rajavaram/"
+            target="_blank"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2
+                   rounded-xl border border-black/20 bg-white/80 px-3 py-2 text-sm font-medium
+                   hover:bg-white transition"
+          >
+            <img
+              src="https://cdn.iconscout.com/icon/free/png-512/free-linkedin-42-151143.png"
+              alt="LinkedIn Logo"
+              class="w-4 h-4"
+            />
+            LinkedIn
+          </a>
+
+          <a
+            href="https://www.figma.com/@rajavaramsudiks"
+            target="_blank"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2
+                   rounded-xl border border-black/20 bg-white/80 px-3 py-2 text-sm font-medium
+                   hover:bg-white transition"
+          >
+            <img
+              src="https://cdn.iconscout.com/icon/free/png-512/free-figma-2296071-1912030.png"
+              alt="Figma Logo"
+              class="w-4 h-4"
+            />
+            Figma
+          </a>
+        </div>
+
+        <p class="order-3 sm:order-none text-center sm:text-left text-sm font-medium">
+          &copy; 2025 Sudiksha Rajavaram · AI/ML UX Designer
+        </p>
+      </div>
+    </footer>
+  </main>
+
+  <!-- AOS init (backup) -->
+  <script>
+    AOS.init({
+      duration: 760,
+      easing: 'ease-out-cubic',
+      offset: 95,
+      once: false,
+      mirror: true,
+      anchorPlacement: 'top-bottom'
+    });
+  </script>
+
+  <!-- Mobile menu -->
+  <script>
+    const siteNav = document.getElementById('site-nav');
+    const homeSection = document.getElementById('home');
+    if (siteNav) {
+      const syncNavState = (scrolled) => {
+        siteNav.classList.toggle('is-scrolled', scrolled);
+      };
+
+      const syncFromScroll = () => {
+        syncNavState(window.scrollY > 20);
+      };
+
+      syncFromScroll();
+      window.addEventListener('scroll', syncFromScroll, { passive: true });
+      window.addEventListener('resize', syncFromScroll, { passive: true });
+
+      if (homeSection && 'IntersectionObserver' in window) {
+        const heroObserver = new IntersectionObserver(
+          ([entry]) => {
+            // Transparent only while hero is largely in view.
+            syncNavState(!entry.isIntersecting || entry.intersectionRatio < 0.6);
+          },
+          { threshold: [0.6], rootMargin: '-10% 0px 0px 0px' }
+        );
+        heroObserver.observe(homeSection);
+      }
+    }
+
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuBtn && mobileMenu) {
+      let isOpen = false;
+      menuBtn.addEventListener('click', () => {
+        isOpen = !isOpen;
+        mobileMenu.style.maxHeight = isOpen ? mobileMenu.scrollHeight + 'px' : '0px';
+      });
+    }
+  </script>
+
+  <!-- Projects carousel controls -->
+  <script>
+    (function () {
+      const rail = document.getElementById('proj-rail');
+      const prev = document.getElementById('proj-prev');
+      const next = document.getElementById('proj-next');
+      if (!rail || !prev || !next) return;
+
+      const step = 360;
+      prev.addEventListener('click', () =>
+        rail.scrollBy({ left: -step, behavior: 'smooth' })
+      );
+      next.addEventListener('click', () =>
+        rail.scrollBy({ left: step, behavior: 'smooth' })
+      );
+
+      rail.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') {
+          rail.scrollBy({ left: step, behavior: 'smooth' });
+        }
+        if (e.key === 'ArrowLeft') {
+          rail.scrollBy({ left: -step, behavior: 'smooth' });
+        }
+      });
+    })();
+  </script>
+
+  <script>
+  document.querySelectorAll('.magnetic').forEach(el => {
+    el.style.transition = 'transform 120ms ease';
+    el.addEventListener('mousemove', e => {
+      const r = el.getBoundingClientRect();
+      const x = Math.max(-10, Math.min(10, (e.clientX - r.left - r.width / 2) * 0.14));
+      const y = Math.max(-8, Math.min(8, (e.clientY - r.top - r.height / 2) * 0.14));
+
+      el.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    el.addEventListener('mouseleave', () => {
+      el.style.transition = 'transform 220ms cubic-bezier(.2,.8,.2,1)';
+      el.style.transform = 'translate(0, 0)';
+    });
+  });
+  if (window.matchMedia('(hover: hover)').matches) {
+    document.querySelectorAll('.magnetic').forEach(el => {
+      el.addEventListener('mousemove', e => {
+        const r = el.getBoundingClientRect();
+        const x = Math.max(-10, Math.min(10, (e.clientX - r.left - r.width / 2) * 0.14));
+        const y = Math.max(-8, Math.min(8, (e.clientY - r.top - r.height / 2) * 0.14));
+        el.style.transform = `
+          translate(
+            ${x}px,
+            ${y}px
+          )`;
+      });
+      el.addEventListener('mouseleave', () => {
+        el.style.transition = 'transform 220ms cubic-bezier(.2,.8,.2,1)';
+        el.style.transform = 'translate(0,0)';
+      });
+    });
+  }
+  </script>
+
+  <script>
+    (() => {
+      const tiles = document.querySelectorAll('.project-tile');
+      if (!tiles.length || !window.matchMedia('(hover: hover)').matches) return;
+      tiles.forEach((tile) => {
+        const media = tile.querySelector('.project-media');
+        const content = tile.querySelector('.project-content');
+        if (!media || !content) return;
+        tile.addEventListener('mousemove', (e) => {
+          const r = tile.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - 0.5;
+          const y = (e.clientY - r.top) / r.height - 0.5;
+          media.style.transform = `scale(1.06) translate(${x * 10}px, ${y * 8}px)`;
+          content.style.transform = `translate(${x * -4}px, ${y * -3}px)`;
+        });
+        tile.addEventListener('mouseleave', () => {
+          media.style.transform = '';
+          content.style.transform = '';
+        });
+      });
+    })();
+  </script>
+
+  <script>
+    (() => {
+      const headings = document.querySelectorAll('.section-heading');
+      if (!headings.length) return;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              requestAnimationFrame(() => {
+                entry.target.classList.add('in-view');
+              });
+            } else {
+              entry.target.classList.remove('in-view');
+            }
+          });
+        },
+        { threshold: 0.35, rootMargin: '-8% 0px -18% 0px' }
+      );
+
+      headings.forEach((heading) => observer.observe(heading));
+    })();
+  </script>
+
+  <!-- Tabs for Experience / Education -->
+  <script>
+    document.querySelectorAll('.tab-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.tab;
+
+        document.querySelectorAll('.tab-btn').forEach((b) => {
+          b.classList.remove('is-active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('is-active');
+        btn.setAttribute('aria-selected', 'true');
+
+        document.querySelectorAll('.tab-panel').forEach((p) => {
+          p.classList.add('hidden');
+          p.classList.remove('opacity-100');
+        });
+
+        const panel = document.getElementById('panel-' + id);
+        if (!panel) return;
+        panel.classList.remove('tab-pop');
+        panel.classList.remove('hidden');
+        panel.classList.add('opacity-0');
+        requestAnimationFrame(() => {
+          panel.classList.add('transition-opacity', 'duration-300');
+          panel.classList.replace('opacity-0', 'opacity-100');
+          panel.classList.add('tab-pop');
+        });
+      });
+    });
+  </script>
+
+  <!-- Process path animation -->
+  <script>
+    (() => {
+      const svg = document.getElementById('process-svg');
+      const path = document.getElementById('process-path');
+      const glow = document.getElementById('process-path-shadow');
+      const section = document.getElementById('process');
+      if (!svg || !path || !glow || !section) return;
+
+      const prefersReduced = window.matchMedia(
+        '(prefers-reduced-motion: reduce)'
+      ).matches;
+      let hasDrawn = false,
+        resizeTimer;
+
+      function getPoints() {
+        const box = svg.getBoundingClientRect();
+        const cards = Array.from(
+          document.querySelectorAll('#process [data-step]')
+        ).sort((a, b) => +a.dataset.step - +b.dataset.step);
+        if (cards.length < 2) return [];
+
+        const pts = cards.map((el) => {
+          const r = el.getBoundingClientRect();
+          return {
+            x: (r.left + r.right) / 2 - box.left,
+            y: (r.top + r.bottom) / 2 - box.top
+          };
+        });
+
+        if (pts[1]) pts[1].y -= 60;
+        if (pts[2]) pts[2].y -= 150;
+        if (pts[3]) pts[3].y -= 90;
+        if (pts[4]) pts[4].y -= 40;
+        if (pts[5]) pts[5].y -= 130;
+
+        const leadIn = { x: pts[0].x, y: pts[0].y + 2000 };
+        const leadOut = { x: pts.at(-1).x + 100, y: pts.at(-1).y - 150 };
+        return [leadIn, ...pts, leadOut];
+      }
+
+      function catmullToBezier(p) {
+        if (p.length < 3) return '';
+        const pts = [p[0], ...p, p[p.length - 1]];
+        let d = `M ${pts[1].x},${pts[1].y}`;
+        for (let i = 1; i < pts.length - 2; i++) {
+          const p0 = pts[i - 1],
+            p1 = pts[i],
+            p2 = pts[i + 1],
+            p3 = pts[i + 2];
+          const c1x = p1.x + (p2.x - p0.x) / 6,
+            c1y = p1.y + (p2.y - p0.y) / 6;
+          const c2x = p2.x - (p3.x - p1.x) / 6,
+            c2y = p2.y - (p3.y - p1.y) / 6;
+          d += ` C ${c1x},${c1y} ${c2x},${c2y} ${p2.x},${p2.y}`;
+        }
+        return d;
+      }
+
+      function setViewBox() {
+        const r = svg.parentElement.getBoundingClientRect();
+        svg.setAttribute('viewBox', `0 0 ${r.width} ${r.height}`);
+      }
+
+      function prepareDash(el) {
+        const len = el.getTotalLength();
+        el.style.strokeDasharray = `${len}`;
+        el.style.strokeDashoffset = hasDrawn ? '0' : `${len}`;
+      }
+
+      function layout() {
+        setViewBox();
+        const pts = getPoints();
+        const d = catmullToBezier(pts);
+        path.setAttribute('d', d);
+        glow.setAttribute('d', d);
+        prepareDash(path);
+        prepareDash(glow);
+        if (hasDrawn) {
+          path.style.strokeDashoffset = '0';
+          glow.style.strokeDashoffset = '0';
+        }
+      }
+
+      function animateDraw() {
+        if (hasDrawn) return;
+        hasDrawn = true;
+        if (prefersReduced) {
+          path.style.strokeDashoffset = '0';
+          glow.style.strokeDashoffset = '0';
+          return;
+        }
+        path.classList.add('stroke-anim');
+        glow.classList.add('stroke-anim', 'stroke-anim--glow');
+        requestAnimationFrame(() => {
+          path.style.strokeDashoffset = '0';
+          glow.style.strokeDashoffset = '0';
+        });
+      }
+
+      window.addEventListener('load', () => {
+        requestAnimationFrame(() => {
+          layout();
+          const io = new IntersectionObserver(
+            (entries, obs) => {
+              if (entries.some((e) => e.isIntersecting)) {
+                animateDraw();
+                obs.disconnect();
+              }
+            },
+            { root: null, rootMargin: '0px 0px -20% 0px', threshold: 0.15 }
+          );
+          io.observe(section);
+        });
+      });
+
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(layout, 120);
+      });
+    })();
+  </script>
+
+  <!-- Simple typing effect for hero -->
+  <script>
+    (function () {
+      const el = document.getElementById('hero-typing');
+      if (!el) return;
+
+      const phrases = [
+        'LLM flows & AI assistants',
+        'AI-assisted productivity tools',
+        'prompt experiments & guardrails',
+        'front-end prototypes that feel real'
+      ];
+      let i = 0;
+      let char = 0;
+      let deleting = false;
+
+      function tick() {
+        const current = phrases[i];
+        if (!deleting) {
+          char++;
+          if (char >= current.length + 1) {
+            deleting = true;
+            setTimeout(tick, 1300);
+            el.textContent = current;
+            return;
+          }
+        } else {
+          char--;
+          if (char <= 0) {
+            deleting = false;
+            i = (i + 1) % phrases.length;
+          }
+        }
+        el.textContent = current.slice(0, char);
+        setTimeout(tick, deleting ? 40 : 70);
+      }
+
+      tick();
+    })();
+  </script>
+</body>
+</html>

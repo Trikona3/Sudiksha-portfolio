@@ -1,0 +1,906 @@
+<!-- construction_world.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Construction Learning</title>
+      <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style> body { font-family: 'Space Grotesk', sans-serif; } </style>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      /* add a theme and override its palette here: */
+      theme: 'base',
+      themeVariables: {
+        primaryColor:      '#B2DAFF',  // node fill
+        primaryBorderColor:'#3063fc',  // node stroke
+        primaryTextColor:  '#000000',  // node text
+        lineColor:         '#3063fc',  // edges
+        tertiaryColor:     '#ffffff',  // edge label bg
+        fontSize:          '28px'
+      }
+    });
+  </script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .nav-link {
+      position: relative;
+      display: inline-block;
+      text-decoration: none;
+      color: #2d3748;
+      font-weight: 600;
+      font-size: clamp(1.1rem, 1.05vw, 1.45rem);
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .nav-link:hover::after {
+      transform: scaleX(1);
+    }
+    .nav-link:hover {
+      color: #3063fc;
+    }
+    .menu-transition {
+    transition: max-height 0.3s ease-out;
+    overflow: hidden;
+    }
+  </style>
+</head>
+</head>
+<body class="bg-[#5A8EFF]/25">
+
+  <!-- NAV BAR -->
+  <header class="fixed inset-x-0 top-0 z-30">
+    <nav class="absolute inset-x-0 top-2 mx-auto max-w-[1100px] bg-[#5A8EFF]/70 backdrop-blur-sm border-[1.5px] border-black py-3 px-6 rounded-[12px] shadow-lg z-50">
+      <div class="flex items-center justify-between">
+        <a href="index.html#about" class="text-lg font-semibold text-black">SUDIKSHA RAJAVARAM</a>
+
+        <!-- Hamburger Button (Mobile Only) -->
+        <button id="menu-btn" class="sm:hidden focus:outline-none">
+          <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+
+        <!-- Desktop Nav -->
+        <div class="hidden sm:flex gap-6">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="resume.html" class="nav-link">Resume</a>
+          <a href="projects.html" class="nav-link">Projects</a>
+          <a href="contact.html" class="nav-link">Contact Me</a>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="sm:hidden menu-transition max-h-0">
+        <div class="flex flex-col gap-4 pt-4">
+          <a href="index.html" class="nav-link block">Home</a>
+          <a href="resume.html" class="nav-link block">Resume</a>
+          <a href="projects.html" class="nav-link block">Projects</a>
+          <a href="contact.html" class="nav-link block">Contact Me</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+<section class="bg-white rounded-3xl mx-auto my-4 max-w-[95vw] px-4 shadow-lg mt-12 mb-12 pb-8">
+<main id="construction_learning" class="pt-[80px] px-6 max-w-5xl mx-auto">
+    <!-- back link + title -->
+    <a href="projects.html" class="text-[12px] text-gray-700 hover:underline">← Return to all Projects</a>
+    <h1 class="text-4xl font-bold text-center mt-4 mb-8">Construction Learning</h1>
+
+    <!-- Case Study -->
+    <section class="mb-14">
+      <h2 class="text-2xl font-semibold mb-6">Case Study</h2>
+
+      <div class="max-w-6xl mx-auto">
+        <!-- SNAPSHOT (blue, no card, above video) -->
+        <div class="mb-8">
+          <!-- top label -->
+          <div class="flex items-center gap-3 text-[11px] font-semibold tracking-widest uppercase text-[#3063FC]">
+            <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#3063FC]">
+              <span class="absolute inset-0 rounded-full bg-[#3063FC]/40 animate-ping"></span>
+            </span>
+            Project Snapshot
+          </div>
+
+          <!-- title -->
+          <h3 class="mt-3 text-3xl sm:text-4xl font-bold text-slate-900">
+            The learning + talent ecosystem for construction professionals
+          </h3>
+
+          <!-- description -->
+          <p class="mt-4 text-base text-slate-600 max-w-3xl">
+            A unified platform experience for construction upskilling, corporate training, events, and talent discovery —
+            bringing learners, colleges, and companies into one connected ecosystem.
+          </p>
+
+          <!-- blue meta row -->
+          <div class="mt-6 flex flex-wrap gap-3">
+            <span
+              class="inline-flex items-center gap-2 rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+              <span class="text-xs font-bold tracking-widest">IND</span>
+              Construction EdTech Platform
+            </span>
+
+            <span
+              class="inline-flex items-center gap-2 rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+              <span class="text-xs font-bold tracking-widest">ROLE</span>
+              Research · Wireframing · Interface Design
+            </span>
+
+            <span
+              class="inline-flex items-center gap-2 rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+              <span class="text-xs font-bold tracking-widest">TOOLS</span>
+              Figma · Canva
+            </span>
+          </div>
+
+
+          <!-- blue glow divider -->
+          <div class="mt-7 h-px w-full bg-gradient-to-r from-transparent via-[#3063FC]/40 to-transparent"></div>
+        </div>
+
+        <!-- VIDEO TABS -->
+        <div class="mb-4 inline-flex rounded-full border border-[#3063FC]/25 bg-white/60 p-1">
+          <button
+            type="button"
+            id="tab-user-website"
+            class="construction-tab-btn rounded-full px-5 py-2 text-sm font-semibold transition bg-[#3063FC] text-white"
+            data-tab="user"
+            aria-selected="true"
+          >
+            User Website
+          </button>
+          <button
+            type="button"
+            id="tab-admin-website"
+            class="construction-tab-btn rounded-full px-5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-[#3063FC]/10"
+            data-tab="admin"
+            aria-selected="false"
+          >
+            Admin Website
+          </button>
+        </div>
+
+        <!-- USER WEBSITE PANEL -->
+        <div
+          id="construction-user-panel"
+          class="construction-video-panel relative rounded-[30px] overflow-hidden
+            bg-gradient-to-br from-[#6CA8FF] to-[#3B82F6]
+            border border-[#3063FC]/40
+            shadow-[0_30px_80px_rgba(48,99,252,0.35)]"
+        >
+          <div class="w-full h-[340px] sm:h-[460px] md:h-[560px] flex items-center justify-center">
+            <video
+              id="construction-user-video"
+              class="w-full h-full object-contain"
+              muted
+              autoplay
+              playsinline
+              loop
+              preload="auto"
+              poster="/images/construction-world-1.png"
+            >
+              <source src="/images/construction-learning.mp4" type="video/mp4" />
+            </video>
+
+            <div
+              id="construction-user-fallback"
+              class="absolute inset-0 hidden flex-col items-center justify-center p-6 text-center"
+            >
+              <img
+                src="/images/construction-learning-thumb.png"
+                alt="Construction Learning user website preview"
+                class="max-h-[85%] w-auto rounded-2xl shadow-xl border border-white/10"
+              />
+              <p class="mt-3 text-xs text-slate-300">
+                Design prototype video couldn’t load in this browser.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ADMIN WEBSITE PANEL -->
+        <div
+          id="construction-admin-panel"
+          class="construction-video-panel hidden relative rounded-[30px] overflow-hidden
+            bg-gradient-to-br from-[#6CA8FF] to-[#3B82F6]
+            border border-[#3063FC]/40
+            shadow-[0_30px_80px_rgba(48,99,252,0.35)]"
+        >
+          <div class="w-full h-[340px] sm:h-[460px] md:h-[560px] flex items-center justify-center">
+            <video
+              id="construction-admin-video"
+              class="w-full h-full object-contain"
+              muted
+              autoplay
+              playsinline
+              loop
+              preload="auto"
+              poster="/images/construction-world-1.png"
+            >
+              <source src="/images/project16-thumb.mp4" type="video/mp4" />
+            </video>
+
+            <div
+              id="construction-admin-fallback"
+              class="absolute inset-0 hidden flex-col items-center justify-center p-6 text-center"
+            >
+              <img
+                src="/images/construction-world-1.png"
+                alt="Construction Learning admin website preview"
+                class="max-h-[85%] w-auto rounded-2xl shadow-xl border border-white/10"
+              />
+              <p class="mt-3 text-xs text-slate-300">
+                Admin prototype video couldn’t load in this browser.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+    (function () {
+      const tabUser = document.getElementById("tab-user-website");
+      const tabAdmin = document.getElementById("tab-admin-website");
+      const userPanel = document.getElementById("construction-user-panel");
+      const adminPanel = document.getElementById("construction-admin-panel");
+      const userVideo = document.getElementById("construction-user-video");
+      const adminVideo = document.getElementById("construction-admin-video");
+      const userFallback = document.getElementById("construction-user-fallback");
+      const adminFallback = document.getElementById("construction-admin-fallback");
+
+      if (!tabUser || !tabAdmin || !userPanel || !adminPanel) return;
+
+      const tryPlay = async (video) => {
+        if (!video) return;
+        try {
+          video.muted = true;
+          await video.play();
+        } catch (e) {
+          // Autoplay can be blocked in some browsers.
+        }
+      };
+
+      const setActive = (which) => {
+        const isUser = which === "user";
+
+        userPanel.classList.toggle("hidden", !isUser);
+        adminPanel.classList.toggle("hidden", isUser);
+
+        tabUser.setAttribute("aria-selected", isUser ? "true" : "false");
+        tabAdmin.setAttribute("aria-selected", isUser ? "false" : "true");
+
+        tabUser.classList.toggle("bg-[#3063FC]", isUser);
+        tabUser.classList.toggle("text-white", isUser);
+        tabUser.classList.toggle("text-slate-700", !isUser);
+        tabUser.classList.toggle("hover:bg-[#3063FC]/10", !isUser);
+
+        tabAdmin.classList.toggle("bg-[#3063FC]", !isUser);
+        tabAdmin.classList.toggle("text-white", !isUser);
+        tabAdmin.classList.toggle("text-slate-700", isUser);
+        tabAdmin.classList.toggle("hover:bg-[#3063FC]/10", isUser);
+
+        if (isUser) {
+          if (adminVideo) adminVideo.pause();
+          tryPlay(userVideo);
+        } else {
+          if (userVideo) userVideo.pause();
+          tryPlay(adminVideo);
+        }
+      };
+
+      tabUser.addEventListener("click", () => setActive("user"));
+      tabAdmin.addEventListener("click", () => setActive("admin"));
+
+      window.addEventListener("load", () => {
+        tryPlay(userVideo);
+      });
+
+      if (userVideo && userFallback) {
+        userVideo.addEventListener("error", () => {
+          userVideo.classList.add("hidden");
+          userFallback.classList.remove("hidden");
+          userFallback.classList.add("flex");
+        });
+      }
+
+      if (adminVideo && adminFallback) {
+        adminVideo.addEventListener("error", () => {
+          adminVideo.classList.add("hidden");
+          adminFallback.classList.remove("hidden");
+          adminFallback.classList.add("flex");
+        });
+      }
+
+      setActive("user");
+    })();
+    </script>
+
+  
+
+    <!-- Problem & Goal -->
+    <section class="max-w-6xl mx-auto py-8">
+      <h2 class="text-3xl font-bold mb-4">The Problem</h2>
+      <p class="text-gray-700 leading-relaxed text-justify">
+        Construction learners and employers don’t struggle with motivation — they struggle with <strong>fragmentation</strong>.
+        Students, professionals, colleges, and corporates often rely on scattered sources for training, credentials, hiring,
+        and networking. Even when learning platforms exist, key steps like discovering the right course, understanding plan
+        value, and tracking progress can feel unclear.
+      </p>
+
+      <div class="grid sm:grid-cols-2 gap-6 mt-6">
+        <div class="border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/25 rounded-xl p-5">
+          <h3 class="font-semibold mb-1">Impact</h3>
+          <ul class="list-disc list-inside text-gray-700 text-sm">
+            <li>Users struggle to find courses that match their level and niche.</li>
+            <li>Progress tracking feels inconsistent, leading to manual workarounds.</li>
+            <li>Pricing / plan clarity creates hesitation during onboarding.</li>
+            <li>Job discovery and filtering can feel harder than it needs to be.</li>
+            <li>Account + billing settings can be difficult to locate.</li>
+          </ul>
+        </div>
+
+        <div class="border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/25 rounded-xl p-5">
+          <h3 class="font-semibold mb-1">Goal</h3>
+          <p class="text-gray-700 text-sm">
+            Design a single construction-focused ecosystem that makes it easier to <strong>discover</strong> learning,
+            <strong>choose</strong> the right membership plan, <strong>track</strong> course progress, and <strong>connect</strong>
+            learning outcomes to careers — across students, professionals, colleges, and corporates.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solution Overview -->
+    <section class="max-w-6xl mx-auto py-4">
+      <h2 class="text-3xl font-bold mb-6">Solution</h2>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white rounded-2xl border border-[#5A8EFF]/50 p-6 shadow-sm">
+          <h3 class="font-semibold mb-2">ConstructionLearning.online in a Nutshell</h3>
+          <p class="text-gray-700">
+            ConstructionLearning.online brings construction education and career pathways into one experience —
+            combining <strong>e-learning</strong>, <strong>profiles</strong>, <strong>careers</strong>, and <strong>community</strong>
+            so users can learn, show outcomes, and move toward opportunities without jumping between tools.
+          </p>
+
+          <ul class="mt-4 list-disc list-inside text-gray-700">
+            <li><strong>Learning + certifications:</strong> course discovery and enrollment built for construction skill-building.</li>
+            <li><strong>Progress + outcomes:</strong> clearer tracking across course content and completion.</li>
+            <li><strong>Careers layer:</strong> job browsing + application flow connected to user profiles.</li>
+            <li><strong>Multi-stakeholder ecosystem:</strong> supports students, pros, colleges, and corporates in one platform.</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-[#5A8EFF]/50 p-6 shadow-sm">
+          <h3 class="font-semibold mb-2">My Role</h3>
+          <p class="text-gray-700">
+            I owned the UX work end-to-end across research and interface design — translating stakeholder needs into
+            flows, structure, and screens that support learning and career actions.
+          </p>
+
+          <ul class="mt-4 list-disc list-inside text-gray-700">
+            <li>Conducted qualitative interviews with stakeholders to understand workflows and pain points.</li>
+            <li>Created personas and mapped key user flows across students, professionals, corporates, colleges, and SMEs.</li>
+            <li>Designed information architecture and wireframes to validate structure before high-fidelity work.</li>
+            <li>Ran usability testing and documented UX friction (progress tracking, job filtering, billing discoverability).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design Decisions -->
+    <section class="max-w-6xl mx-auto py-4">
+      <h2 class="text-3xl font-bold mb-6">Design Decisions</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/15 p-6 shadow-sm">
+          <h3 class="font-semibold mb-2">Role-based information architecture</h3>
+          <p class="text-gray-700 text-sm">
+            Structured separate journeys for students, professionals, corporates, colleges, and instructors to reduce cross-role confusion.
+          </p>
+        </article>
+        <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/15 p-6 shadow-sm">
+          <h3 class="font-semibold mb-2">Discoverability of high-value actions</h3>
+          <p class="text-gray-700 text-sm">
+            Prioritized course discovery, plan clarity, progress tracking, and job flow visibility to address key research friction points.
+          </p>
+        </article>
+        <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/15 p-6 shadow-sm">
+          <h3 class="font-semibold mb-2">Credential and progress transparency</h3>
+          <p class="text-gray-700 text-sm">
+            Designed clearer progression and outcomes across learning modules so users can track advancement without manual workarounds.
+          </p>
+        </article>
+        <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/15 p-6 shadow-sm">
+          <h3 class="font-semibold mb-2">Mobile-aware interaction model</h3>
+          <p class="text-gray-700 text-sm">
+            Kept critical workflows usable on mobile to support on-site and on-the-go learners who rely on quick access.
+          </p>
+        </article>
+      </div>
+    </section>
+
+
+    <!-- Target Audience: equal-size, staggered cards -->
+    <section id="target-audience" class="py-8">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-2xl font-semibold mb-8 text-center">Target Audience</h2>
+
+        <div class="space-y-8">
+          <!-- Row 1: three cards spaced evenly -->
+          <div class="flex flex-col sm:flex-row justify-between gap-8">
+            <!-- Card 1 -->
+            <div class="bg-[#5A8EFF]/20 w-72 h-64 p-6 rounded-2xl shadow-md flex flex-col">
+              <h3 class="font-semibold mb-4 border-b-2 border-gray-300 pb-1">Students</h3>
+              <p class="text-gray-700 text-sm flex-1">
+                Seek foundational to advanced courses, internships, and flexible membership plans to launch their construction careers.
+              </p>
+            </div>
+            <!-- Card 2 -->
+            <div class="bg-[#5A8EFF]/20 w-72 h-64 p-6 rounded-2xl shadow-md flex flex-col">
+              <h3 class="font-semibold mb-4 border-b-2 border-gray-300 pb-1">Professionals</h3>
+              <p class="text-gray-700 text-sm flex-1">
+                Looking to upskill through certifications, attend industry workshops, and discover managerial- and specialist-level job opportunities.
+              </p>
+            </div>
+            <!-- Card 3 -->
+            <div class="bg-[#5A8EFF]/20 w-72 h-64 p-6 rounded-2xl shadow-md flex flex-col">
+              <h3 class="font-semibold mb-4 border-b-2 border-gray-300 pb-1">Corporates</h3>
+              <p class="text-gray-700 text-sm flex-1">
+                Need a platform to post jobs, manage candidate pipelines, upskill teams, and network B2B.
+              </p>
+            </div>
+          </div>
+
+          <!-- Row 2: two cards centered -->
+          <div class="flex flex-col sm:flex-row justify-center gap-8">
+            <!-- Card 4 -->
+            <div class="bg-[#5A8EFF]/20 w-72 h-64 p-6 rounded-2xl shadow-md flex flex-col">
+              <h3 class="font-semibold mb-4 border-b-2 border-gray-300 pb-1">Colleges</h3>
+              <p class="text-gray-700 text-sm flex-1">
+                Gain a dedicated profile for promoting programs, bridge academia to industry via internships and research partnerships.
+              </p>
+            </div>
+            <!-- Card 5 -->
+            <div class="bg-[#5A8EFF]/20 w-72 h-64 p-6 rounded-2xl shadow-md flex flex-col">
+              <h3 class="font-semibold mb-4 border-b-2 border-gray-300 pb-1">Instructors / SMEs</h3>
+              <p class="text-gray-700 text-sm flex-1">
+                Author specialized courses, write technical articles, lead workshops, mentor learners, and develop tailored training programs.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <section class="bg-white rounded-3xl mx-auto my-4 max-w-[95vw] px-4 shadow-lg mt-12 mb-12 pb-4">
+    <!-- User Research -->
+    <section id="user-research" class="max-w-6xl mx-auto px-4 sm:px-8 md:px-20 py-2 pt-12" data-aos="fade-up" data-aos-offset="140">
+      <h2 class="text-3xl font-bold text-[#000000] mb-2">User Research</h2>
+
+      <!-- Qualitative research -->
+      <div class="mb-12">
+        <h3 class="text-2xl font-semibold text-[#3063fc] mb-4">Qualitative research</h3>
+        <p class="text-gray-700 mb-4">
+          I interviewed six stakeholders—students, working professionals, HR leads, and academic partners—to uncover their workflows and pain points around construction‐focused e-learning.
+        </p>
+        <p class="font-medium text-gray-800 mb-2">Below are the questions:</p>
+        <ul class="list-disc list-inside space-y-1 text-gray-700">
+          <li>How do you currently discover and enroll in construction training courses?</li>
+          <li>What challenges have you faced completing online modules or certifications?</li>
+          <li>How do you keep track of your progress and outcomes?</li>
+          <li>What tools or platforms do you use to manage your learning?</li>
+          <li>How do you share or verify your completed credentials with employers?</li>
+          <li>What motivates you to upskill or take new courses?</li>
+          <li>What frustrates you about existing solutions?</li>
+          <li>How do you prefer to receive reminders or notifications?</li>
+          <li>What device(s) do you use most for e-learning?</li>
+          <li>If you could change one thing about your current workflow, what would it be?</li>
+        </ul>
+
+        <h4 class="mt-6 text-xl font-semibold text-gray-800">Interview insights</h4>
+        <ul class="list-disc list-inside space-y-1 text-gray-700 mt-2">
+          <li>Many struggle to find courses that match their skill level and industry niche.</li>
+          <li>Progress tracking is inconsistent—most resort to manual note-taking.</li>
+          <li>Users want easy sharing of certificates but existing systems feel “locked down.”</li>
+          <li>Notifications often arrive too late or get buried in email.</li>
+          <li>Mobile access is critical—professionals need on-the-go learning.</li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- User Personas -->
+    <section id="personas" class="max-w-6xl mx-auto px-4 sm:px-8 md:px-20 py-2 pt-4" data-aos="fade-up" data-aos-offset="140" data-aos-delay="60">
+      <h2 class="text-3xl font-bold mb-6">User Personas</h2>
+      <div class="overflow-x-auto rounded-[10px]">
+        <table class="min-w-full bg-white border border-gray-300  rounded-[10px]">
+          <thead>
+            <tr class="bg-[#5A8EFF]/20">
+              <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Persona</th>
+              <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Bio &amp; Goals</th>
+              <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Pain Points</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <!-- Aisha -->
+            <tr>
+              <td class="px-6 py-4 align-top text-sm text-gray-900">Aisha, 20</td>
+              <td class="px-6 py-4 align-top text-sm text-gray-600">
+                3rd-year civil engineering student juggling heavy course loads and a part-time research assistantship. Aisha wants hands-on project experience to boost her résumé.
+              </td>
+              <td class="px-6 py-4 align-top text-sm text-gray-600">
+                Overwhelmed by disparate course listings; unclear how to qualify for competitive internships.
+              </td>
+            </tr>
+            <!-- Ravi -->
+            <tr>
+              <td class="px-6 py-4 align-top text-sm text-gray-900">Ravi, 32</td>
+              <td class="px-6 py-4 align-top text-sm text-gray-600">
+                Mid-level project manager responsible for on-site safety and quality checks. Ravi needs quick ways to update his knowledge of emerging construction tech and best practices.
+              </td>
+              <td class="px-6 py-4 align-top text-sm text-gray-600">
+                Limited time between site visits; difficulty locating reputable, hands-on learning resources.
+              </td>
+            </tr>
+            <!-- Maya -->
+            <tr>
+              <td class="px-6 py-4 align-top text-sm text-gray-900">Maya, 45</td>
+              <td class="px-6 py-4 align-top text-sm text-gray-600">
+                HR Lead at a mid-sized contractor firm tasked with upskilling a 200-person workforce. Maya needs streamlined tools to assess skills gaps and roll out consistent training modules.
+              </td>
+              <td class="px-6 py-4 align-top text-sm text-gray-600">
+                Fragmented LMS solutions; manual record-keeping of who has completed which training.
+              </td>
+            </tr>
+            <!-- Dr. Patel -->
+            <tr>
+              <td class="px-6 py-4 align-top text-sm text-gray-900">Dr. Patel, 50</td>
+              <td class="px-6 py-4 align-top text-sm text-gray-600">
+                Department Chair, Construction Engineering at State Tech College, charged with modernizing the curriculum. Dr. Patel must forge stronger pipelines between students and local industry partners.
+              </td>
+              <td class="px-6 py-4 align-top text-sm text-gray-600">
+                Low visibility of student outcomes among employers; cumbersome coordination for industry site visits.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  <!-- User Flows -->
+  <section id="user-flows" class="max-w-6xl mx-auto px-4 sm:px-8 md:px-20 py-2 pt-12" data-aos="fade-up" data-aos-offset="140" data-aos-delay="90">
+    <h2 class="text-2xl font-semibold mb-8">User Flows</h2>
+
+    <!-- container to size & scroll the chart -->
+    <div class="mermaid h-[300px] sm:h-[400px] lg:h-[450px]">
+      flowchart TB
+        %% STUDENT FLOW
+        subgraph Student_Flow["Student Flow"]
+          A1["Lands on Home"] --> A2["Select 'For Students'"]
+          A2 --> A3["Choose Plan<br>(Rookie/Champ/Pro)"]
+          A3 --> A4["Browse/Enroll in Courses"]
+          A4 --> A5["Apply for Internships/Jobs"]
+          A5 --> A6["Track Progress via Dashboard"]
+        end
+        %% force next subgraph below
+        Student_Flow -.-> Professional_Flow
+
+        %% PROFESSIONAL FLOW
+        subgraph Professional_Flow["Professional Flow"]
+          B1["Registers / Logs In"] --> B2["Explore Certifications"]
+          B2 --> B3["Enroll in Specialization"]
+          B3 --> B4["Earn Certificates"]
+          B4 --> B5["Update Profile for Higher-level Roles"]
+        end
+        Professional_Flow -.-> Corporate_Flow
+
+        %% CORPORATE FLOW
+        subgraph Corporate_Flow["Corporate Flow"]
+          C1["Create Company Profile"] --> C2["Post Job Openings"]
+          C2 --> C3["Purchase Plan<br>(Basic/Elite/Prime)"]
+          C3 --> C4["Assign Courses to Employees"]
+          C4 --> C5["Monitor Skill Assessments"]
+          C5 --> C6["Connect with Vendors / B2B"]
+        end
+        Corporate_Flow -.-> College_Flow
+
+        %% COLLEGE FLOW
+        subgraph College_Flow["College Flow"]
+          D1["Create College Profile"] --> D2["Integrate Courses into Curriculum"]
+          D2 --> D3["Facilitate Internships & Placements"]
+          D3 --> D4["Collaborate on Research / Workshops"]
+        end
+        College_Flow -.-> SME_Flow
+
+        %% INSTRUCTOR / SME FLOW
+        subgraph SME_Flow["Instructor / SME Flow"]
+          E1["Sign Up with Credentials"] --> E2["Create/Upload Content"]
+          E2 --> E3["Conduct Workshops/Live Sessions"]
+          E3 --> E4["Monitor Student Performance"]
+          E4 --> E5["Earn Compensation per Enrollment"]
+        end
+      </div> 
+    </section>
+
+    <script>
+      (function () {
+        const flowEl = document.querySelector('#user-flows .mermaid');
+        if (!flowEl || !window.mermaid) return;
+
+        const renderMermaid = () => {
+          try {
+            // v10+ API
+            if (typeof window.mermaid.run === 'function') {
+              window.mermaid.run({ nodes: [flowEl] });
+              return;
+            }
+            // v8/v9 fallback API
+            if (typeof window.mermaid.init === 'function') {
+              window.mermaid.init(undefined, flowEl);
+            }
+          } catch (err) {
+            console.error('Mermaid render failed:', err);
+          }
+        };
+
+        // Defer one frame so DOM + styles settle before rendering.
+        requestAnimationFrame(renderMermaid);
+      })();
+    </script>
+
+<!-- <section id="user" class="max-w-4xl mx-auto px-6 py-16">
+      <h2 class="text-2xl font-semibold mb-4">User Flows</h2>
+      <ul class="list-disc list-inside space-y-2 text-gray-700">
+        <li>
+          <strong>Student Flow:</strong>
+          Lands on Home → Selects “For Students” → Chooses a membership plan (Rookie/Champ/Pro) → Browses or enrolls in courses → Applies for internships or jobs → Tracks progress via the student dashboard.
+        </li>
+        <li>
+          <strong>Professional Flow:</strong>
+          Registers or logs in → Explores advanced certifications → Enrolls in a specialization track (e.g., Project Management, Data Science for Construction) → Earns certificates → Updates profile to apply for higher-level roles.
+        </li>
+        <li>
+          <strong>Corporate Flow:</strong>
+          Creates a company profile → Posts job openings → Purchases a membership plan (Basic/Elite/Prime) → Assigns courses to employees → Monitors skill assessments → Connects with potential vendors or B2B partners.
+        </li>
+        <li>
+          <strong>College Flow:</strong>
+          Creates a college profile → Integrates courses into curriculum → Facilitates student internships and placements → Collaborates on research or workshops with industry experts.
+        </li>
+        <li>
+          <strong>Instructor/SME Flow:</strong>
+          Signs up with credentials → Creates or uploads course content → Conducts workshops or live sessions → Monitors student performance → Earns compensation based on enrollments.
+        </li>
+      </ul>
+    </section>
+  -->
+
+    <!-- User Journey Map -->
+    <section id="user-journey" class="max-w-6xl mx-auto px-4 sm:px-8 md:px-20 py-2 pt-0 lg:pt-56" data-aos="fade-up" data-aos-offset="140" data-aos-delay="120">
+
+      <h2 class="text-3xl font-bold mb-8">User Journey Map</h2>
+      <div class="overflow-x-auto rounded-xl">
+        <table class="min-w-full bg-white border border-gray-300 rounded-lg">
+          <thead class="bg-[#5A8EFF]/30">
+            <tr>
+              <th class="p-4 text-left">Stage / Experience</th>
+              <th class="p-4 text-left">Discovery<br><span class="text-sm text-gray-500">Finding courses</span></th>
+              <th class="p-4 text-left">Onboarding<br><span class="text-sm text-gray-500">Getting started</span></th>
+              <th class="p-4 text-left">Learning<br><span class="text-sm text-gray-500">Taking courses</span></th>
+              <th class="p-4 text-left">Application<br><span class="text-sm text-gray-500">Using job board</span></th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <!-- Actions -->
+            <tr class="bg-[#F9FAFB]">
+              <td class="p-4 font-medium">Actions</td>
+              <td class="p-4">
+                • Land on homepage<br>
+                • Browse “For Students” / “For Pros”
+              </td>
+              <td class="p-4">
+                • Create account<br>
+                • Choose membership plan
+              </td>
+              <td class="p-4">
+                • Watch videos<br>
+                • Complete quizzes
+              </td>
+              <td class="p-4">
+                • Search jobs<br>
+                • Submit application
+              </td>
+            </tr>
+            <!-- Think & Feel -->
+            <tr>
+              <td class="p-4 font-medium">Think &amp; Feel</td>
+              <td class="p-4">
+                Curious but overwhelmed by options
+              </td>
+              <td class="p-4">
+                Hopeful but cautious about cost
+              </td>
+              <td class="p-4">
+                Engaged, occasionally confused by layout
+              </td>
+              <td class="p-4">
+                Excited yet anxious about outcome
+              </td>
+            </tr>
+            <!-- Touchpoints -->
+            <tr class="bg-[#F9FAFB]">
+              <td class="p-4 font-medium">Touchpoints</td>
+              <td class="p-4">
+                Nav menu, hero banner
+              </td>
+              <td class="p-4">
+                Sign-up form, plan details page
+              </td>
+              <td class="p-4">
+                Video player, discussion forum, dashboard
+              </td>
+              <td class="p-4">
+                Job listings page, email notifications
+              </td>
+            </tr>
+            <!-- Pain Points -->
+            <tr>
+              <td class="p-4 font-medium">Pain Points</td>
+              <td class="p-4">
+                Hard to locate specific construction courses
+              </td>
+              <td class="p-4">
+                Membership pricing isn’t clear
+              </td>
+              <td class="p-4">
+                No progress bar makes tracking tough
+              </td>
+              <td class="p-4">
+                Application form is lengthy
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </section>
+
+  <section class="bg-white rounded-3xl mx-auto my-4 max-w-[95vw] shadow-lg mt-12 mb-12 pb-4">
+    <!-- Information Architecture -->
+    <section id="information-architecture" class="max-w-5xl mx-auto pb-8 pt-12" data-aos="fade-up" data-aos-offset="140">
+      <h2 class="text-2xl font-bold mb-4">Information Architecture</h2>
+      <img
+        src="/images/information-architecture-cw.png"
+        alt="Information Architecture Diagram"
+        class="w-full rounded-lg shadow-lg"
+      />
+    </section>
+
+    <!-- User Testing -->
+    <section id="user-testing" class="max-w-5xl mx-auto py-4" data-aos="fade-up" data-aos-offset="140" data-aos-delay="70">
+      <h2 class="text-2xl font-bold text-black mb-4">User Testing</h2>
+      <p class="text-gray-700 mb-8">
+        We gave five target users a set of realistic tasks in our construction-learning app to uncover pain points, surface UI friction, and validate our information architecture.
+      </p>
+
+      <!-- Assigned Tasks -->
+      <div class="mb-8">
+        <h3 class="text-xl font-semibold text-black mb-2">Assigned Tasks</h3>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+          <li>Sign up and select the “Professional” membership plan.</li>
+          <li>Browse the “Safety Certification” course and enroll.</li>
+          <li>Locate and watch the first module video, then complete its quiz.</li>
+          <li>Use the job-board feature to filter internships by “Site Management.”</li>
+          <li>Open account settings and attempt to update billing information.</li>
+        </ul>
+      </div>
+
+      <!-- Test Objectives -->
+      <div class="mb-8">
+        <h3 class="text-xl font-semibold text-black mb-2">Test Objectives</h3>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+          <li>Measure how easily users can find and enroll in a course.</li>
+          <li>Validate that video and quiz flows feel intuitive.</li>
+          <li>Ensure job-board filters match user expectations.</li>
+          <li>Confirm users can update personal and billing details without confusion.</li>
+        </ul>
+      </div>
+
+      <!-- Key Findings -->
+      <div>
+        <h3 class="text-xl font-semibold text-black mb-2">Key Findings</h3>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+          <li>4 out of 5 users found “Enroll” buttons clear, but wished for a progress tracker on the course card.</li>
+          <li>Some testers expected the quiz to appear immediately after the video ended—consider auto-nav to quiz.</li>
+          <li>Job-board filters were too granular; users preferred grouping by “Internship,” “Full-time,” etc.</li>
+          <li>Billing settings were buried under “Account”; renaming to “Profile & Billing” improved discoverability.</li>
+        </ul>
+      </div>
+    </section>
+  </section>
+
+        <!-- FOOTER -->
+      <footer class="bg-[#5A8EFF]/60 text-black mt-8 border-t border-black relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 py-6 sm:py-4
+                    flex flex-col sm:flex-row sm:items-center sm:justify-between
+                    gap-4 sm:gap-6">
+
+          <!-- Back to top (first on mobile, right on desktop) -->
+          <a href="#construction_world"
+            class="order-1 sm:order-none w-full sm:w-auto
+                    inline-flex items-center justify-center gap-2
+                    rounded-full bg-white px-4 py-2 text-sm font-medium
+                    border border-black/20 hover:bg-white/90 transition"
+            aria-label="Back to top">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#3063FC" d="M12 5.5 3 14.5l1.5 1.5 7.5-7.5 7.5 7.5 1.5-1.5L12 5.5Z"/>
+            </svg>
+            Back to top
+          </a>
+
+          <!-- Socials (full-width stack on mobile, inline on desktop) -->
+          <div class="order-2 sm:order-none w-full sm:w-auto
+                      flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <!-- subtle divider only on mobile -->
+            <div class="h-px bg-black/20 sm:hidden"></div>
+
+            <a href="https://www.linkedin.com/in/sudiksha-rajavaram/" target="_blank"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2
+                      rounded-xl border border-black/20 bg-white/80 px-3 py-2 text-sm font-medium
+                      hover:bg-white transition">
+              <img src="https://cdn.iconscout.com/icon/free/png-512/free-linkedin-42-151143.png"
+                  alt="LinkedIn Logo" class="w-4 h-4"/>
+              LinkedIn
+            </a>
+
+            <a href="https://www.figma.com/@rajavaramsudiks" target="_blank"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2
+                      rounded-xl border border-black/20 bg-white/80 px-3 py-2 text-sm font-medium
+                      hover:bg-white transition">
+              <img src="https://cdn.iconscout.com/icon/free/png-512/free-figma-2296071-1912030.png"
+                  alt="Figma Logo" class="w-4 h-4"/>
+              Figma
+            </a>
+          </div>
+
+          <!-- Name (centered on mobile, left on desktop) -->
+          <p class="order-3 sm:order-none text-center sm:text-left text-sm font-medium">
+            &copy; 2025 Sudiksha Rajavaram
+          </p>
+
+        </div>
+      </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    let isOpen = false;
+
+    menuBtn.addEventListener('click', () => {
+      isOpen = !isOpen;
+      mobileMenu.style.maxHeight = isOpen ? mobileMenu.scrollHeight + 'px' : '0px';
+    });
+  </script>
+  </main>
+</body>
+</html>

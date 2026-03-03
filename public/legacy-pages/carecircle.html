@@ -1,0 +1,582 @@
+<!-- carecircle.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>carecircle</title>
+      <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .nav-link {
+      position: relative;
+      display: inline-block;
+      text-decoration: none;
+      color: #2d3748;
+      font-weight: 600;
+      font-size: clamp(1.1rem, 1.05vw, 1.45rem);
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .nav-link:hover::after {
+      transform: scaleX(1);
+    }
+    .nav-link:hover {
+      color: #ffffff;
+    }
+    .menu-transition {
+    transition: max-height 0.3s ease-out;
+    overflow: hidden;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      /* add a theme and override its palette here: */
+      theme: 'base',
+      themeVariables: {
+        primaryColor:      '#B2DAFF',  // node fill
+        primaryBorderColor:'#3063fc',  // node stroke
+        primaryTextColor:  '#000000',  // node text
+        lineColor:         '#3063fc',  // edges
+        tertiaryColor:     '#ffffff',  // edge label bg
+        fontSize:          '28px'
+      }
+    });
+  </script>
+  <style>
+    .mermaid svg {
+      width: 100%  !important;  /* 2. fill parent’s width */
+      height: auto !important;  /*    and keep proper aspect */
+    }
+      .menu-transition {
+    transition: max-height 0.3s ease-out;
+    overflow: hidden;
+  } 
+  </style>
+</head>
+</head>
+<body class="bg-[#5A8EFF]/25">
+
+  <!-- NAV BAR -->
+  <header class="fixed inset-x-0 top-0 z-30">
+    <nav class="absolute inset-x-0 top-2 mx-auto max-w-[1100px] bg-[#5A8EFF]/70 backdrop-blur-sm border-[1.5px] border-black py-3 px-6 rounded-[12px] shadow-lg z-50">
+      <div class="flex items-center justify-between">
+        <a href="index.html#about" class="text-lg font-semibold text-black">SUDIKSHA RAJAVARAM</a>
+
+        <!-- Hamburger Button (Mobile Only) -->
+        <button id="menu-btn" class="sm:hidden focus:outline-none">
+          <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+
+        <!-- Desktop Nav -->
+        <div class="hidden sm:flex gap-6">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="resume.html" class="nav-link">Resume</a>
+          <a href="projects.html" class="nav-link">Projects</a>
+          <a href="contact.html" class="nav-link">Contact Me</a>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="sm:hidden menu-transition max-h-0">
+        <div class="flex flex-col gap-4 pt-4">
+          <a href="index.html" class="nav-link block">Home</a>
+          <a href="resume.html" class="nav-link block">Resume</a>
+          <a href="projects.html" class="nav-link block">Projects</a>
+          <a href="contact.html" class="nav-link block">Contact Me</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+<section class="bg-white rounded-3xl mx-auto my-4 max-w-[95vw] px-4 shadow-lg mt-12 mb-12 pb-8">
+<main id="carecircle" class="pt-[80px] px-6 max-w-4xl mx-auto">
+    <!-- back link + title -->
+    <a href="projects.html" class="text-[12px] text-gray-700 hover:underline">← Return to all Projects</a>
+    <h1 class="text-4xl font-bold text-center mt-4 mb-8">CARE CIRCLE</h1>
+
+    <!-- Case Study image -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4">Case Study</h2>
+    </section>
+
+    <!-- 2-column grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start pb-12">
+
+      <!-- Left: Image Carousel -->
+      <div id="case-carousel" class="relative w-full h-80 overflow-hidden rounded-lg shadow-lg">
+        <img src="/images/carecircle-1.png" alt="Step 1" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
+        <img
+          src="/images/carecircle-2.png"
+          alt="Step 1"
+          class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000"
+        />
+        <img
+          src="/images/carecircle-3.png"
+          alt="Step 2"
+          class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000"
+        />
+      </div>
+      
+
+      <!-- Right: Specs & Buttons -->
+      <div class="flex flex-col justify-center space-y-8 pt-4">
+        <!-- Specs -->
+        <dl class="space-y-6">
+          <div>
+            <dt class="font-medium text-gray-700">Industry</dt>
+            <dd class="border-b border-gray-300 pb-2">Health-monitoring</dd>
+          </div>
+          <div>
+            <dt class="font-medium text-gray-700">Role</dt>
+            <dd class="border-b border-gray-300 pb-2">Research, Wireframing, Interface Design</dd>
+          </div>
+          <div>
+            <dt class="font-medium text-gray-700">Tools</dt>
+            <dd class="border-b border-gray-300 pb-2">Figma, Canva</dd>
+          </div>
+        </dl>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-wrap gap-4">
+          <a href="hhttps://www.figma.com/community/file/1481034833367028671/care-circle" target="_blank"
+            class="inline-block bg-[#5A8EFF]/20 text-[#3063fc] px-6 py-2 rounded-full font-medium shadow hover:bg-[#5A8EFF]/60 transition">
+            Figma Link
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- carousel script (after the grid) -->
+    <script>
+      const slides = document.querySelectorAll('#case-carousel img');
+      let current = 0;
+      function showSlide(i) {
+        slides.forEach((s, idx) => {
+          s.classList.toggle('opacity-100', idx === i);
+          s.classList.toggle('opacity-0',    idx !== i);
+        });
+      }
+      showSlide(current);
+      setInterval(() => {
+        current = (current + 1) % slides.length;
+        showSlide(current);
+      }, 3000);
+    </script>
+
+
+        <!-- Description -->
+        <section class="w-full flex items-center justify-center py-4">
+            <div class="max-w-4xl text-justify">
+            <p class="mb-4">
+                CareCircle is a unified caregiving platform that empowers elderly users to manage medication schedules, track vital signs, and maintain social connections—all from one simple app. It offers automatic refill reminders, integration with health-monitoring devices, a one-tap SOS emergency button, and built-in messaging to stay in touch with family and friends.
+            </p>
+            <p>
+                A dedicated caregiver portal and real-time dashboard give remote caregivers and healthcare providers visibility into adherence, health metrics, and emergency alerts, while large icons, high-contrast text, and an intuitive layout ensure accessibility for seniors.
+            </p>
+            </div>
+        </section>
+    
+        <!-- Target Audience -->
+        <section id="target-audience" class="py-2 mb-4">
+            <div class="max-w-6xl mx-auto">
+            <h2 class="text-2xl font-semibold mb-8 text-center">Target Audience</h2>
+            <!-- flex-nowrap so they stay on one line; overflow-x-auto to allow horizontal scroll on smaller screens -->
+            <div class="flex flex-nowrap justify-center gap-8 overflow-x-auto pb-2">
+                <!-- Card 1 -->
+                <div class="bg-[#5A8EFF]/20 w-72 h-50 p-6 rounded-2xl shadow-md flex flex-col">
+                <h3 class="font-semibold mb-4 border-b-2 border-gray-300 pb-1">Elderly Users</h3>
+                <p class="text-gray-700 text-sm flex-1">
+                    Seniors seeking an easy, reliable way to remember medications, monitor their health, and stay socially connected without tech overwhelm.
+                </p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-[#5A8EFF]/20 w-72 h-50 p-6 rounded-2xl shadow-md flex flex-col">
+                <h3 class="font-semibold mb-4 border-b-2 border-gray-300 pb-1">Family Caregivers</h3>
+                <p class="text-gray-700 text-sm flex-1">
+                    Relatives who need remote visibility into loved ones’ medication adherence, vitals, and emergency alerts to provide timely support.
+                </p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-[#5A8EFF]/20 w-72 h-50 p-6 rounded-2xl shadow-md flex flex-col">
+                <h3 class="font-semibold mb-4 border-b-2 border-gray-300 pb-1">Healthcare Professionals</h3>
+                <p class="text-gray-700 text-sm flex-1">
+                    Nurses, doctors, and home-care agencies requiring real-time reports on patient vitals, adherence trends, and emergency events.
+                </p>
+                </div>
+            </div>
+            </div>
+        </section>  
+    </section>
+
+    <section class="bg-white rounded-3xl mx-auto my-4 max-w-[95vw] px-4 shadow-lg mt-12 mb-12 pb-8">
+        <!-- User Research -->
+        <section id="user-research" class="max-w-6xl mx-auto py-2 pt-12 px-4 sm:px-8 md:px-16 lg:px-28">
+            <h2 class="text-3xl font-bold text-[#000000] mb-2">User Research</h2>
+        
+            <!-- Qualitative research -->
+            <div class="mb-12">
+            <h3 class="text-2xl font-semibold text-[#3063fc] mb-4">Qualitative research</h3>
+            <p class="text-gray-700 mb-4 text-justify">
+                We conducted semi-structured interviews with seven stakeholders—elderly users, family caregivers, and healthcare professionals—to understand their workflows, pain points, and desired features for a unified caregiving app.
+            </p>
+            <p class="font-medium text-gray-800 mb-2">Below are the core questions:</p>
+            <ul class="list-disc list-inside space-y-1 text-gray-700">
+                <li>How do you currently manage medication schedules and track vital signs?</li>
+                <li>What challenges have you faced with your existing health or caregiving apps?</li>
+                <li>Which features (e.g., refill reminders, SOS button, device integration) matter most to you?</li>
+                <li>How do you prefer to receive alerts about missed doses or emergencies?</li>
+                <li>What would make the app more accessible and easier for seniors to use?</li>
+            </ul>
+        
+            <h4 class="mt-6 text-xl font-semibold text-gray-800">Key insights</h4>
+            <ul class="list-disc list-inside space-y-1 text-gray-700 mt-2">
+                <li>Seniors need large, high-contrast UI elements and minimal navigation steps.</li>
+                <li>Caregivers value real-time notifications and a remote dashboard to monitor adherence.</li>
+                <li>Healthcare professionals require historical trend data and exportable reports.</li>
+                <li>Users want a reliable one-tap SOS feature tied to their emergency contacts.</li>
+                <li>Seamless integration with wearables and automatic refill reminders boosts trust and compliance.</li>
+            </ul>
+            </div>
+        </section>
+
+        <section id="design-decisions" class="max-w-6xl mx-auto py-2 px-4 sm:px-8 md:px-16 lg:px-28">
+          <h2 class="text-3xl font-bold mb-6">Design Decisions</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/15 p-5 shadow-sm">
+              <h3 class="font-semibold mb-2">Senior-first accessibility baseline</h3>
+              <p class="text-gray-700 text-sm">
+                Prioritized larger type, stronger contrast, and fewer navigation steps for elderly users with low digital confidence.
+              </p>
+            </article>
+            <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/15 p-5 shadow-sm">
+              <h3 class="font-semibold mb-2">Caregiver visibility and adherence tracking</h3>
+              <p class="text-gray-700 text-sm">
+                Designed remote monitoring patterns with timely reminders and status visibility to reduce manual follow-up.
+              </p>
+            </article>
+            <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/15 p-5 shadow-sm">
+              <h3 class="font-semibold mb-2">One-tap emergency action</h3>
+              <p class="text-gray-700 text-sm">
+                Kept SOS interaction fast and obvious to support high-stress moments without deep navigation.
+              </p>
+            </article>
+            <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/15 p-5 shadow-sm">
+              <h3 class="font-semibold mb-2">Integrated health routine support</h3>
+              <p class="text-gray-700 text-sm">
+                Emphasized refill reminders, vitals tracking, and connected-device compatibility to improve day-to-day compliance.
+              </p>
+            </article>
+          </div>
+        </section>
+  
+
+        <!-- User Personas -->
+        <section id="personas" class="max-w-6xl mx-auto py-2 pt-12 px-4 sm:px-8 md:px-16 lg:px-28">
+            <h2 class="text-3xl font-bold mb-6">User Personas</h2>
+            <div class="overflow-x-auto rounded-[10px]">
+            <table class="min-w-full bg-white border border-gray-300 rounded-[10px]">
+                <thead>
+                <tr class="bg-[#5A8EFF]/20">
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Persona</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Bio &amp; Goals</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Pain Points</th>
+                </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                <!-- The Senior Skeptic -->
+                <tr>
+                    <td class="px-6 py-4 align-top text-sm text-gray-900">Berry Books, 75</td>
+                    <td class="px-6 py-4 align-top text-sm text-gray-600">
+                    Retired teacher who wants to take medication on time and stay connected with friends and family.
+                    </td>
+                    <td class="px-6 py-4 align-top text-sm text-gray-600">
+                    Uncomfortable with technology; difficulty seeing small text or icons.
+                    </td>
+                </tr>
+                <!-- The Concerned Adult Child -->
+                <tr class="bg-[#F9FAFB]">
+                    <td class="px-6 py-4 align-top text-sm text-gray-900">Mary Smith, 52</td>
+                    <td class="px-6 py-4 align-top text-sm text-gray-600">
+                    Nurse needing to ensure her elderly parents take medication correctly, monitor their health remotely, and ease her worries.
+                    </td>
+                    <td class="px-6 py-4 align-top text-sm text-gray-600">
+                    Lives far from parents; struggles to track their medication schedule and refills; worries about their social isolation.
+                    </td>
+                </tr>
+                <!-- The Active Social Senior -->
+                <tr>
+                    <td class="px-6 py-4 align-top text-sm text-gray-900">Jane Wilson, 72</td>
+                    <td class="px-6 py-4 align-top text-sm text-gray-600">
+                    Retired librarian who wants to maintain an active social life—participate in group activities, community events, and stay informed about local happenings.
+                    </td>
+                    <td class="px-6 py-4 align-top text-sm text-gray-600">
+                    Feels isolated; misses workplace social interactions; difficulty finding age-appropriate events and resources.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+        </section>
+  
+  
+        
+        <!-- User and Task Flow -->
+        <section id="user-personas" class="w-full max-w-screen-xl mx-auto py-2 px-4">
+            <h2 class="text-3xl font-bold text-left max-w-6xl mx-auto py-2 pt-12 px-4 sm:px-8 md:px-16 lg:px-28">User and Task Flows</h2>
+            <div class="flex flex-col items-center space-y-8">
+            <div class="w-full sm:w-2/3 lg:w-4/5">
+                <img src="/images/userflows cc.png" alt="user-flow1" class="w-full rounded-l shadow-md mb-4">
+            </div>
+          </div>
+        </section>
+
+        <!-- User Journey Map -->
+        <section id="user-journey" class="max-w-6xl mx-auto py-2 pt-12 px-4 sm:px-8 md:px-16 lg:px-28">
+            <h2 class="text-3xl font-bold mb-8">User Journey Map</h2>
+            <div class="overflow-x-auto rounded-xl">
+            <table class="min-w-full bg-white border border-gray-300 rounded-lg">
+                <thead class="bg-[#5A8EFF]/30">
+                <tr>
+                    <th class="p-4 text-left">Stage / Experience</th>
+                    <th class="p-4 text-left">
+                    Discovery<br>
+                    <span class="text-sm text-gray-500">Finding the app</span>
+                    </th>
+                    <th class="p-4 text-left">
+                    Onboarding<br>
+                    <span class="text-sm text-gray-500">Register &amp; setup</span>
+                    </th>
+                    <th class="p-4 text-left">
+                    Daily Use<br>
+                    <span class="text-sm text-gray-500">Managing health</span>
+                    </th>
+                    <th class="p-4 text-left">
+                    Social &amp; Alerts<br>
+                    <span class="text-sm text-gray-500">Connecting &amp; emergencies</span>
+                    </th>
+                </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                <!-- Actions -->
+                <tr class="bg-[#F9FAFB]">
+                    <td class="p-4 font-medium">Actions</td>
+                    <td class="p-4">
+                    • Visit CareCircle website or app store; review features 
+                    </td>
+                    <td class="p-4">
+                    • Download app; choose Elder or Caregiver account<br>
+                    • Complete registration and link accounts 
+                    </td>
+                    <td class="p-4">
+                    • Log in; view today’s medication schedule<br>
+                    • Track vitals, mark doses, order refills 
+                    </td>
+                    <td class="p-4">
+                    • Chat with friends/family; manage social events<br>
+                    • Press SOS for emergencies; receive alerts 
+                    </td>
+                </tr>
+                <!-- Think & Feel -->
+                <tr>
+                    <td class="p-4 font-medium">Think &amp; Feel</td>
+                    <td class="p-4">
+                    Curious about an all-in-one solution; hopeful for simplicity
+                    </td>
+                    <td class="p-4">
+                    A bit anxious about setup; relieved to see large UI elements
+                    </td>
+                    <td class="p-4">
+                    Confident when reminders work; frustrated if doses or readings are missed
+                    </td>
+                    <td class="p-4">
+                    Reassured by staying connected; safe knowing SOS is there
+                    </td>
+                </tr>
+                <!-- Touchpoints -->
+                <tr class="bg-[#F9FAFB]">
+                    <td class="p-4 font-medium">Touchpoints</td>
+                    <td class="p-4">
+                    Website, app listing, family/friend referrals
+                    </td>
+                    <td class="p-4">
+                    Onboarding screens, pairing tutorial, welcome email
+                    </td>
+                    <td class="p-4">
+                    Dashboard, push notifications, medication & vitals screens
+                    </td>
+                    <td class="p-4">
+                    Messaging UI, event calendar, SOS button, alerts
+                    </td>
+                </tr>
+                <!-- Pain Points -->
+                <tr>
+                    <td class="p-4 font-medium">Pain Points</td>
+                    <td class="p-4">
+                    Unsure if app is senior-friendly; too technical
+                    </td>
+                    <td class="p-4">
+                    Confusion over pairing accounts; text still too small
+                    </td>
+                    <td class="p-4">
+                    Missed reminders cause stress; navigation can feel cluttered
+                    </td>
+                    <td class="p-4">
+                    Too many notifications overwhelm; fear of false SOS triggers
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+        </section>  
+
+        <!-- Storyboard -->
+        <section id="user-personas" class="w-full max-w-screen-xl mx-auto py-2 px-4">
+            <h2 class="text-3xl font-bold text-left max-w-6xl mx-auto py-2 pt-12 px-4 sm:px-8 md:px-16 lg:px-28">Storyboards</h2>
+            <div class="flex flex-col items-center space-y-8">
+            <div class="w-full sm:w-2/3 lg:w-4/5">
+                <img src="/images/storyboard-carecircle.png" alt="Persona 1" class="w-full rounded-l shadow-md mb-4">
+            </div>
+          </div>
+        </section>
+
+        <!-- Wireframes -->
+        <section id="wireframes" class="max-w-6xl mx-auto py-2 pt-12 px-4 sm:px-8 md:px-16 lg:px-28">
+          <h2 class="text-3xl font-bold text-black mb-8">Wireframes</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <img
+              src="/images/wireframecc1.png"
+              alt="Wireframe 1"
+              class="w-full rounded-lg shadow-lg"
+            />
+            <img
+              src="/images/wireframecc2.png"
+              alt="Wireframe 2"
+              class="w-full rounded-lg shadow-lg"
+            />
+            <img
+              src="/images/wireframecc3.png"
+              alt="Wireframe 3"
+              class="w-full rounded-lg shadow-lg"
+            />
+            <img
+              src="/images/wireframecc4.png"
+              alt="Wireframe 4"
+              class="w-full rounded-lg shadow-lg"
+            />
+            <img
+              src="/images/wireframecc5.png"
+              alt="Wireframe 5"
+              class="w-full rounded-lg shadow-lg"
+            />
+            <img
+              src="/images/wireframecc6.png"
+              alt="Wireframe 6"
+              class="w-full rounded-lg shadow-lg"
+            />
+            <img
+              src="/images/wireframecc7.png"
+              alt="Wireframe 7"
+              class="w-full rounded-lg shadow-lg"
+            />
+          </div>
+
+          <!-- Wireflow -->
+          <section id="user-personas" class="w-full max-w-screen-xl mx-auto py-2 mt-8">
+            <h2 class="text-3xl font-bold text-left mb-8">Wireflow</h2>
+            <div class="flex flex-col items-center space-y-8">
+            <div class="w-full sm:w-2/3 lg:w-4/5">
+                <img src="/images/wireflow.png" alt="Persona 1" class="w-full rounded-l shadow-md mb-4">
+            </div>
+            </div>
+          </section>
+
+        </section>
+        
+</section>
+
+
+      <!-- FOOTER -->
+      <footer class="bg-[#5A8EFF]/60 text-black mt-8 border-t border-black relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 py-6 sm:py-4
+                    flex flex-col sm:flex-row sm:items-center sm:justify-between
+                    gap-4 sm:gap-6">
+
+          <!-- Back to top (first on mobile, right on desktop) -->
+          <a href="#carecircle"
+            class="order-1 sm:order-none w-full sm:w-auto
+                    inline-flex items-center justify-center gap-2
+                    rounded-full bg-white px-4 py-2 text-sm font-medium
+                    border border-black/20 hover:bg-white/90 transition"
+            aria-label="Back to top">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#3063FC" d="M12 5.5 3 14.5l1.5 1.5 7.5-7.5 7.5 7.5 1.5-1.5L12 5.5Z"/>
+            </svg>
+            Back to top
+          </a>
+
+          <!-- Socials (full-width stack on mobile, inline on desktop) -->
+          <div class="order-2 sm:order-none w-full sm:w-auto
+                      flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <!-- subtle divider only on mobile -->
+            <div class="h-px bg-black/20 sm:hidden"></div>
+
+            <a href="https://www.linkedin.com/in/sudiksha-rajavaram/" target="_blank"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2
+                      rounded-xl border border-black/20 bg-white/80 px-3 py-2 text-sm font-medium
+                      hover:bg-white transition">
+              <img src="https://cdn.iconscout.com/icon/free/png-512/free-linkedin-42-151143.png"
+                  alt="LinkedIn Logo" class="w-4 h-4"/>
+              LinkedIn
+            </a>
+
+            <a href="https://www.figma.com/@rajavaramsudiks" target="_blank"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2
+                      rounded-xl border border-black/20 bg-white/80 px-3 py-2 text-sm font-medium
+                      hover:bg-white transition">
+              <img src="https://cdn.iconscout.com/icon/free/png-512/free-figma-2296071-1912030.png"
+                  alt="Figma Logo" class="w-4 h-4"/>
+              Figma
+            </a>
+          </div>
+
+          <!-- Name (centered on mobile, left on desktop) -->
+          <p class="order-3 sm:order-none text-center sm:text-left text-sm font-medium">
+            &copy; 2025 Sudiksha Rajavaram
+          </p>
+
+        </div>
+      </footer>
+
+    
+  <script>
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  let isOpen = false;
+
+  menuBtn.addEventListener('click', () => {
+    isOpen = !isOpen;
+    mobileMenu.style.maxHeight = isOpen ? mobileMenu.scrollHeight + 'px' : '0px';
+  });
+</script>
+    
+</body>
+</html>

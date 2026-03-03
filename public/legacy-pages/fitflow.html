@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<html class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>fit-flow</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style> body { font-family: 'Space Grotesk', sans-serif; } </style>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      /* add a theme and override its palette here: */
+      theme: 'base',
+      themeVariables: {
+        primaryColor:      '#B2DAFF',  // node fill
+        primaryBorderColor:'#3063fc',  // node stroke
+        primaryTextColor:  '#000000',  // node text
+        lineColor:         '#3063fc',  // edges
+        tertiaryColor:     '#ffffff',  // edge label bg
+        fontSize:          '28px'
+      }
+    });
+  </script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .nav-link {
+      position: relative;
+      display: inline-block;
+      text-decoration: none;
+      color: #2d3748;
+      font-weight: 600;
+      font-size: clamp(1.1rem, 1.05vw, 1.45rem);
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .nav-link:hover::after {
+      transform: scaleX(1);
+    }
+    .nav-link:hover {
+      color: #fff;
+    }
+    .menu-transition {
+    transition: max-height 0.3s ease-out;
+    overflow: hidden;
+    }
+  </style>
+</head>
+</head>
+<body class="bg-[#5A8EFF]/25">
+
+  <!-- NAV BAR -->
+  <header class="fixed inset-x-0 top-0 z-30">
+    <nav class="absolute inset-x-0 top-2 mx-auto max-w-[1100px] bg-[#5A8EFF]/70 backdrop-blur-sm border-[1.5px] border-black py-3 px-6 rounded-[12px] shadow-lg z-50">
+      <div class="flex items-center justify-between">
+        <a href="index.html#about" class="text-lg font-semibold text-black">SUDIKSHA RAJAVARAM</a>
+
+        <!-- Hamburger Button (Mobile Only) -->
+        <button id="menu-btn" class="sm:hidden focus:outline-none">
+          <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+
+        <!-- Desktop Nav -->
+        <div class="hidden sm:flex gap-6">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="resume.html" class="nav-link">Resume</a>
+          <a href="projects.html" class="nav-link">Projects</a>
+          <a href="contact.html" class="nav-link">Contact Me</a>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="sm:hidden menu-transition max-h-0">
+        <div class="flex flex-col gap-4 pt-4">
+          <a href="index.html" class="nav-link block">Home</a>
+          <a href="resume.html" class="nav-link block">Resume</a>
+          <a href="projects.html" class="nav-link block">Projects</a>
+          <a href="contact.html" class="nav-link block">Contact Me</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+  <main id="fitflow">
+    <section class="bg-white rounded-3xl mx-auto my-4 max-w-[95vw] px-4 shadow-lg mt-12 mb-12 pb-8">
+        <main class="pt-[60px] px-6 max-w-4xl mx-auto">
+          <!-- back link + title -->
+          <a href="projects.html" class="text-[12px] text-gray-700 hover:underline">
+            ← Return to all Projects
+          </a>
+          <h1 class="text-4xl font-bold text-center mt-4 mb-8">FLOWFIT</h1>
+
+          <!-- Case Study -->
+          <section class="mb-16">
+            <h2 class="text-2xl font-semibold mb-6">Case Study</h2>
+
+            <div class="max-w-6xl mx-auto">
+
+              <!-- ================= SNAPSHOT ================= -->
+              <div class="mb-8">
+                <div class="flex items-center gap-3 text-[11px] font-semibold tracking-widest uppercase text-[#3063FC]">
+                  <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#3063FC]">
+                    <span class="absolute inset-0 rounded-full bg-[#3063FC]/40 animate-ping"></span>
+                  </span>
+                  Project Snapshot
+                </div>
+
+                <h3 class="mt-3 text-4xl sm:text-4xl font-bold text-slate-900">
+                  A women-centric fitness platform
+                </h3>
+
+                <p class="mt-4 text-base text-slate-600 max-w-4xl">
+                  FlowFit is an AI-powered fitness experience built for women across life stages —
+                  from period-care routines and senior mobility to self-defense and strength training.
+                  The product was designed mobile-first and scaled responsively.
+                </p>
+
+                <!-- meta chips -->
+                <div class="mt-6 flex flex-wrap gap-3">
+                  <span class="inline-flex items-center gap-2 rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+                    <span class="text-xs font-bold tracking-widest">IND</span>
+                    Health & Fitness
+                  </span>
+
+                  <span class="inline-flex items-center gap-2 rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+                    <span class="text-xs font-bold tracking-widest">ROLE</span>
+                    Research · UX Design · Prototyping
+                  </span>
+
+                  <span class="inline-flex items-center gap-2 rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+                    <span class="text-xs font-bold tracking-widest">TOOLS</span>
+                    Figma · ChatGPT · Mermaid
+                  </span>
+                </div>
+
+                <!-- divider -->
+                <div class="mt-7 h-px w-full bg-gradient-to-r
+                  from-transparent via-[#3063FC]/40 to-transparent"></div>
+              </div>
+
+
+              <!-- ================= MOBILE EXPERIENCE ================= -->
+              <section class="mt-4">
+                <div class="rounded-[28px] overflow-hidden border border-[#3063FC]/30
+                  bg-gradient-to-br from-[#3063FC]/10 via-white/40 to-white
+                  shadow-[0_20px_60px_rgba(48,99,252,0.18)]">
+
+                  <!-- header -->
+                  <div class="px-6 sm:px-10 pt-8 pb-6">
+                    <div class="flex items-center gap-3 text-[11px] font-semibold tracking-widest uppercase text-[#3063FC]">
+                      <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#3063FC]">
+                        <span class="absolute inset-0 rounded-full bg-[#3063FC]/40 animate-ping"></span>
+                      </span>
+                      Mobile Experience
+                    </div>
+
+                    <h3 class="mt-3 text-2xl sm:text-4xl font-bold text-slate-900">
+                      Designed for one-hand use during real workouts
+                    </h3>
+
+                    <p class="mt-3 text-base text-slate-600 max-w-4xl test-justify">
+                      FlowFit was intentionally designed for mobile environments —
+                      mid-movement, mid-breath, often with one free hand.
+                      Desktop layouts were derived later using the same component system.
+                    </p>
+                  </div>
+
+                  <!-- content -->
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-10 px-6 sm:px-10 pb-10 items-center">
+
+                    <!-- mobile video -->
+                    <div class="flex justify-center">
+                      <div class="relative w-full max-w-[360px]">
+                        <div class="rounded-[34px] p-[10px] bg-black/90 border border-white/10
+                          shadow-[0_25px_70px_rgba(0,0,0,0.35)]">
+                          <div class="rounded-[26px] overflow-hidden bg-black">
+                            <video
+                              id="flowfit-mobile-video"
+                              class="w-full h-[560px] sm:h-[620px] object-cover"
+                              muted autoplay playsinline loop preload="auto"
+                              poster="/images/project1-thumb.png">
+                              <!-- 🔁 replace with your MOBILE video -->
+                              <source src="/images/web-optimized/project1-thumb-web.mp4" type="video/mp4" />
+                            </video>
+                          </div>
+                        </div>
+
+                        <!-- glow -->
+                        <div class="pointer-events-none absolute -inset-6 rounded-[46px]
+                          bg-[#3063FC]/25 blur-2xl opacity-60"></div>
+                      </div>
+                    </div>
+
+                    <!-- rationale -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div class="rounded-2xl border border-[#3063FC]/20 bg-white/70 p-4">
+                        <div class="text-[11px] font-semibold tracking-widest uppercase text-[#3063FC]">Thumb reach</div>
+                        <p class="mt-2 text-sm text-slate-700">
+                          Primary actions placed within natural thumb zones for safety and comfort.
+                        </p>
+                      </div>
+
+                      <div class="rounded-2xl border border-[#3063FC]/20 bg-white/70 p-4">
+                        <div class="text-[11px] font-semibold tracking-widest uppercase text-[#3063FC]">Low cognitive load</div>
+                        <p class="mt-2 text-sm text-slate-700">
+                          Large controls, minimal text, and high contrast during workouts.
+                        </p>
+                      </div>
+
+                      <div class="rounded-2xl border border-[#3063FC]/20 bg-white/70 p-4">
+                        <div class="text-[11px] font-semibold tracking-widest uppercase text-[#3063FC]">Women-focused flows</div>
+                        <p class="mt-2 text-sm text-slate-700">
+                          Period-care, senior mobility, and safety-first routines.
+                        </p>
+                      </div>
+
+                      <div class="rounded-2xl border border-[#3063FC]/20 bg-white/70 p-4">
+                        <div class="text-[11px] font-semibold tracking-widest uppercase text-[#3063FC]">Responsive system</div>
+                        <p class="mt-2 text-sm text-slate-700">
+                          Mobile components scaled to tablet and desktop with a shared grid and type system.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="h-px w-full bg-gradient-to-r from-transparent via-[#3063FC]/40 to-transparent"></div>
+                </div>
+              </section>
+
+            </div>
+          </section>
+
+          <script>
+          (function () {
+            const vids = [
+              document.getElementById("flowfit-desktop-video"),
+              document.getElementById("flowfit-mobile-video")
+            ];
+            vids.forEach(video => {
+              if (!video) return;
+              const play = async () => { try { video.muted = true; await video.play(); } catch(e){} };
+              window.addEventListener("load", play);
+              video.addEventListener("canplay", play);
+            });
+          })();
+          </script>
+
+
+          <!-- Problem & Goal -->
+          <section class="max-w-6xl mx-auto py-8">
+            <h2 class="text-3xl font-bold mb-4">The Problem</h2>
+            <p class="text-gray-700 leading-relaxed">
+              Most fitness apps are designed with generic programs and rigid routines that fail to adapt to
+              women’s changing physical needs, schedules, and motivation levels. From period pain to menopause,
+              users are forced to either push through discomfort or abandon routines altogether.
+            </p>
+
+            <div class="grid sm:grid-cols-2 gap-6 mt-6">
+              <div class="border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/25 rounded-xl p-5">
+                <h3 class="font-semibold mb-1">Impact</h3>
+                <ul class="list-disc list-inside text-gray-700 text-sm">
+                  <li>High drop-off due to non-adaptive workout plans</li>
+                  <li>Lack of women-specific guidance across life stages</li>
+                  <li>Inconsistent motivation and routine fatigue</li>
+                  <li>Limited access to safe self-defense training</li>
+                </ul>
+              </div>
+
+              <div class="border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/25 rounded-xl p-5">
+                <h3 class="font-semibold mb-1">Goal</h3>
+                <p class="text-gray-700 text-sm">
+                  Create a mobile-first fitness experience that adapts to women’s bodies, energy levels,
+                  and life stages—offering supportive, flexible routines users can realistically sustain.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Solution Overview -->
+          <section class="max-w-6xl mx-auto py-4">
+            <h2 class="text-3xl font-bold mb-6">Solution</h2>
+
+            <div class="grid md:grid-cols-2 gap-8">
+              <div class="bg-white rounded-2xl border border-[#5A8EFF]/50 p-6 shadow-sm">
+                <h3 class="font-semibold mb-2">FlowFit in a Nutshell</h3>
+                <p class="text-gray-700">
+                  FlowFit is an AI-driven, women-centric fitness platform that dynamically personalizes
+                  workouts, recovery routines, and self-defense modules based on each user’s needs and context.
+                </p>
+
+                <ul class="mt-4 list-disc list-inside text-gray-700">
+                  <li><strong>Adaptive plans:</strong> workouts adjust daily based on energy and goals</li>
+                  <li><strong>Life-stage focus:</strong> period relief, prenatal, menopause &amp; senior wellness</li>
+                  <li><strong>Mobile-first UX:</strong> one-hand use, large controls, low cognitive load</li>
+                  <li><strong>Hybrid flexibility:</strong> seamless home, gym, and on-the-go routines</li>
+                  <li><strong>Integrated self-defense:</strong> confidence and safety built into fitness</li>
+                </ul>
+              </div>
+
+              <div class="bg-white rounded-2xl border border-[#5A8EFF]/50 p-6 shadow-sm">
+                <h3 class="font-semibold mb-2">My Role &amp; Process</h3>
+                <p class="text-gray-700">
+                  I led the UX and product design process end-to-end—from research to prototyping—
+                  with a strong focus on mobile ergonomics and inclusive wellness design.
+                </p>
+
+                <ul class="mt-4 list-disc list-inside text-gray-700">
+                  <li>User interviews across age groups and fitness levels</li>
+                  <li>Persona creation and journey mapping</li>
+                  <li>Mobile-first wireframes and interactive prototypes in Figma</li>
+                  <li>AI concept modeling and system-level UX flows</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- Design Decisions -->
+          <section class="max-w-6xl mx-auto py-4">
+            <h2 class="text-3xl font-bold mb-6">Design Decisions</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+              <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/15 p-6 shadow-sm">
+                <h3 class="font-semibold mb-2">Mobile-first, low-friction interaction</h3>
+                <p class="text-gray-700 text-sm">
+                  Prioritized one-hand use, larger controls, and low cognitive load to support quick check-ins during busy routines.
+                </p>
+              </article>
+              <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/15 p-6 shadow-sm">
+                <h3 class="font-semibold mb-2">Adaptive plans over rigid programs</h3>
+                <p class="text-gray-700 text-sm">
+                  Designed daily workout flexibility around energy, schedule, and life-stage context instead of fixed one-size-fits-all plans.
+                </p>
+              </article>
+              <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/15 p-6 shadow-sm">
+                <h3 class="font-semibold mb-2">Quick routine entry points</h3>
+                <p class="text-gray-700 text-sm">
+                  Introduced short, one-tap routine pathways to reduce drop-off for users with limited time.
+                </p>
+              </article>
+              <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/15 p-6 shadow-sm">
+                <h3 class="font-semibold mb-2">Supportive tone and motivation</h3>
+                <p class="text-gray-700 text-sm">
+                  Framed reminders and prompts to feel encouraging rather than nagging, based on interview feedback about adherence.
+                </p>
+              </article>
+            </div>
+          </section>
+
+    
+          <!-- Target Audience -->
+          <section id="target-audience" class="py-8">
+            <h2 class="text-2xl font-semibold mb-8 text-left">Target Audience</h2>
+            <div class="space-y-8">
+              <div class="flex flex-col lg:flex-row justify-between gap-8">
+                <div class="bg-[#5A8EFF]/20 w-full sm:w-72 h-64 p-6 rounded-2xl shadow-md flex flex-col">
+                  <h3 class="font-semibold mb-4 border-b-2 border-gray-300 pb-1">Busy Professionals</h3>
+                  <p class="text-gray-700 text-sm flex-1">
+                    Working women juggling career and family who need quick HIIT, yoga or self-defense routines that fit tight schedules.
+                  </p>
+                </div>
+                <div class="bg-[#5A8EFF]/20 w-full sm:w-72 h-64 p-6 rounded-2xl shadow-md flex flex-col">
+                  <h3 class="font-semibold mb-4 border-b-2 border-gray-300 pb-1">Active Seniors</h3>
+                  <p class="text-gray-700 text-sm flex-1">
+                    Older women seeking gentle, bone-strengthening workouts, mobility routines and voice-guided sessions for safe exercise.
+                  </p>
+                </div>
+                <div class="bg-[#5A8EFF]/20 w-full sm:w-72 h-64 p-6 rounded-2xl shadow-md flex flex-col">
+                  <h3 class="font-semibold mb-4 border-b-2 border-gray-300 pb-1">Self-Defense Enthusiasts</h3>
+                  <p class="text-gray-700 text-sm flex-1">
+                    Women of all ages interested in karate/kickboxing modules for confidence, safety and functional fitness.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+          
+          <!-- User Research -->
+          <section id="user-research" class="max-w-6xl mx-auto pt-4">
+            <h2 class="text-3xl font-bold text-black mb-4">User Research</h2>
+        
+            <!-- Qualitative research -->
+            <div class="mb-12">
+            <h3 class="text-2xl font-semibold text-[#3063fc] mb-4">Qualitative research</h3>
+            <p class="text-gray-700 mb-4">
+                I conducted in-depth interviews with eight women across different life stages—college students, working professionals, new mothers, and seniors—to understand their fitness habits, motivations, and pain points.
+            </p>
+            <p class="font-medium text-gray-800 mb-2">Below are the key questions:</p>
+            <ul class="list-disc list-inside space-y-1 text-gray-700 mb-6">
+                <li>What are your primary fitness goals (e.g., weight loss, strength, stress relief)?</li>
+                <li>Which apps or tools do you currently use to track workouts and why?</li>
+                <li>How do you customize workouts to fit your schedule and energy levels?</li>
+                <li>What challenges have you faced sticking to a routine?</li>
+                <li>Would you use self-defense modules, and what features matter most?</li>
+                <li>How do you prefer to receive progress reminders and motivational prompts?</li>
+                <li>What frustrates you about existing fitness apps?</li>
+                <li>What motivates you to return to an app day after day?</li>
+                <li>Which devices do you use most often for exercise guidance?</li>
+                <li>If you could change one thing about your fitness app experience, what would it be?</li>
+            </ul>
+        
+            <h4 class="mt-6 text-xl font-semibold text-gray-800 mb-2">Interview insights</h4>
+            <ul class="list-disc list-inside space-y-1 text-gray-700">
+                <li>Users want workout plans that adapt day-to-day based on energy and schedule.</li>
+                <li>Complex customization screens lead to drop-off—simplicity is key.</li>
+                <li>Life-stage content (e.g., prenatal, menopause) is almost nonexistent in other apps.</li>
+                <li>Self-defense tutorials are highly valued but often buried under fitness content.</li>
+                <li>Push reminders must feel supportive, not nagging—tone matters.</li>
+                <li>Seamless calendar integration greatly improves adherence.</li>
+                <li>Community features (group challenges, peer support) boost motivation.</li>
+                <li>Quick “one-tap” routines for busy days are a top request.</li>
+            </ul>
+            </div>
+        </section>
+  
+          
+          <!-- User Personas -->
+          <section id="personas" class="py-4">
+            <h2 class="text-3xl font-bold mb-6">User Personas</h2>
+            <div class="overflow-x-auto rounded-[10px]">
+              <table class="min-w-full bg-white border border-gray-300 rounded-[10px]">
+                <thead>
+                  <tr class="bg-[#5A8EFF]/20">
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Persona</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Bio &amp; Goals</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Pain Points</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                  <tr>
+                    <td class="px-6 py-4 text-sm font-medium text-gray-900">Priya Sharma, 29</td>
+                    <td class="px-6 py-4 text-sm text-gray-600">
+                      Marketing manager who needs short, effective workouts and smart reminders to stay consistent.
+                    </td>
+                    <td class="px-6 py-4 text-sm text-gray-600">
+                      Juggling meetings and family leaves little time for a full workout.
+                    </td>
+                  </tr>
+                  <tr class="bg-[#F9FAFB]">
+                    <td class="px-6 py-4 text-sm font-medium text-gray-900">Sandhya Reddy, 70</td>
+                    <td class="px-6 py-4 text-sm text-gray-600">
+                      Retired teacher seeking gentle, voice-guided mobility exercises and reminders to move daily.
+                    </td>
+                    <td class="px-6 py-4 text-sm text-gray-600">
+                      Joint sensitivity makes high-impact routines painful; forgets to exercise regularly.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="px-6 py-4 text-sm font-medium text-gray-900">Sravani Patel, 21</td>
+                    <td class="px-6 py-4 text-sm text-gray-600">
+                      College student balancing classes who wants flexible, AI-suggested workouts based on her free time.
+                    </td>
+                    <td class="px-6 py-4 text-sm text-gray-600">
+                      Inconsistent schedule makes it hard to stick to rigid programs.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+            <!-- User Journey Map -->
+        <section id="user-journey" class="max-w-6xl mx-auto py-4">
+            <h2 class="text-3xl font-bold mb-8 text-left">User Journey Map</h2>
+            <div class="overflow-x-auto rounded-xl">
+            <table class="min-w-full bg-white border border-gray-300 rounded-lg">
+                <thead class="bg-[#5A8EFF]/20">
+                <tr>
+                    <th class="p-4 text-left">Stage / Experience</th>
+                    <th class="p-4 text-left">Discovery<br><span class="text-sm text-gray-500">Finding FlowFit</span></th>
+                    <th class="p-4 text-left">Onboarding<br><span class="text-sm text-gray-500">Setup & Quiz</span></th>
+                    <th class="p-4 text-left">Workout<br><span class="text-sm text-gray-500">AI-driven Session</span></th>
+                    <th class="p-4 text-left">Engagement<br><span class="text-sm text-gray-500">Progress & Community</span></th>
+                </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                <!-- Actions -->
+                <tr class="bg-[#F9FAFB]">
+                    <td class="p-4 font-medium">Actions</td>
+                    <td class="p-4">
+                    • See ad / App Store listing<br>
+                    • Read reviews & features
+                    </td>
+                    <td class="p-4">
+                    • Download & install<br>
+                    • Complete onboarding quiz
+                    </td>
+                    <td class="p-4">
+                    • Start AI-guided workout<br>
+                    • Adjust intensity sliders
+                    </td>
+                    <td class="p-4">
+                    • Earn badges<br>
+                    • Join group challenges
+                    </td>
+                </tr>
+                <!-- Think & Feel -->
+                <tr>
+                    <td class="p-4 font-medium">Think &amp; Feel</td>
+                    <td class="p-4">
+                    Curious about a women-focused app
+                    </td>
+                    <td class="p-4">
+                    Hopeful quiz tailors plan<br>
+                    Slightly overwhelmed by questions
+                    </td>
+                    <td class="p-4">
+                    Motivated by real-time feedback<br>
+                    Nervous about difficulty
+                    </td>
+                    <td class="p-4">
+                    Proud of streaks<br>
+                    Want more social support
+                    </td>
+                </tr>
+                <!-- Touchpoints -->
+                <tr class="bg-[#F9FAFB]">
+                    <td class="p-4 font-medium">Touchpoints</td>
+                    <td class="p-4">
+                    App Store page, Social ads
+                    </td>
+                    <td class="p-4">
+                    Onboarding screens, progress bar
+                    </td>
+                    <td class="p-4">
+                    Video player, slider controls
+                    </td>
+                    <td class="p-4">
+                    Badge notifications, chat forums
+                    </td>
+                </tr>
+                <!-- Pain Points -->
+                <tr>
+                    <td class="p-4 font-medium">Pain Points</td>
+                    <td class="p-4">
+                    Hard to compare female-specific features
+                    </td>
+                    <td class="p-4">
+                    Quiz feels too long
+                    </td>
+                    <td class="p-4">
+                    Unclear form cues<br>
+                    Poor audio in noisy environment
+                    </td>
+                    <td class="p-4">
+                    Notifications get lost<br>
+                    Limited peer feedback
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+        </section>
+    
+          <!-- User Flows (Mermaid) -->
+          <section id="user-flows" class="py-8">
+            <h2 class="text-2xl font-semibold mb-6">User Flows</h2>
+            <div class="mermaid bg-white rounded-lg p-4 shadow-lg">
+    flowchart TB
+      subgraph Onboarding["Onboarding"]
+        A1["Download & Sign Up"] --> A2["Take Questionnaire"]
+        A2 --> A3["Receive AI-Generated Plan"]
+      end
+
+      Onboarding -.-> Workout
+    
+      subgraph Workout["Workout"]
+        B1["Start Workout Session"] --> B2["AI Adapts in Real-Time"]
+        B2 --> B3["Log Progress & Badges"]
+      end
+
+      Workout -.-> Nutrition
+    
+      subgraph Nutrition["Meal Tracking"]
+        C1["Log Meals or Sync Health App"] --> C2["Receive Diet Suggestions"]
+        C2 --> C3["View Nutrition Insights"]
+      end
+
+      Nutrition -.-> Engagement
+    
+      subgraph Engagement["Community"]
+        D1["Join Challenges"] --> D2["Earn Badges/Streaks"]
+        D2 --> D3["Share Progress with Peers"]
+      end
+            </div>
+          </section>
+
+          <!-- Competitor Analysis -->
+          <section id="competitor-analysis" class="max-w-6xl mx-auto py-4">
+              <h2 class="text-3xl font-bold mb-8 text-left">Competitor Analysis</h2>
+              <div class="overflow-x-auto rounded-xl">
+              <table class="min-w-full bg-white border border-gray-300 rounded-lg">
+                  <thead class="bg-[#5A8EFF]/20">
+                  <tr>
+                      <th class="p-4 text-left">Competitor</th>
+                      <th class="p-4 text-left">Strengths</th>
+                      <th class="p-4 text-left">Weaknesses</th>
+                      <th class="p-4 text-left">Opportunities for FlowFit</th>
+                  </tr>
+                  </thead>
+                  <tbody class="divide-y divide-gray-200">
+                  <tr class="bg-[#F9FAFB]">
+                      <td class="p-4 font-medium">Nike Training Club</td>
+                      <td class="p-4 text-gray-600">
+                      • High-quality videos<br>
+                      • Free premium content
+                      </td>
+                      <td class="p-4 text-gray-600">
+                      • Generic workouts<br>
+                      • Not women-specific
+                      </td>
+                      <td class="p-4 text-gray-600">
+                      • AI-tailored female routines<br>
+                      • Self-defense modules
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="p-4 font-medium">SWEAT</td>
+                      <td class="p-4 text-gray-600">
+                      • Female-focused<br>
+                      • Celebrity trainers
+                      </td>
+                      <td class="p-4 text-gray-600">
+                      • Monthly fee<br>
+                      • Limited customization
+                      </td>
+                      <td class="p-4 text-gray-600">
+                      • Free basic tier<br>
+                      • Personalization engine
+                      </td>
+                  </tr>
+                  <tr class="bg-[#F9FAFB]">
+                      <td class="p-4 font-medium">FitOn</td>
+                      <td class="p-4 text-gray-600">
+                      • Community features<br>
+                      • Wide class variety
+                      </td>
+                      <td class="p-4 text-gray-600">
+                      • Ad-supported free version<br>
+                      • No AI guidance
+                      </td>
+                      <td class="p-4 text-gray-600">
+                      • Silent mode self-defense<br>
+                      • Paid ad-free AI tier
+                      </td>
+                  </tr>
+                  </tbody>
+              </table>
+              </div>
+          </section>
+
+          <!-- Unique Selling Proposition -->
+          <section id="usp" class="max-w-6xl mx-auto py-16 px-6">
+            <h2 class="text-3xl font-bold mb-8">Unique Selling Propositions</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <!-- USP 1 -->
+              <div class="bg-[#5A8EFF]/20 rounded-2xl shadow-lg p-6">
+                <h3 class="text-xl font-semibold mb-2">AI-Powered Personalization</h3>
+                <p class="text-gray-700">
+                  Dynamic workout and meal plans generated from each user’s goals, schedules, and progress—no two plans are the same.
+                </p>
+              </div>
+              <!-- USP 2 -->
+              <div class="bg-[#5A8EFF]/20 rounded-2xl shadow-lg p-6">
+                <h3 class="text-xl font-semibold mb-2">Women-Focused Wellness</h3>
+                <p class="text-gray-700">
+                  Tailored routines for every life stage—period relief, prenatal care, menopause support, and senior mobility—designed by women, for women.
+                </p>
+              </div>
+              <!-- USP 3 -->
+              <div class="bg-[#5A8EFF]/20 rounded-2xl shadow-lg p-6">
+                <h3 class="text-xl font-semibold mb-2">Integrated Self-Defense Modules</h3>
+                <p class="text-gray-700">
+                  Built-in kickboxing and karate lessons to boost confidence and safety, seamlessly woven into your fitness journey.
+                </p>
+              </div>
+            </div>
+          </section>
+
+
+      </section>
+      <section class="bg-white rounded-3xl mx-auto my-4 max-w-[95vw] px-4 shadow-lg mt-12 mb-12 pb-4">
+          <!-- Information Architecture -->
+          <section id="information-architecture" class="max-w-4xl mx-auto px-6 pb-8 pt-12">
+              <h2 class="text-2xl font-semibold mb-4">Information Architecture</h2>
+              <img
+                src="/images/information-architecture-fitflow.png"
+                alt="Information Architecture Diagram"
+                class="w-full rounded-lg shadow-lg"
+              />
+            
+          <!-- Wireframes -->
+          <section id="wireframes" class="max-w-6xl mx-auto px-6 py-16">
+            <h2 class="text-3xl font-bold text-black mb-8">Wireframes</h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              <img src="/images/wireframe-1.1.png" alt="Wireframe 1"
+                class="wireframe-thumb w-full rounded-lg shadow-lg cursor-zoom-in" />
+
+              <img src="/images/wireframe-1.2.png" alt="Wireframe 2"
+                class="wireframe-thumb w-full rounded-lg shadow-lg cursor-zoom-in" />
+
+              <img src="/images/wireframe-1.3.png" alt="Wireframe 3"
+                class="wireframe-thumb w-full rounded-lg shadow-lg cursor-zoom-in" />
+
+              <img src="/images/wireframe-1.4.png" alt="Wireframe 4"
+                class="wireframe-thumb w-full rounded-lg shadow-lg cursor-zoom-in" />
+
+              <img src="/images/wireframe-1.5.png" alt="Wireframe 5"
+                class="wireframe-thumb w-full rounded-lg shadow-lg cursor-zoom-in" />
+
+              <img src="/images/wireframe-1.6.png" alt="Wireframe 6"
+                class="wireframe-thumb w-full rounded-lg shadow-lg cursor-zoom-in" />
+
+              <img src="/images/wireframe-1.7.png" alt="Wireframe 7"
+                class="wireframe-thumb w-full rounded-lg shadow-lg cursor-zoom-in" />
+
+              <img src="/images/wireframe-1.8.png" alt="Wireframe 8"
+                class="wireframe-thumb w-full rounded-lg shadow-lg cursor-zoom-in" />
+
+              <img src="/images/wireframe-1.9.png" alt="Wireframe 9"
+                class="wireframe-thumb w-full rounded-lg shadow-lg cursor-zoom-in" />
+
+              <img src="/images/wireframe-1.10.png" alt="Wireframe 10"
+                class="wireframe-thumb w-full rounded-lg shadow-lg cursor-zoom-in" />
+
+              <img src="/images/wireframe-1.11.png" alt="Wireframe 11"
+                class="wireframe-thumb w-full rounded-lg shadow-lg cursor-zoom-in" />
+            </div>
+          </section>
+          <!-- Global Wireframe Lightbox -->
+          <div
+            id="wireframe-lightbox"
+            class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm"
+          >
+            <!-- Close -->
+            <button
+              id="wireframe-close"
+              class="absolute top-6 right-6 text-white text-4xl font-light hover:opacity-70"
+              aria-label="Close"
+            >
+              &times;
+            </button>
+
+            <!-- Image -->
+            <img
+              id="wireframe-lightbox-img"
+              src="/images/"
+              alt=""
+              class="max-h-[92vh] max-w-[92vw] object-contain rounded-2xl shadow-2xl"
+            />
+          </div>
+          <script>
+            const wireframeLightbox = document.getElementById('wireframe-lightbox');
+            const wireframeImg = document.getElementById('wireframe-lightbox-img');
+            const wireframeClose = document.getElementById('wireframe-close');
+
+            document.querySelectorAll('.wireframe-thumb').forEach(img => {
+              img.addEventListener('click', () => {
+                wireframeImg.src = img.src;
+                wireframeImg.alt = img.alt;
+                wireframeLightbox.classList.remove('hidden');
+                wireframeLightbox.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+              });
+            });
+
+            function closeWireframe() {
+              wireframeLightbox.classList.add('hidden');
+              wireframeLightbox.classList.remove('flex');
+              wireframeImg.src = '';
+              document.body.style.overflow = '';
+            }
+
+            wireframeClose.addEventListener('click', closeWireframe);
+
+            wireframeLightbox.addEventListener('click', e => {
+              if (e.target === wireframeLightbox) closeWireframe();
+            });
+
+            document.addEventListener('keydown', e => {
+              if (e.key === 'Escape') closeWireframe();
+            });
+          </script>
+      </section>
+
+
+   </main>
+
+
+   <!-- FOOTER -->
+      <footer class="bg-[#5A8EFF]/60 text-black mt-8 border-t border-black relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 py-6 sm:py-4
+                    flex flex-col sm:flex-row sm:items-center sm:justify-between
+                    gap-4 sm:gap-6">
+
+          <!-- Back to top (first on mobile, right on desktop) -->
+          <a href="#fitflow"
+            class="order-1 sm:order-none w-full sm:w-auto
+                    inline-flex items-center justify-center gap-2
+                    rounded-full bg-white px-4 py-2 text-sm font-medium
+                    border border-black/20 hover:bg-white/90 transition"
+            aria-label="Back to top">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#3063FC" d="M12 5.5 3 14.5l1.5 1.5 7.5-7.5 7.5 7.5 1.5-1.5L12 5.5Z"/>
+            </svg>
+            Back to top
+          </a>
+
+          <!-- Socials (full-width stack on mobile, inline on desktop) -->
+          <div class="order-2 sm:order-none w-full sm:w-auto
+                      flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <!-- subtle divider only on mobile -->
+            <div class="h-px bg-black/20 sm:hidden"></div>
+
+            <a href="https://www.linkedin.com/in/sudiksha-rajavaram/" target="_blank"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2
+                      rounded-xl border border-black/20 bg-white/80 px-3 py-2 text-sm font-medium
+                      hover:bg-white transition">
+              <img src="https://cdn.iconscout.com/icon/free/png-512/free-linkedin-42-151143.png"
+                  alt="LinkedIn Logo" class="w-4 h-4"/>
+              LinkedIn
+            </a>
+
+            <a href="https://www.figma.com/@rajavaramsudiks" target="_blank"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2
+                      rounded-xl border border-black/20 bg-white/80 px-3 py-2 text-sm font-medium
+                      hover:bg-white transition">
+              <img src="https://cdn.iconscout.com/icon/free/png-512/free-figma-2296071-1912030.png"
+                  alt="Figma Logo" class="w-4 h-4"/>
+              Figma
+            </a>
+          </div>
+
+          <!-- Name (centered on mobile, left on desktop) -->
+          <p class="order-3 sm:order-none text-center sm:text-left text-sm font-medium">
+            &copy; 2025 Sudiksha Rajavaram
+          </p>
+
+        </div>
+      </footer>
+
+
+  <script>
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  let isOpen = false;
+
+  menuBtn.addEventListener('click', () => {
+    isOpen = !isOpen;
+    mobileMenu.style.maxHeight = isOpen ? mobileMenu.scrollHeight + 'px' : '0px';
+  });
+ </script>
+
+</body>
+</html>

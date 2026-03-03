@@ -1,0 +1,874 @@
+<!-- VibeTrail.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VibeTrail</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style> body { font-family: 'Space Grotesk', sans-serif; } 
+    /* Make the flow stand out and read larger */
+    .vt-flow-card { 
+    background: #fff; 
+    border: 1.5px solid rgba(48,99,252,.25); /* #3063fc */
+    box-shadow: 0 12px 30px rgba(0,0,0,.08);
+    }
+    .vt-flow-card .mermaid { 
+    min-height: 320px; 
+    padding: 16px; 
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      /* add a theme and override its palette here: */
+      theme: 'base',
+      themeVariables: {
+        primaryColor:      '#B2DAFF',  // node fill
+        primaryBorderColor:'#3063fc',  // node stroke
+        primaryTextColor:  '#000000',  // node text
+        lineColor:         '#3063fc',  // edges
+        tertiaryColor:     '#ffffff',  // edge label bg
+        fontSize:          '28px'
+      }
+    });
+  </script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .nav-link {
+      position: relative;
+      display: inline-block;
+      text-decoration: none;
+      color: #2d3748;
+      font-weight: 600;
+      font-size: clamp(1.1rem, 1.05vw, 1.45rem);
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .nav-link:hover::after {
+      transform: scaleX(1);
+    }
+    .nav-link:hover {
+      color: #3063fc;
+    }
+    .menu-transition {
+    transition: max-height 0.3s ease-out;
+    overflow: hidden;
+    }
+  </style>
+  <style>
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .55s ease, transform .55s ease}
+  .reveal.is-visible{opacity:1; transform:none}
+</style>
+</head>
+</head>
+<body class="bg-[#5A8EFF]/25">
+
+  <!-- NAV BAR -->
+  <header class="fixed inset-x-0 top-0 z-30">
+    <nav class="absolute inset-x-0 top-2 mx-auto max-w-[1100px] bg-[#5A8EFF]/70 backdrop-blur-sm border-[1.5px] border-black py-3 px-6 rounded-[12px] shadow-lg z-50">
+      <div class="flex items-center justify-between">
+        <a href="index.html#about" class="text-lg font-semibold text-black">SUDIKSHA RAJAVARAM</a>
+
+        <!-- Hamburger Button (Mobile Only) -->
+        <button id="menu-btn" class="sm:hidden focus:outline-none">
+          <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+
+        <!-- Desktop Nav -->
+        <div class="hidden sm:flex gap-6">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="resume.html" class="nav-link">Resume</a>
+          <a href="projects.html" class="nav-link">Projects</a>
+          <a href="contact.html" class="nav-link">Contact Me</a>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="sm:hidden menu-transition max-h-0">
+        <div class="flex flex-col gap-4 pt-4">
+          <a href="index.html" class="nav-link block">Home</a>
+          <a href="resume.html" class="nav-link block">Resume</a>
+          <a href="projects.html" class="nav-link block">Projects</a>
+          <a href="contact.html" class="nav-link block">Contact Me</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+<section class="bg-white rounded-3xl mx-auto my-4 max-w-[95vw] px-4 shadow-lg mt-12 mb-12 pb-8">
+<main id="VibeTrail" class="pt-[80px] px-6 max-w-5xl mx-auto">
+    <!-- back link + title -->
+    <a href="projects.html" class="text-[12px] text-gray-700 hover:underline">← Return to all Projects</a>
+    <h1 class="text-4xl font-bold text-center mt-4 mb-8">VibeTrail.ai</h1>
+
+    <!-- Case Study -->
+    <section class="mb-14">
+      <h2 class="text-2xl font-semibold mb-6">Case Study</h2>
+
+      <div class="max-w-6xl mx-auto">
+        <!-- SNAPSHOT (blue, no card, above video) -->
+        <div class="mb-8">
+          <!-- top label -->
+          <div class="flex items-center gap-3 text-[11px] font-semibold tracking-widest uppercase text-[#3063FC]">
+            <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#3063FC]">
+              <span class="absolute inset-0 rounded-full bg-[#3063FC]/40 animate-ping"></span>
+            </span>
+            Project Snapshot
+          </div>
+
+          <!-- title -->
+          <h3 class="mt-3 text-3xl sm:text-4xl font-bold text-slate-900">
+            AI-assisted event planning with vibe-first discovery
+          </h3>
+
+          <!-- description -->
+          <p class="mt-4 text-base text-slate-600 max-w-3xl">
+            A concept experience for planning outings faster — surfacing the “vibe” of options and helping users
+            choose a plan with less scrolling and decision fatigue.
+          </p>
+
+          <!-- blue meta row -->
+          <div class="mt-6 flex flex-wrap gap-3">
+            <span class="inline-flex items-center gap-2 rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+              <span class="text-xs font-bold tracking-widest">IND</span>
+              Event Planning
+            </span>
+
+            <span class="inline-flex items-center gap-2 rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+              <span class="text-xs font-bold tracking-widest">ROLE</span>
+              Research · Wireframing · Interface Design
+            </span>
+
+            <span class="inline-flex items-center gap-2 rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+              <span class="text-xs font-bold tracking-widest">TOOLS</span>
+              Figma · Canva
+            </span>
+          </div>
+
+          <!-- blue glow divider -->
+          <div class="mt-7 h-px w-full bg-gradient-to-r from-transparent via-[#3063FC]/40 to-transparent"></div>
+        </div>
+
+        <!-- VIDEO -->
+        <div
+          class="relative rounded-[30px] overflow-hidden
+            bg-gradient-to-br from-[#6CA8FF] to-[#3B82F6]
+            border border-[#3063FC]/40
+            shadow-[0_30px_80px_rgba(48,99,252,0.35)]"
+        >
+          <div class="w-full h-[340px] sm:h-[460px] md:h-[560px] flex items-center justify-center">
+            <video
+              id="vibetrail-video"
+              class="w-full h-full object-contain"
+              muted
+              autoplay
+              playsinline
+              loop
+              preload="auto"
+              poster="/images/project9-thumb.png"
+            >
+              <!-- ✅ change this to your actual video path -->
+              <source src="/images/web-optimized/project9-thumb-web.mp4" type="video/mp4" />
+            </video>
+
+            <!-- fallback -->
+            <div
+              id="vibetrail-fallback"
+              class="absolute inset-0 hidden flex-col items-center justify-center p-6 text-center"
+            >
+              <img
+                src="/images/project9-thumb.png"
+                alt="VibeTrail prototype preview"
+                class="max-h-[85%] w-auto rounded-2xl shadow-xl border border-white/10"
+              />
+              <p class="mt-3 text-xs text-slate-300">
+                Design prototype video couldn’t load in this browser.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+    (function () {
+      const video = document.getElementById("vibetrail-video");
+      const fallback = document.getElementById("vibetrail-fallback");
+      if (!video) return;
+
+      const forcePlay = async () => {
+        try {
+          video.muted = true;
+          await video.play();
+        } catch (e) {
+          // Autoplay blocked — retry on user interaction
+        }
+      };
+
+      window.addEventListener("load", forcePlay);
+      video.addEventListener("canplay", forcePlay);
+
+      const retryOnce = () => {
+        forcePlay();
+        window.removeEventListener("pointerdown", retryOnce);
+        window.removeEventListener("keydown", retryOnce);
+      };
+      window.addEventListener("pointerdown", retryOnce);
+      window.addEventListener("keydown", retryOnce);
+
+      video.addEventListener("error", () => {
+        video.classList.add("hidden");
+        fallback.classList.remove("hidden");
+        fallback.classList.add("flex");
+      });
+    })();
+    </script>
+
+  
+        <!-- Problem & Goal -->
+        <section class="max-w-6xl mx-auto py-8">
+        <h2 class="text-3xl font-bold mb-4">The Problem</h2>
+        <p class="text-gray-700 leading-relaxed">
+            Event planners regularly receive scattered inspiration (Pinterest boards, Instagram posts, DMs), then spend hours translating that into a cohesive plan. The gap between <em>what clients imagine</em> and <em>what planners can quickly visualize</em> leads to misalignment, last-minute changes, and budget overruns.
+        </p>
+
+        <div class="grid sm:grid-cols-2 gap-6 mt-6">
+            <div class="border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/25 rounded-xl p-5">
+            <h3 class="font-semibold mb-1">Impact</h3>
+            <ul class="list-disc list-inside text-gray-700 text-sm">
+                <li>10–25% of events face last-minute changes</li>
+                <li>Changes inflate costs by 15–30%</li>
+                <li>Lost upsell opportunities due to unclear previews</li>
+            </ul>
+            </div>
+            <div class="border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/25 rounded-xl p-5">
+            <h3 class="font-semibold mb-1">Goal</h3>
+            <p class="text-gray-700 text-sm">
+                Bridge the “imagination gap” with fast, authentic visualization—so planners and clients align earlier and make decisions with confidence.
+            </p>
+            </div>
+        </div>
+        </section>
+
+        <!-- Solution Overview -->
+        <section class="max-w-6xl mx-auto py-4">
+        <h2 class="text-3xl font-bold mb-6">Solution</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white rounded-2xl border border-[#5A8EFF]/50 p-6 shadow-sm">
+            <h3 class="font-semibold mb-2">Vibe Trail in a Nutshell</h3>
+            <p class="text-gray-700">
+                Vibe Trail transforms unstructured inputs (mood boards, images, vibe words) into polished storyboards and cinematic previews—using authentic venue imagery where possible.
+            </p>
+            <ul class="mt-4 list-disc list-inside text-gray-700">
+                <li><strong>Instant previews:</strong> see your event before booking</li>
+                <li><strong>Smart suggestions:</strong> venues &amp; vendors based on theme &amp; location</li>
+                <li><strong>Centralized hub:</strong> visuals, logistics, and collaboration in one place</li>
+                <li><strong>Better alignment:</strong> reduce changes and unlock upsells</li>
+            </ul>
+            </div>
+            <div class="bg-white rounded-2xl border border-[#5A8EFF]/50 p-6 shadow-sm">
+            <h3 class="font-semibold mb-2">My Role &amp; Team</h3>
+            <p class="text-gray-700">
+                I worked as a <strong>UX Designer</strong> alongside two other designers in a remote collaboration setup. After design sprints and validation, we handed off specs to developers and data scientists and produced an <strong>MVP</strong>.
+            </p>
+            <ul class="mt-4 list-disc list-inside text-gray-700">
+                <li>Design system, stepper flow, and key screens</li>
+                <li>Remote rituals: daily async updates, weekly critique</li>
+                <li>Handoff: annotated Figma, tickets, and API contracts</li>
+            </ul>
+            </div>
+        </div>
+        </section>
+
+        <!-- Target Users -->
+        <section class="max-w-6xl mx-auto py-8">
+        <h2 class="text-3xl font-bold mb-6">Target Users</h2>
+        <div class="grid sm:grid-cols-3 gap-6">
+            <div class="bg-[#5A8EFF]/10 border border-[#5A8EFF]/40 rounded-xl p-5">
+            <h3 class="font-semibold">Independent Planners</h3>
+            <p class="text-gray-700 text-sm mt-2">Need faster translation from inspiration → storyboard; fewer tool handoffs.</p>
+            </div>
+            <div class="bg-[#5A8EFF]/10 border border-[#5A8EFF]/40 rounded-xl p-5">
+            <h3 class="font-semibold">Venue-Employed Planners</h3>
+            <p class="text-gray-700 text-sm mt-2">Showcase venue potential quickly; close concepts and bookings faster.</p>
+            </div>
+            <div class="bg-[#5A8EFF]/10 border border-[#5A8EFF]/40 rounded-xl p-5">
+            <h3 class="font-semibold">Clients</h3>
+            <p class="text-gray-700 text-sm mt-2">See a clear, shared plan early to reduce anxiety &amp; surprises.</p>
+            </div>
+        </div>
+        </section>
+
+        <!-- Research Highlights -->
+        <section class="relative overflow-hidden py-8">
+        <!-- soft ambient gradient blobs -->
+        <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
+            <div class="absolute -top-24 -right-16 h-72 w-72 rounded-full bg-gradient-to-br from-fuchsia-400/20 via-sky-400/20 to-amber-400/20 blur-3xl"></div>
+            <div class="absolute -bottom-24 -left-10 h-80 w-80 rounded-full bg-gradient-to-tr from-violet-400/15 via-emerald-400/15 to-cyan-400/15 blur-3xl"></div>
+        </div>
+
+        <div class="mx-auto max-w-screen-xl">
+            <!-- header -->
+            <header class="mb-8">
+            <h2 class="text-3xl md:text-3xl font-bold tracking-tight">
+                <span class="bg-black bg-clip-text text-transparent">
+                Research Highlights
+                </span>
+            </h2>
+            <p class="mt-3 text-slate-600 dark:text-slate max-w-3xl leading-relaxed">
+                We combined qualitative interviews with a light competitive scan to frame expectations for visualization and sales workflows in event planning tools.
+            </p>
+
+            <!-- tiny badges for vibe -->
+            <div class="mt-4 flex flex-wrap gap-2">
+                <span class="inline-flex items-center gap-2 rounded-full border border-blue-500 bg-white/70 dark:bg-white/5 px-3 py-1 text-xs text-blue-700 backdrop-blur-sm">
+                <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m20 6-11 11-5-5"/></svg>
+                14 interviews
+                </span>
+                <span class="inline-flex items-center gap-2 rounded-full border border-blue-500 bg-white/70 dark:bg-white/5 px-3 py-1 text-xs text-blue-700 backdrop-blur-sm">
+                <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v4H3zM3 10h18v11H3z"/></svg>
+                Lite market scan
+                </span>
+                <span class="inline-flex items-center gap-2 rounded-full border border-blue-500 bg-white/70 dark:bg-white/5 px-3 py-1 text-xs text-blue-700 backdrop-blur-sm">
+                <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18"/></svg>
+                Storyboard focus
+                </span>
+            </div>
+            </header>
+
+            <!-- cards -->
+            <div class="grid gap-6 md:grid-cols-2">
+            <!-- Key Insights -->
+            <article class="group rounded-2xl p-[1px] bg-gradient-to-br from-slate-200/60 via-slate-100/40 to-white/30 dark:from-white/10 dark:via-white/5 dark:to-white/0 shadow-[0_1px_0_0_rgba(20,20,20,0.06),0_10px_30px_-12px_rgba(0,0,0,0.25)]">
+                <div class="rounded-2xl bg-white/80 dark:bg-[#BBB4E6]/80 backdrop-blur-xl p-6 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-xl">
+                <div class="flex items-start justify-between">
+                    <h3 class="font-semibold text-slate">Key Insights</h3>
+                    <span class="inline-flex items-center gap-1.5 text-xs text-slate">
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m20 6-11 11-5-5"/></svg>
+                    validated
+                    </span>
+                </div>
+
+                <ul class="mt-4 space-y-3 text-slate-700">
+                    <li class="flex gap-3">
+                    <svg class="mt-1 h-5 w-5 flex-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m20 6-11 11-5-5"/></svg>
+                    <span>Planners want <em class="font-semibold not-italic">authentic venue visuals</em> and <em class="font-semibold not-italic">fast concepts</em> (not just mood boards).</span>
+                    </li>
+                    <li class="flex gap-3">
+                    <svg class="mt-1 h-5 w-5 flex-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m20 6-11 11-5-5"/></svg>
+                    <span>AI is most helpful with <em class="font-semibold not-italic">structured inputs</em> (event type, vibe, time) over free-form prompts.</span>
+                    </li>
+                    <li class="flex gap-3">
+                    <svg class="mt-1 h-5 w-5 flex-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m20 6-11 11-5-5"/></svg>
+                    <span>Centralizing visuals + logistics reduces context switching and misalignment.</span>
+                    </li>
+                </ul>
+                </div>
+            </article>
+
+            <!-- Market Scan -->
+            <article class="group rounded-2xl p-[1px] bg-gradient-to-br from-slate-200/60 via-slate-100/40 to-white/30 dark:from-white/10 dark:via-white/5 dark:to-white/0 shadow-[0_1px_0_0_rgba(20,20,20,0.06),0_10px_30px_-12px_rgba(0,0,0,0.25)]">
+                <div class="rounded-2xl bg-white/80 dark:bg-[#5A8EFF]/40 backdrop-blur-xl p-6 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-xl">
+                <h3 class="font-semibold text-slate">Market Scan</h3>
+
+                <ul class="mt-4 space-y-3 text-slate-700 dark:text-slate">
+                    <li class="flex items-start gap-3">
+                    <span class="mt-1 inline-block h-2.5 w-2.5 rounded-full bg-sky-400"></span>
+                    <p><strong>Cvent / Social Tables:</strong> robust 2D/3D diagramming, manual setup; enterprise-leaning.</p>
+                    </li>
+                    <li class="flex items-start gap-3">
+                    <span class="mt-1 inline-block h-2.5 w-2.5 rounded-full bg-fuchsia-400"></span>
+                    <p><strong>Merri:</strong> highly photorealistic 3D but longer space-setup time.</p>
+                    </li>
+                    <li class="flex items-start gap-3">
+                    <span class="mt-1 inline-block h-2.5 w-2.5 rounded-full bg-amber-400"></span>
+                    <p><strong>The Knot:</strong> DIY-friendly, light visualization.</p>
+                    </li>
+                </ul>
+
+                <!-- product angle footer -->
+                <p class="mt-4 text-xs text-slate dark:text-slate">
+                    Vibe Trail focuses on <em class="not-italic font-medium">rapid storyboards &amp; cinematic previews</em> to align earlier in sales.
+                </p>
+                </div>
+            </article>
+            </div>
+        </div>
+        </section>
+
+
+        <!-- Personas (3 vertical images) -->
+        <section class="max-w-6xl mx-auto py-12">
+        <h2 class="text-3xl font-bold mb-6">User Personas</h2>
+        <div class="space-y-6">
+            <img src="/images/vtup-1.png" alt="Persona 1" class="w-full rounded-xl shadow" />
+            <img src="/images/vtup-2.png" alt="Persona 2" class="w-full rounded-xl shadow" />
+            <img src="/images/vtup-3.png" alt="Persona 3" class="w-full rounded-xl shadow" />
+        </div>
+        </section>
+
+        <!-- USER JOURNEY (similar to your example) -->
+        <section id="user-journey" class="max-w-6xl mx-auto py-4 reveal">
+        <h2 class="text-2xl font-bold mb-4">User journey</h2>
+        <div class="overflow-x-auto rounded-2xl border border-gray-200 bg-white">
+            <table class="min-w-full text-sm">
+            <thead class="bg-[#5A8EFF]/20 text-gray-900">
+                <tr>
+                <th class="p-3 text-left">Stage / Experience</th>
+                <th class="p-3 text-left">Discover<br><span class="text-gray-500 text-xs">Find VibeTrail</span></th>
+                <th class="p-3 text-left">Brief<br><span class="text-gray-500 text-xs">Event & vibe</span></th>
+                <th class="p-3 text-left">VibeBoard<br><span class="text-gray-500 text-xs">Upload inspo</span></th>
+                <th class="p-3 text-left">Storyboard<br><span class="text-gray-500 text-xs">AI preview</span></th>
+                <th class="p-3 text-left">Share & Decide<br><span class="text-gray-500 text-xs">Vendor brief</span></th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+                <tr class="bg-gray-50">
+                <td class="p-3 font-medium">Actions</td>
+                <td class="p-3">Landing → signup</td>
+                <td class="p-3">Pick event, guests, venue, vibe</td>
+                <td class="p-3">Drop images / links; tag moods</td>
+                <td class="p-3">Review shots • tweak • re-generate</td>
+                <td class="p-3">Export brief • share link • request quotes</td>
+                </tr>
+                <tr>
+                <td class="p-3 font-medium">Think &amp; Feel</td>
+                <td class="p-3">Curious; exploring examples</td>
+                <td class="p-3">Confident the flow is simple</td>
+                <td class="p-3">Excited seeing their inspo organized</td>
+                <td class="p-3">Delight from cinematic previews</td>
+                <td class="p-3">Clarity; ready to decide & book</td>
+                </tr>
+                <tr class="bg-gray-50">
+                <td class="p-3 font-medium">Touchpoints</td>
+                <td class="p-3">Landing, gallery</td>
+                <td class="p-3">Stepper, chips, defaults</td>
+                <td class="p-3">Board, tags, drag-drop</td>
+                <td class="p-3">Storyboard viewer, controls</td>
+                <td class="p-3">Brief PDF/Link, share, comments</td>
+                </tr>
+                <tr>
+                <td class="p-3 font-medium">Pain points</td>
+                <td class="p-3">Too many tools to compare</td>
+                <td class="p-3">Form fatigue in long wizards</td>
+                <td class="p-3">Messy inspiration sources</td>
+                <td class="p-3">Generic outputs elsewhere</td>
+                <td class="p-3">Vendor misinterpretation</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        </section>
+
+        <!-- Design Decisions -->
+        <section id="design-decisions" class="max-w-6xl mx-auto py-8 reveal">
+        <h2 class="text-2xl font-bold mb-6">Design decisions</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Stepper -->
+            <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/25 p-6">
+            <h3 class="font-semibold mb-1">Progressive stepper</h3>
+            <p class="text-sm text-gray-700">
+                Mirrors the mental model (<span class="italic">Event → Guests → Venue → Vibe</span>) and trims fields per step.
+                Chips + defaults reduce typing, especially on mobile.
+            </p>
+            </article>
+
+            <!-- Guidance vs control -->
+            <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/25 p-6">
+            <h3 class="font-semibold mb-1">AI guidance with human control</h3>
+            <p class="text-sm text-gray-700">
+                Users can regenerate individual shots or swap styles; guardrails stop “AI drift” and keep the brief consistent.
+            </p>
+            </article>
+
+            <!-- Information architecture -->
+            <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/25 p-6">
+            <h3 class="font-semibold mb-1">VibeBoard IA</h3>
+            <p class="text-sm text-gray-700">
+                Board → clusters → tags pipeline turns messy inspiration into structured inputs the model understands.
+            </p>
+            </article>
+
+            <!-- Collaboration -->
+            <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/25 p-6">
+            <h3 class="font-semibold mb-1">Remote collaboration</h3>
+            <p class="text-sm text-gray-700">
+                Share links, lightweight comments, and vendor brief exports support distributed teams and fast approvals.
+            </p>
+            </article>
+
+            <!-- Accessibility & motion -->
+            <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/25 p-6">
+            <h3 class="font-semibold mb-1">Accessibility & motion</h3>
+            <p class="text-sm text-gray-700">
+                Color contrast meets WCAG AA; prefers-reduced-motion disables parallax and uses fade/slide transitions only.
+            </p>
+            </article>
+
+            <!-- Empty states -->
+            <article class="rounded-2xl border border-[#5A8EFF]/40 bg-gradient-to-br from-white to-[#5A8EFF]/25 p-6">
+            <h3 class="font-semibold mb-1">Helpful empty states</h3>
+            <p class="text-sm text-gray-700">
+                Seeded example boards and one-click sample assets help users experience value before committing.
+            </p>
+            </article>
+        </div>
+        </section>
+
+        <!-- Competitor analysis -->
+        <section id="competitor-analysis" class="max-w-7xl mx-auto py-8">
+            <h2 class="text-3xl font-bold mb-6">Competitor Analysis</h2>
+
+            <div class="overflow-x-auto rounded-2xl shadow-lg">
+                <table class="min-w-full bg-white border border-gray-200 rounded-2xl">
+                <thead class="bg-[#5A8EFF]/40">
+                    <tr>
+                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-800">Competitor</th>
+                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-800">Strengths</th>
+                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-800">Weaknesses</th>
+                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-800">Opportunities for VibeTrail</th>
+                    </tr>
+                </thead>
+
+                <tbody class="divide-y divide-gray-200">
+                    <!-- Row: Cvent/Social Tables -->
+                    <tr>
+                    <td class="align-top px-6 py-5 text-gray-900 font-medium">Cvent / Social Tables</td>
+                    <td class="align-top px-6 py-5">
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                        <li>Strong 2D/3D diagramming & vendor ecosystem</li>
+                        <li>Enterprise workflows + reporting</li>
+                        </ul>
+                    </td>
+                    <td class="align-top px-6 py-5">
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                        <li>CAD/template heavy; long setup time</li>
+                        <li>Static visuals, not vibe-first</li>
+                        </ul>
+                    </td>
+                    <td class="align-top px-6 py-5">
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                        <li>“Instant storyboard” for fast pitching before diagrams</li>
+                        <li>Export brief they can import to layout tools</li>
+                        </ul>
+                    </td>
+                    </tr>
+
+                    <!-- Row: Merri -->
+                    <tr>
+                    <td class="align-top px-6 py-5 text-gray-900 font-medium">Merri (BeMerri)</td>
+                    <td class="align-top px-6 py-5">
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                        <li>Photoreal scenes; décor catalogs</li>
+                        <li>Great for final styling once direction is chosen</li>
+                        </ul>
+                    </td>
+                    <td class="align-top px-6 py-5">
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                        <li>Initial 3D modeling + setup is time-consuming</li>
+                        <li>Slower for early concept exploration</li>
+                        </ul>
+                    </td>
+                    <td class="align-top px-6 py-5">
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                        <li>Generate storyboard options in minutes to align faster</li>
+                        <li>Hand off chosen direction to 3D tools</li>
+                        </ul>
+                    </td>
+                    </tr>
+
+                    <!-- Row: The Knot -->
+                    <tr>
+                    <td class="align-top px-6 py-5 text-gray-900 font-medium">The Knot</td>
+                    <td class="align-top px-6 py-5">
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                        <li>Mass-market planning, checklists, vendors</li>
+                        <li>Familiar brand for couples</li>
+                        </ul>
+                    </td>
+                    <td class="align-top px-6 py-5">
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                        <li>DIY orientation; not built for pro pitching</li>
+                        <li>Visuals are basic, not cinematic</li>
+                        </ul>
+                    </td>
+                    <td class="align-top px-6 py-5">
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                        <li>Pro-grade storyboard previews for sales meetings</li>
+                        <li>Vendor-ready briefs to reduce back-and-forth</li>
+                        </ul>
+                    </td>
+                    </tr>
+
+                    <!-- Row: Aisle Planner -->
+                    <tr>
+                    <td class="align-top px-6 py-5 text-gray-900 font-medium">Aisle Planner</td>
+                    <td class="align-top px-6 py-5">
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                        <li>Project management + timelines</li>
+                        <li>Light styling tools</li>
+                        </ul>
+                    </td>
+                    <td class="align-top px-6 py-5">
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                        <li>Manual mood boards; limited visual wow</li>
+                        <li>No AI storyboard generation</li>
+                        </ul>
+                    </td>
+                    <td class="align-top px-6 py-5">
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                        <li>Drop-in “VibeBoard → Storyboard” add-on</li>
+                        <li>One-click brief export to PM tools</li>
+                        </ul>
+                    </td>
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Tech Stack -->
+        <section class="max-w-6xl mx-auto py-4">
+        <h2 class="text-3xl font-bold mb-6">Technology</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-[#5A8EFF]/10 border border-[#5A8EFF]/40 rounded-xl p-5">
+            <h3 class="font-semibold">Client</h3>
+            <p class="text-gray-700 text-sm">Next.js + TypeScript</p>
+            </div>
+            <div class="bg-[#5A8EFF]/10 border border-[#5A8EFF]/40 rounded-xl p-5">
+            <h3 class="font-semibold">Backend</h3>
+            <p class="text-gray-700 text-sm">Python + FastAPI</p>
+            </div>
+            <div class="bg-[#5A8EFF]/10 border border-[#5A8EFF]/40 rounded-xl p-5">
+            <h3 class="font-semibold">AI</h3>
+            <p class="text-gray-700 text-sm">gpt-image-1; Veo (planned)</p>
+            </div>
+            <div class="bg-[#5A8EFF]/10 border border-[#5A8EFF]/40 rounded-xl p-5">
+            <h3 class="font-semibold">Infra &amp; APIs</h3>
+            <p class="text-gray-700 text-sm">Firebase, Google Places, Pexels</p>
+            </div>
+        </div>
+        </section>
+
+        <!-- Challenges & Learnings -->
+        <section class="max-w-6xl mx-auto py-8">
+        <h2 class="text-3xl font-bold mb-6">Challenges &amp; Learnings</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white rounded-xl border border-[#5A8EFF] p-6">
+            <h3 class="font-semibold mb-2">AI Needs Constraints</h3>
+            <p class="text-gray-700 text-sm">Free-form prompts were inconsistent; structured inputs (event type, vibe, time) consistently improved output quality.</p>
+            </div>
+            <div class="bg-white rounded-xl border border-[#5A8EFF] p-6">
+            <h3 class="font-semibold mb-2">Evolving Models</h3>
+            <p class="text-gray-700 text-sm">Architecture anticipates model swaps; smaller models can be cheaper without hurting quality for specific tasks.</p>
+            </div>
+            <div class="bg-white rounded-xl border border-[#5A8EFF] p-6">
+            <h3 class="font-semibold mb-2">Feedback Loops</h3>
+            <p class="text-gray-700 text-sm">Golden sets + structured evaluation are essential to keep visuals on-brand and usable for planners.</p>
+            </div>
+            <div class="bg-white rounded-xl border border-[#5A8EFF] p-6">
+            <h3 class="font-semibold mb-2">Use AI Where It Matters</h3>
+            <p class="text-gray-700 text-sm">Standard functions &amp; APIs remain reliable for workflow; AI reserved for visuals and recommendation boosts.</p>
+            </div>
+        </div>
+        </section>
+
+
+        <!-- UNIQUE SELLING PROPOSITIONS -->
+        <section id="usps" class="max-w-6xl mx-auto py-8">
+            <h2 class="text-3xl font-bold mb-6">Unique Selling Propositions</h2>
+
+            <div class="grid gap-6 md:grid-cols-3">
+                <!-- Card 1 -->
+                <article class="rounded-2xl border border-[#5A8EFF]/30 bg-[#5A8EFF]/15 p-6 shadow-lg">
+                <h3 class="text-xl font-semibold mb-2">AI-powered storyboards</h3>
+                <p class="text-gray-700">
+                    Turn scattered inspiration into short, shot-based cinematic previews in minutes—
+                    perfect for pitching vibe before any heavy production work.
+                </p>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="rounded-2xl border border-[#5A8EFF]/30 bg-[#5A8EFF]/15 p-6 shadow-lg">
+                <h3 class="text-xl font-semibold mb-2">Collaborative VibeBoard</h3>
+                <p class="text-gray-700">
+                    Drag-drop images and links, tag moods, and compare multiple vibe options side-by-side.
+                    Designed for remote teams and fast iteration with clients.
+                </p>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="rounded-2xl border border-[#5A8EFF]/30 bg-[#5A8EFF]/15 p-6 shadow-lg">
+                <h3 class="text-xl font-semibold mb-2">Vendor-ready brief</h3>
+                <p class="text-gray-700">
+                    Export a concise, structured spec—shots, constraints, and references—that vendors can
+                    quote and execute immediately, reducing back-and-forth.
+                </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Wireframes -->
+        <section id="wireframes" class="max-w-6xl mx-auto px-6 py-16">
+          <h2 class="text-3xl font-bold text-black mb-8">Wireframes</h2>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <img src="/images/vtw-1.png" alt="Wireframe 1"
+              class="wireframe-thumb w-full rounded-lg shadow-lg cursor-zoom-in" />
+
+            <img src="/images/vtw-2.png" alt="Wireframe 2"
+              class="wireframe-thumb w-full rounded-lg shadow-lg cursor-zoom-in" />
+
+            <img src="/images/vtw-3.png" alt="Wireframe 3"
+              class="wireframe-thumb w-full rounded-lg shadow-lg cursor-zoom-in" />
+
+            <img src="/images/vtw-4.png" alt="Wireframe 4"
+              class="wireframe-thumb w-full rounded-lg shadow-lg cursor-zoom-in" />
+
+            <img src="/images/vtw-5.png" alt="Wireframe 5"
+              class="wireframe-thumb w-full rounded-lg shadow-lg cursor-zoom-in" />
+          </div>
+        </section>
+
+        <!-- Wireframe Lightbox -->
+        <div
+          id="wireframe-lightbox"
+          class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm"
+        >
+          <!-- Close button -->
+          <button
+            id="wireframe-close"
+            class="absolute top-6 right-6 text-white text-3xl leading-none hover:opacity-70"
+            aria-label="Close"
+          >
+            &times;
+          </button>
+
+          <!-- Image -->
+          <img
+            id="wireframe-lightbox-img"
+            src="/images/"
+            alt=""
+            class="max-h-[90vh] max-w-[90vw] object-contain rounded-xl shadow-2xl"
+          />
+        </div>
+        <script>
+          const lightbox = document.getElementById('wireframe-lightbox');
+          const lightboxImg = document.getElementById('wireframe-lightbox-img');
+          const closeBtn = document.getElementById('wireframe-close');
+
+          document.querySelectorAll('.wireframe-thumb').forEach(img => {
+            img.addEventListener('click', () => {
+              lightboxImg.src = img.src;
+              lightboxImg.alt = img.alt;
+              lightbox.classList.remove('hidden');
+              lightbox.classList.add('flex');
+              document.body.style.overflow = 'hidden';
+            });
+          });
+
+          function closeLightbox() {
+            lightbox.classList.add('hidden');
+            lightbox.classList.remove('flex');
+            lightboxImg.src = '';
+            document.body.style.overflow = '';
+          }
+
+          closeBtn.addEventListener('click', closeLightbox);
+
+          lightbox.addEventListener('click', e => {
+            if (e.target === lightbox) closeLightbox();
+          });
+
+          document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeLightbox();
+          });
+        </script>
+
+        <script>
+        (function(){
+            const els=[...document.querySelectorAll('.reveal')];
+            const io=new IntersectionObserver((entries)=>{
+            entries.forEach(e=>{
+                if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); }
+            })
+            },{threshold:.12});
+            els.forEach(el=>io.observe(el));
+        })();
+        </script>
+
+
+    </section>
+
+    <!-- FOOTER -->
+      <footer class="bg-[#5A8EFF]/60 text-black mt-8 border-t border-black relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 py-6 sm:py-4
+                    flex flex-col sm:flex-row sm:items-center sm:justify-between
+                    gap-4 sm:gap-6">
+
+          <!-- Back to top (first on mobile, right on desktop) -->
+          <a href="#untanglingchallenges"
+            class="order-1 sm:order-none w-full sm:w-auto
+                    inline-flex items-center justify-center gap-2
+                    rounded-full bg-white px-4 py-2 text-sm font-medium
+                    border border-black/20 hover:bg-white/90 transition"
+            aria-label="Back to top">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#3063FC" d="M12 5.5 3 14.5l1.5 1.5 7.5-7.5 7.5 7.5 1.5-1.5L12 5.5Z"/>
+            </svg>
+            Back to top
+          </a>
+
+          <!-- Socials (full-width stack on mobile, inline on desktop) -->
+          <div class="order-2 sm:order-none w-full sm:w-auto
+                      flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <!-- subtle divider only on mobile -->
+            <div class="h-px bg-black/20 sm:hidden"></div>
+
+            <a href="https://www.linkedin.com/in/sudiksha-rajavaram/" target="_blank"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2
+                      rounded-xl border border-black/20 bg-white/80 px-3 py-2 text-sm font-medium
+                      hover:bg-white transition">
+              <img src="https://cdn.iconscout.com/icon/free/png-512/free-linkedin-42-151143.png"
+                  alt="LinkedIn Logo" class="w-4 h-4"/>
+              LinkedIn
+            </a>
+
+            <a href="https://www.figma.com/@rajavaramsudiks" target="_blank"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2
+                      rounded-xl border border-black/20 bg-white/80 px-3 py-2 text-sm font-medium
+                      hover:bg-white transition">
+              <img src="https://cdn.iconscout.com/icon/free/png-512/free-figma-2296071-1912030.png"
+                  alt="Figma Logo" class="w-4 h-4"/>
+              Figma
+            </a>
+          </div>
+
+          <!-- Name (centered on mobile, left on desktop) -->
+          <p class="order-3 sm:order-none text-center sm:text-left text-sm font-medium">
+            &copy; 2025 Sudiksha Rajavaram
+          </p>
+
+        </div>
+      </footer>
+
+</body>
+</html>
