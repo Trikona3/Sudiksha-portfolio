@@ -19,6 +19,6 @@ out/
 archived-large-media/
 
 # local heavy media / installers (keep local, do not track)
-images/
+/images/
 Construction-learning.mp4
 WindowsMigrationAssistantSetup.exe
