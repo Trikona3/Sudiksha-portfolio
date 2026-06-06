@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bee Ridge ATSPM Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Space Grotesk', sans-serif; }
+    .nav-link {
+      position: relative;
+      display: inline-block;
+      text-decoration: none;
+      color: #2d3748;
+      font-weight: 600;
+      font-size: clamp(1.1rem, 1.05vw, 1.45rem);
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .nav-link:hover::after { transform: scaleX(1); }
+    .nav-link:hover { color: #3063fc; }
+    .menu-transition { transition: max-height 0.3s ease-out; overflow: hidden; }
+    .dashboard-preview {
+      background:
+        radial-gradient(circle at 20% 20%, rgba(90, 142, 255, 0.28), transparent 26%),
+        radial-gradient(circle at 80% 10%, rgba(16, 185, 129, 0.22), transparent 24%),
+        linear-gradient(135deg, #07111f 0%, #102033 100%);
+    }
+    .preview-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 1rem;
+    }
+    .preview-map {
+      position: relative;
+      min-height: 260px;
+      overflow: hidden;
+      border-radius: 24px;
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      background:
+        linear-gradient(110deg, transparent 0 46%, rgba(90, 142, 255, 0.28) 47% 49%, transparent 50%),
+        linear-gradient(22deg, transparent 0 38%, rgba(16, 185, 129, 0.24) 39% 42%, transparent 43%),
+        #0f1b2d;
+    }
+    .preview-marker {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: #34d399;
+      border: 3px solid rgba(255, 255, 255, 0.78);
+      box-shadow: 0 0 0 8px rgba(52, 211, 153, 0.14);
+    }
+    .preview-marker.warn { background: #f59e0b; box-shadow: 0 0 0 8px rgba(245, 158, 11, 0.16); }
+    .preview-marker.hot { background: #ef4444; box-shadow: 0 0 0 8px rgba(239, 68, 68, 0.18); }
+    .heat-cell {
+      height: 1.75rem;
+      border-radius: 0.35rem;
+      background: rgba(90, 142, 255, 0.18);
+    }
+    .heat-cell.mid { background: rgba(245, 158, 11, 0.46); }
+    .heat-cell.hot { background: rgba(239, 68, 68, 0.72); }
+    @media (max-width: 768px) {
+      .preview-grid { grid-template-columns: 1fr; }
+    }
+    .walkthrough-frame {
+      overflow: hidden;
+      border-radius: 30px;
+      border: 1px solid rgba(48, 99, 252, 0.3);
+      background: #07111f;
+      box-shadow: 0 30px 80px rgba(15, 23, 42, 0.28);
+    }
+    .walkthrough-video {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #07111f;
+    }
+  </style>
+</head>
+<body class="bg-[#5A8EFF]/25">
+  <header class="fixed inset-x-0 top-0 z-30">
+    <nav class="absolute inset-x-0 top-2 mx-auto max-w-[1100px] bg-[#5A8EFF]/70 backdrop-blur-sm border-[1.5px] border-black py-3 px-6 rounded-[12px] shadow-lg z-50">
+      <div class="flex items-center justify-between">
+        <a href="index.html#about" class="text-lg font-semibold text-black">SUDIKSHA RAJAVARAM</a>
+        <button id="menu-btn" class="sm:hidden focus:outline-none" aria-label="Open navigation">
+          <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+        <div class="hidden sm:flex gap-6">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="resume.html" class="nav-link">Resume</a>
+          <a href="projects.html" class="nav-link">Projects</a>
+          <a href="contact.html" class="nav-link">Contact Me</a>
+        </div>
+      </div>
+      <div id="mobile-menu" class="sm:hidden menu-transition max-h-0">
+        <div class="flex flex-col gap-4 pt-4">
+          <a href="index.html" class="nav-link block">Home</a>
+          <a href="resume.html" class="nav-link block">Resume</a>
+          <a href="projects.html" class="nav-link block">Projects</a>
+          <a href="contact.html" class="nav-link block">Contact Me</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="bg-white rounded-3xl mx-auto my-4 max-w-[95vw] px-4 shadow-lg mt-12 mb-12 pb-8">
+    <main id="bee-ridge-atspm" class="pt-[80px] max-w-5xl mx-auto">
+      <a href="projects.html" class="text-[12px] text-gray-700 hover:underline">&larr; Return to all Projects</a>
+      <h1 class="text-4xl font-bold text-center mt-4 mb-8">Bee Ridge ATSPM Dashboard</h1>
+
+      <section class="mb-14">
+        <h2 class="text-2xl font-semibold mb-6">Case Study</h2>
+        <div class="mb-8">
+          <div class="flex items-center gap-3 text-[11px] font-semibold tracking-widest uppercase text-[#3063FC]">
+            <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#3063FC]">
+              <span class="absolute inset-0 rounded-full bg-[#3063FC]/40 animate-ping"></span>
+            </span>
+            Data-heavy dashboard UX
+          </div>
+          <h3 class="mt-3 text-3xl sm:text-4xl font-bold text-slate-900">
+            Operational analytics dashboard for traffic signal performance monitoring
+          </h3>
+          <p class="mt-4 text-base text-slate-600 max-w-3xl">
+            Bee Ridge ATSPM is an interactive analytics platform for exploring corridor-level and intersection-level signal performance using maps, filters, KPIs, rankings, heatmaps, clustering, and change detection.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <span class="inline-flex rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">Dashboard UX</span>
+            <span class="inline-flex rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">Traffic Analytics</span>
+            <span class="inline-flex rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">Data Visualization</span>
+          </div>
+        </div>
+
+        <figure class="walkthrough-frame">
+          <video
+            class="walkthrough-video"
+            controls
+            muted
+            playsinline
+            preload="metadata"
+          >
+            <source src="/images/bee-ridge-atspm-dashboard.mp4" type="video/mp4" />
+          </video>
+        </figure>
+        <p class="mt-3 text-sm text-slate-600">
+          Dashboard walkthrough showing the map-led workflow, filtering model, metrics, charts, and deeper analytical views.
+        </p>
+        <div class="mt-5 rounded-2xl border border-[#3063FC]/25 bg-[#5A8EFF]/10 p-5">
+          <p class="text-sm font-semibold text-slate-900">Want the code-side backstory?</p>
+          <p class="mt-1 text-sm text-slate-700">
+            The screens are only half the plot. I also built the frontend and backend logic behind the dashboard: data processing, API workflows, mapping, clustering, validation, and all the little chart-wrangling details that politely refused to stay little.
+          </p>
+          <a
+            href="https://github.com/Sudiksha-R/atspm-dashboard"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-3 inline-flex items-center justify-center rounded-full bg-[#3063FC] px-4 py-2 text-sm font-semibold text-white hover:bg-[#244ed0] transition"
+          >
+            View the GitHub repo &rarr;
+          </a>
+        </div>
+      </section>
+
+      <section class="max-w-6xl mx-auto py-8">
+        <h2 class="text-3xl font-bold mb-4">Project Description</h2>
+        <p class="text-gray-700 leading-relaxed">
+          The dashboard turns ATSPM measures of effectiveness into a structured decision-support workflow. It helps transportation analysts move from corridor summaries to intersection diagnostics, ranking, day-hour patterns, clustering, and historical change monitoring without starting from raw tables.
+        </p>
+      </section>
+
+      <section class="max-w-6xl mx-auto py-8">
+        <h2 class="text-3xl font-bold mb-6">UI/UX Design Approach</h2>
+        <div class="grid gap-6 md:grid-cols-3">
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-[#5A8EFF]/10 p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Dense but readable</h3>
+            <p class="text-gray-700">The interface prioritizes comparison, filtering, and repeated investigation for analysts, researchers, and traffic engineers.</p>
+          </article>
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-[#5A8EFF]/10 p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Map-first context</h3>
+            <p class="text-gray-700">Interactive maps keep each signal tied to a physical intersection instead of treating data as abstract table rows.</p>
+          </article>
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-[#5A8EFF]/10 p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Progressive disclosure</h3>
+            <p class="text-gray-700">Users start with KPIs and maps, then drill into charts, heatmaps, clusters, change cards, and validation tables.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="max-w-6xl mx-auto py-8">
+        <h2 class="text-3xl font-bold mb-6">Design Decisions</h2>
+        <p class="text-gray-700 leading-relaxed mb-6">
+          Because the project contains dense ATSPM metrics, rankings, clustering outputs, maps, and validation tables, the design avoids decorative UI and uses hierarchy, color, and interaction patterns to make complex traffic data easier to scan.
+        </p>
+        <div class="grid gap-6 md:grid-cols-2">
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-white p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Each tab answers one operational question</h3>
+            <p class="text-gray-700">
+              The dashboard is organized around questions like what is happening across the corridor, which intersection needs attention, when issues occur, which time slots behave similarly, and what changed compared to history.
+            </p>
+          </article>
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-white p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Color supports decisions, not decoration</h3>
+            <p class="text-gray-700">
+              Green, orange, red, muted neutrals, and soft cluster colors communicate performance, caution, alerts, readable intensity, and behavioral groups without making the dashboard feel noisy.
+            </p>
+          </article>
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-white p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Spatial analysis stays tied to the map</h3>
+            <p class="text-gray-700">
+              Clickable markers, selected-signal rings, corridor path lines, rank/status colors, and synchronized side lists connect performance metrics back to real corridor locations.
+            </p>
+          </article>
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-white p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Advanced analytics are translated into readable patterns</h3>
+            <p class="text-gray-700">
+              DBSCAN and HDBSCAN outputs are shown as labeled day-hour grids, with cluster summaries that explain time bands, day patterns, mean MOE profiles, example slots, and outliers in plain language.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="max-w-6xl mx-auto py-8">
+        <h2 class="text-3xl font-bold mb-6">Key Workflows</h2>
+        <div class="space-y-5">
+          <article class="rounded-2xl border border-[#3063FC]/20 bg-white p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Dashboard overview</h3>
+            <p class="text-gray-700">Combines a corridor map, filters, KPI cards, phase summaries, trend charts, signal comparisons, insights, tables, and a metric glossary.</p>
+          </article>
+          <article class="rounded-2xl border border-[#3063FC]/20 bg-white p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Ranking and prioritization</h3>
+            <p class="text-gray-700">Uses configurable composite scoring, map markers, ranked lists, scatter/bubble charts, and quartile-colored tables to surface worst-performing intersections.</p>
+          </article>
+          <article class="rounded-2xl border border-[#3063FC]/20 bg-white p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Day-hour analysis</h3>
+            <p class="text-gray-700">Heatmaps and 3D surface plots help users identify when traffic issues happen across weekdays, hours, phases, and selected MOEs.</p>
+          </article>
+          <article class="rounded-2xl border border-[#3063FC]/20 bg-white p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Clustering and change detection</h3>
+            <p class="text-gray-700">DBSCAN, HDBSCAN, and historical comparison views translate advanced analytics into cluster grids, summaries, outlier counts, and flagged change cards.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="max-w-6xl mx-auto py-8">
+        <h2 class="text-3xl font-bold mb-6">Visual Encoding</h2>
+        <div class="grid gap-6 md:grid-cols-2">
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-white p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Color as information</h3>
+            <p class="text-gray-700">Green signals healthier or active states, orange and red highlight pressure or change, and heat intensity helps users scan high MOE values quickly.</p>
+          </article>
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-white p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Ranking design</h3>
+            <p class="text-gray-700">Color-coded rank markers and quartile table cells help users identify stronger and weaker intersections without comparing every number row by row.</p>
+          </article>
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-white p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Heatmaps for recurring timing patterns</h3>
+            <p class="text-gray-700">Day-hour heatmaps answer when issues happen, making weekday peaks, afternoon delay spikes, and high-value MOE cells visible before users open raw detail.</p>
+          </article>
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-white p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Tables for auditability</h3>
+            <p class="text-gray-700">Compact tables preserve the exact values behind each insight, with clear labels and metric-specific coloring so precision stays available after the charts summarize the story.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="max-w-6xl mx-auto py-8">
+        <h2 class="text-3xl font-bold mb-4">Outcome</h2>
+        <p class="text-gray-700 leading-relaxed">
+          Bee Ridge ATSPM evolved from a traffic visualization tool into a full analytics system for corridor monitoring, signal diagnosis, ranking, pattern discovery, bottleneck clustering, and historical change detection.
+        </p>
+      </section>
+    </main>
+  </section>
+
+  <footer class="bg-[#5A8EFF]/60 text-black mt-8 border-t border-black relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 py-6 sm:py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6">
+      <a href="#bee-ridge-atspm" class="order-1 sm:order-none w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium border border-black/20 hover:bg-white/90 transition" aria-label="Back to top">Back to top</a>
+      <p class="order-3 sm:order-none text-center sm:text-left text-sm font-medium">&copy; 2025 Sudiksha Rajavaram</p>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuBtn && mobileMenu) {
+      let isOpen = false;
+      menuBtn.addEventListener('click', () => {
+        isOpen = !isOpen;
+        mobileMenu.style.maxHeight = isOpen ? mobileMenu.scrollHeight + 'px' : '0px';
+      });
+    }
+  </script>
+</body>
+</html>

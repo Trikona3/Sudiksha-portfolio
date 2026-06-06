@@ -130,6 +130,44 @@
     height: 17rem;
     min-height: 17rem;
   }
+  .atspm-preview {
+    height: 100%;
+    width: 100%;
+    padding: 1rem;
+    background:
+      radial-gradient(circle at 18% 24%, rgba(90, 142, 255, 0.35), transparent 25%),
+      radial-gradient(circle at 82% 18%, rgba(16, 185, 129, 0.24), transparent 24%),
+      linear-gradient(135deg, #07111f 0%, #102033 100%);
+    color: #fff;
+  }
+  .atspm-map {
+    position: relative;
+    min-height: 7rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    background:
+      linear-gradient(115deg, transparent 0 44%, rgba(90, 142, 255, 0.35) 45% 48%, transparent 49%),
+      linear-gradient(25deg, transparent 0 34%, rgba(16, 185, 129, 0.24) 35% 38%, transparent 39%),
+      #0f1b2d;
+  }
+  .atspm-pin {
+    position: absolute;
+    width: 0.9rem;
+    height: 0.9rem;
+    border-radius: 999px;
+    background: #34d399;
+    border: 2px solid rgba(255,255,255,0.8);
+    box-shadow: 0 0 0 6px rgba(52,211,153,0.14);
+  }
+  .atspm-pin.warn { background: #f59e0b; box-shadow: 0 0 0 6px rgba(245,158,11,0.16); }
+  .atspm-pin.hot { background: #ef4444; box-shadow: 0 0 0 6px rgba(239,68,68,0.18); }
+  .atspm-mini-cell {
+    height: 0.9rem;
+    border-radius: 0.25rem;
+    background: rgba(90, 142, 255, 0.22);
+  }
+  .atspm-mini-cell.mid { background: rgba(245, 158, 11, 0.5); }
+  .atspm-mini-cell.hot { background: rgba(239, 68, 68, 0.76); }
   @media (max-width: 768px) {
     .card-wrap .card > .p-5 {
       min-height: 0;
@@ -148,6 +186,9 @@
     .card-wrap .image-wrap.sky-wide {
       height: 12.75rem;
       min-height: 12.75rem;
+    }
+    .atspm-map {
+      min-height: 5.5rem;
     }
   }
 
@@ -822,6 +863,49 @@
             <div class="tag-row">
               <span class="tag">VR</span>
               <span class="tag">Neurodivergent users</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Bee Ridge ATSPM Dashboard -->
+      <div class="card-wrap">
+        <article class="card group relative">
+          <div class="p-5">
+            <h2 class="font-semibold text-xl tracking-tight">Bee Ridge ATSPM Dashboard</h2>
+            <p class="text-gray-600 text-sm leading-relaxed mt-2">
+              Traffic-signal analytics dashboard for corridor monitoring, intersection diagnosis, ranking, clustering, and change detection.
+            </p>
+            <a href="bee_ridge_atspm.html" class="cta mt-3">View Case Study &rarr;</a>
+          </div>
+          <div class="image-wrap">
+            <div class="card-img atspm-preview">
+              <div class="grid grid-cols-2 gap-3 mb-3">
+                <div class="rounded-xl bg-white/10 border border-white/10 p-3">
+                  <p class="text-[10px] text-slate-300">Signals</p>
+                  <p class="text-xl font-bold">18</p>
+                </div>
+                <div class="rounded-xl bg-white/10 border border-white/10 p-3">
+                  <p class="text-[10px] text-slate-300">Flagged</p>
+                  <p class="text-xl font-bold text-amber-300">6</p>
+                </div>
+              </div>
+              <div class="atspm-map mb-3">
+                <span class="atspm-pin" style="left:18%; top:34%"></span>
+                <span class="atspm-pin warn" style="left:45%; top:56%"></span>
+                <span class="atspm-pin hot" style="left:68%; top:42%"></span>
+                <span class="atspm-pin" style="left:80%; top:67%"></span>
+              </div>
+              <div class="grid grid-cols-7 gap-1.5">
+                <span class="atspm-mini-cell"></span><span class="atspm-mini-cell mid"></span><span class="atspm-mini-cell"></span><span class="atspm-mini-cell hot"></span><span class="atspm-mini-cell mid"></span><span class="atspm-mini-cell"></span><span class="atspm-mini-cell hot"></span>
+                <span class="atspm-mini-cell mid"></span><span class="atspm-mini-cell"></span><span class="atspm-mini-cell hot"></span><span class="atspm-mini-cell mid"></span><span class="atspm-mini-cell"></span><span class="atspm-mini-cell"></span><span class="atspm-mini-cell mid"></span>
+              </div>
+            </div>
+            <div class="img-fade"></div>
+            <div class="tag-row">
+              <span class="tag">Dashboard UX</span>
+              <span class="tag">Data Viz</span>
+              <span class="tag">Traffic Analytics</span>
             </div>
           </div>
         </article>
