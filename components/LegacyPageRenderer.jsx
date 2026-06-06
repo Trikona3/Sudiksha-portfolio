@@ -171,7 +171,155 @@ export default function LegacyPageRenderer({ html, title, sourcePath }) {
 
     mountEl.innerHTML = doc.body.innerHTML;
 
+    const getKeyScreensSection = (element) => {
+      const explicitSection = element.closest('#key-screens');
+      if (explicitSection) {
+        return explicitSection;
+      }
+
+      return Array.from(mountEl.querySelectorAll('section')).find((section) => {
+        const heading = section.querySelector('h2');
+        return heading?.textContent?.trim().toLowerCase() === 'key screens' && section.contains(element);
+      });
+    };
+
+    const lightboxStyle = document.createElement('style');
+    lightboxStyle.setAttribute('data-legacy-owned', 'true');
+    lightboxStyle.textContent = `
+      .legacy-page-root .legacy-lightbox-trigger {
+        cursor: zoom-in;
+      }
+      .legacy-page-root .legacy-lightbox-trigger:focus-visible {
+        outline: 3px solid #5A8EFF;
+        outline-offset: 4px;
+      }
+      .legacy-image-lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 64px 24px 24px;
+        background: rgba(3, 7, 18, 0.92);
+        backdrop-filter: blur(10px);
+      }
+      .legacy-image-lightbox[hidden] {
+        display: none;
+      }
+      .legacy-image-lightbox__image {
+        max-width: min(96vw, 1800px);
+        max-height: calc(100vh - 96px);
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        border-radius: 14px;
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+      }
+      .legacy-image-lightbox__close {
+        position: fixed;
+        top: 18px;
+        right: 18px;
+        width: 42px;
+        height: 42px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(255, 255, 255, 0.32);
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.72);
+        color: #fff;
+        font-size: 28px;
+        line-height: 1;
+        cursor: pointer;
+      }
+      .legacy-image-lightbox__close:hover,
+      .legacy-image-lightbox__close:focus-visible {
+        background: rgba(48, 99, 252, 0.9);
+        outline: none;
+      }
+    `;
+    document.head.appendChild(lightboxStyle);
+    addedHeadNodes.push(lightboxStyle);
+
+    const lightbox = document.createElement('div');
+    lightbox.className = 'legacy-image-lightbox';
+    lightbox.setAttribute('role', 'dialog');
+    lightbox.setAttribute('aria-modal', 'true');
+    lightbox.setAttribute('aria-label', 'Expanded project screen');
+    lightbox.hidden = true;
+
+    const lightboxImage = document.createElement('img');
+    lightboxImage.className = 'legacy-image-lightbox__image';
+    lightboxImage.alt = '';
+
+    const closeButton = document.createElement('button');
+    closeButton.type = 'button';
+    closeButton.className = 'legacy-image-lightbox__close';
+    closeButton.setAttribute('aria-label', 'Close expanded image');
+    closeButton.innerHTML = '&times;';
+
+    lightbox.appendChild(lightboxImage);
+    lightbox.appendChild(closeButton);
+    document.body.appendChild(lightbox);
+
+    const keyScreenImages = Array.from(mountEl.querySelectorAll('img')).filter((img) => getKeyScreensSection(img));
+    keyScreenImages.forEach((img) => {
+      img.classList.add('legacy-lightbox-trigger');
+      img.setAttribute('tabindex', '0');
+      img.setAttribute('role', 'button');
+      img.setAttribute('aria-label', `Open ${img.getAttribute('alt') || 'project screen'} full screen`);
+    });
+
+    let lastFocusedElement = null;
+    let previousBodyOverflow = '';
+
+    const closeLightbox = () => {
+      lightbox.hidden = true;
+      lightboxImage.removeAttribute('src');
+      lightboxImage.alt = '';
+      document.body.style.overflow = previousBodyOverflow;
+      if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+        lastFocusedElement.focus();
+      }
+      lastFocusedElement = null;
+    };
+
+    const openLightbox = (img) => {
+      lastFocusedElement = document.activeElement;
+      lightboxImage.src = img.currentSrc || img.src;
+      lightboxImage.alt = img.getAttribute('alt') || 'Expanded project screen';
+      lightbox.hidden = false;
+      previousBodyOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      closeButton.focus();
+    };
+
+    const onLightboxClick = (event) => {
+      if (event.target === lightbox || event.target === closeButton) {
+        closeLightbox();
+      }
+    };
+
+    const onKeyDown = (event) => {
+      if (!lightbox.hidden && event.key === 'Escape') {
+        closeLightbox();
+        return;
+      }
+
+      if ((event.key === 'Enter' || event.key === ' ') && event.target instanceof HTMLImageElement && getKeyScreensSection(event.target)) {
+        event.preventDefault();
+        openLightbox(event.target);
+      }
+    };
+
     const onClick = (event) => {
+      if (event.target instanceof HTMLImageElement && getKeyScreensSection(event.target)) {
+        event.preventDefault();
+        openLightbox(event.target);
+        return;
+      }
+
       const anchor = event.target.closest('a[href]');
       if (!anchor) {
         return;
@@ -202,6 +350,8 @@ export default function LegacyPageRenderer({ html, title, sourcePath }) {
     };
 
     mountEl.addEventListener('click', onClick);
+    lightbox.addEventListener('click', onLightboxClick);
+    document.addEventListener('keydown', onKeyDown);
 
     const refreshAos = () => {
       if (!window.AOS) {
@@ -406,6 +556,10 @@ export default function LegacyPageRenderer({ html, title, sourcePath }) {
         revealObserver.disconnect();
       }
       mountEl.removeEventListener('click', onClick);
+      lightbox.removeEventListener('click', onLightboxClick);
+      document.removeEventListener('keydown', onKeyDown);
+      lightbox.remove();
+      document.body.style.overflow = previousBodyOverflow;
       mountEl.innerHTML = '';
       addedHeadNodes.forEach((node) => node.remove());
       document.title = previousTitle;

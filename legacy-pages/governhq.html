@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GovernHQ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Space Grotesk', sans-serif; }
+    .nav-link {
+      position: relative;
+      display: inline-block;
+      text-decoration: none;
+      color: #2d3748;
+      font-weight: 600;
+      font-size: clamp(1.1rem, 1.05vw, 1.45rem);
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .nav-link:hover::after { transform: scaleX(1); }
+    .nav-link:hover { color: #3063fc; }
+    .menu-transition { transition: max-height 0.3s ease-out; overflow: hidden; }
+  </style>
+</head>
+<body class="bg-[#5A8EFF]/25">
+  <header class="fixed inset-x-0 top-0 z-30">
+    <nav class="absolute inset-x-0 top-2 mx-auto max-w-[1100px] bg-[#5A8EFF]/70 backdrop-blur-sm border-[1.5px] border-black py-3 px-6 rounded-[12px] shadow-lg z-50">
+      <div class="flex items-center justify-between">
+        <a href="index.html#about" class="text-lg font-semibold text-black">SUDIKSHA RAJAVARAM</a>
+        <button id="menu-btn" class="sm:hidden focus:outline-none" aria-label="Open navigation">
+          <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+        <div class="hidden sm:flex gap-6">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="resume.html" class="nav-link">Resume</a>
+          <a href="projects.html" class="nav-link">Projects</a>
+          <a href="contact.html" class="nav-link">Contact Me</a>
+        </div>
+      </div>
+      <div id="mobile-menu" class="sm:hidden menu-transition max-h-0">
+        <div class="flex flex-col gap-4 pt-4">
+          <a href="index.html" class="nav-link block">Home</a>
+          <a href="resume.html" class="nav-link block">Resume</a>
+          <a href="projects.html" class="nav-link block">Projects</a>
+          <a href="contact.html" class="nav-link block">Contact Me</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="bg-white rounded-3xl mx-auto my-4 max-w-[95vw] px-4 shadow-lg mt-12 mb-12 pb-8">
+    <main id="governhq" class="pt-[80px] max-w-5xl mx-auto">
+      <a href="projects.html" class="text-[12px] text-gray-700 hover:underline">← Return to all Projects</a>
+      <h1 class="text-4xl font-bold text-center mt-4 mb-8">GovernHQ</h1>
+
+      <section class="mb-14">
+        <h2 class="text-2xl font-semibold mb-6">Case Study</h2>
+        <div class="max-w-6xl mx-auto">
+          <div class="mb-8">
+            <div class="flex items-center gap-3 text-[11px] font-semibold tracking-widest uppercase text-[#3063FC]">
+              <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#3063FC]">
+                <span class="absolute inset-0 rounded-full bg-[#3063FC]/40 animate-ping"></span>
+              </span>
+              Project Snapshot
+            </div>
+            <h3 class="mt-3 text-3xl sm:text-4xl font-bold text-slate-900">
+              Governance layer for autonomous AI agents in enterprise systems
+            </h3>
+            <p class="mt-4 text-base text-slate-600 max-w-3xl">
+              GovernHQ is an enterprise AI agent governance MVP that intercepts agent actions before execution, evaluates them against policy, and gives operations teams a live control layer for approvals, blocks, audits, and monitoring.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <span class="inline-flex items-center gap-2 rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+                <span class="text-xs font-bold tracking-widest">ORG</span>
+                PM Accelerator
+              </span>
+              <span class="inline-flex items-center gap-2 rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+                <span class="text-xs font-bold tracking-widest">ROLE</span>
+                Co-UX Designer · Research · IA · Prototype
+              </span>
+              <span class="inline-flex items-center gap-2 rounded-full bg-[#3063FC]/10 text-[#3063FC] px-4 py-2 text-sm font-medium">
+                <span class="text-xs font-bold tracking-widest">SCOPE</span>
+                Enterprise AI Governance MVP
+              </span>
+            </div>
+            <div class="mt-7 h-px w-full bg-gradient-to-r from-transparent via-[#3063FC]/40 to-transparent"></div>
+          </div>
+
+          <div class="rounded-[30px] overflow-hidden bg-gradient-to-br from-[#6CA8FF] to-[#3B82F6] border border-[#3063FC]/40 shadow-[0_30px_80px_rgba(48,99,252,0.35)]">
+            <video
+              class="w-full h-auto object-cover"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              poster="/images/governhq-overview.png"
+            >
+                <source src="/images/governhq-prototype.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </section>
+
+      <section class="max-w-6xl mx-auto py-8">
+        <h2 class="text-3xl font-bold mb-4">Project Description</h2>
+        <p class="text-gray-700 leading-relaxed">
+          I worked as a co-UX designer on a two-person design team. We defined the product structure, information architecture, and end-to-end prototype for a platform used by enterprise AI admins, security teams, and operations stakeholders. The product was designed to evaluate agent actions in real time, surface risk clearly, and make policy enforcement reviewable instead of invisible.
+        </p>
+      </section>
+
+      <section class="max-w-6xl mx-auto py-8">
+        <h2 class="text-3xl font-bold mb-6">What I Worked On</h2>
+        <div class="grid gap-6 md:grid-cols-3">
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-[#5A8EFF]/10 p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Product structure</h3>
+            <p class="text-gray-700">
+              Helped define the core platform architecture across overview, ledger, agents, shield, policies, settings, and onboarding.
+            </p>
+          </article>
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-[#5A8EFF]/10 p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">User research</h3>
+            <p class="text-gray-700">
+              Framed the needs of enterprise AI admins, governance teams, and operators who need confidence before autonomous actions go live.
+            </p>
+          </article>
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-[#5A8EFF]/10 p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Flow prototyping</h3>
+            <p class="text-gray-700">
+              Prototyped the full product flow, from onboarding and policy setup to live monitoring, audit review, and agent management.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="max-w-6xl mx-auto py-8">
+        <h2 class="text-3xl font-bold mb-6">Design Decisions</h2>
+        <div class="grid gap-6 md:grid-cols-2">
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-[#5A8EFF]/10 p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Made the decision log the center of the experience</h3>
+            <p class="text-gray-700">
+              The most important behavior to review is what an agent tried to do and whether it was allowed, blocked, or paused, so the decision log became the main focus instead of a secondary table.
+            </p>
+          </article>
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-[#5A8EFF]/10 p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Used a sidebar for system-level context</h3>
+            <p class="text-gray-700">
+              Stats, system health, recent activity, and pending approvals were moved into a supporting sidebar so the main pane could stay focused on operational review.
+            </p>
+          </article>
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-[#5A8EFF]/10 p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Separated governance into distinct mental models</h3>
+            <p class="text-gray-700">
+              Agents, Shield, Policies, and Ledger each answer a different governance question, so the IA was structured around those tasks rather than mixing everything into one dashboard.
+            </p>
+          </article>
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-[#5A8EFF]/10 p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Made onboarding progressive instead of overwhelming</h3>
+            <p class="text-gray-700">
+              The setup flow breaks adoption into connected steps: connect data, configure agents, define access rules, then launch and monitor.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="max-w-6xl mx-auto py-8">
+        <h2 class="text-3xl font-bold mb-6">User Personas</h2>
+        <div class="grid gap-6 md:grid-cols-3">
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-[#5A8EFF]/10 p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">AI Operations Lead</h3>
+            <p class="text-sm text-[#3063FC] font-medium mb-3">Owns live agent performance and approvals</p>
+            <p class="text-gray-700">
+              Needs to quickly understand which agent actions are safe, which need review, and where operational bottlenecks are forming.
+            </p>
+          </article>
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-[#5A8EFF]/10 p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Security & Compliance Manager</h3>
+            <p class="text-sm text-[#3063FC] font-medium mb-3">Defines policy and reduces risk exposure</p>
+            <p class="text-gray-700">
+              Needs strong audit trails, explainable blocks, enforcement controls, and confidence that sensitive actions cannot slip through.
+            </p>
+          </article>
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-[#5A8EFF]/10 p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Platform Administrator</h3>
+            <p class="text-sm text-[#3063FC] font-medium mb-3">Configures agents, access, and integrations</p>
+            <p class="text-gray-700">
+              Needs a setup flow that makes complex governance infrastructure feel manageable, structured, and operationally clear.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="max-w-6xl mx-auto py-8">
+        <h2 class="text-3xl font-bold mb-6">USP</h2>
+        <div class="grid gap-6 md:grid-cols-3">
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-white p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Real-time interception</h3>
+            <p class="text-gray-700">
+              GovernHQ acts before agent actions execute, which makes governance proactive instead of post-incident.
+            </p>
+          </article>
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-white p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Policy + audit in one system</h3>
+            <p class="text-gray-700">
+              Teams can define rules, inspect outcomes, and trace every action in one connected workflow rather than across disconnected tools.
+            </p>
+          </article>
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-white p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Human review where it matters</h3>
+            <p class="text-gray-700">
+              The product creates a clear decision layer for paused or high-risk actions instead of forcing all-or-nothing autonomy.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="max-w-6xl mx-auto py-8">
+        <h2 class="text-3xl font-bold mb-6">User Flow</h2>
+        <div class="rounded-3xl border border-[#3063FC]/20 bg-[#5A8EFF]/10 p-6 shadow-lg">
+          <div class="grid gap-4 md:grid-cols-4">
+            <div class="rounded-2xl bg-white p-5 border border-[#3063FC]/20">
+              <p class="text-sm font-semibold text-[#3063FC] mb-2">1. Connect</p>
+              <p class="font-semibold">Add data sources and systems</p>
+            </div>
+            <div class="rounded-2xl bg-white p-5 border border-[#3063FC]/20">
+              <p class="text-sm font-semibold text-[#3063FC] mb-2">2. Configure</p>
+              <p class="font-semibold">Set up agents, roles, and capabilities</p>
+            </div>
+            <div class="rounded-2xl bg-white p-5 border border-[#3063FC]/20">
+              <p class="text-sm font-semibold text-[#3063FC] mb-2">3. Govern</p>
+              <p class="font-semibold">Define policies, thresholds, and approval rules</p>
+            </div>
+            <div class="rounded-2xl bg-white p-5 border border-[#3063FC]/20">
+              <p class="text-sm font-semibold text-[#3063FC] mb-2">4. Monitor</p>
+              <p class="font-semibold">Review decisions, logs, health, and blocked actions</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="max-w-6xl mx-auto py-8">
+        <h2 class="text-3xl font-bold mb-6">User Journey Map</h2>
+        <div class="space-y-5">
+          <article class="rounded-2xl border border-[#3063FC]/20 bg-white p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Setup phase</h3>
+            <p class="text-gray-700">
+              The admin connects data sources, configures agents, and establishes access rules, moving from uncertainty to a structured operational baseline.
+            </p>
+          </article>
+          <article class="rounded-2xl border border-[#3063FC]/20 bg-white p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Live governance phase</h3>
+            <p class="text-gray-700">
+              Operations and governance teams monitor decision logs, pending approvals, and anomaly signals to decide when to allow, pause, or block agent behavior.
+            </p>
+          </article>
+          <article class="rounded-2xl border border-[#3063FC]/20 bg-white p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Policy refinement phase</h3>
+            <p class="text-gray-700">
+              Teams learn from blocked and paused behavior, then refine policies and thresholds to improve both safety and throughput over time.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="max-w-6xl mx-auto py-8">
+        <h2 class="text-3xl font-bold mb-6">Challenges &amp; Learnings</h2>
+        <div class="grid gap-6 md:grid-cols-2">
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-[#5A8EFF]/10 p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Challenge: making invisible AI risk legible</h3>
+            <p class="text-gray-700">
+              Governance products can easily become too abstract. We had to translate invisible agent decisions into a system that felt concrete, reviewable, and urgent enough to act on.
+            </p>
+          </article>
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-[#5A8EFF]/10 p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Challenge: balancing monitoring with control</h3>
+            <p class="text-gray-700">
+              The product needed to support both passive visibility and direct intervention, without overwhelming users with too many governance controls at once.
+            </p>
+          </article>
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-white p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Learning: hierarchy matters more in enterprise tools</h3>
+            <p class="text-gray-700">
+              Putting the decision log at the center and moving summary metrics to the sidebar made the product feel much clearer because the most actionable information stayed dominant.
+            </p>
+          </article>
+          <article class="rounded-2xl border border-[#5A8EFF]/30 bg-white p-6 shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Learning: onboarding is part of trust-building</h3>
+            <p class="text-gray-700">
+              Breaking setup into guided steps helped make a technically complex product feel safer and more adoptable for enterprise teams.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="max-w-6xl mx-auto py-8">
+        <h2 class="text-3xl font-bold mb-6">Onboarding Flow</h2>
+        <p class="text-gray-700 mb-6">
+          The onboarding experience was designed as a guided progression so teams could move from setup to operational readiness without having to understand the full platform all at once.
+        </p>
+        <div class="grid gap-6 md:grid-cols-2">
+          <div class="rounded-[24px] overflow-hidden border border-[#3063FC]/25 shadow-lg">
+            <img src="/images/governhq-onboarding-1.png" alt="GovernHQ onboarding step overview" class="w-full h-auto object-cover" />
+          </div>
+          <div class="rounded-[24px] overflow-hidden border border-[#3063FC]/25 shadow-lg">
+            <img src="/images/governhq-onboarding-2.png" alt="GovernHQ configure agents step" class="w-full h-auto object-cover" />
+          </div>
+          <div class="rounded-[24px] overflow-hidden border border-[#3063FC]/25 shadow-lg">
+            <img src="/images/governhq-onboarding-3.png" alt="GovernHQ define access rules step" class="w-full h-auto object-cover" />
+          </div>
+          <div class="rounded-[24px] overflow-hidden border border-[#3063FC]/25 shadow-lg">
+            <img src="/images/governhq-onboarding-4.png" alt="GovernHQ launch and monitor step" class="w-full h-auto object-cover" />
+          </div>
+        </div>
+      </section>
+
+      <section class="max-w-6xl mx-auto py-8">
+        <h2 class="text-3xl font-bold mb-6">Settings and Platform Administration</h2>
+        <p class="text-gray-700 mb-6">
+          The settings area extends the governance model into organization setup, API credentials, integrations, and billing so the platform feels operationally complete.
+        </p>
+        <div class="grid gap-6 md:grid-cols-2">
+          <div class="rounded-[24px] overflow-hidden border border-[#3063FC]/25 shadow-lg">
+            <img src="/images/governhq-settings-org.png" alt="GovernHQ organization settings" class="w-full h-auto object-cover" />
+          </div>
+          <div class="rounded-[24px] overflow-hidden border border-[#3063FC]/25 shadow-lg">
+            <img src="/images/governhq-settings-keys.png" alt="GovernHQ API key settings" class="w-full h-auto object-cover" />
+          </div>
+          <div class="rounded-[24px] overflow-hidden border border-[#3063FC]/25 shadow-lg">
+            <img src="/images/governhq-settings-integrations.png" alt="GovernHQ integrations settings" class="w-full h-auto object-cover" />
+          </div>
+          <div class="rounded-[24px] overflow-hidden border border-[#3063FC]/25 shadow-lg">
+            <img src="/images/governhq-settings-billing.png" alt="GovernHQ billing settings" class="w-full h-auto object-cover" />
+          </div>
+        </div>
+      </section>
+
+      <section id="key-screens" class="max-w-6xl mx-auto py-8">
+        <h2 class="text-3xl font-bold mb-6">Key Screens</h2>
+        <div class="space-y-10">
+          <div>
+            <h3 class="text-xl font-semibold mb-3">Overview</h3>
+            <p class="text-gray-700 mb-4">A live command center showing decision history, pending approvals, recent activity, and system health at a glance.</p>
+            <div class="rounded-[24px] overflow-hidden border border-[#3063FC]/25 shadow-lg">
+              <img src="/images/governhq-overview-2.png" alt="GovernHQ overview decision log and system status" class="w-full h-auto object-cover" />
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-3">Agents and action breakdown</h3>
+            <p class="text-gray-700 mb-4">An agent management layer where teams can inspect activity, capabilities, and per-agent action patterns.</p>
+            <div class="rounded-[24px] overflow-hidden border border-[#3063FC]/25 shadow-lg">
+              <img src="/images/governhq-agents.png" alt="GovernHQ agents management page" class="w-full h-auto object-cover" />
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-3">Ledger and auditability</h3>
+            <p class="text-gray-700 mb-4">A tamper-proof record of every action with searchable entries, timestamps, and expandable reasoning for blocked actions.</p>
+            <div class="rounded-[24px] overflow-hidden border border-[#3063FC]/25 shadow-lg">
+              <img src="/images/governhq-ledger.png" alt="GovernHQ ledger page" class="w-full h-auto object-cover" />
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-3">Shield and policy controls</h3>
+            <p class="text-gray-700 mb-4">Configurable protection controls let teams tune enforcement strictness, thresholds, and emergency behavior without leaving the product.</p>
+            <div class="rounded-[24px] overflow-hidden border border-[#3063FC]/25 shadow-lg">
+              <img src="/images/governhq-shield.png" alt="GovernHQ shield controls page" class="w-full h-auto object-cover" />
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-3">Policy management</h3>
+            <p class="text-gray-700 mb-4">Policies were structured to be easy to scan, edit, duplicate, and scope to specific agents.</p>
+            <div class="rounded-[24px] overflow-hidden border border-[#3063FC]/25 shadow-lg">
+              <img src="/images/governhq-policies.png" alt="GovernHQ policy management page" class="w-full h-auto object-cover" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="max-w-6xl mx-auto py-8">
+        <h2 class="text-3xl font-bold mb-4">Outcome</h2>
+        <p class="text-gray-700 leading-relaxed">
+          GovernHQ turned a complex governance problem into a navigable product system: teams can review autonomous actions, understand why something was blocked, configure enforcement rules, and launch agents with more confidence and control.
+        </p>
+      </section>
+    </main>
+  </section>
+
+  <footer class="bg-[#5A8EFF]/60 text-black mt-8 border-t border-black relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 py-6 sm:py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6">
+      <a href="#governhq" class="order-1 sm:order-none w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium border border-black/20 hover:bg-white/90 transition" aria-label="Back to top">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="#3063FC" d="M12 5.5 3 14.5l1.5 1.5 7.5-7.5 7.5 7.5 1.5-1.5L12 5.5Z"/>
+        </svg>
+        Back to top
+      </a>
+      <div class="order-2 sm:order-none w-full sm:w-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+        <a href="https://www.linkedin.com/in/sudiksha-rajavaram/" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl border border-black/20 bg-white/80 px-3 py-2 text-sm font-medium hover:bg-white transition">
+          <img src="https://cdn.iconscout.com/icon/free/png-512/free-linkedin-42-151143.png" alt="LinkedIn Logo" class="w-4 h-4"/>
+          LinkedIn
+        </a>
+        <a href="https://www.figma.com/@rajavaramsudiks" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl border border-black/20 bg-white/80 px-3 py-2 text-sm font-medium hover:bg-white transition">
+          <img src="https://cdn.iconscout.com/icon/free/png-512/free-figma-2296071-1912030.png" alt="Figma Logo" class="w-4 h-4"/>
+          Figma
+        </a>
+      </div>
+      <p class="order-3 sm:order-none text-center sm:text-left text-sm font-medium">
+        &copy; 2025 Sudiksha Rajavaram
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuBtn && mobileMenu) {
+      let isOpen = false;
+      menuBtn.addEventListener('click', () => {
+        isOpen = !isOpen;
+        mobileMenu.style.maxHeight = isOpen ? mobileMenu.scrollHeight + 'px' : '0px';
+      });
+    }
+  </script>
+</body>
+</html>
