@@ -1,6 +1,4 @@
 import { notFound } from 'next/navigation';
-import fs from 'node:fs';
-import path from 'node:path';
 import LegacyPageRenderer from '../../components/LegacyPageRenderer';
 import { htmlToRoute, knownRoutes, routeTitles, routeToFile } from '../../lib/legacyRoutes';
 
@@ -39,7 +37,10 @@ export default function CatchAllPage({ params }) {
     notFound();
   }
 
-  const filePath = path.join(process.cwd(), 'legacy-pages', fileName);
-  const html = fs.readFileSync(filePath, 'utf8');
-  return <LegacyPageRenderer html={html} title={routeTitles[routePath]} />;
+  return (
+    <LegacyPageRenderer
+      sourcePath={`/legacy-pages/${fileName}`}
+      title={routeTitles[routePath]}
+    />
+  );
 }
