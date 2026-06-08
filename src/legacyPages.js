@@ -14,6 +14,8 @@ import skybulletinHtml from '../legacy-pages/skybulletin.html?raw';
 import untanglingHtml from '../legacy-pages/untanglingchallenges.html?raw';
 import carecircleHtml from '../legacy-pages/carecircle.html?raw';
 import trikonaHtml from '../legacy-pages/trikona.html?raw';
+import governhqHtml from '../legacy-pages/governhq.html?raw';
+import beeRidgeHtml from '../legacy-pages/bee_ridge_atspm.html?raw';
 
 export const routeContent = {
   '/': homeHtml,
@@ -31,7 +33,9 @@ export const routeContent = {
   '/skybulletin': skybulletinHtml,
   '/untanglingchallenges': untanglingHtml,
   '/carecircle': carecircleHtml,
-  '/trikona': trikonaHtml
+  '/trikona': trikonaHtml,
+  '/governhq': governhqHtml,
+  '/bee-ridge-atspm': beeRidgeHtml
 };
 
 export const htmlToRoute = {
@@ -52,5 +56,7 @@ export const htmlToRoute = {
   'skybulletin.html': '/skybulletin',
   'untanglingchallenges.html': '/untanglingchallenges',
   'carecircle.html': '/carecircle',
-  'trikona.html': '/trikona'
+  'trikona.html': '/trikona',
+  'governhq.html': '/governhq',
+  'bee_ridge_atspm.html': '/bee-ridge-atspm'
 };

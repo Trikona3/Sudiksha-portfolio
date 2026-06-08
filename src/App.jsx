@@ -18,7 +18,9 @@ const routeTitles = {
   '/skybulletin': 'Sky Bulletin',
   '/untanglingchallenges': 'Untangling Challenges',
   '/carecircle': 'Care Circle',
-  '/trikona': 'Trikona'
+  '/trikona': 'Trikona',
+  '/governhq': 'GovernHQ',
+  '/bee-ridge-atspm': 'Bee Ridge ATSPM Dashboard'
 };
 
 function App() {
