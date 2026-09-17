@@ -515,6 +515,25 @@
       width: 42px;
       height: 42px;
     }
+    .experience-stack {
+      display: flex;
+      flex-direction: column;
+    }
+    .career-logo-uf {
+      background: #0021a5;
+      color: #ffffff;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 2.15rem;
+      font-weight: 700;
+      letter-spacing: -0.08em;
+    }
+    .career-logo-oe {
+      color: #087f9d;
+      font-size: 0.7rem;
+      font-weight: 800;
+      line-height: 1.05;
+      text-align: center;
+    }
     @media (max-width: 768px) {
       .career-tab {
         padding: 9px 18px;
@@ -939,39 +958,76 @@
           <div class="site-section-inner mt-10 md:mt-14">
             <!-- Experience -->
             <div class="tab-panel" id="panel-exp">
-              <div class="space-y-6">
-                <article class="career-card" data-aos="fade-right" data-aos-delay="80">
-                  <div class="career-ribbon">Jul 2025<br/>— Present</div>
+              <div class="space-y-6 experience-stack">
+                <article class="career-card" style="order: 3" data-aos="fade-right" data-aos-delay="40">
+                  <div class="career-ribbon">Mar 2026<br/>— Present</div>
+                  <div class="career-card-inner">
+                    <div class="career-logo-box career-logo-uf" aria-label="University of Florida">UF</div>
+                    <div class="min-w-0">
+                      <h3 class="text-xl md:text-2xl font-extrabold text-slate-900 leading-tight">OPS Data Analyst</h3>
+                      <p class="mt-2 text-lg font-bold text-[#3063FC] flex items-center gap-2">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M4 21h16"/><path d="M6 21V7h12v14"/><path d="M9 21v-4h6v4"/><path d="M9 11h1"/><path d="M14 11h1"/>
+                        </svg>
+                        University of Florida
+                      </p>
+                      <p class="mt-1 text-sm md:text-base text-slate-500">Gainesville, Florida, United States · Remote</p>
+                      <p class="mt-3 text-base md:text-lg text-slate-600 leading-snug">Designed decision-support experiences that help transportation teams move from complex traffic data to clear, actionable insights across corridor and intersection workflows.</p>
+                      <p class="mt-3 text-base font-bold text-slate-800">◇ User Experience Design · Information Architecture · Data Visualization · Interaction Design</p>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="career-card" style="order: 2" data-aos="fade-right" data-aos-delay="80">
+                  <div class="career-ribbon">Jul 2025<br/>— Jul 2026</div>
                   <div class="career-card-inner">
                     <div class="career-logo-box">
                       <img src="/images/pmlogo.png" alt="PM Accelerator" class="career-logo-img" loading="lazy" />
                     </div>
                     <div class="min-w-0">
-                      <h3 class="text-xl md:text-2xl font-extrabold text-slate-900 leading-tight">AI/ML UX Design Intern — Design Lead</h3>
+                      <h3 class="text-xl md:text-2xl font-extrabold text-slate-900 leading-tight">AI/ML UX Designer (Part-time) - Design Lead, PM Accelerator</h3>
                       <p class="mt-2 text-lg font-bold text-[#3063FC] flex items-center gap-2">
                         <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                           <path d="M4 21h16"/><path d="M6 21V7h12v14"/><path d="M9 21v-4h6v4"/><path d="M9 11h1"/><path d="M14 11h1"/>
                         </svg>
-                        PM Accelerator
+                        Product Manager Accelerator · Internship
                       </p>
                       <p class="mt-2 text-base md:text-lg text-slate-600 leading-snug">UX design and research for AI and LLM products; completed 4 products to MVP, including 2 as Design Lead at PM Accelerator.</p>
                     </div>
                   </div>
                 </article>
 
-                <article class="career-card" data-aos="fade-left" data-aos-delay="140">
-                  <div class="career-ribbon">Apr 2022<br/>— Present</div>
+                <article class="career-card" style="order: 4" data-aos="fade-left" data-aos-delay="110">
+                  <div class="career-ribbon">Sep 2025<br/>— Feb 2026</div>
+                  <div class="career-card-inner">
+                    <div class="career-logo-box career-logo-oe" aria-label="Open Evaluation">✓<br/>OPEN<br/>EVALUATION</div>
+                    <div class="min-w-0">
+                      <h3 class="text-xl md:text-2xl font-extrabold text-slate-900 leading-tight">UX Designer (Pro Bono)</h3>
+                      <p class="mt-2 text-lg font-bold text-[#3063FC] flex items-center gap-2">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M4 21h16"/><path d="M6 21V7h12v14"/><path d="M9 21v-4h6v4"/><path d="M9 11h1"/><path d="M14 11h1"/>
+                        </svg>
+                        Open Evaluation
+                      </p>
+                      <p class="mt-1 text-sm md:text-base text-slate-500">Remote</p>
+                      <p class="mt-3 text-base md:text-lg text-slate-600 leading-snug">Contributed user-centered design for an AI transparency and evaluation platform. Developed personas and journey flows, designed dashboard wireframes, and collaborated with researchers and developers to visualize performance metrics and support evidence-based product decisions.</p>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="career-card" style="order: 1" data-aos="fade-left" data-aos-delay="140">
+                  <div class="career-ribbon">Aug 2022<br/>— Present</div>
                   <div class="career-card-inner">
                     <div class="career-logo-box">
                       <img src="/images/cl.png" alt="Construction Learning" class="career-logo-img" loading="lazy" />
                     </div>
                     <div class="min-w-0">
-                      <h3 class="text-xl md:text-2xl font-extrabold text-slate-900 leading-tight">User Experience — Researcher and Designer</h3>
+                      <h3 class="text-xl md:text-2xl font-extrabold text-slate-900 leading-tight">AI UX Lead</h3>
                       <p class="mt-2 text-lg font-bold text-[#3063FC] flex items-center gap-2">
                         <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                           <path d="M4 21h16"/><path d="M6 21V7h12v14"/><path d="M9 21v-4h6v4"/><path d="M9 11h1"/><path d="M14 11h1"/>
                         </svg>
-                        Construction Learning
+                        Construction Learning · Part-time · India
                       </p>
                       <p class="mt-2 text-base md:text-lg text-slate-600 leading-snug">UX design and research across multiple websites (user-facing and admin backend), plus construction-game UX translated into code with vibe coding.</p>
                     </div>
@@ -984,7 +1040,7 @@
             <div class="tab-panel hidden" id="panel-edu">
               <div class="space-y-6">
                 <article class="career-card" data-aos="fade-right" data-aos-delay="80">
-                  <div class="career-ribbon">2024 —<br/>2025</div>
+                  <div class="career-ribbon">Aug 2024 —<br/>Dec 2025</div>
                   <div class="career-card-inner">
                     <div class="career-logo-box career-icon-box">
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -1004,7 +1060,7 @@
                 </article>
 
                 <article class="career-card" data-aos="fade-left" data-aos-delay="140">
-                  <div class="career-ribbon">2020 —<br/>2024</div>
+                  <div class="career-ribbon">Aug 2020 —<br/>Jul 2024</div>
                   <div class="career-card-inner">
                     <div class="career-logo-box career-icon-box">
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">

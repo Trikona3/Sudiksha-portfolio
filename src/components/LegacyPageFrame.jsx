@@ -119,6 +119,10 @@ function LegacyPageFrame({ html, title }) {
     let cancelled = false;
     let revealObserver = null;
 
+    // The legacy document includes CDN-backed styles/scripts. Hide the mount
+    // while they initialize so the browser cannot paint an unstyled flash.
+    mountEl.classList.add('legacy-page-root--loading');
+
     if (doc.title) {
       document.title = doc.title;
     } else if (title) {
@@ -371,6 +375,14 @@ function LegacyPageFrame({ html, title }) {
 
       initAutoReveal();
 
+      // Reveal only after the final DOM, styles, and initial observer state
+      // have been installed.
+      requestAnimationFrame(() => {
+        if (!cancelled) {
+          mountEl.classList.remove('legacy-page-root--loading');
+        }
+      });
+
       // Keep page transitions predictable: hash routes jump to target,
       // otherwise each route starts at top.
       requestAnimationFrame(() => {
@@ -393,6 +405,7 @@ function LegacyPageFrame({ html, title }) {
 
     return () => {
       cancelled = true;
+      mountEl.classList.remove('legacy-page-root--loading');
       if (revealObserver) {
         revealObserver.disconnect();
       }

@@ -148,6 +148,8 @@ export default function LegacyPageRenderer({ html, title, sourcePath }) {
     let cancelled = false;
     let revealObserver = null;
 
+    mountEl.classList.add('legacy-page-root--loading');
+
     if (doc.title) {
       document.title = doc.title;
     } else if (title) {
@@ -533,6 +535,12 @@ export default function LegacyPageRenderer({ html, title, sourcePath }) {
       targets.forEach((node) => revealObserver?.observe(node));
 
       requestAnimationFrame(() => {
+        if (!cancelled) {
+          mountEl.classList.remove('legacy-page-root--loading');
+        }
+      });
+
+      requestAnimationFrame(() => {
         if (cancelled) {
           return;
         }
@@ -552,6 +560,7 @@ export default function LegacyPageRenderer({ html, title, sourcePath }) {
 
     return () => {
       cancelled = true;
+      mountEl.classList.remove('legacy-page-root--loading');
       if (revealObserver) {
         revealObserver.disconnect();
       }

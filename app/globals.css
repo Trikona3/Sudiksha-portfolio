@@ -18,6 +18,10 @@ body {
   min-height: 100vh;
 }
 
+.legacy-page-root--loading {
+  visibility: hidden;
+}
+
 [data-aos].aos-init:not(.aos-animate) {
   opacity: 0 !important;
   visibility: hidden !important;

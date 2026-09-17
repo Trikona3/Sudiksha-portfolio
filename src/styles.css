@@ -19,6 +19,12 @@ body {
   min-height: 100vh;
 }
 
+/* The legacy pages load their Tailwind/AOS assets after React mounts. Keep
+   the raw HTML from flashing before those assets and reveal states are ready. */
+.legacy-page-root--loading {
+  visibility: hidden;
+}
+
 [data-aos].aos-init:not(.aos-animate) {
   opacity: 0 !important;
   visibility: hidden !important;
